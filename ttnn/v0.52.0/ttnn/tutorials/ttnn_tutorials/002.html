@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
@@ -8,20 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Matrix Multiplication &mdash; TT-NN  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/tt_theme.css?v=0bbfeaf8" />
       <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
 
   
     <link rel="shortcut icon" href="../../../_static/favicon.png"/>
-      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
-      <script src="../../../_static/doctools.js?v=888ff710"></script>
-      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
-      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -56,7 +58,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../about.html">What is ttnn?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installing.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Using ttnn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tensor.html">Tensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">APIs</a></li>
@@ -133,9 +134,19 @@
   <section id="Matrix-Multiplication">
 <h1>Matrix Multiplication<a class="headerlink" href="#Matrix-Multiplication" title="Permalink to this heading"></a>
 </h1>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
 <div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate">
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<br></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate">
+<div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -149,19 +160,94 @@
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-07-11 18:13:41.903 | DEBUG    | ttnn:&lt;module&gt;:136 - Initial ttnn.CONFIG:
+{'cache_path': PosixPath('/home/ubuntu/.cache/ttnn'),
+ 'comparison_mode_pcc': 0.9999,
+ 'enable_comparison_mode': False,
+ 'enable_detailed_buffer_report': False,
+ 'enable_detailed_tensor_report': False,
+ 'enable_fast_runtime_mode': True,
+ 'enable_graph_report': False,
+ 'enable_logging': False,
+ 'enable_model_cache': False,
+ 'model_cache_path': PosixPath('/home/ubuntu/.cache/ttnn/models'),
+ 'report_name': None,
+ 'root_report_path': PosixPath('generated/ttnn/reports'),
+ 'throw_exception_on_fallback': False,
+ 'tmp_dir': PosixPath('/tmp/ttnn')}
+2024-07-11 18:13:41.989 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.logical_xor be migrated to C++?
+2024-07-11 18:13:41.990 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.xlogy be migrated to C++?
+2024-07-11 18:13:41.990 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.maximum be migrated to C++?
+2024-07-11 18:13:41.991 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.minimum be migrated to C++?
+2024-07-11 18:13:41.992 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.atan2 be migrated to C++?
+2024-07-11 18:13:41.992 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.hypot be migrated to C++?
+2024-07-11 18:13:41.993 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.nextafter be migrated to C++?
+2024-07-11 18:13:41.993 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.polyval be migrated to C++?
+2024-07-11 18:13:41.994 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.isclose be migrated to C++?
+2024-07-11 18:13:41.995 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.all_gather be migrated to C++?
+2024-07-11 18:13:41.996 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.pearson_correlation_coefficient be migrated to C++?
+2024-07-11 18:13:42.001 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.conv2d be migrated to C++?
+2024-07-11 18:13:42.002 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reshape be migrated to C++?
+2024-07-11 18:13:42.003 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.unsqueeze_to_4D be migrated to C++?
+2024-07-11 18:13:42.004 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.squeeze be migrated to C++?
+2024-07-11 18:13:42.004 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.from_torch be migrated to C++?
+2024-07-11 18:13:42.005 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.to_torch be migrated to C++?
+2024-07-11 18:13:42.006 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.to_device be migrated to C++?
+2024-07-11 18:13:42.006 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.from_device be migrated to C++?
+2024-07-11 18:13:42.007 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.allocate_tensor_on_device be migrated to C++?
+2024-07-11 18:13:42.008 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.copy_host_to_device_tensor be migrated to C++?
+2024-07-11 18:13:42.008 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.deallocate be migrated to C++?
+2024-07-11 18:13:42.009 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.clone be migrated to C++?
+2024-07-11 18:13:42.010 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reallocate be migrated to C++?
+2024-07-11 18:13:42.010 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.load_tensor be migrated to C++?
+2024-07-11 18:13:42.011 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.dump_tensor be migrated to C++?
+2024-07-11 18:13:42.012 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.as_tensor be migrated to C++?
+2024-07-11 18:13:42.013 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.arange be migrated to C++?
+2024-07-11 18:13:42.015 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.mse_loss be migrated to C++?
+2024-07-11 18:13:42.016 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.l1_loss be migrated to C++?
+2024-07-11 18:13:42.017 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.matmul be migrated to C++?
+2024-07-11 18:13:42.018 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.linear be migrated to C++?
+2024-07-11 18:13:42.020 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.mac be migrated to C++?
+2024-07-11 18:13:42.021 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.addcmul be migrated to C++?
+2024-07-11 18:13:42.022 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.addcdiv be migrated to C++?
+2024-07-11 18:13:42.022 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.lerp be migrated to C++?
+2024-07-11 18:13:42.027 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.logit be migrated to C++?
+2024-07-11 18:13:42.027 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.polygamma be migrated to C++?
+2024-07-11 18:13:42.028 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.hardshrink be migrated to C++?
+2024-07-11 18:13:42.029 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.celu be migrated to C++?
+2024-07-11 18:13:42.029 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.softshrink be migrated to C++?
+2024-07-11 18:13:42.030 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.clip be migrated to C++?
+2024-07-11 18:13:42.030 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.threshold be migrated to C++?
+2024-07-11 18:13:42.031 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.glu be migrated to C++?
+2024-07-11 18:13:42.032 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reglu be migrated to C++?
+2024-07-11 18:13:42.032 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.swiglu be migrated to C++?
+2024-07-11 18:13:42.033 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.geglu be migrated to C++?
+2024-07-11 18:13:42.035 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.matmul be migrated to C++?
+2024-07-11 18:13:42.036 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.linear be migrated to C++?
+2024-07-11 18:13:42.037 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.conv2d be migrated to C++?
+</pre></div>
+</div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Initializing device 0
 <span style="color: rgb(0,128,0)">                 Device</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Opening user mode device driver
-<span class="ansi-green-fg">2024-01-29 23:02:46.902</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Detected 1 PCI device : {0}
-<span class="ansi-green-fg">2024-01-29 23:02:46.913</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - init_detect_tt_device_numanodes(): Could not determine NumaNodeSet for TT device (physical_device_id: 0 pci_bus_id: 0000:00:08.0)
-<span class="ansi-green-fg">2024-01-29 23:02:46.913</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Could not find NumaNodeSet for TT Device (physical_device_id: 0 pci_bus_id: 0000:00:08.0)
-<span class="ansi-green-fg">2024-01-29 23:02:46.915</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - bind_area_memory_nodeset(): Unable to determine TT Device to NumaNode mapping for physical_device_id: 0. Skipping membind.
+
+<span class="ansi-green-fg">2024-07-11 18:13:42.053</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Detected 1 PCI device : {0}
+<span class="ansi-green-fg">2024-07-11 18:13:42.066</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - init_detect_tt_device_numanodes(): Could not determine NumaNodeSet for TT device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
+<span class="ansi-green-fg">2024-07-11 18:13:42.066</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Could not find NumaNodeSet for TT Device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
+<span class="ansi-green-fg">2024-07-11 18:13:42.067</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - bind_area_memory_nodeset(): Unable to determine TT Device to NumaNode mapping for physical_device_id: 0. Skipping membind.
 <span class="ansi-yellow-fg">---- ttSiliconDevice::init_hugepage: bind_area_to_memory_nodeset() failed (physical_device_id: 0 ch: 0). Hugepage allocation is not on NumaNode matching TT Device. Side-Effect is decreased Device-&gt;Host perf (Issue #893).
-</span><span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | AI CLK for device 0 is:   1202 MHz
+</span><span class="ansi-green-fg">2024-07-11 18:13:42.094</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Software version 6.0.0, Ethernet FW version 6.9.0 (Device 0)
+<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Initializing device 0. Program cache is NOT enabled
+<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | AI CLK for device 0 is:   800 MHz
 </pre></div>
 </div>
 </div>
@@ -171,7 +257,7 @@
 <p>Enabling the program cache will speed up the execution of operations that run repeatedly</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[2]:
+<div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -184,7 +270,7 @@
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Program Cache: enabled.
+<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Enabling program cache on device 0
 </pre></div>
 </div>
 </div>
@@ -196,7 +282,7 @@
 </h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[3]:
+<div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -211,7 +297,7 @@
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[4]:
+<div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -220,9 +306,9 @@
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[5]:
+<div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -231,48 +317,12 @@
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.from_torch                                    in          175489 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.to_device                                     in          326608 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.from_torch                                    in           47769 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.to_device                                     in          165459 nanoseconds
-</pre></div>
-</div>
-</div>
 </section>
 <section id="Matrix-multiply-tensor-a-and-b">
 <h2>Matrix multiply tensor a and b<a class="headerlink" href="#Matrix-multiply-tensor-a-and-b" title="Permalink to this heading"></a>
 </h2>
 <p>The operation will run longer the first time because the kernels need to get compiled</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">a</span> <span class="o">@</span> <span class="n">b</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           38930 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           35890 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Program   tt::tt_metal::Matmul                               in       576872807 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation tt::tt_metal::Matmul                               in       577071926 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           99419 nanoseconds
-</pre></div>
-</div>
-</div>
-<p>Re-running the operation shows significant speed up by utilizing program caching</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
 <div class="highlight"><pre><span></span>[7]:
 </pre></div>
@@ -282,16 +332,14 @@
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<p>Re-running the operation shows significant speed up by utilizing program caching</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate">
+<div class="highlight"><pre><span></span>[8]:
+</pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           39200 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           22440 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Program   tt::tt_metal::Matmul                               in         1183694 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation tt::tt_metal::Matmul                               in         1224093 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           64480 nanoseconds
+<div class="input_area highlight-ipython3 notranslate">
+<div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">a</span> <span class="o">@</span> <span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -301,7 +349,7 @@
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[8]:
+<div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -328,7 +376,7 @@ Layout.TILE
 <p>To inspect the results we will first convert to row-major layout.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[9]:
+<div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -345,18 +393,10 @@ Layout.TILE
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Program   tt::tt_metal::Untilize                             in       508667002 nanosecondsPrinting ttnn tensor
+Printing ttnn tensor
 shape: ttnn.Shape([1024, 1024])
-
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation tt::tt_metal::Untilize                             in       508783061 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.from_device                                   in         1352602 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.to_torch                                      in         1744890 nanoseconds
 chunk of a tensor:
-Tensor([ [34.25, 9.625, 11.3125, 0.964844, 1.45312, -26.875, 23.125, -1.39062, -20.375, 33, 5.8125, 10.6875, -18.625, 14.5, -42.75, -18.375, 27.75, 44.25, -27.25, -20.5, 43.5, -5.75, -46.75, -45.75, 43.75, 33, -16.125, 39.25, 11.6875, 9.4375, -39.75, -6.5625]], dtype=bfloat16 )
-
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation torch.Tensor.__getitem__                           in          711456 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.from_torch                                    in          123629 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.to_device                                     in          190228 nanoseconds
+ttnn.Tensor([[33.75000,  9.25000,  ..., -39.50000, -6.62500]], shape=Shape([1, 32]), dtype=DataType::BFLOAT16, layout=Layout::ROW_MAJOR)
 </pre></div>
 </div>
 </div>
@@ -365,9 +405,9 @@ Tensor([ [34.25, 9.625, 11.3125, 0.964844, 1.45312, -26.875, 23.125, -1.39062, -
 <h2>Matrix multiply tensor a and b by using more performant config<a class="headerlink" href="#Matrix-multiply-tensor-a-and-b-by-using-more-performant-config" title="Permalink to this heading"></a>
 </h2>
 <p>By default, matrix multiplication might not be as effecient as it could be. To speed it up further, the user can specify how many cores they want matrix multiplication to use. This can speed up the operation significantly.</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[10]:
+<div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -382,48 +422,8 @@ Tensor([ [34.25, 9.625, 11.3125, 0.964844, 1.45312, -26.875, 23.125, -1.39062, -
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.from_torch                                    in           46380 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.from_torch                                    in           33729 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.to_device                                     in         1330892 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.to_device                                     in         1996019 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Program   tt::tt_metal::Tilize                               in       556706140 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation tt::tt_metal::Tilize                               in       556884870 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Program   tt::tt_metal::Tilize                               in          424187 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation tt::tt_metal::Tilize                               in          473467 nanoseconds
-</pre></div>
-</div>
-</div>
 <p>Run once to compile the kernels</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">,</span> <span class="n">core_grid</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">CoreGrid</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in          116419 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           27450 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Program   tt::operations::primary::Matmul                    in       652476970 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation tt::operations::primary::Matmul                    in       652929758 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           86579 nanoseconds
-</pre></div>
-</div>
-</div>
-<p>Enjoy a massive speed up on the subsequent runs</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
 <div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -433,16 +433,14 @@ Tensor([ [34.25, 9.625, 11.3125, 0.964844, 1.45312, -26.875, 23.125, -1.39062, -
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<p>Enjoy a massive speed up on the subsequent runs</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate">
+<div class="highlight"><pre><span></span>[13]:
+</pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           38110 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           24079 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Program   tt::operations::primary::Matmul                    in          129909 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation tt::operations::primary::Matmul                    in          164599 nanoseconds
-<span style="color: rgb(0,128,0)">                     Op</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Finished Operation ttnn.reshape                                       in           24209 nanoseconds
+<div class="input_area highlight-ipython3 notranslate">
+<div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">,</span> <span class="n">core_grid</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">CoreGrid</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -452,7 +450,7 @@ Tensor([ [34.25, 9.625, 11.3125, 0.964844, 1.45312, -26.875, 23.125, -1.39062, -
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[13]:
+<div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -466,6 +464,7 @@ Tensor([ [34.25, 9.625, 11.3125, 0.964844, 1.45312, -26.875, 23.125, -1.39062, -
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Closing device 0
+<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Disabling and clearing program cache on device 0
 </pre></div>
 </div>
 </div>
@@ -485,7 +484,7 @@ Tensor([ [34.25, 9.625, 11.3125, 0.964844, 1.45312, -26.875, 23.125, -1.39062, -
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 08, 2024.
+      <span class="lastupdated">Last updated on Nov 15, 2024.
       </span></p>
   </div>
 

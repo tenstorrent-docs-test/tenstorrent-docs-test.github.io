@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
@@ -8,17 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Watcher &mdash; TT-Metalium  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/tt_theme.css?v=0bbfeaf8" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-      <script src="../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-      <script src="../_static/doctools.js?v=888ff710"></script>
-      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -41,6 +43,9 @@
 <a href="../index.html">
     TT-Metalium
 </a>
+    <div class="version">
+      v0.52.0
+    </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -52,7 +57,6 @@
               <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/get_started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installing.html">Install</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">TT-Metalium</span></p>
 <ul class="current">
@@ -70,6 +74,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#asserts">Asserts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pausing">Pausing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ring-buffer">Ring Buffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stack-usage-measurement">Stack Usage Measurement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#debug-delays">Debug Delays</a></li>
 </ul>
 </li>
@@ -112,6 +117,10 @@
   <section id="watcher">
 <h1>Watcher<a class="headerlink" href="#watcher" title="Permalink to this heading"></a>
 </h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tools are only fully supported on source builds.</p>
+</div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a>
 </h2>
@@ -148,7 +157,8 @@ the log file is stored as well as a message each time the watcher checks the dev
 <span class="n">export</span> <span class="n">TT_METAL_WATCHER_DISABLE_PAUSE</span><span class="o">=</span><span class="mi">1</span>
 <span class="n">export</span> <span class="n">TT_METAL_WATCHER_DISABLE_RING_BUFFER</span><span class="o">=</span><span class="mi">1</span>
 <span class="n">export</span> <span class="n">TT_METAL_WATCHER_DISABLE_NOC_SANITIZE</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">export</span> <span class="n">TT_METAL_WATCHER_DISABLE_STATUS</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">export</span> <span class="n">TT_METAL_WATCHER_DISABLE_WAYPOINT</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">export</span> <span class="n">TT_METAL_WATCHER_DISABLE_STACK_USAGE</span><span class="o">=</span><span class="mi">1</span>
 
 <span class="c1"># In certain cases enabling watcher can cause the binary to be too large. In this case, disable inlining.</span>
 <span class="n">export</span> <span class="n">TT_METAL_WATCHER_NOINLINE</span><span class="o">=</span><span class="mi">1</span>
@@ -164,13 +174,13 @@ includes a legend to help decipher the results.  One datum is the last “waypoi
 encountered as a string of up to 4 characters.  These waypoints can be inserted into kernel/firmware code as shown
 below:</p>
 <div class="highlight-default notranslate">
-<div class="highlight"><pre><span></span><span class="c1">#include "debug/status.h"</span>
+<div class="highlight"><pre><span></span><span class="c1">#include "debug/waypoint.h"</span>
 
 <span class="n">void</span> <span class="n">noc_semaphore_wait</span><span class="p">(</span><span class="n">volatile</span> <span class="n">tt_l1_ptr</span> <span class="n">uint32_t</span><span class="o">*</span> <span class="n">sem_addr</span><span class="p">,</span> <span class="n">uint32_t</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">DEBUG_STATUS</span><span class="p">(</span><span class="s2">"NSW"</span><span class="p">);</span>
+    <span class="n">WAYPOINT</span><span class="p">(</span><span class="s2">"NSW"</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">((</span><span class="o">*</span><span class="n">sem_addr</span><span class="p">)</span> <span class="o">!=</span> <span class="n">val</span><span class="p">)</span>
         <span class="p">;</span>
-    <span class="n">DEBUG_STATUS</span><span class="p">(</span><span class="s2">"NSD"</span><span class="p">);</span>
+    <span class="n">WAYPOINT</span><span class="p">(</span><span class="s2">"NSD"</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -210,7 +220,7 @@ to commands have been removed for brevity.  After attaching to the program and s
 <li><p>The hang above originated on core (1,1) in physical coords (i.e., the top left core)</p></li>
 <li><p>BRISC last hit waypoint <code class="docutils literal notranslate"><span class="pre">CWFW</span></code> (CB Wait Front Wait), NCRISC hit <code class="docutils literal notranslate"><span class="pre">CRBW</span></code> (NOC CB Reserve Back Wait) and each TRISC
 is in the Run <code class="docutils literal notranslate"><span class="pre">R</span></code> state (running a kernel). Look in the source (dataflow_api.h primarily) to decode the obscure names,
-search for <code class="docutils literal notranslate"><span class="pre">DEBUG_STATUS</span></code></p></li>
+search for <code class="docutils literal notranslate"><span class="pre">WAYPOINT</span></code></p></li>
 <li><p>The run message <code class="docutils literal notranslate"><span class="pre">rmsg</span></code> sent from the host to the device, says the kernel was Device <code class="docutils literal notranslate"><span class="pre">D</span></code> dispatched, BRISC is
 using NOC <code class="docutils literal notranslate"><span class="pre">0</span></code> (NCRISC is using the other NOC, NOC 1), the host run state is Go <code class="docutils literal notranslate"><span class="pre">G</span></code> and each of BRISC, NCRISC and
 TRISC kernels are running (capital <code class="docutils literal notranslate"><span class="pre">BNT</span></code>; lowercase would signify no kernel running)</p></li>
@@ -227,13 +237,13 @@ When the watcher is enabled, tripping an assert will cause the program to exit, 
 assert was tripped. An example of an assert and the resulting message is shown below:</p>
 <div class="highlight-c++ notranslate">
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"debug/assert.h"</span><span class="c1">  // Required in all kernels using watcher asserts</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">"debug/status.h"</span><span class="c1">  // Pair the assert with a status to see which assert is tripped</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"debug/waypoint.h"</span><span class="c1">  // Pair the assert with a status to see which assert is tripped</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">kernel_main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_arg_val</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_arg_val</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">DEBUG_STATUS</span><span class="p">(</span><span class="s">"AST1"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">WAYPOINT</span><span class="p">(</span><span class="s">"AST1"</span><span class="p">);</span>
 <span class="w">    </span><span class="n">ASSERT</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -297,14 +307,29 @@ is undefined behaviour.</p>
 <p>The contents of the ring buffer for each core (if values have been written) will be shown in the
 watcher log:</p>
 <div class="highlight-default notranslate">
-<div class="highlight"><pre><span></span><span class="c1"># The ring buffer has a size of 31 elements, therefore writing 40 entries into the buffer will</span>
-<span class="c1"># result in the oldest 9 entries being dropped. Entries are printed starting with the most recent.</span>
+<div class="highlight"><pre><span></span><span class="c1"># The ring buffer has a size of 32 elements, therefore writing 40 entries into the buffer will</span>
+<span class="c1"># result in the oldest 8 entries being dropped. Entries are printed starting with the most recent.</span>
 <span class="n">Core</span> <span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>    <span class="n">R</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">R</span> <span class="n">rmsg</span><span class="p">:</span><span class="n">D0G</span><span class="o">|</span><span class="n">BNT</span> <span class="n">smsg</span><span class="p">:</span><span class="n">GGGG</span> <span class="n">k_ids</span><span class="p">:</span><span class="mi">1</span><span class="o">|</span><span class="mi">0</span><span class="o">|</span><span class="mi">0</span>
     <span class="n">debug_ring_buffer</span><span class="p">(</span><span class="n">latest_written_idx</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="o">=</span>
     <span class="p">[</span><span class="mh">0x00000028</span><span class="p">,</span><span class="mh">0x00000027</span><span class="p">,</span><span class="mh">0x00000026</span><span class="p">,</span><span class="mh">0x00000025</span><span class="p">,</span><span class="mh">0x00000024</span><span class="p">,</span><span class="mh">0x00000023</span><span class="p">,</span><span class="mh">0x00000022</span><span class="p">,</span><span class="mh">0x00000021</span><span class="p">,</span>
      <span class="mh">0x00000020</span><span class="p">,</span><span class="mh">0x0000001f</span><span class="p">,</span><span class="mh">0x0000001e</span><span class="p">,</span><span class="mh">0x0000001d</span><span class="p">,</span><span class="mh">0x0000001c</span><span class="p">,</span><span class="mh">0x0000001b</span><span class="p">,</span><span class="mh">0x0000001a</span><span class="p">,</span><span class="mh">0x00000019</span><span class="p">,</span>
      <span class="mh">0x00000018</span><span class="p">,</span><span class="mh">0x00000017</span><span class="p">,</span><span class="mh">0x00000016</span><span class="p">,</span><span class="mh">0x00000015</span><span class="p">,</span><span class="mh">0x00000014</span><span class="p">,</span><span class="mh">0x00000013</span><span class="p">,</span><span class="mh">0x00000012</span><span class="p">,</span><span class="mh">0x00000011</span><span class="p">,</span>
-     <span class="mh">0x00000010</span><span class="p">,</span><span class="mh">0x0000000f</span><span class="p">,</span><span class="mh">0x0000000e</span><span class="p">,</span><span class="mh">0x0000000d</span><span class="p">,</span><span class="mh">0x0000000c</span><span class="p">,</span><span class="mh">0x0000000b</span><span class="p">,</span><span class="mh">0x0000000a</span><span class="p">]</span>
+     <span class="mh">0x00000010</span><span class="p">,</span><span class="mh">0x0000000f</span><span class="p">,</span><span class="mh">0x0000000e</span><span class="p">,</span><span class="mh">0x0000000d</span><span class="p">,</span><span class="mh">0x0000000c</span><span class="p">,</span><span class="mh">0x0000000b</span><span class="p">,</span><span class="mh">0x0000000a</span><span class="p">,</span><span class="mh">0x00000009</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="stack-usage-measurement">
+<h2>Stack Usage Measurement<a class="headerlink" href="#stack-usage-measurement" title="Permalink to this heading"></a>
+</h2>
+<p>The watcher will automatically measure the stack usage after each kernel is run, and report the overall stack usage
+per RISC in the log. If a stack overflow is detected, the core will hang and an error will be thrown on host.</p>
+<div class="highlight-default notranslate">
+<div class="highlight"><pre><span></span><span class="n">Device</span> <span class="mi">0</span> <span class="n">worker</span> <span class="n">core</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">phys</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span> <span class="mi">1</span><span class="p">):</span>   <span class="n">GW</span><span class="p">,</span>   <span class="n">W</span><span class="p">,</span>   <span class="n">W</span><span class="p">,</span>   <span class="n">W</span><span class="p">,</span>   <span class="n">W</span>  <span class="n">rmsg</span><span class="p">:</span><span class="n">D1D</span><span class="o">|</span><span class="n">BNt</span> <span class="n">smsg</span><span class="p">:</span><span class="n">DDDD</span> <span class="n">k_ids</span><span class="p">:</span><span class="mi">11</span><span class="o">|</span><span class="mi">10</span><span class="o">|</span><span class="mi">0</span>
+    <span class="n">brisc</span> <span class="n">stack</span> <span class="n">usage</span><span class="p">:</span> <span class="mi">228</span><span class="o">/</span><span class="mi">768</span><span class="p">,</span> <span class="n">kernel</span> <span class="n">using</span> <span class="n">most</span> <span class="n">stack</span><span class="p">:</span> <span class="n">ttnn</span><span class="o">/</span><span class="n">cpp</span><span class="o">/</span><span class="n">ttnn</span><span class="o">/</span><span class="n">operations</span><span class="o">/</span><span class="n">normalization</span><span class="o">/</span><span class="n">groupnorm</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">kernels</span><span class="o">/</span><span class="n">dataflow</span><span class="o">/</span><span class="n">reader_mcast_sender_unary_sharded_gn_v2</span><span class="o">.</span><span class="n">cpp</span>
+    <span class="n">ncrisc</span> <span class="n">stack</span> <span class="n">usage</span><span class="p">:</span> <span class="mi">192</span><span class="o">/</span><span class="mi">768</span><span class="p">,</span> <span class="n">kernel</span> <span class="n">using</span> <span class="n">most</span> <span class="n">stack</span><span class="p">:</span>  <span class="n">ttnn</span><span class="o">/</span><span class="n">cpp</span><span class="o">/</span><span class="n">ttnn</span><span class="o">/</span><span class="n">operations</span><span class="o">/</span><span class="n">data_movement</span><span class="o">/</span><span class="n">sharded</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">kernels</span><span class="o">/</span><span class="n">dataflow</span><span class="o">/</span><span class="n">reader_unary_sharded_blocks_interleaved_start_id</span><span class="o">.</span><span class="n">cpp</span>
+    <span class="n">trisc0</span> <span class="n">stack</span> <span class="n">usage</span><span class="p">:</span> <span class="mi">252</span><span class="o">/</span><span class="mi">320</span><span class="p">,</span> <span class="n">kernel</span> <span class="n">using</span> <span class="n">most</span> <span class="n">stack</span><span class="p">:</span> <span class="n">ttnn</span><span class="o">/</span><span class="n">cpp</span><span class="o">/</span><span class="n">ttnn</span><span class="o">/</span><span class="n">operations</span><span class="o">/</span><span class="n">normalization</span><span class="o">/</span><span class="n">groupnorm</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">kernels</span><span class="o">/</span><span class="n">compute</span><span class="o">/</span><span class="n">groupnorm_sharded_v2</span><span class="o">.</span><span class="n">cpp</span>
+    <span class="n">trisc1</span> <span class="n">stack</span> <span class="n">usage</span><span class="p">:</span> <span class="mi">208</span><span class="o">/</span><span class="mi">256</span><span class="p">,</span> <span class="n">kernel</span> <span class="n">using</span> <span class="n">most</span> <span class="n">stack</span><span class="p">:</span> <span class="n">ttnn</span><span class="o">/</span><span class="n">cpp</span><span class="o">/</span><span class="n">ttnn</span><span class="o">/</span><span class="n">operations</span><span class="o">/</span><span class="n">normalization</span><span class="o">/</span><span class="n">groupnorm</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">kernels</span><span class="o">/</span><span class="n">compute</span><span class="o">/</span><span class="n">groupnorm_sharded_v2</span><span class="o">.</span><span class="n">cpp</span>
+    <span class="n">trisc2</span> <span class="n">stack</span> <span class="n">usage</span><span class="p">:</span> <span class="mi">192</span><span class="o">/</span><span class="mi">768</span><span class="p">,</span> <span class="n">kernel</span> <span class="n">using</span> <span class="n">most</span> <span class="n">stack</span><span class="p">:</span> <span class="n">ttnn</span><span class="o">/</span><span class="n">cpp</span><span class="o">/</span><span class="n">ttnn</span><span class="o">/</span><span class="n">operations</span><span class="o">/</span><span class="n">normalization</span><span class="o">/</span><span class="n">groupnorm</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">kernels</span><span class="o">/</span><span class="n">compute</span><span class="o">/</span><span class="n">groupnorm_sharded_v2</span><span class="o">.</span><span class="n">cpp</span>
 </pre></div>
 </div>
 </section>
@@ -343,7 +368,7 @@ transactions on BRISC core at location 0,0:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 08, 2024.
+      <span class="lastupdated">Last updated on Nov 15, 2024.
       </span></p>
   </div>
 

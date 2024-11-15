@@ -1,6 +1,8 @@
 Tenstorrent
 ==============================
 
+.. include:: quickstart.md
+   :parser: myst_parser.sphinx_
 
 .. toctree::
    :caption: Hardware
@@ -12,7 +14,6 @@ Tenstorrent
    :caption: Software
    :maxdepth: 2
 
-   Software/Utilities <https://tenstorrent.github.io/syseng/latest/index.html>
    TT-Buda <https://tenstorrent.github.io/pybuda/latest/index.html>
    TT-Metalium <https://tenstorrent.github.io/tt-metalium/latest/index.html>
    TT-NN <https://tenstorrent.github.io/ttnn/latest/index.html>

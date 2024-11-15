@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
@@ -8,21 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Getting Started &mdash; TT-Metalium  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/tt_theme.css?v=0bbfeaf8" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
-      <script src="../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-      <script src="../_static/doctools.js?v=888ff710"></script>
-      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Install" href="../installing.html" />
+    <link rel="next" title="Programming Model" href="../tt_metal/programming_model/index.html" />
     <link rel="prev" title="Welcome to TT-Metalium documentation!" href="../index.html" /> 
 </head>
 
@@ -41,6 +43,9 @@
 <a href="../index.html">
     TT-Metalium
 </a>
+    <div class="version">
+      v0.52.0
+    </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -54,14 +59,15 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-start-guide">Quick Start Guide</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-and-build">1. Install and Build</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#beginner-metalium-usage-single-core-matrix-multiplication-kernel">2. Beginner Metalium Usage: Single-core Matrix Multiplication Kernel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#advanced-metalium-usage-multi-core-matrix-multiplication-kernel">3. Advanced Metalium Usage: Multi-core Matrix Multiplication Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beginner-metalium-usage-dram-loopback">2. Beginner Metalium Usage: DRAM Loopback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beginner-metalium-usage-eltwise-binary-kernel">3. Beginner Metalium Usage: Eltwise Binary Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beginner-metalium-usage-single-core-matrix-multiplication-kernel">4. Beginner Metalium Usage: Single-core Matrix Multiplication Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-metalium-usage-multi-core-matrix-multiplication-kernel">5. Advanced Metalium Usage: Multi-core Matrix Multiplication Kernel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#where-to-go-from-here">Where to go from here</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../installing.html">Install</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">TT-Metalium</span></p>
 <ul>
@@ -123,15 +129,27 @@ hardware.</p>
 <p>Install and build the project by following the instructions in the
 <a class="reference external" href="../installing.html">installation guide</a>.</p>
 </section>
+<section id="beginner-metalium-usage-dram-loopback">
+<h3>2. Beginner Metalium Usage: DRAM Loopback<a class="headerlink" href="#beginner-metalium-usage-dram-loopback" title="Permalink to this heading"></a>
+</h3>
+<p>Try creating a <a class="reference internal" href="../tt_metal/examples/dram_loopback.html#dram-loopback-example"><span class="std std-ref">basic kernel example</span></a> that uses
+the L1 and DRAM memory structures of the Tenstorrent device.</p>
+</section>
+<section id="beginner-metalium-usage-eltwise-binary-kernel">
+<h3>3. Beginner Metalium Usage: Eltwise Binary Kernel<a class="headerlink" href="#beginner-metalium-usage-eltwise-binary-kernel" title="Permalink to this heading"></a>
+</h3>
+<p>Augment your loopback example an <a class="reference internal" href="../tt_metal/examples/eltwise_binary.html#eltwise-binary-example"><span class="std std-ref">additional kernel</span></a> that will use the compute engine of the Tensix core to add values in
+two buffers.</p>
+</section>
 <section id="beginner-metalium-usage-single-core-matrix-multiplication-kernel">
-<h3>2. Beginner Metalium Usage: Single-core Matrix Multiplication Kernel<a class="headerlink" href="#beginner-metalium-usage-single-core-matrix-multiplication-kernel" title="Permalink to this heading"></a>
+<h3>4. Beginner Metalium Usage: Single-core Matrix Multiplication Kernel<a class="headerlink" href="#beginner-metalium-usage-single-core-matrix-multiplication-kernel" title="Permalink to this heading"></a>
 </h3>
 <p>Use TT-Metalium to define your own matrix multiplication kernels. Refer to our
 simpler <a class="reference internal" href="../tt_metal/examples/matmul_single_core.html#matmul-single-core-example"><span class="std std-ref">single-core</span></a> example as a starting
 point.</p>
 </section>
 <section id="advanced-metalium-usage-multi-core-matrix-multiplication-kernel">
-<h3>3. Advanced Metalium Usage: Multi-core Matrix Multiplication Kernel<a class="headerlink" href="#advanced-metalium-usage-multi-core-matrix-multiplication-kernel" title="Permalink to this heading"></a>
+<h3>5. Advanced Metalium Usage: Multi-core Matrix Multiplication Kernel<a class="headerlink" href="#advanced-metalium-usage-multi-core-matrix-multiplication-kernel" title="Permalink to this heading"></a>
 </h3>
 <p>Explore expert-level usage by building on the previous example to create a
 <a class="reference internal" href="../tt_metal/examples/matmul_multi_core.html#matmul-multi-core-example"><span class="std std-ref">multi-core</span></a> implementation.</p>
@@ -140,7 +158,7 @@ point.</p>
 <h3>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this heading"></a>
 </h3>
 <p>If you’re an ML developer and looking for a simpler Python API to build models,
-take a look at our higher-level API <a class="reference external" href="../../../ttnn/latest/index.html">TT-NN</a>.</p>
+take a look at our higher-level API <a class="reference external" href="../../ttnn">TT-NN</a>.</p>
 <p>If you’re an internal TT-Metalium developer, please now read and review the
 <a class="reference external" href="https://github.com/tenstorrent/tt-metal/blob/main/CONTRIBUTING.md">contribution standards</a>.</p>
 </section>
@@ -153,14 +171,14 @@ take a look at our higher-level API <a class="reference external" href="../../..
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to TT-Metalium documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../installing.html" class="btn btn-neutral float-right" title="Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../tt_metal/programming_model/index.html" class="btn btn-neutral float-right" title="Programming Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 08, 2024.
+      <span class="lastupdated">Last updated on Nov 15, 2024.
       </span></p>
   </div>
 

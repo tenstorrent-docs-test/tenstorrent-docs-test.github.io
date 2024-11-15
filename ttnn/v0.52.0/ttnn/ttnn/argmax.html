@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
@@ -8,21 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ttnn.argmax &mdash; TT-NN  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/tt_theme.css?v=0bbfeaf8" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-      <script src="../../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-      <script src="../../_static/doctools.js?v=888ff710"></script>
-      <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ttnn.topk" href="topk.html" />
+    <link rel="next" title="ttnn.prod" href="prod.html" />
     <link rel="prev" title="ttnn.var" href="var.html" /> 
 </head>
 
@@ -53,7 +55,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about.html">What is ttnn?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installing.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Using ttnn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tensor.html">Tensor</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">APIs</a><ul class="current">
@@ -75,6 +76,7 @@
 <li class="toctree-l4"><a class="reference internal" href="sum.html">ttnn.sum</a></li>
 <li class="toctree-l4"><a class="reference internal" href="var.html">ttnn.var</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">ttnn.argmax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="prod.html">ttnn.prod</a></li>
 <li class="toctree-l4"><a class="reference internal" href="topk.html">ttnn.topk</a></li>
 </ul>
 </li>
@@ -142,7 +144,7 @@
 </h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="ttnn.argmax">
-<span class="sig-prename descclassname"><span class="pre">ttnn.</span></span><span class="sig-name descname"><span class="pre">argmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tensor:</span> <span class="pre">ttnn.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim:</span> <span class="pre">Optional[int]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_config:</span> <span class="pre">MemoryConfig</span> <span class="pre">=</span> <span class="pre">std::nullopt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensor</span> <span class="pre">:</span> <span class="pre">Optional[ttnn.Tensor]</span> <span class="pre">=</span> <span class="pre">std::nullopt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_id</span> <span class="pre">:</span> <span class="pre">[int]</span> <span class="pre">=</span> <span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">ttnn.Tensor</span></span></span><a class="headerlink" href="#ttnn.argmax" title="Permalink to this definition"></a>
+<span class="sig-prename descclassname"><span class="pre">ttnn.</span></span><span class="sig-name descname"><span class="pre">argmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tensor:</span> <span class="pre">ttnn.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim:</span> <span class="pre">Optional[int]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_config:</span> <span class="pre">MemoryConfig</span> <span class="pre">=</span> <span class="pre">std::nullopt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_tensor</span> <span class="pre">:</span> <span class="pre">Optional[ttnn.Tensor]</span> <span class="pre">=</span> <span class="pre">std::nullopt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_id</span> <span class="pre">:</span> <span class="pre">[int]</span> <span class="pre">=</span> <span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="../dependencies/tensor.html#ttnn.Tensor" title="ttnn.Tensor"><span class="pre">ttnn.Tensor</span></a></span></span><a class="headerlink" href="#ttnn.argmax" title="Permalink to this definition"></a>
 </dt>
 <dd>
 <p>Returns the indices of the maximum value of elements in the <code class="docutils literal notranslate"><span class="pre">input</span></code> tensor
@@ -183,14 +185,14 @@ If no <code class="docutils literal notranslate"><span class="pre">dim</span></c
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="var.html" class="btn btn-neutral float-left" title="ttnn.var" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="topk.html" class="btn btn-neutral float-right" title="ttnn.topk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="prod.html" class="btn btn-neutral float-right" title="ttnn.prod" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 08, 2024.
+      <span class="lastupdated">Last updated on Nov 15, 2024.
       </span></p>
   </div>
 

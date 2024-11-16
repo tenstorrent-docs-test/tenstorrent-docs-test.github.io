@@ -9,14 +9,14 @@ The GitHub page for the project is located here:
 https://github.com/tenstorrent/tt-metal
 
 Installation and environment setup instructions are in the
-`installation guide <./installing.html>`_.
+`installation guide <https://github.com/tenstorrent/tt-metal/blob/main/INSTALLING.md>`_.
 
 1. Install and Build
 ^^^^^^^^^^^^^^^^^^^^
 
 Install and build the project by following the instructions in the
 `installation guide
-<./installing.html>`_.
+<https://github.com/tenstorrent/tt-metal/blob/main/INSTALLING.md>`_.
 
 2. Explore our model demos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

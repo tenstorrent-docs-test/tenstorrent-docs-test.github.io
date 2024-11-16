@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -154,9 +154,9 @@
            <div itemprop="articleBody">
              
   <section id="user-guide">
-<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this heading"></a></h1>
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
 <p>Compiling and running a PyBuda workload is as easy as:</p>
 <ol class="arabic simple">
 <li><p>Downloading an off the shelf model from huggingface</p></li>
@@ -193,10 +193,10 @@
 </div>
 </section>
 <section id="framework-support">
-<h2>Framework Support<a class="headerlink" href="#framework-support" title="Permalink to this heading"></a></h2>
+<h2>Framework Support<a class="headerlink" href="#framework-support" title="Link to this heading"></a></h2>
 <p>Pybuda itself is a standalone ML framework and has an API heavily inspired by Pytorch.  That said, it is often more convenient to run models that have already been written using another major framework.  This is why we support a Pybuda backend for TVM which allows many popular frameworks to target our pybuda compiler. We support many major frameworks that TVM supports including:</p>
 <section id="framwork-support-matrix">
-<h3>Framwork Support Matrix<a class="headerlink" href="#framwork-support-matrix" title="Permalink to this heading"></a></h3>
+<h3>Framwork Support Matrix<a class="headerlink" href="#framwork-support-matrix" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Framework</p></th>
@@ -238,7 +238,7 @@
 </section>
 </section>
 <section id="pybuda-introduction">
-<h2>PyBuda Introduction<a class="headerlink" href="#pybuda-introduction" title="Permalink to this heading"></a></h2>
+<h2>PyBuda Introduction<a class="headerlink" href="#pybuda-introduction" title="Link to this heading"></a></h2>
 <p>A typical PyBuda flow has 4 steps:</p>
 <ol class="arabic simple">
 <li><p>Define devices to run workload on</p></li>
@@ -248,7 +248,7 @@
 </ol>
 <p>PyBuda API and workflow is flexible enough that some of these steps can be merged, reordered, or skipped altogether, however it helps to work through this basic workflow to understand PyBuda concepts.</p>
 <section id="devices">
-<h3>Devices<a class="headerlink" href="#devices" title="Permalink to this heading"></a></h3>
+<h3>Devices<a class="headerlink" href="#devices" title="Link to this heading"></a></h3>
 <p>PyBuda makes it easy to distribute a workload onto a heterogenous set of devices available to you. This can be one or more
 Tenstorrent devices, CPUs, or GPUs. Each device that will be used to run your workflow needs to be declared by creating the appropriate
 device type and giving it a unique name:</p>
@@ -263,7 +263,7 @@ which will be explained in mode detail <a class="reference internal" href="#usin
 <p>Each TTDevice can represent more than one hardware device, as described in <a class="reference internal" href="#multiple-devices"><span class="xref myst">multi-device section</span></a>.</p>
 </section>
 <section id="modules">
-<h3>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h3>
+<h3>Modules<a class="headerlink" href="#modules" title="Link to this heading"></a></h3>
 <p>A typical ML/AI workload consists of modules. PyBuda supports modules that are written in various <a class="reference internal" href="#framework-support"><span class="xref myst">frameworks</span></a>, such
 as PyTorch, Tensorflow, and so on, as well as modules written in native PyBuda. Currently, all modules run on Tenstorrent devices, but
 CPU and GPU devices can’t run PyBuda modules.</p>
@@ -278,7 +278,7 @@ simiarly place a PyTorch module onto a Tenstorrent device, the module must be wr
 </div>
 </section>
 <section id="run-workload">
-<h3>Run Workload<a class="headerlink" href="#run-workload" title="Permalink to this heading"></a></h3>
+<h3>Run Workload<a class="headerlink" href="#run-workload" title="Link to this heading"></a></h3>
 <p>The running of the workload involves two parts, usually done in parallel - data feeding, and actual running.</p>
 <p>To feed data into the device pipeline, simply push inputs into the first device:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tt0</span><span class="o">.</span><span class="n">push_to_inputs</span><span class="p">(</span> <span class="p">(</span><span class="n">input0</span><span class="p">,</span> <span class="n">input1</span><span class="p">)</span> <span class="p">)</span>
@@ -306,7 +306,7 @@ calls to manually implement a training loop:</p>
 </div>
 </section>
 <section id="cpu-fallback">
-<h3>CPU Fallback<a class="headerlink" href="#cpu-fallback" title="Permalink to this heading"></a></h3>
+<h3>CPU Fallback<a class="headerlink" href="#cpu-fallback" title="Link to this heading"></a></h3>
 <p>If there are operators in the workload that are unsuppored by PyBuda, the user can create a CPUDevice and place module containing those
 operators onto that CPUDevice. If enabled, PyBuda is capable of doing this automatically.</p>
 <p>If a TTDevice contains unsuppored operators, during compilation, the device will be split into mupltiple devices (TTDevice and CPUDevice). If
@@ -330,7 +330,7 @@ will be redirected to the correct CPUDevice.</p>
 </div>
 </section>
 <section id="results">
-<h3>Results<a class="headerlink" href="#results" title="Permalink to this heading"></a></h3>
+<h3>Results<a class="headerlink" href="#results" title="Link to this heading"></a></h3>
 <p>Typical inference runs produce inference outputs, and training runs produce parameter checkpoints. By default, PyBuda APIs for these workflows
 create multiprocessing queues to which resulting tensors will be pushed to. Optionally, user can provide their own queues.</p>
 <p>Reading these results is then as simple as popping data from the queues:</p>
@@ -348,14 +348,14 @@ debug or analyze data, or even run a manual optimizer and push new weights onto 
 </section>
 </section>
 <section id="saving-and-loading-models">
-<h2>Saving and Loading Models<a class="headerlink" href="#saving-and-loading-models" title="Permalink to this heading"></a></h2>
+<h2>Saving and Loading Models<a class="headerlink" href="#saving-and-loading-models" title="Link to this heading"></a></h2>
 <p>In a simple training workflow, a checkpoint interval can be set, and every N optimization steps the current device state will be pushed into
 the checkpoint queue. For more advanced use cases, a manual checkpoint can be retrieved using
 <a class="reference internal" href="api.html#pybuda.get_parameter_checkpoint"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">get_parameter_checkpoint</span></code></span></a> API, which returns a dictionary of all parameters on a
 device and their current values.</p>
 <p>Such a dictionary can also be pushed back onto the device using <a class="reference internal" href="api.html#pybuda.update_device_parameters"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">update_device_parameters</span></code></span></a>.</p>
 <section id="tenstorrent-device-image-tti-saving-loading">
-<h3>TensTorrent Device Image (TTI): Saving/Loading<a class="headerlink" href="#tenstorrent-device-image-tti-saving-loading" title="Permalink to this heading"></a></h3>
+<h3>TensTorrent Device Image (TTI): Saving/Loading<a class="headerlink" href="#tenstorrent-device-image-tti-saving-loading" title="Link to this heading"></a></h3>
 <p>A Tenstorrent Image (TTI) is a standalone archive file that captures the entire compiled state of a
 model. The contents of the archive include device configuration, compiler configuration, compiled model artifacts,
 backend build files (e.g. overlay and risc binaries), model parameter tensors. There can be multiple advantages
@@ -442,7 +442,7 @@ This can be done by invoking the compile_to_image method on  <a class="reference
 </div>
 </section>
 <section id="create-tti-targeting-supported-silicon-devices">
-<h3>Create TTI: Targeting Supported Silicon Devices<a class="headerlink" href="#create-tti-targeting-supported-silicon-devices" title="Permalink to this heading"></a></h3>
+<h3>Create TTI: Targeting Supported Silicon Devices<a class="headerlink" href="#create-tti-targeting-supported-silicon-devices" title="Link to this heading"></a></h3>
 <p>In the example above, we saved a TTI file targeting a silicon device with default configuration (unharvested). There
 are also convenience labels available that can be used to target specific silicon devices in our supported product spec.
 The current support available is: {gs_e150, gs_e300, wh_n150, wh_n300}.</p>
@@ -464,7 +464,7 @@ The current support available is: {gs_e150, gs_e300, wh_n150, wh_n300}.</p>
 </div>
 </section>
 <section id="create-tti-targeting-custom-row-harvested-silicon-devices">
-<h3>Create TTI: Targeting Custom Row-Harvested Silicon Devices<a class="headerlink" href="#create-tti-targeting-custom-row-harvested-silicon-devices" title="Permalink to this heading"></a></h3>
+<h3>Create TTI: Targeting Custom Row-Harvested Silicon Devices<a class="headerlink" href="#create-tti-targeting-custom-row-harvested-silicon-devices" title="Link to this heading"></a></h3>
 <p>We can also save a TTI file targeting a machine with silicon devices with harvested rows offline.
 The only difference from the above is we need to manually induce the harvested rows before saving TTI.</p>
 <p>We can set the harvested rows by invoking  <a class="reference internal" href="api.html#pybuda.set_configuration_options"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">set_configuration_options</span></code></span></a> with harvested_rows argument.</p>
@@ -492,7 +492,7 @@ Accordingly, part of the TTI file slightly changes as well:</p>
 <p>Note that only rows 1-5 and 7-11 are harvestable, and TTI loading will raise an error if the manually harvested rows in TTI does not match with that of the loaded silicon device.</p>
 </section>
 <section id="create-tti-targeting-custom-device-descriptor">
-<h3>Create TTI: Targeting Custom Device Descriptor<a class="headerlink" href="#create-tti-targeting-custom-device-descriptor" title="Permalink to this heading"></a></h3>
+<h3>Create TTI: Targeting Custom Device Descriptor<a class="headerlink" href="#create-tti-targeting-custom-device-descriptor" title="Link to this heading"></a></h3>
 <p>We can also save a TTI file targeting a machine with silicon devices with custom device descriptor (specified with file-path).
 This can be done by setting the device descriptor using <a class="reference internal" href="api.html#pybuda.set_configuration_options"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">set_configuration_options</span></code></span></a> with backend_device_descriptor_path argument.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pybuda</span><span class="o">.</span><span class="n">set_configuration_options</span><span class="p">(</span><span class="n">backend_device_descriptor_path</span><span class="o">=</span><span class="s2">&quot;&lt;device-descriptor-path&gt;/wormhole_b0_4x6.yaml&quot;</span><span class="p">)</span>
@@ -510,7 +510,7 @@ This can be done by setting the device descriptor using <a class="reference inte
 This device-descriptor will be used to configure the device during the TTI-loading process.</p>
 </section>
 <section id="embedded-tti-loading">
-<h3>Embedded TTI Loading<a class="headerlink" href="#embedded-tti-loading" title="Permalink to this heading"></a></h3>
+<h3>Embedded TTI Loading<a class="headerlink" href="#embedded-tti-loading" title="Link to this heading"></a></h3>
 <p>Here’s an example of loading a generic TTI model from C++ for environments that do not have a packaged Python interpreter.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
@@ -609,9 +609,9 @@ This device-descriptor will be used to configure the device during the TTI-loadi
 </section>
 </section>
 <section id="pybuda-automatic-mixed-precision">
-<h2>Pybuda Automatic Mixed Precision<a class="headerlink" href="#pybuda-automatic-mixed-precision" title="Permalink to this heading"></a></h2>
+<h2>Pybuda Automatic Mixed Precision<a class="headerlink" href="#pybuda-automatic-mixed-precision" title="Link to this heading"></a></h2>
 <section id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h3>
+<h3>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h3>
 <p>Automatic Mixed Precision (AMP) is a technique employed by Pybuda to leverage the hardware’s ability to adjust precision along the hardware data path.
 This technique mixes native support for low-precision block floating point (BFP) data format with higher precision data-formats (float16, bfloat16)
 to achieve accuracy results close or at parity relative to half precision.</p>
@@ -625,7 +625,7 @@ to achieve accuracy results close or at parity relative to half precision.</p>
 <p>For additional details about our support for data formats, refer to <a class="reference internal" href="dataformats.html#data-formats"><span class="std std-ref">Data Formats</span></a>. For additional details about Math Fidelity, refer to <a class="reference internal" href="dataformats.html#math-fidelity"><span class="std std-ref">Math Fidelity</span></a></p>
 </section>
 <section id="automatic-mixed-precision-amp">
-<h3>Automatic Mixed Precision (AMP)<a class="headerlink" href="#automatic-mixed-precision-amp" title="Permalink to this heading"></a></h3>
+<h3>Automatic Mixed Precision (AMP)<a class="headerlink" href="#automatic-mixed-precision-amp" title="Link to this heading"></a></h3>
 <p>During model compilation, the user will set the default configuration for precision and Math Fidelity of the model. This can be configured through the <a class="reference internal" href="api.html#pybuda.set_configuration_options"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">pybuda.set_configuration_options</span></code></span></a> API.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s begin by setting the default single-precision configuration for the model:</span>
 <span class="n">pybuda</span><span class="o">.</span><span class="n">set_configuration_options</span><span class="p">(</span>
@@ -647,7 +647,7 @@ to achieve accuracy results close or at parity relative to half precision.</p>
 </ul>
 </section>
 <section id="user-defined-mixed-precision-configurations">
-<h3>User-Defined Mixed Precision Configurations<a class="headerlink" href="#user-defined-mixed-precision-configurations" title="Permalink to this heading"></a></h3>
+<h3>User-Defined Mixed Precision Configurations<a class="headerlink" href="#user-defined-mixed-precision-configurations" title="Link to this heading"></a></h3>
 <p>With a recognition that precision tuning may differ across models, Pybuda provides an API for fine-grained control over the precision of arbitrary inputs, parameters and operators in the graph through: <code class="docutils literal notranslate"><span class="pre">pybuda.config.configure_mixed_precision</span></code>.</p>
 <p>Here’s a simple example for adjusting the precision of select operators, inputs and parameters in the model:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pybuda</span>
@@ -675,7 +675,7 @@ to achieve accuracy results close or at parity relative to half precision.</p>
 </div>
 </section>
 <section id="user-defined-intermediate-queues">
-<h3>User-Defined Intermediate Queues<a class="headerlink" href="#user-defined-intermediate-queues" title="Permalink to this heading"></a></h3>
+<h3>User-Defined Intermediate Queues<a class="headerlink" href="#user-defined-intermediate-queues" title="Link to this heading"></a></h3>
 <p>Pybuda supports the ability to inspect/collect intermediate tensors at runtime to aid in the debug and model analysis of mixed precision configurations.
 This enables a user to tag operations of interest during graph compilation and dedicated intermediate queues will be created to checkpoint intermediates.</p>
 <p>Here is a simple example to (1) tag operations of interest and (2) fetch intermediates from device.</p>
@@ -713,9 +713,9 @@ This enables a user to tag operations of interest during graph compilation and d
 </section>
 </section>
 <section id="multiple-devices">
-<h2>Multiple Devices<a class="headerlink" href="#multiple-devices" title="Permalink to this heading"></a></h2>
+<h2>Multiple Devices<a class="headerlink" href="#multiple-devices" title="Link to this heading"></a></h2>
 <section id="using-multiple-tenstorrent-devices">
-<h3>Using Multiple Tenstorrent Devices<a class="headerlink" href="#using-multiple-tenstorrent-devices" title="Permalink to this heading"></a></h3>
+<h3>Using Multiple Tenstorrent Devices<a class="headerlink" href="#using-multiple-tenstorrent-devices" title="Link to this heading"></a></h3>
 <p>PyBuda makes it easy to parallelize workloads onto multiple devices. A single <a class="reference internal" href="api.html#pybuda.TTDevice"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">TTDevice</span></code></span></a> can be used as a wrapper to any number of available
 Tenstorrent devices accessible to the host - either locally or through ethernet. The PyBuda compiler will then break up the workload over
 assigned devices using either pipeline or model parllelism strategies, or a combination of both.</p>
@@ -731,9 +731,9 @@ However, <code class="docutils literal notranslate"><span class="pre">num_chips<
 </section>
 </section>
 <section id="pybuda-multi-model-support-embedded-applications-only">
-<h2>Pybuda Multi-Model Support (Embedded Applications Only)<a class="headerlink" href="#pybuda-multi-model-support-embedded-applications-only" title="Permalink to this heading"></a></h2>
+<h2>Pybuda Multi-Model Support (Embedded Applications Only)<a class="headerlink" href="#pybuda-multi-model-support-embedded-applications-only" title="Link to this heading"></a></h2>
 <section id="id1">
-<h3>Introduction<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>Introduction<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>PyBuda allows users to merge several models into a single Tenstorrent Device Image, with minimal workflow overhead. The TTI can then be consumed by the C++ Backend and run on a Tenstorrent Device.</p>
 <p>A typical process to generate and execute a Multi-Model workload is as follows:</p>
 <p><strong>Compilation: Either Offline or on a Tenstorrent Device</strong></p>
@@ -749,7 +749,7 @@ However, <code class="docutils literal notranslate"><span class="pre">num_chips<
 <p>Below, we describe the APIs and associated tools used to fuse models without any dependencies.</p>
 </section>
 <section id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h3>
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h3>
 <p>Pybuda exposes two entry points for users to run the Model Merging Tool:</p>
 <ol class="arabic simple">
 <li><p>Command Line Interface to specify the list of models to merge along with optional arguments. These include parameters enabling/disabling certain optimizations.</p></li>
@@ -764,7 +764,7 @@ However, <code class="docutils literal notranslate"><span class="pre">num_chips<
 </div>
 <p>The following arguments are available when using tti_merge.py</p>
 <section id="table-1-tt-smi-optional-arguments">
-<h4>Table 1. TT-SMI optional arguments.<a class="headerlink" href="#table-1-tt-smi-optional-arguments" title="Permalink to this heading"></a></h4>
+<h4>Table 1. TT-SMI optional arguments.<a class="headerlink" href="#table-1-tt-smi-optional-arguments" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Argument</p></th>
@@ -855,9 +855,9 @@ Displaying memory footprint per Host channel (MB):
 </section>
 </section>
 <section id="tt-smi">
-<h2>TT-SMI<a class="headerlink" href="#tt-smi" title="Permalink to this heading"></a></h2>
+<h2>TT-SMI<a class="headerlink" href="#tt-smi" title="Link to this heading"></a></h2>
 <section id="tt-smi-introduction">
-<h3>TT-SMI Introduction<a class="headerlink" href="#tt-smi-introduction" title="Permalink to this heading"></a></h3>
+<h3>TT-SMI Introduction<a class="headerlink" href="#tt-smi-introduction" title="Link to this heading"></a></h3>
 <p>TT-SMI is a command-line utility for monitoring and retrieving information about Tenstorrent devices. It provides two operating modes:</p>
 <ol class="arabic simple">
 <li><p><strong>Live Display</strong>. Visualize live telemetry data, check on host info and device info.</p></li>
@@ -865,7 +865,7 @@ Displaying memory footprint per Host channel (MB):
 </ol>
 </section>
 <section id="id2">
-<h3>Usage<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>Usage<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tt-smi<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span>
 <span class="w">  </span><span class="o">[</span>-t<span class="w"> </span><span class="o">{</span>default,dark<span class="o">}]</span><span class="w"> </span><span class="o">[</span>-nc<span class="o">]</span>
 <span class="w">  </span><span class="o">[</span>-i<span class="w"> </span><span class="o">[</span>seconds<span class="o">]]</span><span class="w"> </span><span class="o">[</span>-s<span class="o">]</span>
@@ -877,7 +877,7 @@ Displaying memory footprint per Host channel (MB):
 </div>
 <p>The following optional arguments are available when calling TT-SMI:</p>
 <section id="id3">
-<h4>Table 1. TT-SMI optional arguments.<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<h4>Table 1. TT-SMI optional arguments.<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Argument</p></th>
@@ -944,12 +944,12 @@ Displaying memory footprint per Host channel (MB):
 </section>
 </section>
 <section id="live-display-mode">
-<h3>Live Display Mode<a class="headerlink" href="#live-display-mode" title="Permalink to this heading"></a></h3>
+<h3>Live Display Mode<a class="headerlink" href="#live-display-mode" title="Link to this heading"></a></h3>
 <p>The live display mode of TT-SMI shows several content boxes by default: the header, host info, compatibility check, device info, and footer.</p>
 <p>The header displays TT-SMI version, the title, and the current datetime. The Host Info box provides some specs about the host system running TT-SMI, while the Compatibility Check box shows if device status and host system requirements are currently being met. The footer shows an abbreviated list of keyboard shortcuts.</p>
 <p>The following live display key presses astomize the view and perform quick actions:</p>
 <section id="table-2-live-display-keyboard-shortcuts">
-<h4>Table 2. Live display keyboard shortcuts<a class="headerlink" href="#table-2-live-display-keyboard-shortcuts" title="Permalink to this heading"></a></h4>
+<h4>Table 2. Live display keyboard shortcuts<a class="headerlink" href="#table-2-live-display-keyboard-shortcuts" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Action</p></th>
@@ -992,14 +992,14 @@ Displaying memory footprint per Host channel (MB):
 </section>
 </section>
 <section id="cli-mode">
-<h3>CLI Mode<a class="headerlink" href="#cli-mode" title="Permalink to this heading"></a></h3>
+<h3>CLI Mode<a class="headerlink" href="#cli-mode" title="Link to this heading"></a></h3>
 </section>
 <section id="dump-telemetry">
-<h3>Dump Telemetry<a class="headerlink" href="#dump-telemetry" title="Permalink to this heading"></a></h3>
+<h3>Dump Telemetry<a class="headerlink" href="#dump-telemetry" title="Link to this heading"></a></h3>
 <p>To dump telemetry data for detected Tenstorrent devices to a spreadsheet format, use TT-SMI with the -d option. Unless a duration is specified with -dur, the telemetry dump will continue until the user presses Enter.</p>
 <p>The resulting data is dumped into a .csv and an .xlsx file.</p>
 <section id="table-3-telemetry-dump-output-for-one-chip-in-spreadsheet-format">
-<h4>Table 3. Telemetry dump output for one chip in spreadsheet format<a class="headerlink" href="#table-3-telemetry-dump-output-for-one-chip-in-spreadsheet-format" title="Permalink to this heading"></a></h4>
+<h4>Table 3. Telemetry dump output for one chip in spreadsheet format<a class="headerlink" href="#table-3-telemetry-dump-output-for-one-chip-in-spreadsheet-format" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Timestamp (s)</p></th>
@@ -1126,20 +1126,20 @@ Displaying memory footprint per Host channel (MB):
 </section>
 </section>
 <section id="snapshot">
-<h3>Snapshot<a class="headerlink" href="#snapshot" title="Permalink to this heading"></a></h3>
+<h3>Snapshot<a class="headerlink" href="#snapshot" title="Link to this heading"></a></h3>
 <p>Using TT-SMI with the -s option generates an output log file using telemetry and host data from a single moment in time.</p>
 </section>
 <section id="warm-reset">
-<h3>Warm Reset<a class="headerlink" href="#warm-reset" title="Permalink to this heading"></a></h3>
+<h3>Warm Reset<a class="headerlink" href="#warm-reset" title="Link to this heading"></a></h3>
 <p>TT-SMI can be used with the -wr option to warm reset Tenstorrent devices (reset without rebooting the host system). Users can enter the indices of any devices and press Enter to reset them.</p>
 </section>
 <section id="warm-reset-mobo">
-<h3>Warm Reset Mobo<a class="headerlink" href="#warm-reset-mobo" title="Permalink to this heading"></a></h3>
+<h3>Warm Reset Mobo<a class="headerlink" href="#warm-reset-mobo" title="Link to this heading"></a></h3>
 <p>With the -mr option, TT-SMI will warm reset the mobo. User will be prompt to enter the host name of the mobo and the ethernet port(s) connected on the mobo.</p>
 </section>
 </section>
 <section id="examples-of-pybuda-use-cases">
-<h2>Examples of PyBuda use cases<a class="headerlink" href="#examples-of-pybuda-use-cases" title="Permalink to this heading"></a></h2>
+<h2>Examples of PyBuda use cases<a class="headerlink" href="#examples-of-pybuda-use-cases" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SPDX-FileCopyrightText: © 2024 Tenstorrent AI ULC</span>
 
 <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
@@ -2130,7 +2130,7 @@ Displaying memory footprint per Host channel (MB):
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

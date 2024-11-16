@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -281,9 +281,9 @@
            <div itemprop="articleBody">
              
   <section id="api-reference">
-<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading"></a></h1>
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
 <section id="python-runtime-api">
-<h2>Python Runtime API<a class="headerlink" href="#python-runtime-api" title="Permalink to this heading"></a></h2>
+<h2>Python Runtime API<a class="headerlink" href="#python-runtime-api" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.run_inference"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">run_inference</span></code></span></a>([module, inputs, input_count, …])</p></th>
@@ -322,7 +322,7 @@
 </table>
 <p><a id="module-0"></a></p>
 <section id="run-inference-module-pybudamodule-none-none-inputs-list-tuple-tensor-tensor-dict-str-tensor-tensor-input-count-int-1-output-queue-queue-none-none-sequential-bool-false-perf-trace-bool-false-verify-cfg-verifyconfig-none-none">
-<h3>run_inference(module: <a class="reference internal" href="#pybuda.PyBudaModule"><span class="xref myst">PyBudaModule</span></a> | None = None, inputs: List[Tuple[Tensor | Tensor, …] | Dict[str, Tensor | Tensor]] = [], input_count: int = 1, output_queue: Queue | None = None, _sequential: bool = False, _perf_trace: bool = False, _verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#run-inference-module-pybudamodule-none-none-inputs-list-tuple-tensor-tensor-dict-str-tensor-tensor-input-count-int-1-output-queue-queue-none-none-sequential-bool-false-perf-trace-bool-false-verify-cfg-verifyconfig-none-none" title="Permalink to this heading"></a></h3>
+<h3>run_inference(module: <a class="reference internal" href="#pybuda.PyBudaModule"><span class="xref myst">PyBudaModule</span></a> | None = None, inputs: List[Tuple[Tensor | Tensor, …] | Dict[str, Tensor | Tensor]] = [], input_count: int = 1, output_queue: Queue | None = None, _sequential: bool = False, _perf_trace: bool = False, _verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#run-inference-module-pybudamodule-none-none-inputs-list-tuple-tensor-tensor-dict-str-tensor-tensor-input-count-int-1-output-queue-queue-none-none-sequential-bool-false-perf-trace-bool-false-verify-cfg-verifyconfig-none-none" title="Link to this heading"></a></h3>
 <p>Main “run” function for inference. After all modules have been defined and placed on devices, this will
 execute the workload. Unless ‘sequential’ is set, the function will return as soon as the devices are set up
 to run, and inference will run as long as new inputs are pushed into the device(s). If sequential mode is on,
@@ -350,7 +350,7 @@ queue.Queue</p></li>
 </ul>
 </section>
 <section id="run-training-epochs-int-1-steps-int-1-accumulation-steps-int-1-microbatch-count-int-1-checkpoint-queue-queue-none-none-loss-queue-queue-none-none-checkpoint-interval-int-0-sequential-bool-false-perf-trace-bool-false-verify-cfg-verifyconfig-none-none">
-<h3>run_training(epochs: int = 1, steps: int = 1, accumulation_steps: int = 1, microbatch_count: int = 1, checkpoint_queue: Queue | None = None, loss_queue: Queue | None = None, checkpoint_interval: int = 0, _sequential: bool = False, _perf_trace: bool = False, _verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#run-training-epochs-int-1-steps-int-1-accumulation-steps-int-1-microbatch-count-int-1-checkpoint-queue-queue-none-none-loss-queue-queue-none-none-checkpoint-interval-int-0-sequential-bool-false-perf-trace-bool-false-verify-cfg-verifyconfig-none-none" title="Permalink to this heading"></a></h3>
+<h3>run_training(epochs: int = 1, steps: int = 1, accumulation_steps: int = 1, microbatch_count: int = 1, checkpoint_queue: Queue | None = None, loss_queue: Queue | None = None, checkpoint_interval: int = 0, _sequential: bool = False, _perf_trace: bool = False, _verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#run-training-epochs-int-1-steps-int-1-accumulation-steps-int-1-microbatch-count-int-1-checkpoint-queue-queue-none-none-loss-queue-queue-none-none-checkpoint-interval-int-0-sequential-bool-false-perf-trace-bool-false-verify-cfg-verifyconfig-none-none" title="Link to this heading"></a></h3>
 <p>Main “run” function for training. After all modules have been defined and placed on devices, this will
 execute the workload.</p>
 <ul class="simple">
@@ -380,11 +380,11 @@ queue.Queue</p></li>
 </ul>
 </section>
 <section id="shutdown">
-<h3>shutdown()<a class="headerlink" href="#shutdown" title="Permalink to this heading"></a></h3>
+<h3>shutdown()<a class="headerlink" href="#shutdown" title="Link to this heading"></a></h3>
 <p>Shutdown running processes and clean up pybuda</p>
 </section>
 <section id="initialize-pipeline-training-bool-output-queue-queue-queue-none-none-checkpoint-queue-queue-queue-none-none-sample-inputs-typing-tuple-torch-tensor-pybuda-tensor-tensor-typing-dict-str-torch-tensor-pybuda-tensor-tensor-sample-targets-typing-tuple-torch-tensor-pybuda-tensor-tensor-microbatch-count-int-1-d2d-fwd-queues-typing-list-queue-queue-d2d-bwd-queues-typing-list-queue-queue-sequential-bool-false-verify-cfg-pybuda-verify-config-verifyconfig-none-none-device-mode-pybuda-c-backend-api-devicemode-devicemode-compileandrun-0">
-<h3>initialize_pipeline(training: bool, output_queue: ~queue.Queue | None = None, checkpoint_queue: ~queue.Queue | None = None, sample_inputs: ~typing.Tuple[~torch.Tensor | ~pybuda.tensor.Tensor, …] | ~typing.Dict[str, ~torch.Tensor | ~pybuda.tensor.Tensor] = (), sample_targets: ~typing.Tuple[~torch.Tensor | ~pybuda.tensor.Tensor, …] = (), microbatch_count: int = 1, d2d_fwd_queues: ~typing.List[~queue.Queue] = [], d2d_bwd_queues: ~typing.List[~queue.Queue] = [], _sequential: bool = False, _verify_cfg: ~pybuda.verify.config.VerifyConfig | None = None, _device_mode: ~pybuda._C.backend_api.DeviceMode = &lt;DeviceMode.CompileAndRun: 0&gt;)<a class="headerlink" href="#initialize-pipeline-training-bool-output-queue-queue-queue-none-none-checkpoint-queue-queue-queue-none-none-sample-inputs-typing-tuple-torch-tensor-pybuda-tensor-tensor-typing-dict-str-torch-tensor-pybuda-tensor-tensor-sample-targets-typing-tuple-torch-tensor-pybuda-tensor-tensor-microbatch-count-int-1-d2d-fwd-queues-typing-list-queue-queue-d2d-bwd-queues-typing-list-queue-queue-sequential-bool-false-verify-cfg-pybuda-verify-config-verifyconfig-none-none-device-mode-pybuda-c-backend-api-devicemode-devicemode-compileandrun-0" title="Permalink to this heading"></a></h3>
+<h3>initialize_pipeline(training: bool, output_queue: ~queue.Queue | None = None, checkpoint_queue: ~queue.Queue | None = None, sample_inputs: ~typing.Tuple[~torch.Tensor | ~pybuda.tensor.Tensor, …] | ~typing.Dict[str, ~torch.Tensor | ~pybuda.tensor.Tensor] = (), sample_targets: ~typing.Tuple[~torch.Tensor | ~pybuda.tensor.Tensor, …] = (), microbatch_count: int = 1, d2d_fwd_queues: ~typing.List[~queue.Queue] = [], d2d_bwd_queues: ~typing.List[~queue.Queue] = [], _sequential: bool = False, _verify_cfg: ~pybuda.verify.config.VerifyConfig | None = None, _device_mode: ~pybuda._C.backend_api.DeviceMode = &lt;DeviceMode.CompileAndRun: 0&gt;)<a class="headerlink" href="#initialize-pipeline-training-bool-output-queue-queue-queue-none-none-checkpoint-queue-queue-queue-none-none-sample-inputs-typing-tuple-torch-tensor-pybuda-tensor-tensor-typing-dict-str-torch-tensor-pybuda-tensor-tensor-sample-targets-typing-tuple-torch-tensor-pybuda-tensor-tensor-microbatch-count-int-1-d2d-fwd-queues-typing-list-queue-queue-d2d-bwd-queues-typing-list-queue-queue-sequential-bool-false-verify-cfg-pybuda-verify-config-verifyconfig-none-none-device-mode-pybuda-c-backend-api-devicemode-devicemode-compileandrun-0" title="Link to this heading"></a></h3>
 <p>Initialize the pipeline to run inference and training through manual run_forward, run_backward, run_optimizer, etc. calls. This should be not used with
 “all-in-one” APIs like run_inference and run_training, which will initialize the pipeline themselves.</p>
 <ul class="simple">
@@ -422,7 +422,7 @@ queue.Queue</p></li>
 </ul>
 </section>
 <section id="run-forward-input-count-int-1-sequential-bool-false">
-<h3>run_forward(input_count: int = 1, _sequential: bool = False)<a class="headerlink" href="#run-forward-input-count-int-1-sequential-bool-false" title="Permalink to this heading"></a></h3>
+<h3>run_forward(input_count: int = 1, _sequential: bool = False)<a class="headerlink" href="#run-forward-input-count-int-1-sequential-bool-false" title="Link to this heading"></a></h3>
 <p>Run forward passes on the pre-compiled and initialized pipeline of devices. This API should be
 called from custom implementations of inference and training loops, in lieue of calling
 run_inference and run_training APIs.</p>
@@ -440,7 +440,7 @@ is called again.</p></li>
 </ul>
 </section>
 <section id="run-backward-input-count-int-1-zero-grad-bool-false-sequential-bool-false">
-<h3>run_backward(input_count: int = 1, zero_grad: bool = False, _sequential: bool = False)<a class="headerlink" href="#run-backward-input-count-int-1-zero-grad-bool-false-sequential-bool-false" title="Permalink to this heading"></a></h3>
+<h3>run_backward(input_count: int = 1, zero_grad: bool = False, _sequential: bool = False)<a class="headerlink" href="#run-backward-input-count-int-1-zero-grad-bool-false-sequential-bool-false" title="Link to this heading"></a></h3>
 <p>Run backward passes on the pre-compiled and initialized pipeline of devices. This API should be
 called from custom implementations of inference and training loops, in lieue of calling
 run_inference and run_training APIs.</p>
@@ -459,7 +459,7 @@ is called again.</p></li>
 </ul>
 </section>
 <section id="run-optimizer-checkpoint-bool-false-sequential-bool-false">
-<h3>run_optimizer(checkpoint: bool = False, _sequential: bool = False)<a class="headerlink" href="#run-optimizer-checkpoint-bool-false-sequential-bool-false" title="Permalink to this heading"></a></h3>
+<h3>run_optimizer(checkpoint: bool = False, _sequential: bool = False)<a class="headerlink" href="#run-optimizer-checkpoint-bool-false-sequential-bool-false" title="Link to this heading"></a></h3>
 <p>Run optimizer on all devices. If checkpoint is set, a checkpoint of parameters will be taken and
 placed into the checkpoint queue that has been set up during initialize_pipeline call.</p>
 <ul class="simple">
@@ -472,7 +472,7 @@ placed into the checkpoint queue that has been set up during initialize_pipeline
 </ul>
 </section>
 <section id="get-parameter-checkpoint-device-cpudevice-ttdevice-none-none-sequential-bool-false">
-<h3>get_parameter_checkpoint(device: <a class="reference internal" href="#pybuda.CPUDevice"><span class="xref myst">CPUDevice</span></a> | <a class="reference internal" href="#pybuda.TTDevice"><span class="xref myst">TTDevice</span></a> | None = None, _sequential: bool = False)<a class="headerlink" href="#get-parameter-checkpoint-device-cpudevice-ttdevice-none-none-sequential-bool-false" title="Permalink to this heading"></a></h3>
+<h3>get_parameter_checkpoint(device: <a class="reference internal" href="#pybuda.CPUDevice"><span class="xref myst">CPUDevice</span></a> | <a class="reference internal" href="#pybuda.TTDevice"><span class="xref myst">TTDevice</span></a> | None = None, _sequential: bool = False)<a class="headerlink" href="#get-parameter-checkpoint-device-cpudevice-ttdevice-none-none-sequential-bool-false" title="Link to this heading"></a></h3>
 <p>Return current parameter values. If a device is specified, only parameters for that device will
 be returned, otherwise a list of parameters for all devices will come back.</p>
 <ul class="simple">
@@ -489,7 +489,7 @@ List[Dict[str, Tensor]]</p></li>
 </ul>
 </section>
 <section id="get-parameter-gradients-device-cpudevice-ttdevice-none-none-sequential-bool-false">
-<h3>get_parameter_gradients(device: <a class="reference internal" href="#pybuda.CPUDevice"><span class="xref myst">CPUDevice</span></a> | <a class="reference internal" href="#pybuda.TTDevice"><span class="xref myst">TTDevice</span></a> | None = None, _sequential: bool = False)<a class="headerlink" href="#get-parameter-gradients-device-cpudevice-ttdevice-none-none-sequential-bool-false" title="Permalink to this heading"></a></h3>
+<h3>get_parameter_gradients(device: <a class="reference internal" href="#pybuda.CPUDevice"><span class="xref myst">CPUDevice</span></a> | <a class="reference internal" href="#pybuda.TTDevice"><span class="xref myst">TTDevice</span></a> | None = None, _sequential: bool = False)<a class="headerlink" href="#get-parameter-gradients-device-cpudevice-ttdevice-none-none-sequential-bool-false" title="Link to this heading"></a></h3>
 <p>Return currently accumulated parameter gradients. If a device is specified, only gradients for that device
 will be returned, otherwise a list of gradients for all devices will come back.</p>
 <ul class="simple">
@@ -506,7 +506,7 @@ List[Dict[str, Tensor]]</p></li>
 </ul>
 </section>
 <section id="update-device-parameters-device-cpudevice-ttdevice-none-none-parameters-list-dict-str-tensor-sequential-bool-false">
-<h3>update_device_parameters(device: <a class="reference internal" href="#pybuda.CPUDevice"><span class="xref myst">CPUDevice</span></a> | <a class="reference internal" href="#pybuda.TTDevice"><span class="xref myst">TTDevice</span></a> | None = None, parameters: List[Dict[str, Tensor]] = [], _sequential: bool = False)<a class="headerlink" href="#update-device-parameters-device-cpudevice-ttdevice-none-none-parameters-list-dict-str-tensor-sequential-bool-false" title="Permalink to this heading"></a></h3>
+<h3>update_device_parameters(device: <a class="reference internal" href="#pybuda.CPUDevice"><span class="xref myst">CPUDevice</span></a> | <a class="reference internal" href="#pybuda.TTDevice"><span class="xref myst">TTDevice</span></a> | None = None, parameters: List[Dict[str, Tensor]] = [], _sequential: bool = False)<a class="headerlink" href="#update-device-parameters-device-cpudevice-ttdevice-none-none-parameters-list-dict-str-tensor-sequential-bool-false" title="Link to this heading"></a></h3>
 <p>Push new parameters onto given device, or if none is provided, then all devices in the pipeline.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -520,11 +520,11 @@ List[Dict[str, Tensor]]</p></li>
 </section>
 </section>
 <section id="c-runtime-api">
-<h2>C++ Runtime API<a class="headerlink" href="#c-runtime-api" title="Permalink to this heading"></a></h2>
+<h2>C++ Runtime API<a class="headerlink" href="#c-runtime-api" title="Link to this heading"></a></h2>
 <p>The BUDA Backend used by Python Runtime can be optionally used stand-alone to run pre-compiled TTI models. The API reference for stand-alone BUDA Backend Runtime can be found <a class="reference external" href="http://yyz-webservice-02.local.tenstorrent.com/docs/budabackend-docs/">here</a>.</p>
 </section>
 <section id="configuration-and-placement">
-<h2>Configuration and Placement<a class="headerlink" href="#configuration-and-placement" title="Permalink to this heading"></a></h2>
+<h2>Configuration and Placement<a class="headerlink" href="#configuration-and-placement" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.set_configuration_options"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">set_configuration_options</span></code></span></a>([…])</p></th>
@@ -548,7 +548,7 @@ List[Dict[str, Tensor]]</p></li>
 </table>
 <p><a id="module-1"></a></p>
 <section id="set-configuration-options-enable-recompute-bool-none-none-balancer-policy-str-none-none-place-on-one-row-bool-none-none-enable-t-streaming-bool-none-none-manual-t-streaming-bool-none-none-enable-consteval-bool-none-none-default-df-override-dataformat-none-none-accumulate-df-dataformat-none-none-math-fidelity-mathfidelity-none-none-performance-trace-perftracelevel-none-none-backend-opt-level-int-none-none-backend-output-dir-str-none-none-backend-device-descriptor-path-str-none-none-backend-cluster-descriptor-path-str-none-none-backend-runtime-params-path-str-none-none-backend-runtime-args-str-none-none-enable-auto-fusing-bool-none-none-enable-conv-prestride-bool-none-none-enable-stable-softmax-bool-none-none-amp-level-int-none-none-harvested-rows-list-list-int-none-none-store-backend-db-to-yaml-bool-none-none-input-queues-on-host-bool-none-none-output-queues-on-host-bool-none-none-enable-auto-transposing-placement-bool-none-none-use-interactive-placer-bool-none-none-op-intermediates-to-save-list-str-none-none-enable-enumerate-u-kt-bool-none-none-enable-device-tilize-bool-none-none-dram-placement-algorithm-dramplacementalgorithm-none-none-chip-placement-policy-str-none-none-enable-forked-dram-inputs-bool-none-none-device-config-str-none-none">
-<h3>set_configuration_options(enable_recompute: bool | None = None, balancer_policy: str | None = None, place_on_one_row: bool | None = None, enable_t_streaming: bool | None = None, manual_t_streaming: bool | None = None, enable_consteval: bool | None = None, default_df_override: <a class="reference internal" href="#pybuda.DataFormat"><span class="xref myst">DataFormat</span></a> | None = None, accumulate_df: <a class="reference internal" href="#pybuda.DataFormat"><span class="xref myst">DataFormat</span></a> | None = None, math_fidelity: <a class="reference internal" href="#pybuda.MathFidelity"><span class="xref myst">MathFidelity</span></a> | None = None, performance_trace: PerfTraceLevel | None = None, backend_opt_level: int | None = None, backend_output_dir: str | None = None, backend_device_descriptor_path: str | None = None, backend_cluster_descriptor_path: str | None = None, backend_runtime_params_path: str | None = None, backend_runtime_args: str | None = None, enable_auto_fusing: bool | None = None, enable_conv_prestride: bool | None = None, enable_stable_softmax: bool | None = None, amp_level: int | None = None, harvested_rows: List[List[int]] | None = None, store_backend_db_to_yaml: bool | None = None, input_queues_on_host: bool | None = None, output_queues_on_host: bool | None = None, enable_auto_transposing_placement: bool | None = None, use_interactive_placer: bool | None = None, op_intermediates_to_save: List[str] | None = None, enable_enumerate_u_kt: bool | None = None, enable_device_tilize: bool | None = None, dram_placement_algorithm: DRAMPlacementAlgorithm | None = None, chip_placement_policy: str | None = None, enable_forked_dram_inputs: bool | None = None, device_config: str | None = None)<a class="headerlink" href="#set-configuration-options-enable-recompute-bool-none-none-balancer-policy-str-none-none-place-on-one-row-bool-none-none-enable-t-streaming-bool-none-none-manual-t-streaming-bool-none-none-enable-consteval-bool-none-none-default-df-override-dataformat-none-none-accumulate-df-dataformat-none-none-math-fidelity-mathfidelity-none-none-performance-trace-perftracelevel-none-none-backend-opt-level-int-none-none-backend-output-dir-str-none-none-backend-device-descriptor-path-str-none-none-backend-cluster-descriptor-path-str-none-none-backend-runtime-params-path-str-none-none-backend-runtime-args-str-none-none-enable-auto-fusing-bool-none-none-enable-conv-prestride-bool-none-none-enable-stable-softmax-bool-none-none-amp-level-int-none-none-harvested-rows-list-list-int-none-none-store-backend-db-to-yaml-bool-none-none-input-queues-on-host-bool-none-none-output-queues-on-host-bool-none-none-enable-auto-transposing-placement-bool-none-none-use-interactive-placer-bool-none-none-op-intermediates-to-save-list-str-none-none-enable-enumerate-u-kt-bool-none-none-enable-device-tilize-bool-none-none-dram-placement-algorithm-dramplacementalgorithm-none-none-chip-placement-policy-str-none-none-enable-forked-dram-inputs-bool-none-none-device-config-str-none-none" title="Permalink to this heading"></a></h3>
+<h3>set_configuration_options(enable_recompute: bool | None = None, balancer_policy: str | None = None, place_on_one_row: bool | None = None, enable_t_streaming: bool | None = None, manual_t_streaming: bool | None = None, enable_consteval: bool | None = None, default_df_override: <a class="reference internal" href="#pybuda.DataFormat"><span class="xref myst">DataFormat</span></a> | None = None, accumulate_df: <a class="reference internal" href="#pybuda.DataFormat"><span class="xref myst">DataFormat</span></a> | None = None, math_fidelity: <a class="reference internal" href="#pybuda.MathFidelity"><span class="xref myst">MathFidelity</span></a> | None = None, performance_trace: PerfTraceLevel | None = None, backend_opt_level: int | None = None, backend_output_dir: str | None = None, backend_device_descriptor_path: str | None = None, backend_cluster_descriptor_path: str | None = None, backend_runtime_params_path: str | None = None, backend_runtime_args: str | None = None, enable_auto_fusing: bool | None = None, enable_conv_prestride: bool | None = None, enable_stable_softmax: bool | None = None, amp_level: int | None = None, harvested_rows: List[List[int]] | None = None, store_backend_db_to_yaml: bool | None = None, input_queues_on_host: bool | None = None, output_queues_on_host: bool | None = None, enable_auto_transposing_placement: bool | None = None, use_interactive_placer: bool | None = None, op_intermediates_to_save: List[str] | None = None, enable_enumerate_u_kt: bool | None = None, enable_device_tilize: bool | None = None, dram_placement_algorithm: DRAMPlacementAlgorithm | None = None, chip_placement_policy: str | None = None, enable_forked_dram_inputs: bool | None = None, device_config: str | None = None)<a class="headerlink" href="#set-configuration-options-enable-recompute-bool-none-none-balancer-policy-str-none-none-place-on-one-row-bool-none-none-enable-t-streaming-bool-none-none-manual-t-streaming-bool-none-none-enable-consteval-bool-none-none-default-df-override-dataformat-none-none-accumulate-df-dataformat-none-none-math-fidelity-mathfidelity-none-none-performance-trace-perftracelevel-none-none-backend-opt-level-int-none-none-backend-output-dir-str-none-none-backend-device-descriptor-path-str-none-none-backend-cluster-descriptor-path-str-none-none-backend-runtime-params-path-str-none-none-backend-runtime-args-str-none-none-enable-auto-fusing-bool-none-none-enable-conv-prestride-bool-none-none-enable-stable-softmax-bool-none-none-amp-level-int-none-none-harvested-rows-list-list-int-none-none-store-backend-db-to-yaml-bool-none-none-input-queues-on-host-bool-none-none-output-queues-on-host-bool-none-none-enable-auto-transposing-placement-bool-none-none-use-interactive-placer-bool-none-none-op-intermediates-to-save-list-str-none-none-enable-enumerate-u-kt-bool-none-none-enable-device-tilize-bool-none-none-dram-placement-algorithm-dramplacementalgorithm-none-none-chip-placement-policy-str-none-none-enable-forked-dram-inputs-bool-none-none-device-config-str-none-none" title="Link to this heading"></a></h3>
 <p>Set global compile configuration options.</p>
 <ul>
 <li><p><strong>Parameters:</strong></p>
@@ -601,7 +601,7 @@ YAML files for supported configurations are mapped at ‘supported_backend_confi
 </ul>
 </section>
 <section id="set-epoch-break-op-names-str-nodepredicatebuilder-list-str-nodepredicatebuilder">
-<h3>set_epoch_break(op_names: str | NodePredicateBuilder | List[str | NodePredicateBuilder])<a class="headerlink" href="#set-epoch-break-op-names-str-nodepredicatebuilder-list-str-nodepredicatebuilder" title="Permalink to this heading"></a></h3>
+<h3>set_epoch_break(op_names: str | NodePredicateBuilder | List[str | NodePredicateBuilder])<a class="headerlink" href="#set-epoch-break-op-names-str-nodepredicatebuilder-list-str-nodepredicatebuilder" title="Link to this heading"></a></h3>
 <p>Instruct place &amp; route to start a new placement epoch on the given op(s)</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -609,7 +609,7 @@ YAML files for supported configurations are mapped at ‘supported_backend_confi
 </ul>
 </section>
 <section id="set-chip-break-op-names-str-nodepredicatebuilder-list-str-nodepredicatebuilder">
-<h3>set_chip_break(op_names: str | NodePredicateBuilder | List[str | NodePredicateBuilder])<a class="headerlink" href="#set-chip-break-op-names-str-nodepredicatebuilder-list-str-nodepredicatebuilder" title="Permalink to this heading"></a></h3>
+<h3>set_chip_break(op_names: str | NodePredicateBuilder | List[str | NodePredicateBuilder])<a class="headerlink" href="#set-chip-break-op-names-str-nodepredicatebuilder-list-str-nodepredicatebuilder" title="Link to this heading"></a></h3>
 <p>Instruct place &amp; route to start placing ops on the next chip in the pipeline.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -617,7 +617,7 @@ YAML files for supported configurations are mapped at ‘supported_backend_confi
 </ul>
 </section>
 <section id="override-op-size-op-name-str-grid-size-tuple-int-int">
-<h3>override_op_size(op_name: str, grid_size: Tuple[int, int])<a class="headerlink" href="#override-op-size-op-name-str-grid-size-tuple-int-int" title="Permalink to this heading"></a></h3>
+<h3>override_op_size(op_name: str, grid_size: Tuple[int, int])<a class="headerlink" href="#override-op-size-op-name-str-grid-size-tuple-int-int" title="Link to this heading"></a></h3>
 <p>Override automatic op sizing with given grid size.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -629,14 +629,14 @@ YAML files for supported configurations are mapped at ‘supported_backend_confi
 </ul>
 </section>
 <section id="detect-available-devices">
-<h3>detect_available_devices()<a class="headerlink" href="#detect-available-devices" title="Permalink to this heading"></a></h3>
+<h3>detect_available_devices()<a class="headerlink" href="#detect-available-devices" title="Link to this heading"></a></h3>
 <p>Returns a list of available devices on the system.</p>
 </section>
 </section>
 <section id="operations">
-<h2>Operations<a class="headerlink" href="#operations" title="Permalink to this heading"></a></h2>
+<h2>Operations<a class="headerlink" href="#operations" title="Link to this heading"></a></h2>
 <section id="general">
-<h3>General<a class="headerlink" href="#general" title="Permalink to this heading"></a></h3>
+<h3>General<a class="headerlink" href="#general" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.op.Matmul"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">Matmul</span></code></span></a>(name, operandA, operandB[, bias])</p></th>
@@ -673,7 +673,7 @@ YAML files for supported configurations are mapped at ‘supported_backend_confi
 <p><a id="module-pybuda.op"></a></p>
 </section>
 <section id="matmul-name-str-operanda-tensor-operandb-tensor-parameter-bias-tensor-parameter-none-none">
-<h3>Matmul(name: str, operandA: Tensor, operandB: Tensor | Parameter, bias: Tensor | Parameter | None = None)<a class="headerlink" href="#matmul-name-str-operanda-tensor-operandb-tensor-parameter-bias-tensor-parameter-none-none" title="Permalink to this heading"></a></h3>
+<h3>Matmul(name: str, operandA: Tensor, operandB: Tensor | Parameter, bias: Tensor | Parameter | None = None)<a class="headerlink" href="#matmul-name-str-operanda-tensor-operandb-tensor-parameter-bias-tensor-parameter-none-none" title="Link to this heading"></a></h3>
 <p>Matrix multiplication transformation on input activations, with optional bias. y = ab + bias</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -687,7 +687,7 @@ YAML files for supported configurations are mapped at ‘supported_backend_confi
 </ul>
 </section>
 <section id="add-name-str-operanda-tensor-operandb-tensor-parameter">
-<h3>Add(name: str, operandA: Tensor, operandB: Tensor | Parameter)<a class="headerlink" href="#add-name-str-operanda-tensor-operandb-tensor-parameter" title="Permalink to this heading"></a></h3>
+<h3>Add(name: str, operandA: Tensor, operandB: Tensor | Parameter)<a class="headerlink" href="#add-name-str-operanda-tensor-operandb-tensor-parameter" title="Link to this heading"></a></h3>
 <p>Elementwise add of two tensors</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -704,7 +704,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="subtract-name-str-operanda-tensor-operandb-tensor">
-<h3>Subtract(name: str, operandA: Tensor, operandB: Tensor)<a class="headerlink" href="#subtract-name-str-operanda-tensor-operandb-tensor" title="Permalink to this heading"></a></h3>
+<h3>Subtract(name: str, operandA: Tensor, operandB: Tensor)<a class="headerlink" href="#subtract-name-str-operanda-tensor-operandb-tensor" title="Link to this heading"></a></h3>
 <p>Elementwise subtraction of two tensors</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -721,7 +721,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="multiply-name-str-operanda-tensor-operandb-tensor-parameter">
-<h3>Multiply(name: str, operandA: Tensor, operandB: Tensor | Parameter)<a class="headerlink" href="#multiply-name-str-operanda-tensor-operandb-tensor-parameter" title="Permalink to this heading"></a></h3>
+<h3>Multiply(name: str, operandA: Tensor, operandB: Tensor | Parameter)<a class="headerlink" href="#multiply-name-str-operanda-tensor-operandb-tensor-parameter" title="Link to this heading"></a></h3>
 <p>Elementwise multiply of two tensors</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -738,7 +738,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="identity-name-str-operanda-tensor-unsqueeze-str-none-none-unsqueeze-dim-int-none-none">
-<h3>Identity(name: str, operandA: Tensor, unsqueeze: str | None = None, unsqueeze_dim: int | None = None)<a class="headerlink" href="#identity-name-str-operanda-tensor-unsqueeze-str-none-none-unsqueeze-dim-int-none-none" title="Permalink to this heading"></a></h3>
+<h3>Identity(name: str, operandA: Tensor, unsqueeze: str | None = None, unsqueeze_dim: int | None = None)<a class="headerlink" href="#identity-name-str-operanda-tensor-unsqueeze-str-none-none-unsqueeze-dim-int-none-none" title="Link to this heading"></a></h3>
 <p>Identity operation.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -756,7 +756,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="buffer-name-str-operanda-tensor">
-<h3>Buffer(name: str, operandA: Tensor)<a class="headerlink" href="#buffer-name-str-operanda-tensor" title="Permalink to this heading"></a></h3>
+<h3>Buffer(name: str, operandA: Tensor)<a class="headerlink" href="#buffer-name-str-operanda-tensor" title="Link to this heading"></a></h3>
 <p>Identity operation. One key difference is a Buffer op will not get
 lowered into a NOP and avoid being removed by the time it gets to lowering.</p>
 <ul class="simple">
@@ -773,7 +773,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="reducesum-name-str-operanda-tensor-dim-int">
-<h3>ReduceSum(name: str, operandA: Tensor, dim: int)<a class="headerlink" href="#reducesum-name-str-operanda-tensor-dim-int" title="Permalink to this heading"></a></h3>
+<h3>ReduceSum(name: str, operandA: Tensor, dim: int)<a class="headerlink" href="#reducesum-name-str-operanda-tensor-dim-int" title="Link to this heading"></a></h3>
 <p>Reduce by summing along the given dimension</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -790,7 +790,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="reduceavg-name-str-operanda-tensor-dim-int">
-<h3>ReduceAvg(name: str, operandA: Tensor, dim: int)<a class="headerlink" href="#reduceavg-name-str-operanda-tensor-dim-int" title="Permalink to this heading"></a></h3>
+<h3>ReduceAvg(name: str, operandA: Tensor, dim: int)<a class="headerlink" href="#reduceavg-name-str-operanda-tensor-dim-int" title="Link to this heading"></a></h3>
 <p>Reduce by averaging along the given dimension</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -807,7 +807,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="constant-name-str-constant-float">
-<h3>Constant(name: str, *, constant: float)<a class="headerlink" href="#constant-name-str-constant-float" title="Permalink to this heading"></a></h3>
+<h3>Constant(name: str, *, constant: float)<a class="headerlink" href="#constant-name-str-constant-float" title="Link to this heading"></a></h3>
 <p>Op representing user-defined constant</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -823,7 +823,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="transformations">
-<h3>Transformations<a class="headerlink" href="#transformations" title="Permalink to this heading"></a></h3>
+<h3>Transformations<a class="headerlink" href="#transformations" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.op.HSlice"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">HSlice</span></code></span></a>(name, operandA, slices)</p></th>
@@ -866,7 +866,7 @@ Tensor</p></li>
 <p><a id="module-2"></a></p>
 </section>
 <section id="heaviside-name-str-operanda-tensor-operandb-tensor-parameter">
-<h3>Heaviside(name: str, operandA: Tensor, operandB: Tensor | Parameter)<a class="headerlink" href="#heaviside-name-str-operanda-tensor-operandb-tensor-parameter" title="Permalink to this heading"></a></h3>
+<h3>Heaviside(name: str, operandA: Tensor, operandB: Tensor | Parameter)<a class="headerlink" href="#heaviside-name-str-operanda-tensor-operandb-tensor-parameter" title="Link to this heading"></a></h3>
 <p>Elementwise max of two tensors</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -883,7 +883,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="binarystack-name-str-operanda-tensor-operandb-tensor-parameter-dim-int">
-<h3>BinaryStack(name: str, operandA: Tensor, operandB: Tensor | Parameter, dim: int)<a class="headerlink" href="#binarystack-name-str-operanda-tensor-operandb-tensor-parameter-dim-int" title="Permalink to this heading"></a></h3>
+<h3>BinaryStack(name: str, operandA: Tensor, operandB: Tensor | Parameter, dim: int)<a class="headerlink" href="#binarystack-name-str-operanda-tensor-operandb-tensor-parameter-dim-int" title="Link to this heading"></a></h3>
 <p>Elementwise max of two tensors</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -901,7 +901,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="hslice-name-str-operanda-tensor-slices-int">
-<h3>HSlice(name: str, operandA: Tensor, slices: int)<a class="headerlink" href="#hslice-name-str-operanda-tensor-slices-int" title="Permalink to this heading"></a></h3>
+<h3>HSlice(name: str, operandA: Tensor, slices: int)<a class="headerlink" href="#hslice-name-str-operanda-tensor-slices-int" title="Link to this heading"></a></h3>
 <p>Slice along horizontal axis into given number of pieces.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -918,7 +918,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="hstack-name-str-operanda-tensor-slices-int-1">
-<h3>HStack(name: str, operandA: Tensor, slices: int = -1)<a class="headerlink" href="#hstack-name-str-operanda-tensor-slices-int-1" title="Permalink to this heading"></a></h3>
+<h3>HStack(name: str, operandA: Tensor, slices: int = -1)<a class="headerlink" href="#hstack-name-str-operanda-tensor-slices-int-1" title="Link to this heading"></a></h3>
 <p>Stack Z dimension along horizontal dimension.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -935,7 +935,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="vslice-name-str-operanda-tensor-slices-int">
-<h3>VSlice(name: str, operandA: Tensor, slices: int)<a class="headerlink" href="#vslice-name-str-operanda-tensor-slices-int" title="Permalink to this heading"></a></h3>
+<h3>VSlice(name: str, operandA: Tensor, slices: int)<a class="headerlink" href="#vslice-name-str-operanda-tensor-slices-int" title="Link to this heading"></a></h3>
 <p>Slice along vertical axis into given number of pieces.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -952,7 +952,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="vstack-name-str-operanda-tensor-slices-int-1">
-<h3>VStack(name: str, operandA: Tensor, slices: int = -1)<a class="headerlink" href="#vstack-name-str-operanda-tensor-slices-int-1" title="Permalink to this heading"></a></h3>
+<h3>VStack(name: str, operandA: Tensor, slices: int = -1)<a class="headerlink" href="#vstack-name-str-operanda-tensor-slices-int-1" title="Link to this heading"></a></h3>
 <p>Stack Z dimension along vertical dimension.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -969,7 +969,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="reshape-name-str-operanda-tensor-shape-tuple-int">
-<h3>Reshape(name: str, operandA: Tensor, shape: Tuple[int, …])<a class="headerlink" href="#reshape-name-str-operanda-tensor-shape-tuple-int" title="Permalink to this heading"></a></h3>
+<h3>Reshape(name: str, operandA: Tensor, shape: Tuple[int, …])<a class="headerlink" href="#reshape-name-str-operanda-tensor-shape-tuple-int" title="Link to this heading"></a></h3>
 <p>TM</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -985,7 +985,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="index-name-str-operanda-tensor-dim-int-start-int-stop-int-none-none-stride-int-1">
-<h3>Index(name: str, operandA: Tensor, dim: int, start: int, stop: int | None = None, stride: int = 1)<a class="headerlink" href="#index-name-str-operanda-tensor-dim-int-start-int-stop-int-none-none-stride-int-1" title="Permalink to this heading"></a></h3>
+<h3>Index(name: str, operandA: Tensor, dim: int, start: int, stop: int | None = None, stride: int = 1)<a class="headerlink" href="#index-name-str-operanda-tensor-dim-int-start-int-stop-int-none-none-stride-int-1" title="Link to this heading"></a></h3>
 <p>TM</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1005,7 +1005,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="select-name-str-operanda-tensor-dim-int-index-int-tuple-int-int-stride-int-0">
-<h3>Select(name: str, operandA: Tensor, dim: int, index: int | Tuple[int, int], stride: int = 0)<a class="headerlink" href="#select-name-str-operanda-tensor-dim-int-index-int-tuple-int-int-stride-int-0" title="Permalink to this heading"></a></h3>
+<h3>Select(name: str, operandA: Tensor, dim: int, index: int | Tuple[int, int], stride: int = 0)<a class="headerlink" href="#select-name-str-operanda-tensor-dim-int-index-int-tuple-int-int-stride-int-0" title="Link to this heading"></a></h3>
 <p>TM</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1025,7 +1025,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="pad-name-str-operanda-tensor-pad-tuple-int-int-int-int-tuple-int-int-mode-str-constant-channel-last-bool-false">
-<h3>Pad(name: str, operandA: Tensor, pad: Tuple[int, int, int, int] | Tuple[int, int], mode: str = ‘constant’, channel_last: bool = False)<a class="headerlink" href="#pad-name-str-operanda-tensor-pad-tuple-int-int-int-int-tuple-int-int-mode-str-constant-channel-last-bool-false" title="Permalink to this heading"></a></h3>
+<h3>Pad(name: str, operandA: Tensor, pad: Tuple[int, int, int, int] | Tuple[int, int], mode: str = ‘constant’, channel_last: bool = False)<a class="headerlink" href="#pad-name-str-operanda-tensor-pad-tuple-int-int-int-int-tuple-int-int-mode-str-constant-channel-last-bool-false" title="Link to this heading"></a></h3>
 <p>TM</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1042,7 +1042,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="concatenate-name-str-operands-tensor-axis-int">
-<h3>Concatenate(name: str, *operands: Tensor, axis: int)<a class="headerlink" href="#concatenate-name-str-operands-tensor-axis-int" title="Permalink to this heading"></a></h3>
+<h3>Concatenate(name: str, *operands: Tensor, axis: int)<a class="headerlink" href="#concatenate-name-str-operands-tensor-axis-int" title="Link to this heading"></a></h3>
 <p>Concatenate tensors along axis</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1059,7 +1059,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="activations">
-<h3>Activations<a class="headerlink" href="#activations" title="Permalink to this heading"></a></h3>
+<h3>Activations<a class="headerlink" href="#activations" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.op.Relu"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">Relu</span></code></span></a>(name, operandA[, threshold, mode])</p></th>
@@ -1078,7 +1078,7 @@ Tensor</p></li>
 <p><a id="module-3"></a></p>
 </section>
 <section id="relu-name-str-operanda-tensor-threshold-0-0-mode-min">
-<h3>Relu(name: str, operandA: Tensor, threshold=0.0, mode=’min’)<a class="headerlink" href="#relu-name-str-operanda-tensor-threshold-0-0-mode-min" title="Permalink to this heading"></a></h3>
+<h3>Relu(name: str, operandA: Tensor, threshold=0.0, mode=’min’)<a class="headerlink" href="#relu-name-str-operanda-tensor-threshold-0-0-mode-min" title="Link to this heading"></a></h3>
 <p>ReLU</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1094,7 +1094,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="gelu-name-str-operanda-tensor-approximate-none">
-<h3>Gelu(name: str, operandA: Tensor, approximate=’none’)<a class="headerlink" href="#gelu-name-str-operanda-tensor-approximate-none" title="Permalink to this heading"></a></h3>
+<h3>Gelu(name: str, operandA: Tensor, approximate=’none’)<a class="headerlink" href="#gelu-name-str-operanda-tensor-approximate-none" title="Link to this heading"></a></h3>
 <p>GeLU</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1112,7 +1112,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="sigmoid-name-str-operanda-tensor">
-<h3>Sigmoid(name: str, operandA: Tensor)<a class="headerlink" href="#sigmoid-name-str-operanda-tensor" title="Permalink to this heading"></a></h3>
+<h3>Sigmoid(name: str, operandA: Tensor)<a class="headerlink" href="#sigmoid-name-str-operanda-tensor" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
 <ul>
@@ -1127,7 +1127,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="math">
-<h3>Math<a class="headerlink" href="#math" title="Permalink to this heading"></a></h3>
+<h3>Math<a class="headerlink" href="#math" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.op.Exp"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">Exp</span></code></span></a>(name, operandA)</p></th>
@@ -1161,7 +1161,7 @@ Tensor</p></li>
 <p><a id="module-4"></a></p>
 </section>
 <section id="max-name-str-operanda-tensor-operandb-tensor-parameter">
-<h3>Max(name: str, operandA: Tensor, operandB: Tensor | Parameter)<a class="headerlink" href="#max-name-str-operanda-tensor-operandb-tensor-parameter" title="Permalink to this heading"></a></h3>
+<h3>Max(name: str, operandA: Tensor, operandB: Tensor | Parameter)<a class="headerlink" href="#max-name-str-operanda-tensor-operandb-tensor-parameter" title="Link to this heading"></a></h3>
 <p>Elementwise max of two tensors</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1178,7 +1178,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="exp-name-str-operanda-tensor">
-<h3>Exp(name: str, operandA: Tensor)<a class="headerlink" href="#exp-name-str-operanda-tensor" title="Permalink to this heading"></a></h3>
+<h3>Exp(name: str, operandA: Tensor)<a class="headerlink" href="#exp-name-str-operanda-tensor" title="Link to this heading"></a></h3>
 <p>Exponent operation.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1194,7 +1194,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="reciprocal-name-str-operanda-tensor">
-<h3>Reciprocal(name: str, operandA: Tensor)<a class="headerlink" href="#reciprocal-name-str-operanda-tensor" title="Permalink to this heading"></a></h3>
+<h3>Reciprocal(name: str, operandA: Tensor)<a class="headerlink" href="#reciprocal-name-str-operanda-tensor" title="Link to this heading"></a></h3>
 <p>Reciprocal operation.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1210,7 +1210,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="sqrt-name-str-operanda-tensor">
-<h3>Sqrt(name: str, operandA: Tensor)<a class="headerlink" href="#sqrt-name-str-operanda-tensor" title="Permalink to this heading"></a></h3>
+<h3>Sqrt(name: str, operandA: Tensor)<a class="headerlink" href="#sqrt-name-str-operanda-tensor" title="Link to this heading"></a></h3>
 <p>Square root.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1226,7 +1226,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="log-name-str-operanda-tensor">
-<h3>Log(name: str, operandA: Tensor)<a class="headerlink" href="#log-name-str-operanda-tensor" title="Permalink to this heading"></a></h3>
+<h3>Log(name: str, operandA: Tensor)<a class="headerlink" href="#log-name-str-operanda-tensor" title="Link to this heading"></a></h3>
 <p>Log operation: natural logarithm of the elements of operandA
 : yi = log_e(xi) for all xi in operandA tensor</p>
 <ul class="simple">
@@ -1243,7 +1243,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="argmax-name-str-operanda-tensor-dim-int-none-none">
-<h3>Argmax(name: str, operandA: Tensor, dim: int | None = None)<a class="headerlink" href="#argmax-name-str-operanda-tensor-dim-int-none-none" title="Permalink to this heading"></a></h3>
+<h3>Argmax(name: str, operandA: Tensor, dim: int | None = None)<a class="headerlink" href="#argmax-name-str-operanda-tensor-dim-int-none-none" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
 <ul>
@@ -1258,7 +1258,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="abs-name-str-operanda-tensor">
-<h3>Abs(name: str, operandA: Tensor)<a class="headerlink" href="#abs-name-str-operanda-tensor" title="Permalink to this heading"></a></h3>
+<h3>Abs(name: str, operandA: Tensor)<a class="headerlink" href="#abs-name-str-operanda-tensor" title="Link to this heading"></a></h3>
 <p>Sigmoid</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1274,7 +1274,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="clip-name-str-operanda-tensor-min-float-max-float">
-<h3>Clip(name: str, operandA: Tensor, min: float, max: float)<a class="headerlink" href="#clip-name-str-operanda-tensor-min-float-max-float" title="Permalink to this heading"></a></h3>
+<h3>Clip(name: str, operandA: Tensor, min: float, max: float)<a class="headerlink" href="#clip-name-str-operanda-tensor-min-float-max-float" title="Link to this heading"></a></h3>
 <p>Clips tensor values between min and max</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1292,7 +1292,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="convolutions">
-<h3>Convolutions<a class="headerlink" href="#convolutions" title="Permalink to this heading"></a></h3>
+<h3>Convolutions<a class="headerlink" href="#convolutions" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.op.Conv2d"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">Conv2d</span></code></span></a>(name, activations, weights[, bias, …])</p></th>
@@ -1314,7 +1314,7 @@ Tensor</p></li>
 <p><a id="module-5"></a></p>
 </section>
 <section id="conv2d-name-str-activations-tensor-weights-tensor-parameter-bias-tensor-parameter-none-none-stride-int-1-padding-int-str-list-same-dilation-int-1-groups-int-1-channel-last-bool-false">
-<h3>Conv2d(name: str, activations: Tensor, weights: Tensor | Parameter, bias: Tensor | Parameter | None = None, stride: int = 1, padding: int | str | List = ‘same’, dilation: int = 1, groups: int = 1, channel_last: bool = False)<a class="headerlink" href="#conv2d-name-str-activations-tensor-weights-tensor-parameter-bias-tensor-parameter-none-none-stride-int-1-padding-int-str-list-same-dilation-int-1-groups-int-1-channel-last-bool-false" title="Permalink to this heading"></a></h3>
+<h3>Conv2d(name: str, activations: Tensor, weights: Tensor | Parameter, bias: Tensor | Parameter | None = None, stride: int = 1, padding: int | str | List = ‘same’, dilation: int = 1, groups: int = 1, channel_last: bool = False)<a class="headerlink" href="#conv2d-name-str-activations-tensor-weights-tensor-parameter-bias-tensor-parameter-none-none-stride-int-1-padding-int-str-list-same-dilation-int-1-groups-int-1-channel-last-bool-false" title="Link to this heading"></a></h3>
 <p>Conv2d transformation on input activations, with optional bias.</p>
 <ul>
 <li><p><strong>Parameters:</strong></p>
@@ -1335,7 +1335,7 @@ of length: (K*K // weight_grouping)</p>
 </ul>
 </section>
 <section id="conv2dtranspose-name-str-activations-tensor-weights-tensor-parameter-bias-tensor-parameter-none-none-stride-int-1-padding-int-str-same-dilation-int-1-groups-int-1-channel-last-bool-false">
-<h3>Conv2dTranspose(name: str, activations: Tensor, weights: Tensor | Parameter, bias: Tensor | Parameter | None = None, stride: int = 1, padding: int | str = ‘same’, dilation: int = 1, groups: int = 1, channel_last: bool = False)<a class="headerlink" href="#conv2dtranspose-name-str-activations-tensor-weights-tensor-parameter-bias-tensor-parameter-none-none-stride-int-1-padding-int-str-same-dilation-int-1-groups-int-1-channel-last-bool-false" title="Permalink to this heading"></a></h3>
+<h3>Conv2dTranspose(name: str, activations: Tensor, weights: Tensor | Parameter, bias: Tensor | Parameter | None = None, stride: int = 1, padding: int | str = ‘same’, dilation: int = 1, groups: int = 1, channel_last: bool = False)<a class="headerlink" href="#conv2dtranspose-name-str-activations-tensor-weights-tensor-parameter-bias-tensor-parameter-none-none-stride-int-1-padding-int-str-same-dilation-int-1-groups-int-1-channel-last-bool-false" title="Link to this heading"></a></h3>
 <p>Conv2dTranspose transformation on input activations, with optional bias.</p>
 <ul>
 <li><p><strong>Parameters:</strong></p>
@@ -1356,7 +1356,7 @@ of length: (K*K // weight_grouping)</p>
 </ul>
 </section>
 <section id="maxpool2d-name-str-activations-tensor-kernel-size-int-tuple-int-int-stride-int-1-padding-int-str-same-dilation-int-1-ceil-mode-bool-false-return-indices-bool-false-max-pool-add-sub-surround-bool-false-max-pool-add-sub-surround-value-float-1-0-channel-last-bool-false">
-<h3>MaxPool2d(name: str, activations: Tensor, kernel_size: int | Tuple[int, int], stride: int = 1, padding: int | str = ‘same’, dilation: int = 1, ceil_mode: bool = False, return_indices: bool = False, max_pool_add_sub_surround: bool = False, max_pool_add_sub_surround_value: float = 1.0, channel_last: bool = False)<a class="headerlink" href="#maxpool2d-name-str-activations-tensor-kernel-size-int-tuple-int-int-stride-int-1-padding-int-str-same-dilation-int-1-ceil-mode-bool-false-return-indices-bool-false-max-pool-add-sub-surround-bool-false-max-pool-add-sub-surround-value-float-1-0-channel-last-bool-false" title="Permalink to this heading"></a></h3>
+<h3>MaxPool2d(name: str, activations: Tensor, kernel_size: int | Tuple[int, int], stride: int = 1, padding: int | str = ‘same’, dilation: int = 1, ceil_mode: bool = False, return_indices: bool = False, max_pool_add_sub_surround: bool = False, max_pool_add_sub_surround_value: float = 1.0, channel_last: bool = False)<a class="headerlink" href="#maxpool2d-name-str-activations-tensor-kernel-size-int-tuple-int-int-stride-int-1-padding-int-str-same-dilation-int-1-ceil-mode-bool-false-return-indices-bool-false-max-pool-add-sub-surround-bool-false-max-pool-add-sub-surround-value-float-1-0-channel-last-bool-false" title="Link to this heading"></a></h3>
 <p>Maxpool2d transformation on input activations</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1369,7 +1369,7 @@ of length: (K*K // weight_grouping)</p>
 </ul>
 </section>
 <section id="avgpool2d-name-str-activations-tensor-kernel-size-int-tuple-int-int-stride-int-1-padding-int-str-same-ceil-mode-bool-false-count-include-pad-bool-true-divisor-override-float-none-none-channel-last-bool-false">
-<h3>AvgPool2d(name: str, activations: Tensor, kernel_size: int | Tuple[int, int], stride: int = 1, padding: int | str = ‘same’, ceil_mode: bool = False, count_include_pad: bool = True, divisor_override: float | None = None, channel_last: bool = False)<a class="headerlink" href="#avgpool2d-name-str-activations-tensor-kernel-size-int-tuple-int-int-stride-int-1-padding-int-str-same-ceil-mode-bool-false-count-include-pad-bool-true-divisor-override-float-none-none-channel-last-bool-false" title="Permalink to this heading"></a></h3>
+<h3>AvgPool2d(name: str, activations: Tensor, kernel_size: int | Tuple[int, int], stride: int = 1, padding: int | str = ‘same’, ceil_mode: bool = False, count_include_pad: bool = True, divisor_override: float | None = None, channel_last: bool = False)<a class="headerlink" href="#avgpool2d-name-str-activations-tensor-kernel-size-int-tuple-int-int-stride-int-1-padding-int-str-same-ceil-mode-bool-false-count-include-pad-bool-true-divisor-override-float-none-none-channel-last-bool-false" title="Link to this heading"></a></h3>
 <p>Avgpool2d transformation on input activations</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1382,7 +1382,7 @@ of length: (K*K // weight_grouping)</p>
 </ul>
 </section>
 <section id="nn">
-<h3>NN<a class="headerlink" href="#nn" title="Permalink to this heading"></a></h3>
+<h3>NN<a class="headerlink" href="#nn" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.op.nn.Softmax"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">Softmax</span></code></span></a>(name, operandA, *, dim[, stable])</p></th>
@@ -1398,7 +1398,7 @@ of length: (K*K // weight_grouping)</p>
 <p><a id="module-pybuda.op.nn"></a></p>
 </section>
 <section id="softmax-name-str-operanda-tensor-dim-int-stable-bool-true">
-<h3>Softmax(name: str, operandA: Tensor, *, dim: int, stable: bool = True)<a class="headerlink" href="#softmax-name-str-operanda-tensor-dim-int-stable-bool-true" title="Permalink to this heading"></a></h3>
+<h3>Softmax(name: str, operandA: Tensor, *, dim: int, stable: bool = True)<a class="headerlink" href="#softmax-name-str-operanda-tensor-dim-int-stable-bool-true" title="Link to this heading"></a></h3>
 <p>Softmax operation.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1416,7 +1416,7 @@ Tensor</p></li>
 </ul>
 </section>
 <section id="layernorm-name-str-operanda-tensor-weights-tensor-parameter-bias-tensor-parameter-dim-int-1-epsilon-float-1e-05">
-<h3>Layernorm(name: str, operandA: Tensor, weights: Tensor | Parameter, bias: Tensor | Parameter, dim: int = -1, epsilon: float = 1e-05)<a class="headerlink" href="#layernorm-name-str-operanda-tensor-weights-tensor-parameter-bias-tensor-parameter-dim-int-1-epsilon-float-1e-05" title="Permalink to this heading"></a></h3>
+<h3>Layernorm(name: str, operandA: Tensor, weights: Tensor | Parameter, bias: Tensor | Parameter, dim: int = -1, epsilon: float = 1e-05)<a class="headerlink" href="#layernorm-name-str-operanda-tensor-weights-tensor-parameter-bias-tensor-parameter-dim-int-1-epsilon-float-1e-05" title="Link to this heading"></a></h3>
 <p>Layer normalization.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1433,7 +1433,7 @@ Tensor</p></li>
 </section>
 </section>
 <section id="module-types">
-<h2>Module Types<a class="headerlink" href="#module-types" title="Permalink to this heading"></a></h2>
+<h2>Module Types<a class="headerlink" href="#module-types" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.Module"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">Module</span></code></span></a>(name)</p></th>
@@ -1456,10 +1456,10 @@ Tensor</p></li>
 </tbody>
 </table>
 <section id="class-module-name-str">
-<h3><em>class</em> Module(name: str)<a class="headerlink" href="#class-module-name-str" title="Permalink to this heading"></a></h3>
+<h3><em>class</em> Module(name: str)<a class="headerlink" href="#class-module-name-str" title="Link to this heading"></a></h3>
 <p>Module class contains a workload that can be assigned to a single device. The workload can be implemented in PyTorch or in PyBuda.</p>
 <section id="get-device">
-<h4>get_device()<a class="headerlink" href="#get-device" title="Permalink to this heading"></a></h4>
+<h4>get_device()<a class="headerlink" href="#get-device" title="Link to this heading"></a></h4>
 <p>Returns the device that this op is placed onto.</p>
 <ul class="simple">
 <li><p><strong>Returns:</strong>
@@ -1469,7 +1469,7 @@ Optional[<a class="reference internal" href="#pybuda.Device"><span class="xref m
 </ul>
 </section>
 <section id="get-name">
-<h4>get_name()<a class="headerlink" href="#get-name" title="Permalink to this heading"></a></h4>
+<h4>get_name()<a class="headerlink" href="#get-name" title="Link to this heading"></a></h4>
 <p>Returns the name of the module.</p>
 <ul class="simple">
 <li><p><strong>Returns:</strong>
@@ -1479,7 +1479,7 @@ Optional[<a class="reference internal" href="#pybuda.Device"><span class="xref m
 </ul>
 </section>
 <section id="run-args">
-<h4>run(*args)<a class="headerlink" href="#run-args" title="Permalink to this heading"></a></h4>
+<h4>run(*args)<a class="headerlink" href="#run-args" title="Link to this heading"></a></h4>
 <p>Run inference on this module on a TT device. There should be no other modules manually placed on any devices.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1492,11 +1492,11 @@ Tuple[tensor,….]</p></li>
 </section>
 </section>
 <section id="class-pytorchmodule-name-str-module-module-redirect-forward-bool-true">
-<h3><em>class</em> PyTorchModule(name: str, module: Module, redirect_forward: bool = True)<a class="headerlink" href="#class-pytorchmodule-name-str-module-module-redirect-forward-bool-true" title="Permalink to this heading"></a></h3>
+<h3><em>class</em> PyTorchModule(name: str, module: Module, redirect_forward: bool = True)<a class="headerlink" href="#class-pytorchmodule-name-str-module-module-redirect-forward-bool-true" title="Link to this heading"></a></h3>
 <p>A wrapper around a PyTorch module. If placed on a CPU device, PyTorchModules will be executed as is, and if placed
 on a TT device, modules will be lowered to PyBuda.</p>
 <section id="forward-args-kwargs">
-<h4>forward(*args, **kwargs)<a class="headerlink" href="#forward-args-kwargs" title="Permalink to this heading"></a></h4>
+<h4>forward(*args, **kwargs)<a class="headerlink" href="#forward-args-kwargs" title="Link to this heading"></a></h4>
 <p>Run PyTorch module forward, with pre-loaded inputs in input queues</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1512,7 +1512,7 @@ Tuple[torch.tensor]</p></li>
 </ul>
 </section>
 <section id="backward-args">
-<h4>backward(*args)<a class="headerlink" href="#backward-args" title="Permalink to this heading"></a></h4>
+<h4>backward(*args)<a class="headerlink" href="#backward-args" title="Link to this heading"></a></h4>
 <p>Run PyTorch module backward, with pre-loaded inputs in input queues</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1520,7 +1520,7 @@ Tuple[torch.tensor]</p></li>
 </ul>
 </section>
 <section id="add-parameter-name-str-parameter-parameter">
-<h4>add_parameter(name: str, parameter: Parameter)<a class="headerlink" href="#add-parameter-name-str-parameter-parameter" title="Permalink to this heading"></a></h4>
+<h4>add_parameter(name: str, parameter: Parameter)<a class="headerlink" href="#add-parameter-name-str-parameter-parameter" title="Link to this heading"></a></h4>
 <p>Adds a new parameter.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1533,7 +1533,7 @@ Tuple[torch.tensor]</p></li>
 </ul>
 </section>
 <section id="set-parameters-kwargs">
-<h4>set_parameters(**kwargs)<a class="headerlink" href="#set-parameters-kwargs" title="Permalink to this heading"></a></h4>
+<h4>set_parameters(**kwargs)<a class="headerlink" href="#set-parameters-kwargs" title="Link to this heading"></a></h4>
 <p>Set parameters (weights) in this module, by name.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1541,7 +1541,7 @@ Tuple[torch.tensor]</p></li>
 </ul>
 </section>
 <section id="get-parameters">
-<h4>get_parameters()<a class="headerlink" href="#get-parameters" title="Permalink to this heading"></a></h4>
+<h4>get_parameters()<a class="headerlink" href="#get-parameters" title="Link to this heading"></a></h4>
 <p>Return the list of parameters defined in this module</p>
 <ul class="simple">
 <li><p><strong>Returns:</strong>
@@ -1552,10 +1552,10 @@ List[Parameter]</p></li>
 </section>
 </section>
 <section id="class-tfmodule-name-str-module-model">
-<h3><em>class</em> TFModule(name: str, module: Model)<a class="headerlink" href="#class-tfmodule-name-str-module-model" title="Permalink to this heading"></a></h3>
+<h3><em>class</em> TFModule(name: str, module: Model)<a class="headerlink" href="#class-tfmodule-name-str-module-model" title="Link to this heading"></a></h3>
 <p>A wrapper around a TF module. Currently, TF modules can only run on a CPU device.</p>
 <section id="id1">
-<h4>forward(*args, **kwargs)<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h4>
+<h4>forward(*args, **kwargs)<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
 <p>Run TF module forward, converting pytorch tensors as necessary</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1571,7 +1571,7 @@ Tuple[tf.Tensor]</p></li>
 </ul>
 </section>
 <section id="call-args-kwargs">
-<h4>call(*args, **kwargs)<a class="headerlink" href="#call-args-kwargs" title="Permalink to this heading"></a></h4>
+<h4>call(*args, **kwargs)<a class="headerlink" href="#call-args-kwargs" title="Link to this heading"></a></h4>
 <p>Run TF module forward, with pre-loaded inputs in input queues</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1587,7 +1587,7 @@ Tuple[tf.Tensor]</p></li>
 </ul>
 </section>
 <section id="id2">
-<h4>backward(*args)<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h4>
+<h4>backward(*args)<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
 <p>Run TF module backward, with pre-loaded inputs in input queues</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1596,18 +1596,18 @@ Tuple[tf.Tensor]</p></li>
 </section>
 </section>
 <section id="class-onnxmodule-name-str-module-modelproto-onnx-path-str">
-<h3><em>class</em> OnnxModule(name: str, module: ModelProto, onnx_path: str)<a class="headerlink" href="#class-onnxmodule-name-str-module-modelproto-onnx-path-str" title="Permalink to this heading"></a></h3>
+<h3><em>class</em> OnnxModule(name: str, module: ModelProto, onnx_path: str)<a class="headerlink" href="#class-onnxmodule-name-str-module-modelproto-onnx-path-str" title="Link to this heading"></a></h3>
 <p>A wrapper around a Onnx module.</p>
 </section>
 <section id="class-pybudamodule-name-str">
-<h3><em>class</em> PyBudaModule(name: str)<a class="headerlink" href="#class-pybudamodule-name-str" title="Permalink to this heading"></a></h3>
+<h3><em>class</em> PyBudaModule(name: str)<a class="headerlink" href="#class-pybudamodule-name-str" title="Link to this heading"></a></h3>
 <p>A base class for all PyBuda modules. User should extend this class and implement forward function with workload implementation.</p>
 <section id="pre-forward-args-kwargs">
-<h4>pre_forward(*args, **kwargs)<a class="headerlink" href="#pre-forward-args-kwargs" title="Permalink to this heading"></a></h4>
+<h4>pre_forward(*args, **kwargs)<a class="headerlink" href="#pre-forward-args-kwargs" title="Link to this heading"></a></h4>
 <p>Called before forward. Override this function to add custom logic.</p>
 </section>
 <section id="add-parameter-name-str-parameter-parameter-prepend-name-bool-false">
-<h4>add_parameter(name: str, parameter: Parameter, prepend_name: bool = False)<a class="headerlink" href="#add-parameter-name-str-parameter-parameter-prepend-name-bool-false" title="Permalink to this heading"></a></h4>
+<h4>add_parameter(name: str, parameter: Parameter, prepend_name: bool = False)<a class="headerlink" href="#add-parameter-name-str-parameter-parameter-prepend-name-bool-false" title="Link to this heading"></a></h4>
 <p>Adds a new parameter.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1620,7 +1620,7 @@ Tuple[tf.Tensor]</p></li>
 </ul>
 </section>
 <section id="add-constant-name-str-prepend-name-bool-false-shape-tuple-int-none-none">
-<h4>add_constant(name: str, prepend_name: bool = False, shape: Tuple[int] | None = None)<a class="headerlink" href="#add-constant-name-str-prepend-name-bool-false-shape-tuple-int-none-none" title="Permalink to this heading"></a></h4>
+<h4>add_constant(name: str, prepend_name: bool = False, shape: Tuple[int] | None = None)<a class="headerlink" href="#add-constant-name-str-prepend-name-bool-false-shape-tuple-int-none-none" title="Link to this heading"></a></h4>
 <p>Adds a new constant.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1632,7 +1632,7 @@ Tuple[tf.Tensor]</p></li>
 </ul>
 </section>
 <section id="get-constant-name">
-<h4>get_constant(name)<a class="headerlink" href="#get-constant-name" title="Permalink to this heading"></a></h4>
+<h4>get_constant(name)<a class="headerlink" href="#get-constant-name" title="Link to this heading"></a></h4>
 <p>Gets a constant by name</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1644,7 +1644,7 @@ pybuda.Tensor</p></li>
 </ul>
 </section>
 <section id="set-constant-name-str-data-tensor-tensor-ndarray">
-<h4>set_constant(name: str, data: Tensor | Tensor | ndarray)<a class="headerlink" href="#set-constant-name-str-data-tensor-tensor-ndarray" title="Permalink to this heading"></a></h4>
+<h4>set_constant(name: str, data: Tensor | Tensor | ndarray)<a class="headerlink" href="#set-constant-name-str-data-tensor-tensor-ndarray" title="Link to this heading"></a></h4>
 <p>Set value for a module constant.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1656,7 +1656,7 @@ pybuda.Tensor</p></li>
 </ul>
 </section>
 <section id="get-parameter-name">
-<h4>get_parameter(name)<a class="headerlink" href="#get-parameter-name" title="Permalink to this heading"></a></h4>
+<h4>get_parameter(name)<a class="headerlink" href="#get-parameter-name" title="Link to this heading"></a></h4>
 <p>Gets a parameter by name</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1668,7 +1668,7 @@ Parameter</p></li>
 </ul>
 </section>
 <section id="get-parameters-submodules-bool-true">
-<h4>get_parameters(submodules: bool = True)<a class="headerlink" href="#get-parameters-submodules-bool-true" title="Permalink to this heading"></a></h4>
+<h4>get_parameters(submodules: bool = True)<a class="headerlink" href="#get-parameters-submodules-bool-true" title="Link to this heading"></a></h4>
 <p>Return the list of parameters defined in this module and (optionally) all submodules.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1680,7 +1680,7 @@ List[Parameter]</p></li>
 </ul>
 </section>
 <section id="set-parameter-name-str-data-tensor-tensor-ndarray">
-<h4>set_parameter(name: str, data: Tensor | Tensor | ndarray)<a class="headerlink" href="#set-parameter-name-str-data-tensor-tensor-ndarray" title="Permalink to this heading"></a></h4>
+<h4>set_parameter(name: str, data: Tensor | Tensor | ndarray)<a class="headerlink" href="#set-parameter-name-str-data-tensor-tensor-ndarray" title="Link to this heading"></a></h4>
 <p>Set value for a module parameter.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1692,7 +1692,7 @@ List[Parameter]</p></li>
 </ul>
 </section>
 <section id="load-parameter-dict-data-dict-str-tensor-tensor-ndarray">
-<h4>load_parameter_dict(data: Dict[str, Tensor | Tensor | ndarray])<a class="headerlink" href="#load-parameter-dict-data-dict-str-tensor-tensor-ndarray" title="Permalink to this heading"></a></h4>
+<h4>load_parameter_dict(data: Dict[str, Tensor | Tensor | ndarray])<a class="headerlink" href="#load-parameter-dict-data-dict-str-tensor-tensor-ndarray" title="Link to this heading"></a></h4>
 <p>Load all parameter values specified in the dictionary.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1700,7 +1700,7 @@ List[Parameter]</p></li>
 </ul>
 </section>
 <section id="insert-tapout-queue-for-op-op-name-str-output-index-int">
-<h4>insert_tapout_queue_for_op(op_name: str, output_index: int)<a class="headerlink" href="#insert-tapout-queue-for-op-op-name-str-output-index-int" title="Permalink to this heading"></a></h4>
+<h4>insert_tapout_queue_for_op(op_name: str, output_index: int)<a class="headerlink" href="#insert-tapout-queue-for-op-op-name-str-output-index-int" title="Link to this heading"></a></h4>
 <p>Insert an intermediate queue for op (used for checking/debugging)</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1718,7 +1718,7 @@ IntQueueHandle</p></li>
 </section>
 </section>
 <section id="device-types">
-<h2>Device Types<a class="headerlink" href="#device-types" title="Permalink to this heading"></a></h2>
+<h2>Device Types<a class="headerlink" href="#device-types" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.Device"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">Device</span></code></span></a>(name[, mp_context])</p></th>
@@ -1735,7 +1735,7 @@ IntQueueHandle</p></li>
 </tbody>
 </table>
 <section id="class-device-name-str-mp-context-none">
-<h3><em>class</em> Device(name: str, mp_context=None)<a class="headerlink" href="#class-device-name-str-mp-context-none" title="Permalink to this heading"></a></h3>
+<h3><em>class</em> Device(name: str, mp_context=None)<a class="headerlink" href="#class-device-name-str-mp-context-none" title="Link to this heading"></a></h3>
 <p>Device class represents a physical device which can be a Tenstorrent device, or a CPU. In a typical operation,
 each device spawns a process on the host CPU which is either used to run commands on the CPU (if device is
 a CPU), or feeds commands to the Tenstorrent device.</p>
@@ -1744,7 +1744,7 @@ some kind of multiprocessing queues with shared memory storage, and Tenstorrent 
 on-device memory.</p>
 <p>One or more Modules can be placed on the device to be executed.</p>
 <section id="place-module-module-module-tuple-module-list-module">
-<h4>place_module(module: <a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a> | Tuple[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>] | List[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>])<a class="headerlink" href="#place-module-module-module-tuple-module-list-module" title="Permalink to this heading"></a></h4>
+<h4>place_module(module: <a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a> | Tuple[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>] | List[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>])<a class="headerlink" href="#place-module-module-module-tuple-module-list-module" title="Link to this heading"></a></h4>
 <p>Places a module, or list of modules, on this device for execution. Modules will be run as a sequential pipeline
 on this single device.</p>
 <ul class="simple">
@@ -1753,7 +1753,7 @@ on this single device.</p>
 </ul>
 </section>
 <section id="place-loss-module-module-module">
-<h4>place_loss_module(module: <a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>)<a class="headerlink" href="#place-loss-module-module-module" title="Permalink to this heading"></a></h4>
+<h4>place_loss_module(module: <a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>)<a class="headerlink" href="#place-loss-module-module-module" title="Link to this heading"></a></h4>
 <p>Places a module used to calculate loss on this device. This must be the last device in the pipeline.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1761,11 +1761,11 @@ on this single device.</p>
 </ul>
 </section>
 <section id="remove-loss-module">
-<h4>remove_loss_module()<a class="headerlink" href="#remove-loss-module" title="Permalink to this heading"></a></h4>
+<h4>remove_loss_module()<a class="headerlink" href="#remove-loss-module" title="Link to this heading"></a></h4>
 <p>Remove module used to calculate loss from this device</p>
 </section>
 <section id="push-to-inputs-tensors-tuple-tensor-tensor-dict-str-tensor-tensor">
-<h4>push_to_inputs(*tensors: Tuple[Tensor | Tensor, …] | Dict[str, Tensor | Tensor])<a class="headerlink" href="#push-to-inputs-tensors-tuple-tensor-tensor-dict-str-tensor-tensor" title="Permalink to this heading"></a></h4>
+<h4>push_to_inputs(*tensors: Tuple[Tensor | Tensor, …] | Dict[str, Tensor | Tensor])<a class="headerlink" href="#push-to-inputs-tensors-tuple-tensor-tensor-dict-str-tensor-tensor" title="Link to this heading"></a></h4>
 <p>Push tensor(s) to module inputs, either in order, or by keyword argumet if a dictionary is used. The data will be queued
 up on the target device until it is ready to be consumed.</p>
 <p>This call can block if there is no space on the target device’s input queues.</p>
@@ -1775,7 +1775,7 @@ up on the target device until it is ready to be consumed.</p>
 </ul>
 </section>
 <section id="push-to-target-inputs-tensors">
-<h4>push_to_target_inputs(*tensors)<a class="headerlink" href="#push-to-target-inputs-tensors" title="Permalink to this heading"></a></h4>
+<h4>push_to_target_inputs(*tensors)<a class="headerlink" href="#push-to-target-inputs-tensors" title="Link to this heading"></a></h4>
 <p>Push tensor(s) to module training target inputs, in order. The data will be queued up on the target
 device until it is ready to be consumed.</p>
 <p>This call can block if there is no space on the target device’s input queues.</p>
@@ -1785,11 +1785,11 @@ device until it is ready to be consumed.</p>
 </ul>
 </section>
 <section id="push-to-command-queue-cmd">
-<h4>push_to_command_queue(cmd)<a class="headerlink" href="#push-to-command-queue-cmd" title="Permalink to this heading"></a></h4>
+<h4>push_to_command_queue(cmd)<a class="headerlink" href="#push-to-command-queue-cmd" title="Link to this heading"></a></h4>
 <p>Send command to the running main loop in another process</p>
 </section>
 <section id="get-command-queue-response">
-<h4>get_command_queue_response()<a class="headerlink" href="#get-command-queue-response" title="Permalink to this heading"></a></h4>
+<h4>get_command_queue_response()<a class="headerlink" href="#get-command-queue-response" title="Link to this heading"></a></h4>
 <p>Read from command queue response. This is blocking.</p>
 <ul class="simple">
 <li><p><strong>Returns:</strong>
@@ -1799,7 +1799,7 @@ Optional[Dict]</p></li>
 </ul>
 </section>
 <section id="get-next-command-command-queue-queue">
-<h4>get_next_command(command_queue: Queue)<a class="headerlink" href="#get-next-command-command-queue-queue" title="Permalink to this heading"></a></h4>
+<h4>get_next_command(command_queue: Queue)<a class="headerlink" href="#get-next-command-command-queue-queue" title="Link to this heading"></a></h4>
 <p>Read next command to run, from the given command queue. Blocking.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1811,7 +1811,7 @@ Command</p></li>
 </ul>
 </section>
 <section id="run-next-command-cmd-command">
-<h4>run_next_command(cmd: Command)<a class="headerlink" href="#run-next-command-cmd-command" title="Permalink to this heading"></a></h4>
+<h4>run_next_command(cmd: Command)<a class="headerlink" href="#run-next-command-cmd-command" title="Link to this heading"></a></h4>
 <p>In concurrent mode, this is called in a forever loop by the process dedicated to this device.
 In sequential mode, the main process will call this until there’s no more work to do.</p>
 <ul class="simple">
@@ -1824,15 +1824,15 @@ bool</p></li>
 </ul>
 </section>
 <section id="dc-transfer-thread-direction-str-direction-queue-queue">
-<h4>dc_transfer_thread(direction: str, direction_queue: Queue)<a class="headerlink" href="#dc-transfer-thread-direction-str-direction-queue-queue" title="Permalink to this heading"></a></h4>
+<h4>dc_transfer_thread(direction: str, direction_queue: Queue)<a class="headerlink" href="#dc-transfer-thread-direction-str-direction-queue-queue" title="Link to this heading"></a></h4>
 <p>Keep transfering data in a thread. One per direction.</p>
 </section>
 <section id="dc-transfer-direction-str">
-<h4>dc_transfer(direction: str)<a class="headerlink" href="#dc-transfer-direction-str" title="Permalink to this heading"></a></h4>
+<h4>dc_transfer(direction: str)<a class="headerlink" href="#dc-transfer-direction-str" title="Link to this heading"></a></h4>
 <p>Transfer data between devices</p>
 </section>
 <section id="run-output-dir-str">
-<h4>run(output_dir: str)<a class="headerlink" href="#run-output-dir-str" title="Permalink to this heading"></a></h4>
+<h4>run(output_dir: str)<a class="headerlink" href="#run-output-dir-str" title="Link to this heading"></a></h4>
 <p>Main process loop in concurrent mode.</p>
 <p>The loop receives commands through its command queue, which indicate how many epochs &amp; iterations to
 run, whether to run training or inference, and position in the pipeline.</p>
@@ -1844,25 +1844,25 @@ to an exception in another process</p>
 </ul>
 </section>
 <section id="compile-for-training-bool-microbatch-size-int-0-microbatch-count-int-1">
-<h4>compile_for(training: bool, microbatch_size: int = 0, microbatch_count: int = 1)<a class="headerlink" href="#compile-for-training-bool-microbatch-size-int-0-microbatch-count-int-1" title="Permalink to this heading"></a></h4>
+<h4>compile_for(training: bool, microbatch_size: int = 0, microbatch_count: int = 1)<a class="headerlink" href="#compile-for-training-bool-microbatch-size-int-0-microbatch-count-int-1" title="Link to this heading"></a></h4>
 <p>Save microbatch size and count</p>
 </section>
 <section id="get-first-targets">
-<h4>get_first_targets()<a class="headerlink" href="#get-first-targets" title="Permalink to this heading"></a></h4>
+<h4>get_first_targets()<a class="headerlink" href="#get-first-targets" title="Link to this heading"></a></h4>
 <p>Return the tuple of first targets pushed to this device</p>
 </section>
 <section id="get-first-inputs-peek-false">
-<h4>get_first_inputs(peek=False)<a class="headerlink" href="#get-first-inputs-peek-false" title="Permalink to this heading"></a></h4>
+<h4>get_first_inputs(peek=False)<a class="headerlink" href="#get-first-inputs-peek-false" title="Link to this heading"></a></h4>
 <p>Return the microbatch size, and first input in microbatch pushed into the device. If input_shapes/input_types
 are provided, then those will be used to create input tensors.</p>
 <p>This is used to compile and optimize the model for dimensions provided by the first input.</p>
 </section>
 <section id="shutdown-device">
-<h4>shutdown_device()<a class="headerlink" href="#shutdown-device" title="Permalink to this heading"></a></h4>
+<h4>shutdown_device()<a class="headerlink" href="#shutdown-device" title="Link to this heading"></a></h4>
 <p>Check for any mp queues that are not empty, and drain them</p>
 </section>
 <section id="cpueval-backward-bw-inputs-list-tensor-parameters-dict-str-tensor">
-<h4>cpueval_backward(bw_inputs: List[Tensor], parameters: Dict[str, Tensor])<a class="headerlink" href="#cpueval-backward-bw-inputs-list-tensor-parameters-dict-str-tensor" title="Permalink to this heading"></a></h4>
+<h4>cpueval_backward(bw_inputs: List[Tensor], parameters: Dict[str, Tensor])<a class="headerlink" href="#cpueval-backward-bw-inputs-list-tensor-parameters-dict-str-tensor" title="Link to this heading"></a></h4>
 <p>Evaluate backward pass for verification. cpueval_forward should’ve been called first, with
 save_for_backward set.</p>
 <ul class="simple">
@@ -1881,7 +1881,7 @@ save_for_backward set.</p>
 </ul>
 </section>
 <section id="generate-loop-count-int-write-index-int">
-<h4>generate(loop_count: int, write_index: int)<a class="headerlink" href="#generate-loop-count-int-write-index-int" title="Permalink to this heading"></a></h4>
+<h4>generate(loop_count: int, write_index: int)<a class="headerlink" href="#generate-loop-count-int-write-index-int" title="Link to this heading"></a></h4>
 <p>Run generate forward pass on each module on this device, in order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1893,7 +1893,7 @@ save_for_backward set.</p>
 </ul>
 </section>
 <section id="forward-loop-count-int">
-<h4>forward(loop_count: int)<a class="headerlink" href="#forward-loop-count-int" title="Permalink to this heading"></a></h4>
+<h4>forward(loop_count: int)<a class="headerlink" href="#forward-loop-count-int" title="Link to this heading"></a></h4>
 <p>Run forward pass on each module on this device, in order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1901,7 +1901,7 @@ save_for_backward set.</p>
 </ul>
 </section>
 <section id="backward-loop-count-int-zero-grad-bool">
-<h4>backward(loop_count: int, zero_grad: bool)<a class="headerlink" href="#backward-loop-count-int-zero-grad-bool" title="Permalink to this heading"></a></h4>
+<h4>backward(loop_count: int, zero_grad: bool)<a class="headerlink" href="#backward-loop-count-int-zero-grad-bool" title="Link to this heading"></a></h4>
 <p>Run backward pass on each module on this device, in reverse order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1915,10 +1915,10 @@ and should be roughly 4-6x the number of devices in the pipeline for ideal perfo
 </section>
 </section>
 <section id="class-cpudevice-name-str-optimizer-f-callable-none-none-scheduler-f-callable-none-none-mp-context-none-retain-backward-graph-false-module-pytorchmodule-list-pytorchmodule-none-none-input-dtypes-list-dtype-none-none">
-<h3><em>class</em> CPUDevice(name: str, optimizer_f: Callable | None = None, scheduler_f: Callable | None = None, mp_context=None, retain_backward_graph=False, module: <a class="reference internal" href="#pybuda.PyTorchModule"><span class="xref myst">PyTorchModule</span></a> | List[<a class="reference internal" href="#pybuda.PyTorchModule"><span class="xref myst">PyTorchModule</span></a>] | None = None, input_dtypes: List[dtype] | None = None)<a class="headerlink" href="#class-cpudevice-name-str-optimizer-f-callable-none-none-scheduler-f-callable-none-none-mp-context-none-retain-backward-graph-false-module-pytorchmodule-list-pytorchmodule-none-none-input-dtypes-list-dtype-none-none" title="Permalink to this heading"></a></h3>
+<h3><em>class</em> CPUDevice(name: str, optimizer_f: Callable | None = None, scheduler_f: Callable | None = None, mp_context=None, retain_backward_graph=False, module: <a class="reference internal" href="#pybuda.PyTorchModule"><span class="xref myst">PyTorchModule</span></a> | List[<a class="reference internal" href="#pybuda.PyTorchModule"><span class="xref myst">PyTorchModule</span></a>] | None = None, input_dtypes: List[dtype] | None = None)<a class="headerlink" href="#class-cpudevice-name-str-optimizer-f-callable-none-none-scheduler-f-callable-none-none-mp-context-none-retain-backward-graph-false-module-pytorchmodule-list-pytorchmodule-none-none-input-dtypes-list-dtype-none-none" title="Link to this heading"></a></h3>
 <p>CPUDevice represents a CPU processor. It will spawn a process and run local operations on the assigned processor.</p>
 <section id="forward-pt-loop-count-int">
-<h4>forward_pt(loop_count: int)<a class="headerlink" href="#forward-pt-loop-count-int" title="Permalink to this heading"></a></h4>
+<h4>forward_pt(loop_count: int)<a class="headerlink" href="#forward-pt-loop-count-int" title="Link to this heading"></a></h4>
 <p>Run forward pass on each module on this device, in order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1926,7 +1926,7 @@ and should be roughly 4-6x the number of devices in the pipeline for ideal perfo
 </ul>
 </section>
 <section id="forward-tf-loop-count-int">
-<h4>forward_tf(loop_count: int)<a class="headerlink" href="#forward-tf-loop-count-int" title="Permalink to this heading"></a></h4>
+<h4>forward_tf(loop_count: int)<a class="headerlink" href="#forward-tf-loop-count-int" title="Link to this heading"></a></h4>
 <p>Run forward pass on each module on this device, in order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1934,7 +1934,7 @@ and should be roughly 4-6x the number of devices in the pipeline for ideal perfo
 </ul>
 </section>
 <section id="id3">
-<h4>forward(loop_count: int)<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<h4>forward(loop_count: int)<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
 <p>Run forward pass on each module on this device, in order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1942,7 +1942,7 @@ and should be roughly 4-6x the number of devices in the pipeline for ideal perfo
 </ul>
 </section>
 <section id="id4">
-<h4>backward(loop_count: int, zero_grad: bool)<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
+<h4>backward(loop_count: int, zero_grad: bool)<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
 <p>Run backward pass on each module on this device, in reverse order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -1955,7 +1955,7 @@ and should be roughly 4-6x the number of devices in the pipeline for ideal perfo
 </ul>
 </section>
 <section id="id5">
-<h4>generate(loop_count: int, write_index: int)<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<h4>generate(loop_count: int, write_index: int)<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
 <p>Run forward pass on each module on this device, in order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -1963,7 +1963,7 @@ and should be roughly 4-6x the number of devices in the pipeline for ideal perfo
 </ul>
 </section>
 <section id="compile-for-pt-inputs-tuple-tensor-compiler-cfg-compilerconfig-targets-list-tensor-microbatch-size-int-0-microbatch-count-int-1-verify-cfg-verifyconfig-none-none">
-<h4>compile_for_pt(inputs: Tuple[Tensor, …], compiler_cfg: CompilerConfig, targets: List[Tensor] = [], microbatch_size: int = 0, microbatch_count: int = 1, verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#compile-for-pt-inputs-tuple-tensor-compiler-cfg-compilerconfig-targets-list-tensor-microbatch-size-int-0-microbatch-count-int-1-verify-cfg-verifyconfig-none-none" title="Permalink to this heading"></a></h4>
+<h4>compile_for_pt(inputs: Tuple[Tensor, …], compiler_cfg: CompilerConfig, targets: List[Tensor] = [], microbatch_size: int = 0, microbatch_count: int = 1, verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#compile-for-pt-inputs-tuple-tensor-compiler-cfg-compilerconfig-targets-list-tensor-microbatch-size-int-0-microbatch-count-int-1-verify-cfg-verifyconfig-none-none" title="Link to this heading"></a></h4>
 <p>For a CPU device, there is currently no compilation. This function propagates input shapes through the model
 to return output shapes and formats.</p>
 <ul class="simple">
@@ -1985,7 +1985,7 @@ Tuple[Tensor, …]</p></li>
 </ul>
 </section>
 <section id="compile-for-tf-inputs-tuple-tensor-compiler-cfg-compilerconfig-targets-list-tensor-microbatch-size-int-0-verify-cfg-verifyconfig-none-none">
-<h4>compile_for_tf(inputs: Tuple[Tensor, …], compiler_cfg: CompilerConfig, targets: List[Tensor] = [], microbatch_size: int = 0, verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#compile-for-tf-inputs-tuple-tensor-compiler-cfg-compilerconfig-targets-list-tensor-microbatch-size-int-0-verify-cfg-verifyconfig-none-none" title="Permalink to this heading"></a></h4>
+<h4>compile_for_tf(inputs: Tuple[Tensor, …], compiler_cfg: CompilerConfig, targets: List[Tensor] = [], microbatch_size: int = 0, verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#compile-for-tf-inputs-tuple-tensor-compiler-cfg-compilerconfig-targets-list-tensor-microbatch-size-int-0-verify-cfg-verifyconfig-none-none" title="Link to this heading"></a></h4>
 <p>For a CPU device, there is currently no compilation. This function propagates input shapes through the model
 to return output shapes and formats.</p>
 <ul class="simple">
@@ -2006,7 +2006,7 @@ Tuple[Tensor, …]</p></li>
 </ul>
 </section>
 <section id="compile-for-inputs-tuple-tensor-compiler-cfg-compilerconfig-targets-list-tensor-microbatch-size-int-0-microbatch-count-int-1-verify-cfg-verifyconfig-none-none">
-<h4>compile_for(inputs: Tuple[Tensor, …], compiler_cfg: CompilerConfig, targets: List[Tensor] = [], microbatch_size: int = 0, microbatch_count: int = 1, verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#compile-for-inputs-tuple-tensor-compiler-cfg-compilerconfig-targets-list-tensor-microbatch-size-int-0-microbatch-count-int-1-verify-cfg-verifyconfig-none-none" title="Permalink to this heading"></a></h4>
+<h4>compile_for(inputs: Tuple[Tensor, …], compiler_cfg: CompilerConfig, targets: List[Tensor] = [], microbatch_size: int = 0, microbatch_count: int = 1, verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#compile-for-inputs-tuple-tensor-compiler-cfg-compilerconfig-targets-list-tensor-microbatch-size-int-0-microbatch-count-int-1-verify-cfg-verifyconfig-none-none" title="Link to this heading"></a></h4>
 <p>For a CPU device, there is currently no compilation. This function propagates input shapes through the model
 to return output shapes and formats.</p>
 <ul class="simple">
@@ -2028,7 +2028,7 @@ Tuple[Tensor, …]</p></li>
 </ul>
 </section>
 <section id="cpueval-forward-pt-inputs-list-tensor-parameters-dict-str-tensor-save-for-backward-bool-targets-list-tensor">
-<h4>cpueval_forward_pt(inputs: List[Tensor], parameters: Dict[str, Tensor], save_for_backward: bool, targets: List[Tensor] = [])<a class="headerlink" href="#cpueval-forward-pt-inputs-list-tensor-parameters-dict-str-tensor-save-for-backward-bool-targets-list-tensor" title="Permalink to this heading"></a></h4>
+<h4>cpueval_forward_pt(inputs: List[Tensor], parameters: Dict[str, Tensor], save_for_backward: bool, targets: List[Tensor] = [])<a class="headerlink" href="#cpueval-forward-pt-inputs-list-tensor-parameters-dict-str-tensor-save-for-backward-bool-targets-list-tensor" title="Link to this heading"></a></h4>
 <p>Evaluate forward pass for verification</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -2046,7 +2046,7 @@ List[Tensor]</p></li>
 </ul>
 </section>
 <section id="cpueval-forward-tf-inputs-list-tensor-parameters-dict-str-tensor-save-for-backward-bool-targets-list-tensor">
-<h4>cpueval_forward_tf(inputs: List[Tensor], parameters: Dict[str, Tensor], save_for_backward: bool, targets: List[Tensor] = [])<a class="headerlink" href="#cpueval-forward-tf-inputs-list-tensor-parameters-dict-str-tensor-save-for-backward-bool-targets-list-tensor" title="Permalink to this heading"></a></h4>
+<h4>cpueval_forward_tf(inputs: List[Tensor], parameters: Dict[str, Tensor], save_for_backward: bool, targets: List[Tensor] = [])<a class="headerlink" href="#cpueval-forward-tf-inputs-list-tensor-parameters-dict-str-tensor-save-for-backward-bool-targets-list-tensor" title="Link to this heading"></a></h4>
 <p>Evaluate forward pass for verification</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -2064,7 +2064,7 @@ List[Tensor]</p></li>
 </ul>
 </section>
 <section id="cpueval-forward-inputs-list-tensor-parameters-dict-str-tensor-save-for-backward-bool-targets-list-tensor">
-<h4>cpueval_forward(inputs: List[Tensor], parameters: Dict[str, Tensor], save_for_backward: bool, targets: List[Tensor] = [])<a class="headerlink" href="#cpueval-forward-inputs-list-tensor-parameters-dict-str-tensor-save-for-backward-bool-targets-list-tensor" title="Permalink to this heading"></a></h4>
+<h4>cpueval_forward(inputs: List[Tensor], parameters: Dict[str, Tensor], save_for_backward: bool, targets: List[Tensor] = [])<a class="headerlink" href="#cpueval-forward-inputs-list-tensor-parameters-dict-str-tensor-save-for-backward-bool-targets-list-tensor" title="Link to this heading"></a></h4>
 <p>Evaluate forward pass for verification</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -2082,7 +2082,7 @@ List[Tensor]</p></li>
 </ul>
 </section>
 <section id="id6">
-<h4>cpueval_backward(bw_inputs: List[Tensor], parameters: Dict[str, Tensor])<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<h4>cpueval_backward(bw_inputs: List[Tensor], parameters: Dict[str, Tensor])<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
 <p>Evaluate backward pass for verification. cpueval_forward should’ve been called first, with
 save_for_backward set.</p>
 <ul class="simple">
@@ -2101,7 +2101,7 @@ save_for_backward set.</p>
 </ul>
 </section>
 <section id="id7">
-<h4>place_module(module: <a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a> | Tuple[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>] | List[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>])<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<h4>place_module(module: <a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a> | Tuple[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>] | List[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>])<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
 <p>Places a module, or list of modules, on this device for execution. Modules will be run as a sequential pipeline
 on this single device.</p>
 <ul class="simple">
@@ -2110,27 +2110,27 @@ on this single device.</p>
 </ul>
 </section>
 <section id="pop-parameter-checkpoint">
-<h4>pop_parameter_checkpoint()<a class="headerlink" href="#pop-parameter-checkpoint" title="Permalink to this heading"></a></h4>
+<h4>pop_parameter_checkpoint()<a class="headerlink" href="#pop-parameter-checkpoint" title="Link to this heading"></a></h4>
 <p>Return a dictionary of current parameter values for the models on this device.</p>
 </section>
 <section id="set-debug-gradient-trace-queue-q-queue">
-<h4>set_debug_gradient_trace_queue(q: Queue)<a class="headerlink" href="#set-debug-gradient-trace-queue-q-queue" title="Permalink to this heading"></a></h4>
+<h4>set_debug_gradient_trace_queue(q: Queue)<a class="headerlink" href="#set-debug-gradient-trace-queue-q-queue" title="Link to this heading"></a></h4>
 <p>[debug feature] Provide a queue to which incoming and outgoing gradients will be stored, for debug tracing.</p>
 </section>
 <section id="sync">
-<h4>sync()<a class="headerlink" href="#sync" title="Permalink to this heading"></a></h4>
+<h4>sync()<a class="headerlink" href="#sync" title="Link to this heading"></a></h4>
 <p>Block until queued up commands have completed and the device is idle.</p>
 </section>
 </section>
 <section id="class-ttdevice-name-str-num-chips-int-none-none-chip-ids-typing-list-int-typing-list-typing-tuple-int-none-none-arch-pybuda-c-backend-api-backenddevice-none-none-devtype-pybuda-c-backend-api-backendtype-none-none-device-mode-pybuda-c-backend-api-devicemode-none-none-optimizer-pybuda-optimizers-optimizer-none-none-scheduler-pybuda-schedulers-learningratescheduler-none-none-fp32-fallback-pybuda-c-dataformat-dataformat-float16-b-5-mp-context-none-module-pybuda-module-module-typing-list-pybuda-module-module-none-none">
-<h3><em>class</em> TTDevice(name: str, num_chips: int | None = None, chip_ids: ~typing.List[int] | ~typing.List[~typing.Tuple[int]] | None = None, arch: ~pybuda._C.backend_api.BackendDevice | None = None, devtype: ~pybuda._C.backend_api.BackendType | None = None, device_mode: ~pybuda._C.backend_api.DeviceMode | None = None, optimizer: ~pybuda.optimizers.Optimizer | None = None, scheduler: ~pybuda.schedulers.LearningRateScheduler | None = None, fp32_fallback: ~pybuda._C.DataFormat = &lt;DataFormat.Float16_b: 5&gt;, mp_context=None, module: ~pybuda.module.Module | ~typing.List[~pybuda.module.Module] | None = None)<a class="headerlink" href="#class-ttdevice-name-str-num-chips-int-none-none-chip-ids-typing-list-int-typing-list-typing-tuple-int-none-none-arch-pybuda-c-backend-api-backenddevice-none-none-devtype-pybuda-c-backend-api-backendtype-none-none-device-mode-pybuda-c-backend-api-devicemode-none-none-optimizer-pybuda-optimizers-optimizer-none-none-scheduler-pybuda-schedulers-learningratescheduler-none-none-fp32-fallback-pybuda-c-dataformat-dataformat-float16-b-5-mp-context-none-module-pybuda-module-module-typing-list-pybuda-module-module-none-none" title="Permalink to this heading"></a></h3>
+<h3><em>class</em> TTDevice(name: str, num_chips: int | None = None, chip_ids: ~typing.List[int] | ~typing.List[~typing.Tuple[int]] | None = None, arch: ~pybuda._C.backend_api.BackendDevice | None = None, devtype: ~pybuda._C.backend_api.BackendType | None = None, device_mode: ~pybuda._C.backend_api.DeviceMode | None = None, optimizer: ~pybuda.optimizers.Optimizer | None = None, scheduler: ~pybuda.schedulers.LearningRateScheduler | None = None, fp32_fallback: ~pybuda._C.DataFormat = &lt;DataFormat.Float16_b: 5&gt;, mp_context=None, module: ~pybuda.module.Module | ~typing.List[~pybuda.module.Module] | None = None)<a class="headerlink" href="#class-ttdevice-name-str-num-chips-int-none-none-chip-ids-typing-list-int-typing-list-typing-tuple-int-none-none-arch-pybuda-c-backend-api-backenddevice-none-none-devtype-pybuda-c-backend-api-backendtype-none-none-device-mode-pybuda-c-backend-api-devicemode-none-none-optimizer-pybuda-optimizers-optimizer-none-none-scheduler-pybuda-schedulers-learningratescheduler-none-none-fp32-fallback-pybuda-c-dataformat-dataformat-float16-b-5-mp-context-none-module-pybuda-module-module-typing-list-pybuda-module-module-none-none" title="Link to this heading"></a></h3>
 <p>TTDevice represents one or more Tenstorrent devices that will receive modules to run.</p>
 <section id="get-device-config-compiler-cfg-none">
-<h4>get_device_config(compiler_cfg=None)<a class="headerlink" href="#get-device-config-compiler-cfg-none" title="Permalink to this heading"></a></h4>
+<h4>get_device_config(compiler_cfg=None)<a class="headerlink" href="#get-device-config-compiler-cfg-none" title="Link to this heading"></a></h4>
 <p>Figure out which silicon devices will be used, if in silicon mode</p>
 </section>
 <section id="id8">
-<h4>place_module(module: <a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a> | Tuple[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>] | List[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>])<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
+<h4>place_module(module: <a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a> | Tuple[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>] | List[<a class="reference internal" href="#pybuda.Module"><span class="xref myst">Module</span></a>])<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
 <p>Places a module, or list of modules, on this device for execution. Modules will be run as a sequential pipeline
 on this single device.</p>
 <ul class="simple">
@@ -2139,19 +2139,19 @@ on this single device.</p>
 </ul>
 </section>
 <section id="remove-modules">
-<h4>remove_modules()<a class="headerlink" href="#remove-modules" title="Permalink to this heading"></a></h4>
+<h4>remove_modules()<a class="headerlink" href="#remove-modules" title="Link to this heading"></a></h4>
 <p>Remove placed modules, and clear the device</p>
 </section>
 <section id="set-active-subgraph-subgraph-index-int">
-<h4>set_active_subgraph(subgraph_index: int)<a class="headerlink" href="#set-active-subgraph-subgraph-index-int" title="Permalink to this heading"></a></h4>
+<h4>set_active_subgraph(subgraph_index: int)<a class="headerlink" href="#set-active-subgraph-subgraph-index-int" title="Link to this heading"></a></h4>
 <p>Set the currently active subgraph by limiting the io queues.</p>
 </section>
 <section id="get-active-subgraph">
-<h4>get_active_subgraph()<a class="headerlink" href="#get-active-subgraph" title="Permalink to this heading"></a></h4>
+<h4>get_active_subgraph()<a class="headerlink" href="#get-active-subgraph" title="Link to this heading"></a></h4>
 <p>Gets the currently active subgraph.</p>
 </section>
 <section id="generate-graph-inputs-tensor-target-tensors-list-tensor-return-intermediate-bool-false-graph-name-str-default-graph-compiler-cfg-compilerconfig-none-none-trace-only-bool-false-verify-cfg-verifyconfig-none-none">
-<h4>generate_graph(*inputs: Tensor, target_tensors: List[Tensor] = [], return_intermediate: bool = False, graph_name: str = ‘default_graph’, compiler_cfg: CompilerConfig | None = None, trace_only: bool = False, verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#generate-graph-inputs-tensor-target-tensors-list-tensor-return-intermediate-bool-false-graph-name-str-default-graph-compiler-cfg-compilerconfig-none-none-trace-only-bool-false-verify-cfg-verifyconfig-none-none" title="Permalink to this heading"></a></h4>
+<h4>generate_graph(*inputs: Tensor, target_tensors: List[Tensor] = [], return_intermediate: bool = False, graph_name: str = ‘default_graph’, compiler_cfg: CompilerConfig | None = None, trace_only: bool = False, verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#generate-graph-inputs-tensor-target-tensors-list-tensor-return-intermediate-bool-false-graph-name-str-default-graph-compiler-cfg-compilerconfig-none-none-trace-only-bool-false-verify-cfg-verifyconfig-none-none" title="Link to this heading"></a></h4>
 <p>Generate a buda graph from the modules on the device, and return the graph and output tensors.
 If input tensors have a value set, the output tensor will also have the calculated output value
 set.</p>
@@ -2171,7 +2171,7 @@ Graph, Tuple[Tensor, …], Dict[str, Tensor], Tuple[Tensor, …], Optional[Tenso
 </ul>
 </section>
 <section id="id9">
-<h4>compile_for(inputs: Tuple[Tensor, …], compiler_cfg: CompilerConfig, targets: List[Tensor] = [], microbatch_size: int = 0, microbatch_count: int = 1, verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
+<h4>compile_for(inputs: Tuple[Tensor, …], compiler_cfg: CompilerConfig, targets: List[Tensor] = [], microbatch_size: int = 0, microbatch_count: int = 1, verify_cfg: VerifyConfig | None = None)<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
 <p>Compile modules placed on this device, with given input shapes, input formats, and microbatch size.</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -2196,7 +2196,7 @@ Tuple[Tensor, …]</p></li>
 </ul>
 </section>
 <section id="id10">
-<h4>forward(loop_count: int)<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
+<h4>forward(loop_count: int)<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
 <p>Run forward pass on each module on this device, in order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -2204,7 +2204,7 @@ Tuple[Tensor, …]</p></li>
 </ul>
 </section>
 <section id="generate-loop-count-int-write-index-int-tokens-per-iter-int-token-id-int">
-<h4>generate(loop_count: int, write_index: int, tokens_per_iter: int, token_id: int)<a class="headerlink" href="#generate-loop-count-int-write-index-int-tokens-per-iter-int-token-id-int" title="Permalink to this heading"></a></h4>
+<h4>generate(loop_count: int, write_index: int, tokens_per_iter: int, token_id: int)<a class="headerlink" href="#generate-loop-count-int-write-index-int-tokens-per-iter-int-token-id-int" title="Link to this heading"></a></h4>
 <p>Run forward pass on each module on this device, in order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
@@ -2212,7 +2212,7 @@ Tuple[Tensor, …]</p></li>
 </ul>
 </section>
 <section id="id11">
-<h4>cpueval_forward(inputs: List[Tensor], parameters: Dict[str, Tensor], save_for_backward: bool, targets: List[Tensor] = [])<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
+<h4>cpueval_forward(inputs: List[Tensor], parameters: Dict[str, Tensor], save_for_backward: bool, targets: List[Tensor] = [])<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
 <p>Evaluate forward pass for verification</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -2230,7 +2230,7 @@ List[Tensor]</p></li>
 </ul>
 </section>
 <section id="id12">
-<h4>backward(loop_count: int, zero_grad: bool)<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h4>
+<h4>backward(loop_count: int, zero_grad: bool)<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
 <p>Run backward pass on each module on this device, in reverse order</p>
 <ul class="simple">
 <li><p><strong>Parameters:</strong></p>
@@ -2243,19 +2243,19 @@ and should be roughly 4-6x the number of devices in the pipeline for ideal perfo
 </ul>
 </section>
 <section id="get-parameter-checkpoint">
-<h4>get_parameter_checkpoint()<a class="headerlink" href="#get-parameter-checkpoint" title="Permalink to this heading"></a></h4>
+<h4>get_parameter_checkpoint()<a class="headerlink" href="#get-parameter-checkpoint" title="Link to this heading"></a></h4>
 <p>Return a dictionary of current parameter values for the models on this device</p>
 </section>
 <section id="get-all-parameters">
-<h4>get_all_parameters()<a class="headerlink" href="#get-all-parameters" title="Permalink to this heading"></a></h4>
+<h4>get_all_parameters()<a class="headerlink" href="#get-all-parameters" title="Link to this heading"></a></h4>
 <p>Return a dictionary of current parameter values for the models on this device</p>
 </section>
 <section id="get-parameter-gradients">
-<h4>get_parameter_gradients()<a class="headerlink" href="#get-parameter-gradients" title="Permalink to this heading"></a></h4>
+<h4>get_parameter_gradients()<a class="headerlink" href="#get-parameter-gradients" title="Link to this heading"></a></h4>
 <p>Return a dictionary of currently accumulated gradient values for the models on this device</p>
 </section>
 <section id="get-parameters-ignore-unused-parameters-bool-true">
-<h4>get_parameters(ignore_unused_parameters: bool = True)<a class="headerlink" href="#get-parameters-ignore-unused-parameters-bool-true" title="Permalink to this heading"></a></h4>
+<h4>get_parameters(ignore_unused_parameters: bool = True)<a class="headerlink" href="#get-parameters-ignore-unused-parameters-bool-true" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p><strong>Parameters:</strong>
 <strong>ignore_used_parameters</strong> (<em>bool</em>) – If true, any parameter not being recorded by the graph-trace (i.e. parameter is unused in
@@ -2263,29 +2263,29 @@ graph execution) is not included in the returned list to user.</p></li>
 </ul>
 </section>
 <section id="get-optimizer-params-is-buda-bool">
-<h4>get_optimizer_params(is_buda: bool)<a class="headerlink" href="#get-optimizer-params-is-buda-bool" title="Permalink to this heading"></a></h4>
+<h4>get_optimizer_params(is_buda: bool)<a class="headerlink" href="#get-optimizer-params-is-buda-bool" title="Link to this heading"></a></h4>
 <p>Return a dictionary of dictionaries of optimizer parameters for each model parameter.</p>
 </section>
 <section id="get-scheduler-params-is-buda-bool">
-<h4>get_scheduler_params(is_buda: bool)<a class="headerlink" href="#get-scheduler-params-is-buda-bool" title="Permalink to this heading"></a></h4>
+<h4>get_scheduler_params(is_buda: bool)<a class="headerlink" href="#get-scheduler-params-is-buda-bool" title="Link to this heading"></a></h4>
 <p>Return a dictionary of dictionaries of optimizer parameters used by scheduler.</p>
 </section>
 <section id="get-dram-io-queues-queue-type-str">
-<h4>get_dram_io_queues(queue_type: str)<a class="headerlink" href="#get-dram-io-queues-queue-type-str" title="Permalink to this heading"></a></h4>
+<h4>get_dram_io_queues(queue_type: str)<a class="headerlink" href="#get-dram-io-queues-queue-type-str" title="Link to this heading"></a></h4>
 <p>Returns the appropriate queue description, tile broadcast information, and original shapes, where applicable</p>
 </section>
 <section id="id13">
-<h4>shutdown_device()<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
+<h4>shutdown_device()<a class="headerlink" href="#id13" title="Link to this heading"></a></h4>
 <p>Shutdown device at the end of the workload</p>
 </section>
 <section id="id14">
-<h4>sync()<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h4>
+<h4>sync()<a class="headerlink" href="#id14" title="Link to this heading"></a></h4>
 <p>Block until queued up commands have completed and the device is idle.</p>
 </section>
 </section>
 </section>
 <section id="miscellaneous">
-<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading"></a></h2>
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p><a class="reference internal" href="#pybuda.DataFormat"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">DataFormat</span></code></span></a></p></th>
@@ -2299,7 +2299,7 @@ graph execution) is not included in the returned list to user.</p></li>
 </tbody>
 </table>
 <section id="class-dataformat">
-<h3><em>class</em> DataFormat<a class="headerlink" href="#class-dataformat" title="Permalink to this heading"></a></h3>
+<h3><em>class</em> DataFormat<a class="headerlink" href="#class-dataformat" title="Link to this heading"></a></h3>
 <p>Members:</p>
 <p>Float32</p>
 <p>Float16</p>
@@ -2319,17 +2319,17 @@ graph execution) is not included in the returned list to user.</p></li>
 <p>Int32</p>
 <p>Invalid</p>
 <section id="from-json-self-str">
-<h4>from_json(self: str)<a class="headerlink" href="#from-json-self-str" title="Permalink to this heading"></a></h4>
+<h4>from_json(self: str)<a class="headerlink" href="#from-json-self-str" title="Link to this heading"></a></h4>
 </section>
 <section id="property-name">
-<h4><em>property</em> name<a class="headerlink" href="#property-name" title="Permalink to this heading"></a></h4>
+<h4><em>property</em> name<a class="headerlink" href="#property-name" title="Link to this heading"></a></h4>
 </section>
 <section id="to-json-self-pybuda-c-dataformat">
-<h4>to_json(self: <a class="reference internal" href="#pybuda.DataFormat"><span class="xref myst">pybuda._C.DataFormat</span></a>)<a class="headerlink" href="#to-json-self-pybuda-c-dataformat" title="Permalink to this heading"></a></h4>
+<h4>to_json(self: <a class="reference internal" href="#pybuda.DataFormat"><span class="xref myst">pybuda._C.DataFormat</span></a>)<a class="headerlink" href="#to-json-self-pybuda-c-dataformat" title="Link to this heading"></a></h4>
 </section>
 </section>
 <section id="class-mathfidelity">
-<h3><em>class</em> MathFidelity<a class="headerlink" href="#class-mathfidelity" title="Permalink to this heading"></a></h3>
+<h3><em>class</em> MathFidelity<a class="headerlink" href="#class-mathfidelity" title="Link to this heading"></a></h3>
 <p>Members:</p>
 <p>LoFi</p>
 <p>HiFi2</p>
@@ -2337,13 +2337,13 @@ graph execution) is not included in the returned list to user.</p></li>
 <p>HiFi4</p>
 <p>Invalid</p>
 <section id="id15">
-<h4>from_json(self: str)<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h4>
+<h4>from_json(self: str)<a class="headerlink" href="#id15" title="Link to this heading"></a></h4>
 </section>
 <section id="id16">
-<h4><em>property</em> name<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h4>
+<h4><em>property</em> name<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
 </section>
 <section id="to-json-self-pybuda-c-mathfidelity">
-<h4>to_json(self: <a class="reference internal" href="#pybuda.MathFidelity"><span class="xref myst">pybuda._C.MathFidelity</span></a>)<a class="headerlink" href="#to-json-self-pybuda-c-mathfidelity" title="Permalink to this heading"></a></h4>
+<h4>to_json(self: <a class="reference internal" href="#pybuda.MathFidelity"><span class="xref myst">pybuda._C.MathFidelity</span></a>)<a class="headerlink" href="#to-json-self-pybuda-c-mathfidelity" title="Link to this heading"></a></h4>
 </section>
 </section>
 </section>
@@ -2361,7 +2361,7 @@ graph execution) is not included in the returned list to user.</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

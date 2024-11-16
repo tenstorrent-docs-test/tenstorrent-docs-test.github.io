@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -119,12 +119,12 @@
            <div itemprop="articleBody">
              
   <section id="advanced-user-guide">
-<h1>Advanced User Guide<a class="headerlink" href="#advanced-user-guide" title="Permalink to this heading"></a></h1>
+<h1>Advanced User Guide<a class="headerlink" href="#advanced-user-guide" title="Link to this heading"></a></h1>
 <section id="software-stack-overview">
-<h2>Software Stack Overview<a class="headerlink" href="#software-stack-overview" title="Permalink to this heading"></a></h2>
+<h2>Software Stack Overview<a class="headerlink" href="#software-stack-overview" title="Link to this heading"></a></h2>
 <p>PyBuda is largely divided into two main components, the compiler and the runtime.  Below is an overview of each component respectively.</p>
 <section id="pybuda-compiler-architecture">
-<h3>PyBuda Compiler Architecture<a class="headerlink" href="#pybuda-compiler-architecture" title="Permalink to this heading"></a></h3>
+<h3>PyBuda Compiler Architecture<a class="headerlink" href="#pybuda-compiler-architecture" title="Link to this heading"></a></h3>
 <p><img alt="Software Stack Overview" src="_images/overview.png" /></p>
 <p>The PyBuda compiler is largely broken into 2 halves, frontend and backend as depicted in the image above.  Each piece respectively is organized in passes that iteratively transform the framework model into something executable by the hardware.</p>
 <p><strong>Frontend Passes</strong></p>
@@ -148,14 +148,14 @@
 </section>
 </section>
 <section id="compiler-configuration">
-<h2>Compiler Configuration<a class="headerlink" href="#compiler-configuration" title="Permalink to this heading"></a></h2>
+<h2>Compiler Configuration<a class="headerlink" href="#compiler-configuration" title="Link to this heading"></a></h2>
 <p>PyBuda compiler is highly configurable via the <code class="docutils literal notranslate"><span class="pre">CompilerConfig</span></code> class.  Instead of programming this class directly, most configs have convenience top level functions, all of which update in place a global instance of the <code class="docutils literal notranslate"><span class="pre">CompilerConfig</span></code>.  Users can create their own <code class="docutils literal notranslate"><span class="pre">CompilerConfig</span></code> and explicitly pass it in for compile, but most examples simply use the global config object since there is rarely a need for multiple instances.  Global config meaning <code class="docutils literal notranslate"><span class="pre">config</span> <span class="pre">=</span> <span class="pre">pybuda.config._get_global_compiler_config()</span></code>.</p>
 <p>Below are some common overrides with brief descriptions for each and organized in levels of increasing control.  Level 1 configs are the first, low hanging fruit configs to reach for while tuning the desired compile output, whereas, Level 3 would be for power users that want explicit control over fine grained compiler decisions.</p>
 <p>Note that there are compiler configurations that are present in the dataclass, but not listed in the tables below, this is intentional for a number of potential reasons.  Some are for debugging / internal developement only and some overrides are deprecated and have not yet been removed from the compiler.  We are working towards better organizing our override system to reflect the level system outlined below, move the development flags into a special area, and remove the deprecated configs.</p>
 <section id="level-1">
-<h3>Level 1<a class="headerlink" href="#level-1" title="Permalink to this heading"></a></h3>
+<h3>Level 1<a class="headerlink" href="#level-1" title="Link to this heading"></a></h3>
 <section id="id1">
-<h4>Level 1<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h4>
+<h4>Level 1<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Configuration</p></th>
@@ -241,9 +241,9 @@
 </section>
 </section>
 <section id="level-2">
-<h3>Level 2<a class="headerlink" href="#level-2" title="Permalink to this heading"></a></h3>
+<h3>Level 2<a class="headerlink" href="#level-2" title="Link to this heading"></a></h3>
 <section id="id2">
-<h4>Level 2<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h4>
+<h4>Level 2<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Configuration</p></th>
@@ -321,9 +321,9 @@
 </section>
 </section>
 <section id="level-3">
-<h3>Level 3<a class="headerlink" href="#level-3" title="Permalink to this heading"></a></h3>
+<h3>Level 3<a class="headerlink" href="#level-3" title="Link to this heading"></a></h3>
 <section id="id3">
-<h4>Level 3<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<h4>Level 3<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Configuration</p></th>
@@ -378,9 +378,9 @@
 </section>
 </section>
 <section id="tools-debug">
-<h2>Tools &amp; Debug<a class="headerlink" href="#tools-debug" title="Permalink to this heading"></a></h2>
+<h2>Tools &amp; Debug<a class="headerlink" href="#tools-debug" title="Link to this heading"></a></h2>
 <section id="reportify">
-<h3>Reportify<a class="headerlink" href="#reportify" title="Permalink to this heading"></a></h3>
+<h3>Reportify<a class="headerlink" href="#reportify" title="Link to this heading"></a></h3>
 <p>Reportify is a UI tool that we use visualize certain datastructures a device resources. It is not only useful as an internal developer tool, but also for external users to get a better understanding of the transformations that the compiler has done and then using that information to potentially feed back into the compiler via overrides to make different decisions.</p>
 <p>Reportify is a webserver that typically runs on the same remote machine as the compiler.  It’s pointed to a special local directory that the PyBuda compiler populates with all kinds of reports and debug information that the reportify server then serves as UI. Refer to the README.md in the reportify source repo for installing and setting up a webserver instance.</p>
 <p><strong>Home Page</strong></p>
@@ -409,7 +409,7 @@
 <p>When hovering over an op with your cursor, a dialog pops up with all of the netlist information about this op.  The input edges, in orange, and output edges, in blue, are also highlighted to visualize the source and destinations of data with respect to this op.  This UI is incredibly useful to see what placement decisions the compiler made.</p>
 </section>
 <section id="perf-analyzer-terminal-app">
-<h3>Perf Analyzer (Terminal App)<a class="headerlink" href="#perf-analyzer-terminal-app" title="Permalink to this heading"></a></h3>
+<h3>Perf Analyzer (Terminal App)<a class="headerlink" href="#perf-analyzer-terminal-app" title="Link to this heading"></a></h3>
 <p><img alt="Perf Analyzer" src="_images/perf_analyzer_summary.png" /></p>
 <p><strong>Overview</strong></p>
 <p>With the environment variable TT_BACKEND_PERF_ANALYZER, we can collect some very detailed information about op and pipe performance on silicon. This app helps by providing:</p>
@@ -531,12 +531,12 @@ Some of the key fields in the table are:</p>
 </ul>
 </section>
 <section id="debuda-low-level-device-debug">
-<h3>DeBUDA (Low level device debug)<a class="headerlink" href="#debuda-low-level-device-debug" title="Permalink to this heading"></a></h3>
+<h3>DeBUDA (Low level device debug)<a class="headerlink" href="#debuda-low-level-device-debug" title="Link to this heading"></a></h3>
 <p>Please reference the official DeBuda documentation <a class="reference external" href="http://yyz-webservice-02.local.tenstorrent.com/docs/debuda-docs/debuda_py/index.html">here</a>.</p>
 </section>
 </section>
 <section id="comparison-to-gpu-programming-model">
-<h2>Comparison To GPU Programming Model<a class="headerlink" href="#comparison-to-gpu-programming-model" title="Permalink to this heading"></a></h2>
+<h2>Comparison To GPU Programming Model<a class="headerlink" href="#comparison-to-gpu-programming-model" title="Link to this heading"></a></h2>
 <p>Tenstorrent device architecture differs from GPUs in a few fundamental ways, including:</p>
 <ul class="simple">
 <li><p>Memory model:</p>
@@ -575,7 +575,7 @@ Some of the key fields in the table are:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

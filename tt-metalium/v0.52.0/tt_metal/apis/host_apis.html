@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -110,58 +110,177 @@
            <div itemprop="articleBody">
              
   <section id="host-apis">
-<h1>Host APIs<a class="headerlink" href="#host-apis" title="Permalink to this heading"></a>
+<h1>Host APIs<a class="headerlink" href="#host-apis" title="Link to this heading"></a>
 </h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1">
 <a class="reference internal" href="host_apis/program/program.html">Program</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/program/CreateProgram.html">CreateProgram</a></li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/program/CreateProgram.html">CreateProgram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/program/CreateProgram.html#_CPPv4N2tt8tt_metal13CreateProgramEv"><code class="docutils literal notranslate"><span class="pre">CreateProgram()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1">
 <a class="reference internal" href="host_apis/buffers/buffers.html">Buffers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/buffers/CreateBuffer.html">CreateBuffer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/buffers/CircularBuffers.html">CircularBuffers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/buffers/CreateSemaphore.html">CreateSemaphore</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/buffers/DeallocateBuffer.html">DeallocateBuffer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/buffers/AssignGlobalBufferToProgram.html">AssignGlobalBufferToProgram</a></li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/buffers/CreateBuffer.html">CreateBuffer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/buffers/CreateBuffer.html#_CPPv4N2tt8tt_metal12CreateBufferERK23InterleavedBufferConfig"><code class="docutils literal notranslate"><span class="pre">CreateBuffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/buffers/CreateBuffer.html#_CPPv4N2tt8tt_metal12CreateBufferERK19ShardedBufferConfig"><code class="docutils literal notranslate"><span class="pre">CreateBuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/buffers/CircularBuffers.html">CircularBuffers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/buffers/CircularBuffers.html#_CPPv4N2tt8tt_metal20CreateCircularBufferER7ProgramRKNSt7variantI9CoreCoord9CoreRange12CoreRangeSetEERK20CircularBufferConfig"><code class="docutils literal notranslate"><span class="pre">CreateCircularBuffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/buffers/CircularBuffers.html#_CPPv4N2tt8tt_metal23GetCircularBufferConfigER7Program8CBHandle"><code class="docutils literal notranslate"><span class="pre">GetCircularBufferConfig()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/buffers/CircularBuffers.html#_CPPv4N2tt8tt_metal29UpdateCircularBufferTotalSizeER7Program8CBHandle8uint32_t"><code class="docutils literal notranslate"><span class="pre">UpdateCircularBufferTotalSize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/buffers/CircularBuffers.html#_CPPv4N2tt8tt_metal28UpdateCircularBufferPageSizeER7Program8CBHandle7uint8_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">UpdateCircularBufferPageSize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/buffers/CircularBuffers.html#_CPPv4N2tt8tt_metal34UpdateDynamicCircularBufferAddressER7Program8CBHandleRK6Buffer"><code class="docutils literal notranslate"><span class="pre">UpdateDynamicCircularBufferAddress()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/buffers/CreateSemaphore.html">CreateSemaphore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/buffers/CreateSemaphore.html#_CPPv4N2tt8tt_metal15CreateSemaphoreER7ProgramRKNSt7variantI9CoreRange12CoreRangeSetEE8uint32_t8CoreType"><code class="docutils literal notranslate"><span class="pre">CreateSemaphore()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/buffers/DeallocateBuffer.html">DeallocateBuffer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/buffers/DeallocateBuffer.html#_CPPv4N2tt8tt_metal16DeallocateBufferER6Buffer"><code class="docutils literal notranslate"><span class="pre">DeallocateBuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/buffers/AssignGlobalBufferToProgram.html">AssignGlobalBufferToProgram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/buffers/AssignGlobalBufferToProgram.html#_CPPv4N2tt8tt_metal27AssignGlobalBufferToProgramENSt10shared_ptrI6BufferEER7Program"><code class="docutils literal notranslate"><span class="pre">AssignGlobalBufferToProgram()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1">
 <a class="reference internal" href="host_apis/command_queue/command_queue.html">CommandQueue</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/EnqueueWriteBuffer.html">EnqueueWriteBuffer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/EnqueueReadBuffer.html">EnqueueReadBuffer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/EnqueueProgram.html">EnqueueProgram</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/EnqueueRecordEvent.html">EnqueueRecordEvent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/EnqueueWaitForEvent.html">EnqueueWaitForEvent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/EventQuery.html">EventQuery</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/EventSynchronize.html">EventSynchronize</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/BeginTraceCapture.html">BeginTraceCapture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/EndTraceCapture.html">EndTraceCapture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/ReplayTrace.html">ReplayTrace</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/ReleaseTrace.html">ReleaseTrace</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/EnqueueTrace.html">EnqueueTrace</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/Finish.html">Finish</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/command_queue/Synchronize.html">Synchronize</a></li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/EnqueueWriteBuffer.html">EnqueueWriteBuffer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EnqueueWriteBuffer.html#_CPPv4N2tt8tt_metal18EnqueueWriteBufferER12CommandQueueNSt7variantINSt17reference_wrapperI6BufferEENSt10shared_ptrI6BufferEEEERNSt6vectorI8uint32_tEEb"><code class="docutils literal notranslate"><span class="pre">EnqueueWriteBuffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EnqueueWriteBuffer.html#_CPPv4N2tt8tt_metal18EnqueueWriteBufferER12CommandQueueNSt7variantINSt17reference_wrapperI6BufferEENSt10shared_ptrI6BufferEEEE12HostDataTypeb"><code class="docutils literal notranslate"><span class="pre">EnqueueWriteBuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/EnqueueReadBuffer.html">EnqueueReadBuffer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EnqueueReadBuffer.html#_CPPv4N2tt8tt_metal17EnqueueReadBufferER12CommandQueueNSt7variantINSt17reference_wrapperI6BufferEENSt10shared_ptrI6BufferEEEERNSt6vectorI8uint32_tEEb"><code class="docutils literal notranslate"><span class="pre">EnqueueReadBuffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EnqueueReadBuffer.html#_CPPv4N2tt8tt_metal17EnqueueReadBufferER12CommandQueueNSt7variantINSt17reference_wrapperI6BufferEENSt10shared_ptrI6BufferEEEEPvb"><code class="docutils literal notranslate"><span class="pre">EnqueueReadBuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/EnqueueProgram.html">EnqueueProgram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EnqueueProgram.html#_CPPv4N2tt8tt_metal14EnqueueProgramER12CommandQueueR7Programb"><code class="docutils literal notranslate"><span class="pre">EnqueueProgram()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/EnqueueRecordEvent.html">EnqueueRecordEvent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EnqueueRecordEvent.html#_CPPv4N2tt8tt_metal18EnqueueRecordEventER12CommandQueueRKNSt10shared_ptrI5EventEE"><code class="docutils literal notranslate"><span class="pre">EnqueueRecordEvent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/EnqueueWaitForEvent.html">EnqueueWaitForEvent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EnqueueWaitForEvent.html#_CPPv4N2tt8tt_metal19EnqueueWaitForEventER12CommandQueueRKNSt10shared_ptrI5EventEE"><code class="docutils literal notranslate"><span class="pre">EnqueueWaitForEvent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/EventQuery.html">EventQuery</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EventQuery.html#_CPPv4N2tt8tt_metal10EventQueryERKNSt10shared_ptrI5EventEE"><code class="docutils literal notranslate"><span class="pre">EventQuery()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/EventSynchronize.html">EventSynchronize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EventSynchronize.html#_CPPv4N2tt8tt_metal16EventSynchronizeERKNSt10shared_ptrI5EventEE"><code class="docutils literal notranslate"><span class="pre">EventSynchronize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/BeginTraceCapture.html">BeginTraceCapture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/BeginTraceCapture.html#_CPPv4N2tt8tt_metal17BeginTraceCaptureEP6DeviceK7uint8_t"><code class="docutils literal notranslate"><span class="pre">BeginTraceCapture()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/EndTraceCapture.html">EndTraceCapture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EndTraceCapture.html#_CPPv4N2tt8tt_metal15EndTraceCaptureEP6DeviceK7uint8_tK8uint32_t"><code class="docutils literal notranslate"><span class="pre">EndTraceCapture()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/ReplayTrace.html">ReplayTrace</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/ReplayTrace.html#_CPPv4N2tt8tt_metal11ReplayTraceEP6DeviceK7uint8_tK8uint32_tKb"><code class="docutils literal notranslate"><span class="pre">ReplayTrace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/ReleaseTrace.html">ReleaseTrace</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/ReleaseTrace.html#_CPPv4N2tt8tt_metal12ReleaseTraceEP6DeviceK8uint32_t"><code class="docutils literal notranslate"><span class="pre">ReleaseTrace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/EnqueueTrace.html">EnqueueTrace</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/EnqueueTrace.html#_CPPv4N2tt8tt_metal12EnqueueTraceER12CommandQueue8uint32_tb"><code class="docutils literal notranslate"><span class="pre">EnqueueTrace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/Finish.html">Finish</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/Finish.html#_CPPv4N2tt8tt_metal6FinishER12CommandQueue"><code class="docutils literal notranslate"><span class="pre">Finish()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/command_queue/Synchronize.html">Synchronize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/command_queue/Synchronize.html#_CPPv4N2tt8tt_metal11SynchronizeEP6DeviceKNSt8optionalI7uint8_tEE"><code class="docutils literal notranslate"><span class="pre">Synchronize()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1">
 <a class="reference internal" href="host_apis/device_management/device_management.html">Device Management</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/device_management/CreateDevice.html">CreateDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/device_management/CloseDevice.html">CloseDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/device_management/QueryDevices.html">QueryDevices</a></li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/device_management/CreateDevice.html">CreateDevice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/device_management/CreateDevice.html#_CPPv4N2tt8tt_metal12CreateDeviceE9chip_id_tK7uint8_tK6size_tK6size_t16DispatchCoreTypeRKNSt6vectorI8uint32_tEE"><code class="docutils literal notranslate"><span class="pre">CreateDevice()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/device_management/CloseDevice.html">CloseDevice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/device_management/CloseDevice.html#_CPPv4N2tt8tt_metal11CloseDeviceEP6Device"><code class="docutils literal notranslate"><span class="pre">CloseDevice()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/device_management/QueryDevices.html">QueryDevices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/device_management/QueryDevices.html#_CPPv4N2tt8tt_metal22GetNumAvailableDevicesEv"><code class="docutils literal notranslate"><span class="pre">GetNumAvailableDevices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/device_management/QueryDevices.html#_CPPv4N2tt8tt_metal17GetNumPCIeDevicesEv"><code class="docutils literal notranslate"><span class="pre">GetNumPCIeDevices()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1">
 <a class="reference internal" href="host_apis/kernels/kernels.html">Kernels</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/kernels/CreateKernel.html">CreateKernel</a></li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/kernels/CreateKernel.html">CreateKernel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/kernels/CreateKernel.html#_CPPv4N2tt8tt_metal12CreateKernelER7ProgramRKNSt6stringERKNSt7variantI9CoreCoord9CoreRange12CoreRangeSetEERKNSt7variantI18DataMovementConfig13ComputeConfig14EthernetConfigEE"><code class="docutils literal notranslate"><span class="pre">CreateKernel()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="host_apis/runtime_args/runtime_args.html">Runtime Arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="host_apis/runtime_args/runtime_args.html">Runtime Arguments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14SetRuntimeArgsERK7Program12KernelHandleRKNSt7variantI9CoreCoord9CoreRange12CoreRangeSetEERKNSt6vectorI8uint32_tEE"><code class="docutils literal notranslate"><span class="pre">SetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14SetRuntimeArgsERK7Program12KernelHandleRKNSt6vectorI9CoreCoordEERKNSt6vectorINSt6vectorI8uint32_tEEEE"><code class="docutils literal notranslate"><span class="pre">SetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14SetRuntimeArgsEP6DeviceKNSt10shared_ptrI6KernelEERKNSt7variantI9CoreCoord9CoreRange12CoreRangeSetEENSt10shared_ptrI11RuntimeArgsEE"><code class="docutils literal notranslate"><span class="pre">SetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14SetRuntimeArgsEP6DeviceKNSt10shared_ptrI6KernelEERKNSt6vectorI9CoreCoordEEKNSt6vectorINSt10shared_ptrI11RuntimeArgsEEEE"><code class="docutils literal notranslate"><span class="pre">SetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14GetRuntimeArgsERK7Program12KernelHandleRK9CoreCoord"><code class="docutils literal notranslate"><span class="pre">GetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14GetRuntimeArgsERK7Program12KernelHandle"><code class="docutils literal notranslate"><span class="pre">GetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal20SetCommonRuntimeArgsERK7Program12KernelHandleRKNSt6vectorI8uint32_tEE"><code class="docutils literal notranslate"><span class="pre">SetCommonRuntimeArgs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal20GetCommonRuntimeArgsERK7Program12KernelHandle"><code class="docutils literal notranslate"><span class="pre">GetCommonRuntimeArgs()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1">
 <a class="reference internal" href="host_apis/profiler/profiler.html">Profiler</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="host_apis/profiler/DumpDeviceProfileResults.html">DumpDeviceProfileResults</a></li>
+<li class="toctree-l2">
+<a class="reference internal" href="host_apis/profiler/DumpDeviceProfileResults.html">DumpDeviceProfileResults</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="host_apis/profiler/DumpDeviceProfileResults.html#_CPPv4N2tt8tt_metal24DumpDeviceProfileResultsEP6DeviceRK7Program"><code class="docutils literal notranslate"><span class="pre">DumpDeviceProfileResults()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -181,7 +300,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

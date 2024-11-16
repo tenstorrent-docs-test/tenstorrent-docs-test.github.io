@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -116,15 +116,31 @@
            <div itemprop="articleBody">
              
   <section id="circular-buffer-apis">
-<h1>Circular Buffer APIs<a class="headerlink" href="#circular-buffer-apis" title="Permalink to this heading"></a>
+<h1>Circular Buffer APIs<a class="headerlink" href="#circular-buffer-apis" title="Link to this heading"></a>
 </h1>
 <p>Circular buffers are used for communication between threads of the Tensix core. They act as limited capacity double-ended queues with producers pushing tiles to the back of the queue and consumers popping tiles off the front of the queue.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="cb_wait_front.html">cb_wait_front</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cb_reserve_back.html">cb_reserve_back</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cb_push_back.html">cb_push_back</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cb_pop_front.html">cb_pop_front</a></li>
+<li class="toctree-l1">
+<a class="reference internal" href="cb_wait_front.html">cb_wait_front</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cb_wait_front.html#_CPPv413cb_wait_front7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cb_wait_front()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="cb_reserve_back.html">cb_reserve_back</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cb_reserve_back.html#_CPPv415cb_reserve_back7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cb_reserve_back()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="cb_push_back.html">cb_push_back</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cb_push_back.html#_CPPv412cb_push_backK7int32_tK7int32_t"><code class="docutils literal notranslate"><span class="pre">cb_push_back()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="cb_pop_front.html">cb_pop_front</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cb_pop_front.html#_CPPv412cb_pop_front7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cb_pop_front()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -142,7 +158,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

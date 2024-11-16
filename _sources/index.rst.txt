@@ -5,12 +5,20 @@ Tenstorrent
    :parser: myst_parser.sphinx_
 
 .. toctree::
+   :hidden:
+   :caption: Getting Started
+
+   quickstart
+
+.. toctree::
+   :hidden:
    :caption: Hardware
 
    aibs/index
    systems/index
 
 .. toctree::
+   :hidden:
    :caption: Software
    :maxdepth: 2
 
@@ -20,6 +28,7 @@ Tenstorrent
    TT-MLIR <https://docs.tenstorrent.com/tt-mlir/>
 
 .. toctree::
+   :hidden:
    :caption: Support
    :maxdepth: 2
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -8,7 +8,7 @@
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/tt_theme.css?v=0bbfeaf8" />
-      <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css" />
 
   
     <link rel="shortcut icon" href="../../../../../../_static/favicon.png"/>
@@ -18,9 +18,9 @@
   
         <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -104,13 +104,13 @@
            <div itemprop="articleBody">
              
   <section id="Build-a-graph-of-a-pytorch-based-model">
-<h1>Build a graph of a pytorch based model<a class="headerlink" href="#Build-a-graph-of-a-pytorch-based-model" title="Permalink to this heading"></a>
+<h1>Build a graph of a pytorch based model<a class="headerlink" href="#Build-a-graph-of-a-pytorch-based-model" title="Link to this heading"></a>
 </h1>
 <p>In this tutorial, we walk you through the steps of building a graph of a pytorch model. The example chosen will be the Dit-XL/2 Model. Note that many of these steps mirror what you see here: <a class="reference external" href="https://colab.research.google.com/github/facebookresearch/DiT/blob/main/run_DiT.ipynb">https://colab.research.google.com/github/facebookresearch/DiT/blob/main/run_DiT.ipynb</a>. More details on this model can be found at <a class="reference external" href="https://github.com/facebookresearch/DiT?tab=readme-ov-file">https://github.com/facebookresearch/DiT?tab=readme-ov-file</a></p>
 <p>The assumption is that this notebook has access to a machine with a Tenstorrent device and that tt-metal has been successfully built.</p>
 <p>We will follow these steps: - Clone the library from <a class="reference external" href="https://github.com/facebookresearch/DiT.git">https://github.com/facebookresearch/DiT.git</a> - Download DiT-XL - Sample from the Pre-trained DiT Models and build the graph - Display the graph</p>
 <section id="Clone-the-library-from-https://github.com/facebookresearch/DiT.git">
-<h2>Clone the library from <a class="reference external" href="https://github.com/facebookresearch/DiT.git">https://github.com/facebookresearch/DiT.git</a><a class="headerlink" href="#Clone-the-library-from-https://github.com/facebookresearch/DiT.git" title="Permalink to this heading"></a>
+<h2>Clone the library from <a class="reference external" href="https://github.com/facebookresearch/DiT.git">https://github.com/facebookresearch/DiT.git</a><a class="headerlink" href="#Clone-the-library-from-https://github.com/facebookresearch/DiT.git" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -118,28 +118,28 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ttnn</span>
+<div class="highlight"><pre><span></span>import ttnn
 
-<span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/facebookresearch/DiT.git
-<span class="kn">import</span> <span class="nn">DiT</span><span class="o">,</span> <span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">'DiT'</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'PYTHONPATH'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'/env/python:/content/DiT'</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>diffusers<span class="w"> </span>timm<span class="w"> </span>--upgrade
-<span class="c1"># DiT imports:</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">torchvision.utils</span> <span class="kn">import</span> <span class="n">save_image</span>
-<span class="kn">from</span> <span class="nn">diffusion</span> <span class="kn">import</span> <span class="n">create_diffusion</span>
-<span class="kn">from</span> <span class="nn">diffusers.models</span> <span class="kn">import</span> <span class="n">AutoencoderKL</span>
-<span class="kn">from</span> <span class="nn">download</span> <span class="kn">import</span> <span class="n">find_model</span>
-<span class="c1"># We have a name collision in python's namespace with ttnn using models and models also existing in DiT</span>
-<span class="c1"># So here we just append DiT to the front.</span>
-<span class="kn">from</span> <span class="nn">DiT.models</span> <span class="kn">import</span> <span class="n">DiT_XL_2</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
-<span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">device</span> <span class="o">=</span> <span class="s2">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">"cpu"</span>
-<span class="k">if</span> <span class="n">device</span> <span class="o">==</span> <span class="s2">"cpu"</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"GPU not found. Using CPU instead."</span><span class="p">)</span>
+!git clone https://github.com/facebookresearch/DiT.git
+import DiT, os
+os.chdir('DiT')
+os.environ['PYTHONPATH'] = '/env/python:/content/DiT'
+!pip install diffusers timm --upgrade
+# DiT imports:
+import torch
+from torchvision.utils import save_image
+from diffusion import create_diffusion
+from diffusers.models import AutoencoderKL
+from download import find_model
+# We have a name collision in python's namespace with ttnn using models and models also existing in DiT
+# So here we just append DiT to the front.
+from DiT.models import DiT_XL_2
+from PIL import Image
+from IPython.display import display
+torch.set_grad_enabled(False)
+device = "cuda" if torch.cuda.is_available() else "cpu"
+if device == "cpu":
+    print("GPU not found. Using CPU instead.")
 <br></pre></div>
 </div>
 </div>
@@ -192,7 +192,7 @@ GPU not found. Using CPU instead.
 </div>
 </section>
 <section id="Download-DiT-XL/2-Models">
-<h2>Download DiT-XL/2 Models<a class="headerlink" href="#Download-DiT-XL/2-Models" title="Permalink to this heading"></a>
+<h2>Download DiT-XL/2 Models<a class="headerlink" href="#Download-DiT-XL/2-Models" title="Link to this heading"></a>
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -200,21 +200,21 @@ GPU not found. Using CPU instead.
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">image_size</span> <span class="o">=</span> <span class="mi">256</span> <span class="c1">#@param [256, 512]</span>
-<span class="n">vae_model</span> <span class="o">=</span> <span class="s2">"stabilityai/sd-vae-ft-ema"</span> <span class="c1">#@param ["stabilityai/sd-vae-ft-mse", "stabilityai/sd-vae-ft-ema"]</span>
-<span class="n">latent_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">image_size</span><span class="p">)</span> <span class="o">//</span> <span class="mi">8</span>
-<span class="c1"># Load model:</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">DiT_XL_2</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="n">latent_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-<span class="n">state_dict</span> <span class="o">=</span> <span class="n">find_model</span><span class="p">(</span><span class="sa">f</span><span class="s2">"DiT-XL-2-</span><span class="si">{</span><span class="n">image_size</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">image_size</span><span class="si">}</span><span class="s2">.pt"</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="c1"># important!</span>
-<span class="n">vae</span> <span class="o">=</span> <span class="n">AutoencoderKL</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">vae_model</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>image_size = 256 #@param [256, 512]
+vae_model = "stabilityai/sd-vae-ft-ema" #@param ["stabilityai/sd-vae-ft-mse", "stabilityai/sd-vae-ft-ema"]
+latent_size = int(image_size) // 8
+# Load model:
+model = DiT_XL_2(input_size=latent_size).to(device)
+state_dict = find_model(f"DiT-XL-2-{image_size}x{image_size}.pt")
+model.load_state_dict(state_dict)
+model.eval() # important!
+vae = AutoencoderKL.from_pretrained(vae_model).to(device)
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Sample-from-Pre-trained-DiT-Models-and-build-the-graph">
-<h2>Sample from Pre-trained DiT Models and build the graph<a class="headerlink" href="#Sample-from-Pre-trained-DiT-Models-and-build-the-graph" title="Permalink to this heading"></a>
+<h2>Sample from Pre-trained DiT Models and build the graph<a class="headerlink" href="#Sample-from-Pre-trained-DiT-Models-and-build-the-graph" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -222,46 +222,46 @@ GPU not found. Using CPU instead.
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="c1"># Set user inputs:</span>
-<span class="n">seed</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#@param {type:"number"}</span>
-<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-<span class="n">num_sampling_steps</span> <span class="o">=</span> <span class="mi">250</span> <span class="c1">#@param {type:"slider", min:0, max:1000, step:1}</span>
-<span class="n">cfg_scale</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1">#@param {type:"slider", min:1, max:10, step:0.1}</span>
-<span class="n">class_labels</span> <span class="o">=</span> <span class="mi">207</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">387</span><span class="p">,</span> <span class="mi">974</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">979</span><span class="p">,</span> <span class="mi">417</span><span class="p">,</span> <span class="mi">279</span> <span class="c1">#@param {type:"raw"}</span>
-<span class="n">samples_per_row</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1">#@param {type:"number"}</span>
+<div class="highlight"><pre><span></span># Set user inputs:
+seed = 0 #@param {type:"number"}
+torch.manual_seed(seed)
+num_sampling_steps = 250 #@param {type:"slider", min:0, max:1000, step:1}
+cfg_scale = 4 #@param {type:"slider", min:1, max:10, step:0.1}
+class_labels = 207, 360, 387, 974, 88, 979, 417, 279 #@param {type:"raw"}
+samples_per_row = 4 #@param {type:"number"}
 
-<span class="c1"># Create diffusion object:</span>
-<span class="n">diffusion</span> <span class="o">=</span> <span class="n">create_diffusion</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num_sampling_steps</span><span class="p">))</span>
+# Create diffusion object:
+diffusion = create_diffusion(str(num_sampling_steps))
 
-<span class="c1"># Create sampling noise:</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_labels</span><span class="p">)</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">latent_size</span><span class="p">,</span> <span class="n">latent_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">class_labels</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+# Create sampling noise:
+n = len(class_labels)
+z = torch.randn(n, 4, latent_size, latent_size, device=device)
+y = torch.tensor(class_labels, device=device)
 
-<span class="c1"># Setup classifier-free guidance:</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">y_null</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1000</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">y</span><span class="p">,</span> <span class="n">y_null</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">model_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cfg_scale</span><span class="o">=</span><span class="n">cfg_scale</span><span class="p">)</span>
+# Setup classifier-free guidance:
+z = torch.cat([z, z], 0)
+y_null = torch.tensor([1000] * n, device=device)
+y = torch.cat([y, y_null], 0)
+model_kwargs = dict(y=y, cfg_scale=cfg_scale)
 
-<span class="c1"># Sample images:</span>
-<span class="n">samples</span> <span class="o">=</span> <span class="n">diffusion</span><span class="o">.</span><span class="n">p_sample_loop</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">forward_with_cfg</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">clip_denoised</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">model_kwargs</span><span class="o">=</span><span class="n">model_kwargs</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span>
-<span class="p">)</span>
-<span class="n">samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Remove null class samples</span>
+# Sample images:
+samples = diffusion.p_sample_loop(
+    model.forward_with_cfg, z.shape, z, clip_denoised=False,
+    model_kwargs=model_kwargs, progress=True, device=device
+)
+samples, _ = samples.chunk(2, dim=0)  # Remove null class samples
 
-<span class="c1"># Here is where we capture the graph into an svg!</span>
-<span class="k">with</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">tracer</span><span class="o">.</span><span class="n">trace</span><span class="p">():</span>
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">vae</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">samples</span> <span class="o">/</span> <span class="mf">0.18215</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span>
+# Here is where we capture the graph into an svg!
+with ttnn.tracer.trace():
+    samples = vae.decode(samples / 0.18215).sample
 
-<span class="n">ttnn</span><span class="o">.</span><span class="n">tracer</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TMP_DIR</span> <span class="o">/</span> <span class="s2">"dit_model_graph.svg"</span><span class="p">)</span>
+ttnn.tracer.visualize(samples, file_name=ttnn.TMP_DIR / "dit_model_graph.svg")
 
-<span class="c1"># Optionally Save and display images from DiT:</span>
-<span class="c1"># save_image(samples, "sample.png", nrow=int(samples_per_row),</span>
-<span class="c1">#            normalize=True, value_range=(-1, 1))</span>
-<span class="c1"># samples = Image.open("sample.png")</span>
-<span class="c1"># display(samples)</span>
+# Optionally Save and display images from DiT:
+# save_image(samples, "sample.png", nrow=int(samples_per_row),
+#            normalize=True, value_range=(-1, 1))
+# samples = Image.open("sample.png")
+# display(samples)
 </pre></div>
 </div>
 </div>
@@ -292,7 +292,7 @@ GPU not found. Using CPU instead.
 </div>
 </section>
 <section id="Display-the-graph">
-<h2>Display the graph<a class="headerlink" href="#Display-the-graph" title="Permalink to this heading"></a>
+<h2>Display the graph<a class="headerlink" href="#Display-the-graph" title="Link to this heading"></a>
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -300,11 +300,11 @@ GPU not found. Using CPU instead.
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
-<span class="k">def</span> <span class="nf">show_svg</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">SVG</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TMP_DIR</span> <span class="o">/</span> <span class="s2">"dit_model_graph.svg"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>from IPython.display import SVG, display
+def show_svg():
+    return SVG(filename=ttnn.TMP_DIR / "dit_model_graph.svg")
 
-<span class="n">show_svg</span><span class="p">()</span>
+show_svg()
 </pre></div>
 </div>
 </div>
@@ -331,7 +331,7 @@ GPU not found. Using CPU instead.
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

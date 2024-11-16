@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -89,7 +89,7 @@
            <div itemprop="articleBody">
              
   <section id="buda-workload-overview">
-<h1>Buda Workload Overview<a class="headerlink" href="#buda-workload-overview" title="Permalink to this heading"></a></h1>
+<h1>Buda Workload Overview<a class="headerlink" href="#buda-workload-overview" title="Link to this heading"></a></h1>
 <p>A Buda workload is a collection of ML modules that are placed to run on one or more computer systems that each contain one or more Tenstorrent chips. Buda makes it easy to divide workload into modules
 and spread over both small and large hardware topologies.</p>
 <p>A Buda module is represented as a graph of math operations (<a class="reference internal" href="../terminology.html#op"><span class="std std-ref">Ops</span></a>). Writing out a module is very similar to how it is done in other frameworks, like PyTorch or TensorFlow: operations are
@@ -108,7 +108,7 @@ between source operations and its input buffers. There is an understanding that 
 If this is not compatible with the consuming op, a <a class="reference internal" href="../terminology.html#tm-op"><span class="std std-ref">TM op</span></a> will need to be inserted to bring data into expected form.</p>
 <p>Pipes provide for a flexible connectivity between operations, allowing for many kinds of topologies. See <a class="reference internal" href="../terminology.html#unicast"><span class="std std-ref">Unicast</span></a>, <a class="reference internal" href="../terminology.html#multicast"><span class="std std-ref">Multicast</span></a>, and <a class="reference internal" href="../terminology.html#gather"><span class="std std-ref">Gather</span></a> for more details.</p>
 <section id="anatomy-of-a-buda-op">
-<h2>Anatomy of a Buda op<a class="headerlink" href="#anatomy-of-a-buda-op" title="Permalink to this heading"></a></h2>
+<h2>Anatomy of a Buda op<a class="headerlink" href="#anatomy-of-a-buda-op" title="Link to this heading"></a></h2>
 <p>A functional Buda op has several responsibilities: it needs to define the math operation it performs, the buffering requirements for it input operands and its output(s), connectivity between itself
 and the previous operations, and provide performance modelling feedback.</p>
 <p>The math operation is defined through a high-level kernel (<a class="reference internal" href="../terminology.html#hlk"><span class="std std-ref">HLK</span></a>). A typical HLK looks like simple single-threaded piece of code in which input operands are read, math performed on them, and
@@ -159,7 +159,7 @@ pipes (for example, an elementwise operation), or a <a class="reference internal
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

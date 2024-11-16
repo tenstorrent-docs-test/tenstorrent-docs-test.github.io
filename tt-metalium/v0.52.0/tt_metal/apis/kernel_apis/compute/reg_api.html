@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -184,11 +184,11 @@
            <div itemprop="articleBody">
              
   <section id="reg-api">
-<h1>reg_api<a class="headerlink" href="#reg-api" title="Permalink to this heading"></a>
+<h1>reg_api<a class="headerlink" href="#reg-api" title="Link to this heading"></a>
 </h1>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7ckernel17tile_regs_acquireEv">
-<span class="target" id="reg__api_8h_1a34467f46da4221ff3a2820ff1baec122"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">ckernel</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">tile_regs_acquire</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ckernel17tile_regs_acquireEv" title="Permalink to this definition"></a><br>
+<span class="target" id="reg__api_8h_1a34467f46da4221ff3a2820ff1baec122"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">ckernel</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">tile_regs_acquire</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ckernel17tile_regs_acquireEv" title="Link to this definition"></a><br>
 </dt>
 <dd>
 <p>Acquire an exclusive lock on the DST register for the MATH thread. This register is an array of 16 tiles of 32x32 elements each. This is a blocking function, i.e. this function will wait until the lock is acquired. </p>
@@ -197,7 +197,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7ckernel14tile_regs_waitEv">
-<span class="target" id="reg__api_8h_1acc5591aaa5084f829a43b6282da1dec0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">ckernel</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">tile_regs_wait</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ckernel14tile_regs_waitEv" title="Permalink to this definition"></a><br>
+<span class="target" id="reg__api_8h_1acc5591aaa5084f829a43b6282da1dec0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">ckernel</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">tile_regs_wait</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ckernel14tile_regs_waitEv" title="Link to this definition"></a><br>
 </dt>
 <dd>
 <p>Acquire an exclusive lock on the DST register for the PACK thread. It waits for the MATH thread to commit the DST register. This is a blocking function, i.e. this function will wait until the lock is acquired. </p>
@@ -206,7 +206,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7ckernel16tile_regs_commitEv">
-<span class="target" id="reg__api_8h_1adaf34bbf977944a7913f979f709214c6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">ckernel</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">tile_regs_commit</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ckernel16tile_regs_commitEv" title="Permalink to this definition"></a><br>
+<span class="target" id="reg__api_8h_1adaf34bbf977944a7913f979f709214c6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">ckernel</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">tile_regs_commit</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ckernel16tile_regs_commitEv" title="Link to this definition"></a><br>
 </dt>
 <dd>
 <p>Release lock on DST register by MATH thread. The lock had to be previously acquired with tile_regs_acquire. </p>
@@ -215,7 +215,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7ckernel17tile_regs_releaseEv">
-<span class="target" id="reg__api_8h_1addd3679665da343bd51f76ced7154c4a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">ckernel</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">tile_regs_release</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ckernel17tile_regs_releaseEv" title="Permalink to this definition"></a><br>
+<span class="target" id="reg__api_8h_1addd3679665da343bd51f76ced7154c4a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">ckernel</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">tile_regs_release</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ckernel17tile_regs_releaseEv" title="Link to this definition"></a><br>
 </dt>
 <dd>
 <p>Release lock on DST register by PACK thread. The lock had to be previously acquired with tile_regs_wait. </p>
@@ -237,7 +237,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

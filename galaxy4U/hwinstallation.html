@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=359c27e9"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -48,7 +48,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../aibs/index.html">Add-In Boards / Cards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../systems/index.html">Systems</a></li>
@@ -90,7 +94,7 @@
            <div itemprop="articleBody">
              
   <section id="hardware-installation">
-<h1>Hardware Installation<a class="headerlink" href="#hardware-installation" title="Permalink to this heading"></a></h1>
+<h1>Hardware Installation<a class="headerlink" href="#hardware-installation" title="Link to this heading"></a></h1>
 <p>The Galaxy Wormhole 4U Server(s), Galaxy Wormhole Power Supply, and Tenstorrent T7000 4U Workstation used as a host PC are designed to be installed on a <strong>19”</strong> rack. We recommend mounting the Galaxy Wormhole Power Supply prior to installing Galaxy Wormhole 4U Server(s).</p>
 <p>This guide covers installation in this order:</p>
 <ol class="arabic simple">
@@ -100,10 +104,10 @@
 <li><p><a class="reference internal" href="#networking-management-installation"><span class="xref myst">Networking management installation</span></a></p></li>
 </ol>
 <section id="unpack-and-rack-mount-galaxy-wormhole-power-supply">
-<h2>Unpack and Rack Mount Galaxy Wormhole Power Supply<a class="headerlink" href="#unpack-and-rack-mount-galaxy-wormhole-power-supply" title="Permalink to this heading"></a></h2>
+<h2>Unpack and Rack Mount Galaxy Wormhole Power Supply<a class="headerlink" href="#unpack-and-rack-mount-galaxy-wormhole-power-supply" title="Link to this heading"></a></h2>
 <p>Please exercise care in unboxing and installing the Galaxy Wormhole Power Supply as it is <strong>70 lbs. (32 kg)</strong>.</p>
 <section id="unpacking">
-<h3>Unpacking<a class="headerlink" href="#unpacking" title="Permalink to this heading"></a></h3>
+<h3>Unpacking<a class="headerlink" href="#unpacking" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Open box at top.</p></li>
 <li><p>Remove mounting shelves and power cables.</p></li>
@@ -119,7 +123,7 @@
 <img src="./images/galaxy_psu_unbox3.png" style="zoom:50%;" />
 </section>
 <section id="rack-mount">
-<h3>Rack Mount<a class="headerlink" href="#rack-mount" title="Permalink to this heading"></a></h3>
+<h3>Rack Mount<a class="headerlink" href="#rack-mount" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Install <strong>10 M6 cage nuts</strong> (6 in front face, 4 in back face) into desired 19” 1U rack slot. Ensure at least 4U is available above for mounting Galaxy Wormhole 4U Server system. <em>(If installing a second Galaxy Wormhole 4U Server, allow at least 4U below the power supply.)</em></p></li>
 </ol>
@@ -136,10 +140,10 @@
 </section>
 </section>
 <section id="unpack-and-rack-mount-galaxy-wormhole-4u-server">
-<h2>Unpack and Rack Mount Galaxy Wormhole 4U Server<a class="headerlink" href="#unpack-and-rack-mount-galaxy-wormhole-4u-server" title="Permalink to this heading"></a></h2>
+<h2>Unpack and Rack Mount Galaxy Wormhole 4U Server<a class="headerlink" href="#unpack-and-rack-mount-galaxy-wormhole-4u-server" title="Link to this heading"></a></h2>
 <p>The total weight of the Galaxy Wormhole 4U Server is <strong>130 lbs. (59 kg)</strong>, so it is strongly recommended that either two people or a Server Lift place the Galaxy Wormhole 4U Server on the rack.</p>
 <section id="unpack">
-<h3>Unpack<a class="headerlink" href="#unpack" title="Permalink to this heading"></a></h3>
+<h3>Unpack<a class="headerlink" href="#unpack" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Remove the stretch wrap surrounding the box.</p></li>
 <li><p>Cut the straps and remove the edge protectors.</p></li>
@@ -167,7 +171,7 @@
 <img src="./images/galaxy_unbox6.png" style="zoom:50%;" />
 </section>
 <section id="id1">
-<h3>Rack Mount<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>Rack Mount<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>Rack mounting instructions are given based on a single Galaxy Wormhole 4U Server mounted above the Galaxy Wormhole Power Supply. If mounting a second Galaxy Wormhole 4U Server, it should be mounted <em>below</em> the Galaxy Wormhole Power Supply.</p>
 <ol class="arabic simple">
 <li><p>Attach <strong>three (3) M6 cage nuts</strong> to each corner (12 total), then mount shelves to cage using <strong>12 M6x16 T30 Torx screws</strong>.</p></li>
@@ -180,19 +184,19 @@
 </section>
 </section>
 <section id="install-bus-bars">
-<h2>Install Bus Bars<a class="headerlink" href="#install-bus-bars" title="Permalink to this heading"></a></h2>
+<h2>Install Bus Bars<a class="headerlink" href="#install-bus-bars" title="Link to this heading"></a></h2>
 <p>This step must be performed after the Galaxy Wormhole 4U Server(s) and Galaxy Wormhole Power Supply have been mounted to the rack. You will need a torque screwdriver for this task.</p>
 <section id="warning-bus-bar-safety">
-<h3>WARNING: Bus Bar Safety<a class="headerlink" href="#warning-bus-bar-safety" title="Permalink to this heading"></a></h3>
+<h3>WARNING: Bus Bar Safety<a class="headerlink" href="#warning-bus-bar-safety" title="Link to this heading"></a></h3>
 <p>These external bus bars are used to connect and power the Galaxy Wormhole 4U Server(s). Care must be taken to ensure these bars are not powered during installation or service, and the included bus bar covers must be used while the Galaxy Wormhole 4U Server(s) and Galaxy Wormhole Power Supply are in operation.</p>
 </section>
 <section id="warning-belleville-washer-assembly">
-<h3>WARNING: Belleville Washer Assembly<a class="headerlink" href="#warning-belleville-washer-assembly" title="Permalink to this heading"></a></h3>
+<h3>WARNING: Belleville Washer Assembly<a class="headerlink" href="#warning-belleville-washer-assembly" title="Link to this heading"></a></h3>
 <p>When installing bus bars, washers must be placed between the screws and bus bars with the <strong>conical side facing up</strong> as shown below.</p>
 <img src="./images/galaxy_washers.png" style="zoom:67%;" />
 </section>
 <section id="for-single-galaxy-wormhole-4u-server">
-<h3>For Single Galaxy Wormhole 4U Server<a class="headerlink" href="#for-single-galaxy-wormhole-4u-server" title="Permalink to this heading"></a></h3>
+<h3>For Single Galaxy Wormhole 4U Server<a class="headerlink" href="#for-single-galaxy-wormhole-4u-server" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Locate <strong>nine (9) M5x10 T25 Torx screws</strong>, <strong>eight (8) M5 Belleville washers</strong>, <strong>lower bus bars</strong>, and the <strong>top bus bar cover</strong>.</p></li>
 <li><p>Mount bus bars using <strong>Torx screws</strong> and <strong>Belleville washers</strong> using a torque screwdriver with <strong>6.2 Nm</strong> torque.</p></li>
@@ -204,7 +208,7 @@
 <p><img alt="" src="../_images/galaxy_busbars2.png" /></p>
 </section>
 <section id="for-dual-galaxy-wormhole-4u-servers">
-<h3>For Dual Galaxy Wormhole 4U Servers<a class="headerlink" href="#for-dual-galaxy-wormhole-4u-servers" title="Permalink to this heading"></a></h3>
+<h3>For Dual Galaxy Wormhole 4U Servers<a class="headerlink" href="#for-dual-galaxy-wormhole-4u-servers" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Locate <strong>18 M5x10 T25 Torx screws</strong>, <strong>16 M5 Belleville washers</strong>, <strong>upper bus bars</strong>, <strong>lower bus bars</strong>, and the <strong>bus bar covers</strong>.</p></li>
 <li><p>Mount bus bars using <strong>Torx screws</strong> and <strong>Belleville washers</strong> using a torque screwdriver with <strong>6.2 Nm</strong> torque.</p></li>
@@ -217,21 +221,21 @@
 </section>
 </section>
 <section id="networking-management-installation">
-<h2>Networking Management Installation<a class="headerlink" href="#networking-management-installation" title="Permalink to this heading"></a></h2>
+<h2>Networking Management Installation<a class="headerlink" href="#networking-management-installation" title="Link to this heading"></a></h2>
 <section id="management-port-for-host">
-<h3>Management Port for Host<a class="headerlink" href="#management-port-for-host" title="Permalink to this heading"></a></h3>
+<h3>Management Port for Host<a class="headerlink" href="#management-port-for-host" title="Link to this heading"></a></h3>
 <p>The Galaxy Wormhole 4U Server(s) will need to be managed by a Tenstorrent T7000 4U Workstation. A standard 1GbE RJ45 Ethernet jack is available on the T7000 for BMC (Baseboard Management Controller) connections. This jack should be connected to the same network as the BMC monitoring solution for the data center but is not required for Tenstorrent software.</p>
 </section>
 <section id="management-port-for-galaxy">
-<h3>Management Port for Galaxy<a class="headerlink" href="#management-port-for-galaxy" title="Permalink to this heading"></a></h3>
+<h3>Management Port for Galaxy<a class="headerlink" href="#management-port-for-galaxy" title="Link to this heading"></a></h3>
 <p>The Galaxy Wormhole 4U Server includes a single 1GbE RJ45 Ethernet jack and should be connected to the same network as the Tenstorrent monitoring/control software.</p>
 </section>
 <section id="management-for-power-supply">
-<h3>Management for Power Supply<a class="headerlink" href="#management-for-power-supply" title="Permalink to this heading"></a></h3>
+<h3>Management for Power Supply<a class="headerlink" href="#management-for-power-supply" title="Link to this heading"></a></h3>
 <p>The Galaxy Wormhole Power Supply includes a single 1GbE RJ45 Ethernet jack for command and control and should be on the same network as the Tenstorrent monitoring/control software.</p>
 </section>
 <section id="public-access-to-host">
-<h3>Public Access to Host<a class="headerlink" href="#public-access-to-host" title="Permalink to this heading"></a></h3>
+<h3>Public Access to Host<a class="headerlink" href="#public-access-to-host" title="Link to this heading"></a></h3>
 <p>Two 200GbE QSFP-DD ports are available on the Tenstorrent T7000 4U Workstation being used as the host. These are provided via a high-speed NIC add-in card in the system. Selection of cable type – active or passive – is up to the network architect for the data center.</p>
 <p>Please refer to the web page of the card vendor for a list of supported cables and modules: http://www.mellanox.com/products/interconnect/cables-configurator.php.</p>
 </section>
@@ -247,7 +251,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

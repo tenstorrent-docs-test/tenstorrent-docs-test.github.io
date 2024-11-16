@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -105,11 +105,11 @@
            <div itemprop="articleBody">
              
   <section id="data-formats-and-math-fidelity">
-<h1>Data Formats and Math Fidelity<a class="headerlink" href="#data-formats-and-math-fidelity" title="Permalink to this heading"></a></h1>
+<h1>Data Formats and Math Fidelity<a class="headerlink" href="#data-formats-and-math-fidelity" title="Link to this heading"></a></h1>
 <section id="data-formats">
-<h2>Data Formats<a class="headerlink" href="#data-formats" title="Permalink to this heading"></a></h2>
+<h2>Data Formats<a class="headerlink" href="#data-formats" title="Link to this heading"></a></h2>
 <section id="tensix-data-format-support">
-<h3>Tensix Data Format Support<a class="headerlink" href="#tensix-data-format-support" title="Permalink to this heading"></a></h3>
+<h3>Tensix Data Format Support<a class="headerlink" href="#tensix-data-format-support" title="Link to this heading"></a></h3>
 <p>Table below illustrates the various data formats supported by Tensix Unpacker/Packer:</p>
 <table class="docutils align-default">
 <thead>
@@ -259,19 +259,19 @@
 </ul>
 </section>
 <section id="data-format-breakdown">
-<h3>Data Format Breakdown<a class="headerlink" href="#data-format-breakdown" title="Permalink to this heading"></a></h3>
+<h3>Data Format Breakdown<a class="headerlink" href="#data-format-breakdown" title="Link to this heading"></a></h3>
 <p><img alt="data-formats" src="_images/data-formats.png" /></p>
 </section>
 </section>
 <section id="block-floating-point">
-<h2>Block Floating Point<a class="headerlink" href="#block-floating-point" title="Permalink to this heading"></a></h2>
+<h2>Block Floating Point<a class="headerlink" href="#block-floating-point" title="Link to this heading"></a></h2>
 <section id="bfp-breakdown">
-<h3>BFP Breakdown<a class="headerlink" href="#bfp-breakdown" title="Permalink to this heading"></a></h3>
+<h3>BFP Breakdown<a class="headerlink" href="#bfp-breakdown" title="Link to this heading"></a></h3>
 <p>Block Floating Point (BFP) support different element sizes by varying the # bits used for the mantissa, BFP8/4/2 support 8b/4b/2b elements respectively.</p>
 <p>The exponent is always shared across all elements in a block of 16 elements. Shared exponent supports A (5b padded to 8b) and B (8b) formats. The reason for an A format is to support compatibility with other 5b exponent formats such as Float16.</p>
 </section>
 <section id="bfp-data-conversion">
-<h3>BFP Data Conversion<a class="headerlink" href="#bfp-data-conversion" title="Permalink to this heading"></a></h3>
+<h3>BFP Data Conversion<a class="headerlink" href="#bfp-data-conversion" title="Link to this heading"></a></h3>
 <p>When converting from Float to BFP. The shared exponent is calculated as follows:</p>
 <ol class="arabic simple">
 <li><p>Organize the data into 16-element blocks</p></li>
@@ -286,13 +286,13 @@
 </ol>
 </section>
 <section id="block-storage-efficiency">
-<h3>Block Storage Efficiency<a class="headerlink" href="#block-storage-efficiency" title="Permalink to this heading"></a></h3>
+<h3>Block Storage Efficiency<a class="headerlink" href="#block-storage-efficiency" title="Link to this heading"></a></h3>
 <p>Exponent section overhead remains the same across BFP8, BFP4, BFP2. Data section size reduces by 2x for every 2x reduction in element size (BFP8-&gt;BFP4-&gt;BFP2).</p>
 <p><img alt="data-formats" src="_images/bfp-efficiency.png" /></p>
 </section>
 </section>
 <section id="math-fidelity">
-<h2>Math Fidelity<a class="headerlink" href="#math-fidelity" title="Permalink to this heading"></a></h2>
+<h2>Math Fidelity<a class="headerlink" href="#math-fidelity" title="Link to this heading"></a></h2>
 <p>Math Fidelity defines the number of phases being used to compute a high-precision multiplication using four low-precision multiplications. The higher the math fidelity, the more accuracte the result, but also the more compute cycles that are required. The supported fidelity phases range from lowest to highest: MathFidelity.LoFi, MathFidelity.HiFi2, MathFidelity.HiFi3, MathFidelity.HiFi4.</p>
 <p>These fidelity phases map to the order that the mantissa bits are consumed from the inputs on SrcA and SrcB from Most Significant Bit (MSB) to Least Significant Bit (LSB):</p>
 <ul class="simple">
@@ -316,7 +316,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

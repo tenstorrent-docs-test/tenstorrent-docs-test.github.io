@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../../../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -8,7 +8,7 @@
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/tt_theme.css?v=0bbfeaf8" />
-      <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/nbsphinx-code-cells.css" />
 
   
     <link rel="shortcut icon" href="../../../../../../../../../_static/favicon.png"/>
@@ -18,9 +18,9 @@
   
         <script src="../../../../../../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../../../../../../" id="documentation_options" src="../../../../../../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../../../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -104,9 +104,9 @@
            <div itemprop="articleBody">
              
   <section id="Profiling-ttnn-operations">
-<h1>Profiling ttnn operations<a class="headerlink" href="#Profiling-ttnn-operations" title="Permalink to this heading"></a>
+<h1>Profiling ttnn operations<a class="headerlink" href="#Profiling-ttnn-operations" title="Link to this heading"></a>
 </h1>
-<p>See the documentation on <a class="reference external" href="https://tenstorrent.github.io/ttnn/latest/ttnn/profiling_ttnn_operations.html">profiling</a> !</p>
+<p>See the documentation on <a class="reference external" href="https://tenstorrent.github.io/tt-metal/latest/ttnn/dependencies/ops_perf_report.html">profiling</a> !</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
 <div class="highlight"><pre><span></span>[8]:
@@ -894,24 +894,24 @@ tests/ttnn/integration_tests/t5/test_performance.py::test_t5_for_conditional_gen
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span>import pandas as pd
+import os
+import glob
 
-<span class="n">TT_METAL_HOME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">'TT_METAL_HOME'</span><span class="p">)</span>
+TT_METAL_HOME = os.getenv('TT_METAL_HOME')
 
-<span class="k">def</span> <span class="nf">get_latest_report</span><span class="p">(</span><span class="n">base_path</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">latest_dir</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">base_path</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">d</span><span class="p">))],</span> <span class="n">key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">latest_dir</span><span class="p">,</span> <span class="s1">'*'</span><span class="p">)),</span> <span class="n">key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
+def get_latest_report(base_path):
+    try:
+        latest_dir = max([os.path.join(base_path, d) for d in os.listdir(base_path) if os.path.isdir(os.path.join(base_path, d))], key=os.path.getmtime)
+        return max(glob.glob(os.path.join(latest_dir, '*')), key=os.path.getmtime)
+    except ValueError:
+        return None
 
-<span class="n">latest_profile_report</span> <span class="o">=</span> <span class="n">get_latest_report</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">TT_METAL_HOME</span><span class="si">}</span><span class="s1">/generated/profiler/reports/t5/ops/'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Found </span><span class="si">{</span><span class="n">latest_profile_report</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+latest_profile_report = get_latest_report(f'{TT_METAL_HOME}/generated/profiler/reports/t5/ops/')
+print(f'Found {latest_profile_report}')
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">latest_profile_report</span><span class="p">)</span>
-<span class="n">df</span>
+df = pd.read_csv(latest_profile_report)
+df
 <br><br></pre></div>
 </div>
 </div>
@@ -1264,7 +1264,7 @@ Found /home/ubuntu/git/tt-metal/generated/profiler/reports/resnet/ops/2024_02_09
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

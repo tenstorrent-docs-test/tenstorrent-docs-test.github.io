@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -107,21 +107,21 @@
            <div itemprop="articleBody">
              
   <section id="kernel-debug-print">
-<h1>Kernel Debug Print<a class="headerlink" href="#kernel-debug-print" title="Permalink to this heading"></a>
+<h1>Kernel Debug Print<a class="headerlink" href="#kernel-debug-print" title="Link to this heading"></a>
 </h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Tools are only fully supported on source builds.</p>
 </div>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a>
 </h2>
 <p>The device can optionally print to the host terminal or a log file.  This feature can be useful for printing variables,
 addresses, and Circular Buffer data from kernels running on the device. Device-side prints are controlled through API
 calls; the host-side is controlled through environment variables.</p>
 </section>
 <section id="enabling">
-<h2>Enabling<a class="headerlink" href="#enabling" title="Permalink to this heading"></a>
+<h2>Enabling<a class="headerlink" href="#enabling" title="Link to this heading"></a>
 </h2>
 <p>Kernel debug printing can be enabled and configured using the environment variables shown below.  The first
 environment variable, <code class="docutils literal notranslate"><span class="pre">TT_METAL_DPRINT_CORES</span></code> specifies which cores the host-side will read print data from, and
@@ -214,7 +214,7 @@ void<span class="w"> </span>kernel_main<span class="o">()</span><span class="w">
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

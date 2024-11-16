@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -113,7 +113,7 @@
            <div itemprop="articleBody">
              
   <section id="matmul-multi-core">
-<span id="matmul-multi-core-example"></span><h1>Matmul (Multi Core)<a class="headerlink" href="#matmul-multi-core" title="Permalink to this heading"></a>
+<span id="matmul-multi-core-example"></span><h1>Matmul (Multi Core)<a class="headerlink" href="#matmul-multi-core" title="Link to this heading"></a>
 </h1>
 <p>We’ll build a program that will perform matmul operations on two tensors
 with equal-size inner dimension on as many cores as possible on the accelerator
@@ -139,7 +139,7 @@ depending on the most up-to-date installation methods.</p>
 </pre></div>
 </div>
 <section id="accessing-all-the-cores">
-<h2>Accessing all the cores<a class="headerlink" href="#accessing-all-the-cores" title="Permalink to this heading"></a>
+<h2>Accessing all the cores<a class="headerlink" href="#accessing-all-the-cores" title="Link to this heading"></a>
 </h2>
 <p>We first must get information on the layout of the entire chip. This means the
 grid of cores and its x/y dimensions in number of cores.</p>
@@ -151,7 +151,7 @@ grid of cores and its x/y dimensions in number of cores.</p>
 </div>
 </section>
 <section id="splitting-the-work-across-cores">
-<h2>Splitting the work across cores<a class="headerlink" href="#splitting-the-work-across-cores" title="Permalink to this heading"></a>
+<h2>Splitting the work across cores<a class="headerlink" href="#splitting-the-work-across-cores" title="Link to this heading"></a>
 </h2>
 <p>We need to split the work across multiple cores. This means figuring out how
 many tiles each core will use to compute the matmul.</p>
@@ -179,7 +179,7 @@ cores. We also need to account for the case where we can evenly distribute
 work, meaning the second set will be empty.</p>
 </section>
 <section id="using-different-kernels-for-reader-writer">
-<h2>Using different kernels for reader/writer<a class="headerlink" href="#using-different-kernels-for-reader-writer" title="Permalink to this heading"></a>
+<h2>Using different kernels for reader/writer<a class="headerlink" href="#using-different-kernels-for-reader-writer" title="Link to this heading"></a>
 </h2>
 <p>We use more complex reader/writer kernels to feed our compute engine.</p>
 <p>These kernels will use banking and interleaving techniques to ensure consistent
@@ -201,7 +201,7 @@ perform computations on their specific set of tiles, and nothing more or less.</
 </div>
 </section>
 <section id="compute-kernel-args">
-<h2>Compute kernel args<a class="headerlink" href="#compute-kernel-args" title="Permalink to this heading"></a>
+<h2>Compute kernel args<a class="headerlink" href="#compute-kernel-args" title="Link to this heading"></a>
 </h2>
 <p>We need to account for the fact that we may two separate groups of cores
 that require different arguments for tile count.</p>
@@ -239,7 +239,7 @@ that require different arguments for tile count.</p>
 </div>
 </section>
 <section id="reader-writer-kernel-runtime-args">
-<h2>Reader/writer kernel runtime args<a class="headerlink" href="#reader-writer-kernel-runtime-args" title="Permalink to this heading"></a>
+<h2>Reader/writer kernel runtime args<a class="headerlink" href="#reader-writer-kernel-runtime-args" title="Link to this heading"></a>
 </h2>
 <p>Here, we introduce the concept of looping over all cores to apply an API.</p>
 <p>In this case, we must set runtime args for reader/writer kernels. Note that we
@@ -288,7 +288,7 @@ appropriate tile count when assigning args.</p>
 </div>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a>
 </h2>
 <p>Those are all the major changes that we made in order to upgrade our single
 core matmul example into one that will use as many cores as possible.  To see a more complicated example using data reuse among these cores, please refer to the <a class="reference internal" href="matmul_multi_core_optimizations/data_reuse.html#matmul-multi-core-data-reuse-example"><span class="std std-ref">Matmul
@@ -309,7 +309,7 @@ multi-core data reuse example</span></a>.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -132,58 +132,8 @@
            <div itemprop="articleBody">
              
   <section id="ttnn-embedding">
-<span id="id1"></span><h1>ttnn.embedding<a class="headerlink" href="#ttnn-embedding" title="Permalink to this heading"></a>
+<span id="id1"></span><h1>ttnn.embedding<a class="headerlink" href="#ttnn-embedding" title="Link to this heading"></a>
 </h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ttnn.embedding">
-<span class="sig-prename descclassname"><span class="pre">ttnn.</span></span><span class="sig-name descname"><span class="pre">embedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inxput_tensor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ttnn.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ttnn.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ttnn.Layout</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ttnn.ROW_MAJOR_LAYOUT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ttnn.MemoryConfig</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">ttnn.Tensor</span></span></span><a class="headerlink" href="#ttnn.embedding" title="Permalink to this definition"></a>
-</dt>
-<dd>
-<p>Retrieves word embeddings using input_tensor. The input_tensor is a list of indices, and the embedding matrix, and the output is the corresponding word embeddings.</p>
-<dl>
-<dt>Args:</dt>
-<dd>
-<ul class="simple">
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">input_tensor</span></code>: the indices ttnn.Tensor</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">weight</span></code>: the embeddings ttnn.Tensor that correspond to the indices ttnn.Tensor</p></li>
-</ul>
-</dd>
-<dt>Keyword Args:</dt>
-<dd>
-<ul class="simple">
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">padding_idx</span></code>: the padding token. Default is None.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">layout</span></code>: the layout of the output tensor. Default is ttnn.ROW_MAJOR_LAYOUT.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">embeddings_type</span></code>: the type of embeddings. Default is ttnn._ttnn.operations.embedding.EmbeddingsType.GENERIC.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">dtype</span></code>: the data type for the output tensor. Default is None.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">output_tensor</span></code>: the optional output tensor. Default is None.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">memory_config</span></code>: the memory configuration of the output tensor. Default is input tensor memory config.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">queue_id</span></code>: the command queue id. Default is 0.</p></li>
-</ul>
-</dd>
-<dt>Example:</dt>
-<dd>
-<div class="doctest highlight-default notranslate">
-<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">input_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span> <span class="n">device</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># an embedding matrix containing 10 tensors of size 4</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">weight</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">),</span> <span class="n">device</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ttnn</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-<span class="go">ttnn.Tensor([ [[1, 0.106445, 0.988281, 0.59375],</span>
-<span class="go">    [0.212891, 0.964844, 0.199219, 0.996094],</span>
-<span class="go">    [3.78362e-38, 0, 7.89785e-39, 0],</span>
-<span class="go">    [8.04479e-38, 0, 1.25815e-38, 0]],</span>
-<span class="go">[[2.71833e-38, 0, 3.59995e-38, 0],</span>
-<span class="go">    [7.60398e-38, 0, 1.83671e-38, 0],</span>
-<span class="go">    [2.22242e-38, 0, 1.88263e-38, 0],</span>
-<span class="go">    [1.35917e-38, 0, 4.49994e-39, 0]]], dtype=bfloat16 )</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-</dd>
-</dl>
-
 </section>
 
 
@@ -199,7 +149,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

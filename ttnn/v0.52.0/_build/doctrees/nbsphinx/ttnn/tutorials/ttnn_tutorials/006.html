@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -8,7 +8,7 @@
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/tt_theme.css?v=0bbfeaf8" />
-      <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/nbsphinx-code-cells.css" />
 
   
     <link rel="shortcut icon" href="../../../../../../_static/favicon.png"/>
@@ -18,9 +18,9 @@
   
         <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -104,7 +104,7 @@
            <div itemprop="articleBody">
              
   <section id="Resnet-Block">
-<h1>Resnet Block<a class="headerlink" href="#Resnet-Block" title="Permalink to this heading"></a>
+<h1>Resnet Block<a class="headerlink" href="#Resnet-Block" title="Link to this heading"></a>
 </h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -112,10 +112,10 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
-<span class="kn">from</span> <span class="nn">ttnn.tracer</span> <span class="kn">import</span> <span class="n">trace</span><span class="p">,</span> <span class="n">visualize</span>
-<span class="kn">from</span> <span class="nn">ttnn.model_preprocessing</span> <span class="kn">import</span> <span class="n">preprocess_model</span>
+<div class="highlight"><pre><span></span>import torch
+import ttnn
+from ttnn.tracer import trace, visualize
+from ttnn.model_preprocessing import preprocess_model
 </pre></div>
 </div>
 </div>
@@ -125,8 +125,8 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>torch.manual_seed(0)
+device = ttnn.open_device(device_id=0)
 </pre></div>
 </div>
 </div>
@@ -147,7 +147,7 @@
 </div>
 </div>
 <section id="Torch-Module-(from-torchvision)">
-<h2>Torch Module (from torchvision)<a class="headerlink" href="#Torch-Module-(from-torchvision)" title="Permalink to this heading"></a>
+<h2>Torch Module (from torchvision)<a class="headerlink" href="#Torch-Module-(from-torchvision)" title="Link to this heading"></a>
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -155,73 +155,73 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">conv3x3</span><span class="p">(</span><span class="n">in_planes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">out_planes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">groups</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dilation</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""3x3 convolution with padding"""</span>
-    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span>
-        <span class="n">in_planes</span><span class="p">,</span>
-        <span class="n">out_planes</span><span class="p">,</span>
-        <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="n">stride</span><span class="o">=</span><span class="n">stride</span><span class="p">,</span>
-        <span class="n">padding</span><span class="o">=</span><span class="n">dilation</span><span class="p">,</span>
-        <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span>
-        <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">dilation</span><span class="o">=</span><span class="n">dilation</span><span class="p">,</span>
-    <span class="p">)</span>
+<div class="highlight"><pre><span></span>def conv3x3(in_planes: int, out_planes: int, stride: int = 1, groups: int = 1, dilation: int = 1) -&gt; torch.nn.Conv2d:
+    """3x3 convolution with padding"""
+    return torch.nn.Conv2d(
+        in_planes,
+        out_planes,
+        kernel_size=3,
+        stride=stride,
+        padding=dilation,
+        groups=groups,
+        bias=False,
+        dilation=dilation,
+    )
 
 
-<span class="k">class</span> <span class="nc">TorchBasicBlock</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="n">expansion</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+class TorchBasicBlock(torch.nn.Module):
+    expansion: int = 1
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">inplanes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-        <span class="n">planes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-        <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="n">downsample</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">groups</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="n">base_width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
-        <span class="n">dilation</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="n">norm_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">norm_layer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">norm_layer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span>
-        <span class="k">if</span> <span class="n">groups</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">base_width</span> <span class="o">!=</span> <span class="mi">64</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"BasicBlock only supports groups=1 and base_width=64"</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">dilation</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Dilation &gt; 1 not supported in BasicBlock"</span><span class="p">)</span>
-        <span class="c1"># Both self.conv1 and self.downsample layers downsample the input when stride != 1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">conv3x3</span><span class="p">(</span><span class="n">inplanes</span><span class="p">,</span> <span class="n">planes</span><span class="p">,</span> <span class="n">stride</span><span class="p">)</span>
-        <span class="c1"># self.bn1 = norm_layer(planes)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">conv3x3</span><span class="p">(</span><span class="n">planes</span><span class="p">,</span> <span class="n">planes</span><span class="p">)</span>
-        <span class="c1"># self.bn2 = norm_layer(planes)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span> <span class="o">=</span> <span class="n">downsample</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stride</span> <span class="o">=</span> <span class="n">stride</span>
+    def __init__(
+        self,
+        inplanes: int,
+        planes: int,
+        stride: int = 1,
+        downsample=None,
+        groups: int = 1,
+        base_width: int = 64,
+        dilation: int = 1,
+        norm_layer=None,
+    ) -&gt; None:
+        super().__init__()
+        if norm_layer is None:
+            norm_layer = torch.nn.BatchNorm2d
+        if groups != 1 or base_width != 64:
+            raise ValueError("BasicBlock only supports groups=1 and base_width=64")
+        if dilation &gt; 1:
+            raise NotImplementedError("Dilation &gt; 1 not supported in BasicBlock")
+        # Both self.conv1 and self.downsample layers downsample the input when stride != 1
+        self.conv1 = conv3x3(inplanes, planes, stride)
+        # self.bn1 = norm_layer(planes)
+        self.relu = torch.nn.ReLU(inplace=True)
+        self.conv2 = conv3x3(planes, planes)
+        # self.bn2 = norm_layer(planes)
+        self.downsample = downsample
+        self.stride = stride
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="n">identity</span> <span class="o">=</span> <span class="n">x</span>
+    def forward(self, x: torch.Tensor) -&gt; torch.Tensor:
+        identity = x
 
-        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="c1"># out = self.bn1(out)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        out = self.conv1(x)
+        # out = self.bn1(out)
+        out = self.relu(out)
 
-        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-        <span class="c1"># out = self.bn2(out)</span>
+        out = self.conv2(out)
+        # out = self.bn2(out)
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">identity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        if self.downsample is not None:
+            identity = self.downsample(x)
 
-        <span class="c1"># out += identity</span>
-        <span class="c1"># out = self.relu(out)</span>
+        # out += identity
+        # out = self.relu(out)
 
-        <span class="k">return</span> <span class="n">out</span>
+        return out
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Create-torch-module-and-preprocess-it-to-get-ttnn-parameters">
-<h2>Create torch module and preprocess it to get ttnn parameters<a class="headerlink" href="#Create-torch-module-and-preprocess-it-to-get-ttnn-parameters" title="Permalink to this heading"></a>
+<h2>Create torch module and preprocess it to get ttnn parameters<a class="headerlink" href="#Create-torch-module-and-preprocess-it-to-get-ttnn-parameters" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -229,17 +229,17 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch_model</span> <span class="o">=</span> <span class="n">TorchBasicBlock</span><span class="p">(</span><span class="n">inplanes</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">planes</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>torch_model = TorchBasicBlock(inplanes=64, planes=64, stride=1)
 
-<span class="n">torch_input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">56</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+torch_input_tensor = torch.rand((8, 64, 56, 56), dtype=torch.float32)
 
-<span class="n">reader_patterns_cache</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="n">preprocess_model</span><span class="p">(</span>
-    <span class="n">initialize_model</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">torch_model</span><span class="p">,</span>
-    <span class="n">run_model</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">:</span> <span class="n">model</span><span class="p">(</span><span class="n">torch_input_tensor</span><span class="p">),</span>
-    <span class="n">reader_patterns_cache</span><span class="o">=</span><span class="n">reader_patterns_cache</span><span class="p">,</span>
-    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
-<span class="p">)</span>
+reader_patterns_cache = {}
+parameters = preprocess_model(
+    initialize_model=lambda: torch_model,
+    run_model=lambda model: model(torch_input_tensor),
+    reader_patterns_cache=reader_patterns_cache,
+    device=device,
+)
 </pre></div>
 </div>
 </div>
@@ -258,7 +258,7 @@
 </div>
 </section>
 <section id="Display-the-parameters-of-the-module">
-<h2>Display the parameters of the module<a class="headerlink" href="#Display-the-parameters-of-the-module" title="Permalink to this heading"></a>
+<h2>Display the parameters of the module<a class="headerlink" href="#Display-the-parameters-of-the-module" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -266,7 +266,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">parameters</span>
+<div class="highlight"><pre><span></span>parameters
 </pre></div>
 </div>
 </div>
@@ -286,7 +286,7 @@
 </div>
 </section>
 <section id="Display-the-traced-torch-graph">
-<h2>Display the traced torch graph<a class="headerlink" href="#Display-the-traced-torch-graph" title="Permalink to this heading"></a>
+<h2>Display the traced torch graph<a class="headerlink" href="#Display-the-traced-torch-graph" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -294,8 +294,8 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">SVG</span>
-<span class="n">SVG</span><span class="p">(</span><span class="s1">'/tmp/ttnn/model_graph.svg'</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>from IPython.display import SVG
+SVG('/tmp/ttnn/model_graph.svg')
 </pre></div>
 </div>
 </div>
@@ -310,7 +310,7 @@
 </div>
 </section>
 <section id="Implement-ttnn-version-of-the-module.-Pass-in-the-parameters-into-the-constructor.">
-<h2>Implement ttnn version of the module. Pass in the parameters into the constructor.<a class="headerlink" href="#Implement-ttnn-version-of-the-module.-Pass-in-the-parameters-into-the-constructor." title="Permalink to this heading"></a>
+<h2>Implement ttnn version of the module. Pass in the parameters into the constructor.<a class="headerlink" href="#Implement-ttnn-version-of-the-module.-Pass-in-the-parameters-into-the-constructor." title="Link to this heading"></a>
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -318,56 +318,56 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TTNNBasicBlock</span><span class="p">:</span>
+<div class="highlight"><pre><span></span>class TTNNBasicBlock:
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">parameters</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">conv1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">conv2</span>
-        <span class="k">if</span> <span class="s2">"downsample"</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">downsample</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span> <span class="o">=</span> <span class="kc">None</span>
+    def __init__(
+        self,
+        parameters,
+    ) -&gt; None:
+        self.conv1 = parameters.conv1
+        self.conv2 = parameters.conv2
+        if "downsample" in parameters:
+            self.downsample = parameters.downsample
+        else:
+            self.downsample = None
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">identity</span> <span class="o">=</span> <span class="n">x</span>
+    def __call__(self, x):
+        identity = x
 
-        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="c1"># out = self.bn1(out)</span>
+        out = self.conv1(x)
+        # out = self.bn1(out)
 
-        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-        <span class="c1"># out = self.bn2(out)</span>
+        out = self.conv2(out)
+        # out = self.bn2(out)
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">identity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        if self.downsample is not None:
+            identity = self.downsample(x)
 
-        <span class="c1"># out = ttnn.add(out, identity, memory_config=ttnn.get_memory_config(out))</span>
-        <span class="c1"># out = ttnn.to_memory_config(out, memory_config=ttnn.DRAM_MEMORY_CONFIG)</span>
-        <span class="c1"># out = self.relu(out)</span>
+        # out = ttnn.add(out, identity, memory_config=ttnn.get_memory_config(out))
+        # out = ttnn.to_memory_config(out, memory_config=ttnn.DRAM_MEMORY_CONFIG)
+        # out = self.relu(out)
 
-        <span class="k">return</span> <span class="n">out</span>
+        return out
 
-<span class="k">def</span> <span class="nf">run_conv</span><span class="p">(</span><span class="n">conv</span><span class="p">,</span> <span class="n">torch_input_tensor</span><span class="p">):</span>
-    <span class="n">input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="n">torch_input_tensor</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">input_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
+def run_conv(conv, torch_input_tensor):
+    input_tensor = torch.permute(torch_input_tensor, (0, 2, 3, 1))
+    input_tensor = ttnn.from_torch(input_tensor, dtype=ttnn.bfloat16)
 
-    <span class="n">input_tensor</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">conv1</span><span class="o">.</span><span class="n">copy_input_to_device</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span>
-    <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">conv</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span>
-    <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">conv2</span><span class="o">.</span><span class="n">copy_output_from_device</span><span class="p">(</span><span class="n">output_tensor</span><span class="p">)</span>
+    input_tensor = conv.conv1.copy_input_to_device(input_tensor)
+    output_tensor = conv(input_tensor)
+    output_tensor = conv.conv2.copy_output_from_device(output_tensor)
 
-    <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="n">output_tensor</span><span class="p">)</span>
-    <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="n">output_tensor</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-    <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">output_tensor</span><span class="p">,</span> <span class="n">torch_input_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-    <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">output_tensor</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch_input_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">output_tensor</span>
+    output_tensor = ttnn.to_torch(output_tensor)
+    output_tensor = torch.permute(output_tensor, (0, 3, 1, 2))
+    output_tensor = torch.reshape(output_tensor, torch_input_tensor.shape)
+    output_tensor = output_tensor.to(torch_input_tensor.dtype)
+    return output_tensor
 <br></pre></div>
 </div>
 </div>
 </section>
 <section id="Run-ttnn-module-and-display-the-traced-graph">
-<h2>Run ttnn module and display the traced graph<a class="headerlink" href="#Run-ttnn-module-and-display-the-traced-graph" title="Permalink to this heading"></a>
+<h2>Run ttnn module and display the traced graph<a class="headerlink" href="#Run-ttnn-module-and-display-the-traced-graph" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -375,10 +375,10 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">ttnn_model</span> <span class="o">=</span> <span class="n">TTNNBasicBlock</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">tracer</span><span class="o">.</span><span class="n">trace</span><span class="p">():</span>
-    <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">run_conv</span><span class="p">(</span><span class="n">ttnn_model</span><span class="p">,</span> <span class="n">torch_input_tensor</span><span class="p">)</span>
-<span class="n">ttnn</span><span class="o">.</span><span class="n">tracer</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">output_tensor</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ttnn_model = TTNNBasicBlock(parameters)
+with ttnn.tracer.trace():
+    output_tensor = run_conv(ttnn_model, torch_input_tensor)
+ttnn.tracer.visualize(output_tensor)
 </pre></div>
 </div>
 </div>
@@ -397,7 +397,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">ttnn</span><span class="o">.</span><span class="n">close_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ttnn.close_device(device)
 </pre></div>
 </div>
 </div>
@@ -423,7 +423,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../../../../../../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -8,7 +8,7 @@
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../_static/tt_theme.css?v=0bbfeaf8" />
-      <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../_static/nbsphinx-code-cells.css" />
 
   
     <link rel="shortcut icon" href="../../../../../../../../../../../../_static/favicon.png"/>
@@ -18,9 +18,9 @@
   
         <script src="../../../../../../../../../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../../../../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../../../../../../../../../" id="documentation_options" src="../../../../../../../../../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../../../../../../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../../../../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../../../../../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../../../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -104,36 +104,23 @@
            <div itemprop="articleBody">
              
   <section id="Multi-Head-Attention">
-<h1>Multi-Head Attention<a class="headerlink" href="#Multi-Head-Attention" title="Permalink to this heading"></a>
+<h1>Multi-Head Attention<a class="headerlink" href="#Multi-Head-Attention" title="Link to this heading"></a>
 </h1>
 <p>Multi-Head Attention is an important part of all Transformer-based models. This tutorial will show how to write it and how to then optimize it.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
 <div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<br></pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<div class="highlight"><pre><span></span>import time
+import torch
+import ttnn
 
-<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+torch.manual_seed(0)
 
-<span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">dispatch_core_type</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">DispatchCoreType</span><span class="o">.</span><span class="n">ETH</span>
-<span class="k">if</span> <span class="s2">"grayskull"</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"ARCH_NAME"</span><span class="p">):</span>
-    <span class="n">dispatch_core_type</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">DispatchCoreType</span><span class="o">.</span><span class="n">WORKER</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">,</span> <span class="n">l1_small_size</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span> <span class="n">dispatch_core_type</span><span class="o">=</span><span class="n">dispatch_core_type</span><span class="p">)</span>
+device_id = 0
+device = ttnn.open_device(device_id=device_id, l1_small_size=8192)
 </pre></div>
 </div>
 </div>
@@ -142,13 +129,13 @@
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2024-07-11 18:14:54.821 | DEBUG    | ttnn:&lt;module&gt;:136 - Initial ttnn.CONFIG:
+2024-04-18 18:42:42.615 | DEBUG    | ttnn:&lt;module&gt;:126 - Initial ttnn.CONFIG:
 {'cache_path': PosixPath('/home/ubuntu/.cache/ttnn'),
  'comparison_mode_pcc': 0.9999,
  'enable_comparison_mode': False,
  'enable_detailed_buffer_report': False,
  'enable_detailed_tensor_report': False,
- 'enable_fast_runtime_mode': True,
+ 'enable_fast_runtime_mode': False,
  'enable_graph_report': False,
  'enable_logging': False,
  'enable_model_cache': False,
@@ -157,56 +144,6 @@
  'root_report_path': PosixPath('generated/ttnn/reports'),
  'throw_exception_on_fallback': False,
  'tmp_dir': PosixPath('/tmp/ttnn')}
-2024-07-11 18:14:54.907 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.logical_xor be migrated to C++?
-2024-07-11 18:14:54.908 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.xlogy be migrated to C++?
-2024-07-11 18:14:54.908 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.maximum be migrated to C++?
-2024-07-11 18:14:54.909 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.minimum be migrated to C++?
-2024-07-11 18:14:54.909 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.atan2 be migrated to C++?
-2024-07-11 18:14:54.910 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.hypot be migrated to C++?
-2024-07-11 18:14:54.911 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.nextafter be migrated to C++?
-2024-07-11 18:14:54.912 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.polyval be migrated to C++?
-2024-07-11 18:14:54.912 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.isclose be migrated to C++?
-2024-07-11 18:14:54.914 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.all_gather be migrated to C++?
-2024-07-11 18:14:54.915 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.pearson_correlation_coefficient be migrated to C++?
-2024-07-11 18:14:54.919 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.conv2d be migrated to C++?
-2024-07-11 18:14:54.921 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reshape be migrated to C++?
-2024-07-11 18:14:54.921 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.unsqueeze_to_4D be migrated to C++?
-2024-07-11 18:14:54.922 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.squeeze be migrated to C++?
-2024-07-11 18:14:54.923 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.from_torch be migrated to C++?
-2024-07-11 18:14:54.923 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.to_torch be migrated to C++?
-2024-07-11 18:14:54.924 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.to_device be migrated to C++?
-2024-07-11 18:14:54.925 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.from_device be migrated to C++?
-2024-07-11 18:14:54.926 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.allocate_tensor_on_device be migrated to C++?
-2024-07-11 18:14:54.926 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.copy_host_to_device_tensor be migrated to C++?
-2024-07-11 18:14:54.927 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.deallocate be migrated to C++?
-2024-07-11 18:14:54.928 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.clone be migrated to C++?
-2024-07-11 18:14:54.929 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reallocate be migrated to C++?
-2024-07-11 18:14:54.929 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.load_tensor be migrated to C++?
-2024-07-11 18:14:54.930 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.dump_tensor be migrated to C++?
-2024-07-11 18:14:54.931 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.as_tensor be migrated to C++?
-2024-07-11 18:14:54.934 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.arange be migrated to C++?
-2024-07-11 18:14:54.936 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.mse_loss be migrated to C++?
-2024-07-11 18:14:54.936 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.l1_loss be migrated to C++?
-2024-07-11 18:14:54.938 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.matmul be migrated to C++?
-2024-07-11 18:14:54.939 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.linear be migrated to C++?
-2024-07-11 18:14:54.941 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.mac be migrated to C++?
-2024-07-11 18:14:54.942 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.addcmul be migrated to C++?
-2024-07-11 18:14:54.942 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.addcdiv be migrated to C++?
-2024-07-11 18:14:54.943 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.lerp be migrated to C++?
-2024-07-11 18:14:54.948 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.logit be migrated to C++?
-2024-07-11 18:14:54.949 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.polygamma be migrated to C++?
-2024-07-11 18:14:54.949 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.hardshrink be migrated to C++?
-2024-07-11 18:14:54.950 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.celu be migrated to C++?
-2024-07-11 18:14:54.951 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.softshrink be migrated to C++?
-2024-07-11 18:14:54.952 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.clip be migrated to C++?
-2024-07-11 18:14:54.952 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.threshold be migrated to C++?
-2024-07-11 18:14:54.953 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.glu be migrated to C++?
-2024-07-11 18:14:54.954 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reglu be migrated to C++?
-2024-07-11 18:14:54.955 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.swiglu be migrated to C++?
-2024-07-11 18:14:54.955 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.geglu be migrated to C++?
-2024-07-11 18:14:54.958 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.matmul be migrated to C++?
-2024-07-11 18:14:54.958 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.linear be migrated to C++?
-2024-07-11 18:14:54.960 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.conv2d be migrated to C++?
 </pre></div>
 </div>
 </div>
@@ -216,28 +153,26 @@
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span style="color: rgb(0,128,0)">                 Device</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Opening user mode device driver
-
-<span class="ansi-green-fg">2024-07-11 18:14:54.976</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Detected 1 PCI device : {0}
-<span class="ansi-green-fg">2024-07-11 18:14:54.989</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - init_detect_tt_device_numanodes(): Could not determine NumaNodeSet for TT device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
-<span class="ansi-green-fg">2024-07-11 18:14:54.989</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Could not find NumaNodeSet for TT Device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
-<span class="ansi-green-fg">2024-07-11 18:14:54.990</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - bind_area_memory_nodeset(): Unable to determine TT Device to NumaNode mapping for physical_device_id: 0. Skipping membind.
+<span class="ansi-green-fg">2024-04-18 18:42:42.906</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Detected 1 PCI device : {0}
+<span class="ansi-green-fg">2024-04-18 18:42:42.918</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - init_detect_tt_device_numanodes(): Could not determine NumaNodeSet for TT device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
+<span class="ansi-green-fg">2024-04-18 18:42:42.918</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Could not find NumaNodeSet for TT Device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
+<span class="ansi-green-fg">2024-04-18 18:42:42.920</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - bind_area_memory_nodeset(): Unable to determine TT Device to NumaNode mapping for physical_device_id: 0. Skipping membind.
 <span class="ansi-yellow-fg">---- ttSiliconDevice::init_hugepage: bind_area_to_memory_nodeset() failed (physical_device_id: 0 ch: 0). Hugepage allocation is not on NumaNode matching TT Device. Side-Effect is decreased Device-&gt;Host perf (Issue #893).
-</span><span class="ansi-green-fg">2024-07-11 18:14:55.014</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Software version 6.0.0, Ethernet FW version 6.9.0 (Device 0)
-<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Initializing device 0. Program cache is NOT enabled
-<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | AI CLK for device 0 is:   800 MHz
+</span><span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Initializing device 0. Program cache is NOT enabled
+<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | AI CLK for device 0 is:   1202 MHz
 </pre></div>
 </div>
 </div>
 <section id="Enable-program-cache">
-<h2>Enable program cache<a class="headerlink" href="#Enable-program-cache" title="Permalink to this heading"></a>
+<h2>Enable program cache<a class="headerlink" href="#Enable-program-cache" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[3]:
+<div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">ttnn</span><span class="o">.</span><span class="n">enable_program_cache</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ttnn.enable_program_cache(device)
 </pre></div>
 </div>
 </div>
@@ -252,7 +187,7 @@
 </div>
 </section>
 <section id="Write-Multi-Head-Attention-using-ttnn">
-<h2>Write Multi-Head Attention using ttnn<a class="headerlink" href="#Write-Multi-Head-Attention-using-ttnn" title="Permalink to this heading"></a>
+<h2>Write Multi-Head Attention using ttnn<a class="headerlink" href="#Write-Multi-Head-Attention-using-ttnn" title="Link to this heading"></a>
 </h2>
 <p>Multi-head can be implemented in <code class="docutils literal notranslate"><span class="pre">torch</span></code> using just 6 operations:</p>
 <ol class="arabic simple">
@@ -266,72 +201,90 @@
 <p><code class="docutils literal notranslate"><span class="pre">ttnn</span></code> provides the exact same APIs to do that and therefore multi-head attention can be implemented in a very similar fashion. Except, when using <code class="docutils literal notranslate"><span class="pre">ttnn</span></code>, the user should be mindful of the tensor layout.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[4]:
+<div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multi_head_attention</span><span class="p">(</span>
-    <span class="n">hidden_states</span><span class="p">,</span>
-    <span class="n">attention_mask</span><span class="p">,</span>
-    <span class="n">query_weight</span><span class="p">,</span>
-    <span class="n">query_bias</span><span class="p">,</span>
-    <span class="n">key_weight</span><span class="p">,</span>
-    <span class="n">key_bias</span><span class="p">,</span>
-    <span class="n">value_weight</span><span class="p">,</span>
-    <span class="n">value_bias</span><span class="p">,</span>
-    <span class="n">output_weight</span><span class="p">,</span>
-    <span class="n">output_bias</span><span class="p">,</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">num_heads</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="n">fallback_reshape</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">get_fallback_function</span><span class="p">(</span><span class="n">ttnn</span><span class="o">.</span><span class="n">reshape</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>def multi_head_attention(
+    hidden_states,
+    attention_mask,
+    query_weight,
+    query_bias,
+    key_weight,
+    key_bias,
+    value_weight,
+    value_bias,
+    output_weight,
+    output_bias,
+    *,
+    num_heads,
+):
+    fallback_reshape = ttnn.get_fallback_function(ttnn.reshape)
 
-    <span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">,</span> <span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_states</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">head_size</span> <span class="o">=</span> <span class="n">hidden_size</span> <span class="o">//</span> <span class="n">num_heads</span>
+    batch_size, sequence_size, hidden_size = hidden_states.shape
+    head_size = hidden_size // num_heads
 
-    <span class="n">query</span> <span class="o">=</span> <span class="n">hidden_states</span> <span class="o">@</span> <span class="n">query_weight</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="n">query</span> <span class="o">+</span> <span class="n">query_bias</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">ROW_MAJOR_LAYOUT</span><span class="p">)</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="n">fallback_reshape</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">head_size</span><span class="p">))</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">)</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    query = hidden_states @ query_weight
+    query = query + query_bias
+    query = ttnn.to_layout(query, layout=ttnn.ROW_MAJOR_LAYOUT)
+    query = fallback_reshape(query, (batch_size, sequence_size, num_heads, head_size))
+    query = ttnn.to_layout(query, layout=ttnn.TILE_LAYOUT)
+    query = ttnn.permute(query, (0, 2, 1, 3))
 
-    <span class="n">key</span> <span class="o">=</span> <span class="n">hidden_states</span> <span class="o">@</span> <span class="n">key_weight</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="n">key</span> <span class="o">+</span> <span class="n">key_bias</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">ROW_MAJOR_LAYOUT</span><span class="p">)</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="n">fallback_reshape</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">head_size</span><span class="p">))</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">)</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    key = hidden_states @ key_weight
+    key = key + key_bias
+    key = ttnn.to_layout(key, layout=ttnn.ROW_MAJOR_LAYOUT)
+    key = fallback_reshape(key, (batch_size, sequence_size, num_heads, head_size))
+    key = ttnn.to_layout(key, layout=ttnn.TILE_LAYOUT)
+    key = ttnn.permute(key, (0, 2, 3, 1))
 
-    <span class="n">value</span> <span class="o">=</span> <span class="n">hidden_states</span> <span class="o">@</span> <span class="n">value_weight</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="n">value_bias</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">ROW_MAJOR_LAYOUT</span><span class="p">)</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">fallback_reshape</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">head_size</span><span class="p">))</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">)</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    value = hidden_states @ value_weight
+    value = value + value_bias
+    value = ttnn.to_layout(value, layout=ttnn.ROW_MAJOR_LAYOUT)
+    value = fallback_reshape(value, (batch_size, sequence_size, num_heads, head_size))
+    value = ttnn.to_layout(value, layout=ttnn.TILE_LAYOUT)
+    value = ttnn.permute(value, (0, 2, 1, 3))
 
-    <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">query</span> <span class="o">@</span> <span class="n">key</span>
-    <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">attention_scores</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">head_size</span><span class="o">**</span><span class="mf">0.5</span><span class="p">))</span>
-    <span class="n">attention_scores</span> <span class="o">+=</span> <span class="n">attention_mask</span>
-    <span class="n">attention_probs</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">attention_scores</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    attention_scores = query @ key
+    attention_scores = attention_scores * (1 / (head_size**0.5))
+    attention_scores += attention_mask
+    attention_probs = ttnn.softmax(attention_scores, dim=-1)
 
-    <span class="n">context_layer</span> <span class="o">=</span> <span class="n">attention_probs</span> <span class="o">@</span> <span class="n">value</span>
-    <span class="n">context_layer</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="n">context_layer</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-    <span class="n">context_layer</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">context_layer</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">ROW_MAJOR_LAYOUT</span><span class="p">)</span>
-    <span class="n">context_layer</span> <span class="o">=</span> <span class="n">fallback_reshape</span><span class="p">(</span><span class="n">context_layer</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">))</span>
-    <span class="n">context_layer</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">context_layer</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">)</span>
+    context_layer = attention_probs @ value
+    context_layer = ttnn.permute(context_layer, (0, 2, 1, 3))
+    context_layer = ttnn.to_layout(context_layer, layout=ttnn.ROW_MAJOR_LAYOUT)
+    context_layer = fallback_reshape(context_layer, (batch_size, sequence_size, hidden_size))
+    context_layer = ttnn.to_layout(context_layer, layout=ttnn.TILE_LAYOUT)
 
-    <span class="n">self_output</span> <span class="o">=</span> <span class="n">context_layer</span> <span class="o">@</span> <span class="n">output_weight</span>
-    <span class="n">self_output</span> <span class="o">=</span> <span class="n">self_output</span> <span class="o">+</span> <span class="n">output_bias</span>
+    self_output = context_layer @ output_weight
+    self_output = self_output + output_bias
 
-    <span class="k">return</span> <span class="n">self_output</span>
+    return self_output
 </pre></div>
 </div>
 </div>
 <p>Now that the model is written, let’s create input tensors to run it and test it</p>
 </section>
 <section id="Configuration">
-<h2>Configuration<a class="headerlink" href="#Configuration" title="Permalink to this heading"></a>
+<h2>Configuration<a class="headerlink" href="#Configuration" title="Link to this heading"></a>
+</h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate">
+<div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate">
+<div class="highlight"><pre><span></span>batch_size = 8
+sequence_size = 384
+num_heads = 16
+head_size = 64
+hidden_size = num_heads * head_size
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Initialize-activations-and-weights-using-torch">
+<h2>Initialize activations and weights using torch<a class="headerlink" href="#Initialize-activations-and-weights-using-torch" title="Link to this heading"></a>
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -339,17 +292,22 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">sequence_size</span> <span class="o">=</span> <span class="mi">384</span>
-<span class="n">num_heads</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="n">head_size</span> <span class="o">=</span> <span class="mi">64</span>
-<span class="n">hidden_size</span> <span class="o">=</span> <span class="n">num_heads</span> <span class="o">*</span> <span class="n">head_size</span>
+<div class="highlight"><pre><span></span>torch_hidden_states = torch.randn((batch_size, sequence_size, hidden_size), dtype=torch.bfloat16)
+torch_attention_mask = torch.randn((batch_size, 1, 1, sequence_size), dtype=torch.bfloat16)
+torch_query_weight = torch.randn((hidden_size, hidden_size), dtype=torch.bfloat16)
+torch_query_bias = torch.randn((hidden_size,), dtype=torch.bfloat16)
+torch_key_weight = torch.randn((hidden_size, hidden_size), dtype=torch.bfloat16)
+torch_key_bias = torch.randn((hidden_size,), dtype=torch.bfloat16)
+torch_value_weight = torch.randn((hidden_size, hidden_size), dtype=torch.bfloat16)
+torch_value_bias = torch.randn((hidden_size,), dtype=torch.bfloat16)
+torch_output_weight = torch.randn((hidden_size, hidden_size), dtype=torch.bfloat16)
+torch_output_bias = torch.randn((hidden_size,), dtype=torch.bfloat16)
 </pre></div>
 </div>
 </div>
 </section>
-<section id="Initialize-activations-and-weights-using-torch">
-<h2>Initialize activations and weights using torch<a class="headerlink" href="#Initialize-activations-and-weights-using-torch" title="Permalink to this heading"></a>
+<section id="Convert-activations-and-weights-to-ttnn">
+<h2>Convert activations and weights to ttnn<a class="headerlink" href="#Convert-activations-and-weights-to-ttnn" title="Link to this heading"></a>
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -357,78 +315,228 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch_hidden_states</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_attention_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_query_weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_query_bias</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">hidden_size</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_key_weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_key_bias</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">hidden_size</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_value_weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_value_bias</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">hidden_size</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_output_weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_output_bias</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">hidden_size</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Convert-activations-and-weights-to-ttnn">
-<h2>Convert activations and weights to ttnn<a class="headerlink" href="#Convert-activations-and-weights-to-ttnn" title="Permalink to this heading"></a>
-</h2>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">hidden_states</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_hidden_states</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">attention_mask</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_attention_mask</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">query_weight</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_query_weight</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">query_bias</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_query_bias</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">)</span>
-<span class="n">key_weight</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_key_weight</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">key_bias</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_key_bias</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">)</span>
-<span class="n">value_weight</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_value_weight</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">value_bias</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_value_bias</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">)</span>
-<span class="n">output_weight</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_output_weight</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">output_bias</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_output_bias</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>hidden_states = ttnn.from_torch(torch_hidden_states, layout=ttnn.TILE_LAYOUT, device=device)
+attention_mask = ttnn.from_torch(torch_attention_mask, layout=ttnn.TILE_LAYOUT, device=device)
+query_weight = ttnn.from_torch(torch_query_weight, layout=ttnn.TILE_LAYOUT, device=device)
+query_bias = ttnn.from_torch(torch_query_bias, layout=ttnn.TILE_LAYOUT, device=device, memory_config=ttnn.L1_MEMORY_CONFIG)
+key_weight = ttnn.from_torch(torch_key_weight, layout=ttnn.TILE_LAYOUT, device=device)
+key_bias = ttnn.from_torch(torch_key_bias, layout=ttnn.TILE_LAYOUT, device=device, memory_config=ttnn.L1_MEMORY_CONFIG)
+value_weight = ttnn.from_torch(torch_value_weight, layout=ttnn.TILE_LAYOUT, device=device)
+value_bias = ttnn.from_torch(torch_value_bias, layout=ttnn.TILE_LAYOUT, device=device, memory_config=ttnn.L1_MEMORY_CONFIG)
+output_weight = ttnn.from_torch(torch_output_weight, layout=ttnn.TILE_LAYOUT, device=device)
+output_bias = ttnn.from_torch(torch_output_bias, layout=ttnn.TILE_LAYOUT, device=device, memory_config=ttnn.L1_MEMORY_CONFIG)
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Run-the-first-iteration-of-Multi-Head-Attention">
-<h2>Run the first iteration of Multi-Head Attention<a class="headerlink" href="#Run-the-first-iteration-of-Multi-Head-Attention" title="Permalink to this heading"></a>
+<h2>Run the first iteration of Multi-Head Attention<a class="headerlink" href="#Run-the-first-iteration-of-Multi-Head-Attention" title="Link to this heading"></a>
 </h2>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate">
+<div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate">
+<div class="highlight"><pre><span></span>start = time.time()
+multi_head_attention(
+    hidden_states,
+    attention_mask,
+    query_weight,
+    query_bias,
+    key_weight,
+    key_bias,
+    value_weight,
+    value_bias,
+    output_weight,
+    output_bias,
+    num_heads=num_heads,
+)
+end = time.time()
+duration = end - start
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:45.752 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:47.240 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:47.605 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:50.150 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
 <div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">multi_head_attention</span><span class="p">(</span>
-    <span class="n">hidden_states</span><span class="p">,</span>
-    <span class="n">attention_mask</span><span class="p">,</span>
-    <span class="n">query_weight</span><span class="p">,</span>
-    <span class="n">query_bias</span><span class="p">,</span>
-    <span class="n">key_weight</span><span class="p">,</span>
-    <span class="n">key_bias</span><span class="p">,</span>
-    <span class="n">value_weight</span><span class="p">,</span>
-    <span class="n">value_bias</span><span class="p">,</span>
-    <span class="n">output_weight</span><span class="p">,</span>
-    <span class="n">output_bias</span><span class="p">,</span>
-    <span class="n">num_heads</span><span class="o">=</span><span class="n">num_heads</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">duration</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<div class="highlight"><pre><span></span>print(f"Multi-head attention ran in {duration} seconds for the first iteration")
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Multi-head attention ran in 6.2719199657440186 seconds for the first iteration
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Run-a-subsequent-iteration-of-Multi-Head-Attention">
+<h2>Run a subsequent iteration of Multi-Head Attention<a class="headerlink" href="#Run-a-subsequent-iteration-of-Multi-Head-Attention" title="Link to this heading"></a>
+</h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
 <div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Multi-head attention ran in </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds for the first iteration"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>start = time.time()
+output = multi_head_attention(
+    hidden_states,
+    attention_mask,
+    query_weight,
+    query_bias,
+    key_weight,
+    key_bias,
+    value_weight,
+    value_bias,
+    output_weight,
+    output_bias,
+    num_heads=num_heads,
+)
+end = time.time()
+duration = end - start
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:50.786 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+2024-04-18 18:42:50.813 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:51.171 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:51.535 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
 </pre></div>
 </div>
 </div>
@@ -437,46 +545,17 @@
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Multi-head attention ran in 8.00607705116272 seconds for the first iteration
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Run-a-subsequent-iteration-of-Multi-Head-Attention">
-<h2>Run a subsequent iteration of Multi-Head Attention<a class="headerlink" href="#Run-a-subsequent-iteration-of-Multi-Head-Attention" title="Permalink to this heading"></a>
-</h2>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">multi_head_attention</span><span class="p">(</span>
-    <span class="n">hidden_states</span><span class="p">,</span>
-    <span class="n">attention_mask</span><span class="p">,</span>
-    <span class="n">query_weight</span><span class="p">,</span>
-    <span class="n">query_bias</span><span class="p">,</span>
-    <span class="n">key_weight</span><span class="p">,</span>
-    <span class="n">key_bias</span><span class="p">,</span>
-    <span class="n">value_weight</span><span class="p">,</span>
-    <span class="n">value_bias</span><span class="p">,</span>
-    <span class="n">output_weight</span><span class="p">,</span>
-    <span class="n">output_bias</span><span class="p">,</span>
-    <span class="n">num_heads</span><span class="o">=</span><span class="n">num_heads</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">duration</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[11]:
+<div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Multi-head attention ran in </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds for the subsequent iteration because of the program cache"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>print(f"Multi-head attention ran in {duration} seconds for the subsequent iteration because of the program cache")
 </pre></div>
 </div>
 </div>
@@ -485,13 +564,13 @@ Multi-head attention ran in 8.00607705116272 seconds for the first iteration
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Multi-head attention ran in 0.250946044921875 seconds for the subsequent iteration because of the program cache
+Multi-head attention ran in 1.3269269466400146 seconds for the subsequent iteration because of the program cache
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Write-optimized-version-of-Multi-Head-Attention">
-<h2>Write optimized version of Multi-Head Attention<a class="headerlink" href="#Write-optimized-version-of-Multi-Head-Attention" title="Permalink to this heading"></a>
+<h2>Write optimized version of Multi-Head Attention<a class="headerlink" href="#Write-optimized-version-of-Multi-Head-Attention" title="Link to this heading"></a>
 </h2>
 <p>Optimized version of the multi-head attention can be written by:</p>
 <ul class="simple">
@@ -504,90 +583,90 @@ Multi-head attention ran in 0.250946044921875 seconds for the subsequent iterati
 <p><code class="docutils literal notranslate"><span class="pre">ttnn.deallocate</span></code> calls are needed because otherwise, the cores on the device will run out of the L1 memory</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[12]:
+<div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">optimized_multi_head_attention</span><span class="p">(</span>
-    <span class="n">hidden_states</span><span class="p">,</span>
-    <span class="n">attention_mask</span><span class="p">,</span>
-    <span class="n">fused_qkv_weight</span><span class="p">,</span>
-    <span class="n">fused_qkv_bias</span><span class="p">,</span>
-    <span class="n">self_output_weight</span><span class="p">,</span>
-    <span class="n">self_output_bias</span><span class="p">,</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">num_heads</span><span class="p">,</span>
-    <span class="n">num_cores_x</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="n">batch_size</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_states</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">head_size</span> <span class="o">=</span> <span class="n">hidden_size</span> <span class="o">//</span> <span class="n">num_heads</span>
+<div class="highlight"><pre><span></span>def optimized_multi_head_attention(
+    hidden_states,
+    attention_mask,
+    fused_qkv_weight,
+    fused_qkv_bias,
+    self_output_weight,
+    self_output_bias,
+    *,
+    num_heads,
+    num_cores_x=12,
+):
+    batch_size, _, hidden_size = hidden_states.shape
+    head_size = hidden_size // num_heads
 
-    <span class="n">hidden_states</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">,</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">)</span>
+    hidden_states = ttnn.to_layout(hidden_states, ttnn.TILE_LAYOUT)
 
-    <span class="n">fused_qkv_output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span>
-        <span class="n">hidden_states</span><span class="p">,</span>
-        <span class="n">fused_qkv_weight</span><span class="p">,</span>
-        <span class="n">bias</span><span class="o">=</span><span class="n">fused_qkv_bias</span><span class="p">,</span>
-        <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">,</span>
-        <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat8_b</span><span class="p">,</span>
-        <span class="n">core_grid</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">CoreGrid</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">num_cores_x</span><span class="p">),</span>
-    <span class="p">)</span>
+    fused_qkv_output = ttnn.linear(
+        hidden_states,
+        fused_qkv_weight,
+        bias=fused_qkv_bias,
+        memory_config=ttnn.L1_MEMORY_CONFIG,
+        dtype=ttnn.bfloat8_b,
+        core_grid=ttnn.CoreGrid(y=batch_size, x=num_cores_x),
+    )
 
-    <span class="p">(</span>
-        <span class="n">query</span><span class="p">,</span>
-        <span class="n">key</span><span class="p">,</span>
-        <span class="n">value</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">split_query_key_value_and_split_heads</span><span class="p">(</span>
-        <span class="n">fused_qkv_output</span><span class="p">,</span>
-        <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">,</span>
-        <span class="n">num_heads</span><span class="o">=</span><span class="n">num_heads</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">ttnn</span><span class="o">.</span><span class="n">deallocate</span><span class="p">(</span><span class="n">fused_qkv_output</span><span class="p">)</span>
+    (
+        query,
+        key,
+        value,
+    ) = ttnn.transformer.split_query_key_value_and_split_heads(
+        fused_qkv_output,
+        memory_config=ttnn.L1_MEMORY_CONFIG,
+        num_heads=num_heads,
+    )
+    ttnn.deallocate(fused_qkv_output)
 
-    <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
-        <span class="n">query</span><span class="p">,</span>
-        <span class="n">key</span><span class="p">,</span>
-        <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">,</span>
-        <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">,</span>
-        <span class="n">core_grid</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">CoreGrid</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">num_cores_x</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="n">ttnn</span><span class="o">.</span><span class="n">deallocate</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-    <span class="n">ttnn</span><span class="o">.</span><span class="n">deallocate</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    attention_scores = ttnn.matmul(
+        query,
+        key,
+        memory_config=ttnn.L1_MEMORY_CONFIG,
+        dtype=ttnn.bfloat16,
+        core_grid=ttnn.CoreGrid(y=batch_size, x=num_cores_x),
+    )
+    ttnn.deallocate(query)
+    ttnn.deallocate(key)
 
-    <span class="n">attention_probs</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">attention_softmax_</span><span class="p">(</span><span class="n">attention_scores</span><span class="p">,</span> <span class="n">attention_mask</span><span class="o">=</span><span class="n">attention_mask</span><span class="p">,</span> <span class="n">head_size</span><span class="o">=</span><span class="n">head_size</span><span class="p">)</span>
+    attention_probs = ttnn.transformer.attention_softmax_(attention_scores, attention_mask=attention_mask, head_size=head_size)
 
-    <span class="n">context_layer</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
-        <span class="n">attention_probs</span><span class="p">,</span>
-        <span class="n">value</span><span class="p">,</span>
-        <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">,</span>
-        <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat8_b</span><span class="p">,</span>
-        <span class="n">core_grid</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">CoreGrid</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">num_cores_x</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="n">ttnn</span><span class="o">.</span><span class="n">deallocate</span><span class="p">(</span><span class="n">attention_probs</span><span class="p">)</span>
+    context_layer = ttnn.matmul(
+        attention_probs,
+        value,
+        memory_config=ttnn.L1_MEMORY_CONFIG,
+        dtype=ttnn.bfloat8_b,
+        core_grid=ttnn.CoreGrid(y=batch_size, x=num_cores_x),
+    )
+    ttnn.deallocate(attention_probs)
 
-    <span class="n">context_layer_after_concatenate_heads</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">concatenate_heads</span><span class="p">(</span>
-        <span class="n">context_layer</span><span class="p">,</span>
-        <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">ttnn</span><span class="o">.</span><span class="n">deallocate</span><span class="p">(</span><span class="n">context_layer</span><span class="p">)</span>
+    context_layer_after_concatenate_heads = ttnn.transformer.concatenate_heads(
+        context_layer,
+        memory_config=ttnn.L1_MEMORY_CONFIG,
+    )
+    ttnn.deallocate(context_layer)
 
-    <span class="n">self_output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span>
-        <span class="n">context_layer_after_concatenate_heads</span><span class="p">,</span>
-        <span class="n">self_output_weight</span><span class="p">,</span>
-        <span class="n">bias</span><span class="o">=</span><span class="n">self_output_bias</span><span class="p">,</span>
-        <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">,</span>
-        <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">,</span>
-        <span class="n">core_grid</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">CoreGrid</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">num_cores_x</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="n">ttnn</span><span class="o">.</span><span class="n">deallocate</span><span class="p">(</span><span class="n">context_layer_after_concatenate_heads</span><span class="p">)</span>
+    self_output = ttnn.linear(
+        context_layer_after_concatenate_heads,
+        self_output_weight,
+        bias=self_output_bias,
+        memory_config=ttnn.L1_MEMORY_CONFIG,
+        dtype=ttnn.bfloat16,
+        core_grid=ttnn.CoreGrid(y=batch_size, x=num_cores_x),
+    )
+    ttnn.deallocate(context_layer_after_concatenate_heads)
 
-    <span class="k">return</span> <span class="n">self_output</span>
+    return self_output
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Pre-process-the-parameters-of-the-optimized-model">
-<h2>Pre-process the parameters of the optimized model<a class="headerlink" href="#Pre-process-the-parameters-of-the-optimized-model" title="Permalink to this heading"></a>
+<h2>Pre-process the parameters of the optimized model<a class="headerlink" href="#Pre-process-the-parameters-of-the-optimized-model" title="Link to this heading"></a>
 </h2>
 <ol class="arabic simple">
 <li><p>Fuse QKV weights and biases</p></li>
@@ -596,63 +675,63 @@ Multi-head attention ran in 0.250946044921875 seconds for the subsequent iterati
 </ol>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[13]:
+<div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ttnn.model_preprocessing</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">preprocess_linear_bias</span><span class="p">,</span>
-    <span class="n">preprocess_linear_weight</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span>from ttnn.model_preprocessing import (
+    preprocess_linear_bias,
+    preprocess_linear_weight,
+)
 
-<span class="n">torch_qkv_weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">torch_query_weight</span><span class="p">,</span> <span class="n">torch_key_weight</span><span class="p">,</span> <span class="n">torch_value_weight</span><span class="p">],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">torch_qkv_bias</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">torch_query_bias</span><span class="p">,</span> <span class="n">torch_key_bias</span><span class="p">,</span> <span class="n">torch_value_bias</span><span class="p">],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+torch_qkv_weight = torch.cat([torch_query_weight, torch_key_weight, torch_value_weight], dim=-1)
+torch_qkv_bias = torch.cat([torch_query_bias, torch_key_bias, torch_value_bias], dim=-1)
 
-<span class="n">qkv_weight</span> <span class="o">=</span> <span class="n">preprocess_linear_weight</span><span class="p">(</span><span class="n">torch_qkv_weight</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">qkv_bias</span> <span class="o">=</span> <span class="n">preprocess_linear_bias</span><span class="p">(</span><span class="n">torch_qkv_bias</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">output_weight</span> <span class="o">=</span> <span class="n">preprocess_linear_weight</span><span class="p">(</span><span class="n">torch_output_weight</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">output_bias</span> <span class="o">=</span> <span class="n">preprocess_linear_bias</span><span class="p">(</span><span class="n">torch_output_bias</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
+qkv_weight = preprocess_linear_weight(torch_qkv_weight.T, dtype=ttnn.bfloat16)
+qkv_bias = preprocess_linear_bias(torch_qkv_bias, dtype=ttnn.bfloat16)
+output_weight = preprocess_linear_weight(torch_output_weight.T, dtype=ttnn.bfloat16)
+output_bias = preprocess_linear_bias(torch_output_bias, dtype=ttnn.bfloat16)
 
-<span class="n">qkv_weight</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">qkv_weight</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
-<span class="n">qkv_bias</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">qkv_bias</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">)</span>
-<span class="n">output_weight</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">output_weight</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
-<span class="n">output_bias</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">output_bias</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">)</span>
+qkv_weight = ttnn.to_device(qkv_weight, device)
+qkv_bias = ttnn.to_device(qkv_bias, device, memory_config=ttnn.L1_MEMORY_CONFIG)
+output_weight = ttnn.to_device(output_weight, device)
+output_bias = ttnn.to_device(output_bias, device, memory_config=ttnn.L1_MEMORY_CONFIG)
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Run-the-first-iteration-of-the-optimized-Multi-Head-Attention">
-<h2>Run the first iteration of the optimized Multi-Head Attention<a class="headerlink" href="#Run-the-first-iteration-of-the-optimized-Multi-Head-Attention" title="Permalink to this heading"></a>
+<h2>Run the first iteration of the optimized Multi-Head Attention<a class="headerlink" href="#Run-the-first-iteration-of-the-optimized-Multi-Head-Attention" title="Link to this heading"></a>
 </h2>
 <div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate">
+<div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate">
+<div class="highlight"><pre><span></span>start = time.time()
+hidden_states = ttnn.to_layout(hidden_states, ttnn.TILE_LAYOUT)
+optimized_output = optimized_multi_head_attention(
+    hidden_states,
+    attention_mask,
+    qkv_weight,
+    qkv_bias,
+    output_weight,
+    output_bias,
+    num_heads=num_heads,
+)
+end = time.time()
+duration = end - start
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
 <div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">hidden_states</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">,</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">)</span>
-<span class="n">optimized_output</span> <span class="o">=</span> <span class="n">optimized_multi_head_attention</span><span class="p">(</span>
-    <span class="n">hidden_states</span><span class="p">,</span>
-    <span class="n">attention_mask</span><span class="p">,</span>
-    <span class="n">qkv_weight</span><span class="p">,</span>
-    <span class="n">qkv_bias</span><span class="p">,</span>
-    <span class="n">output_weight</span><span class="p">,</span>
-    <span class="n">output_bias</span><span class="p">,</span>
-    <span class="n">num_heads</span><span class="o">=</span><span class="n">num_heads</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">duration</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[15]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimized multi-head attention ran in </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds for the first iteration"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>print(f"Optimized multi-head attention ran in {duration} seconds for the first iteration")
 </pre></div>
 </div>
 </div>
@@ -661,42 +740,42 @@ Multi-head attention ran in 0.250946044921875 seconds for the subsequent iterati
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Optimized multi-head attention ran in 4.474989175796509 seconds for the first iteration
+Optimized multi-head attention ran in 3.9824471473693848 seconds for the first iteration
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Run-a-subsequent-iteration-of-the-optimized-Multi-Head-Attention">
-<h2>Run a subsequent iteration of the optimized Multi-Head Attention<a class="headerlink" href="#Run-a-subsequent-iteration-of-the-optimized-Multi-Head-Attention" title="Permalink to this heading"></a>
+<h2>Run a subsequent iteration of the optimized Multi-Head Attention<a class="headerlink" href="#Run-a-subsequent-iteration-of-the-optimized-Multi-Head-Attention" title="Link to this heading"></a>
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[16]:
+<div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">optimized_output</span> <span class="o">=</span> <span class="n">optimized_multi_head_attention</span><span class="p">(</span>
-    <span class="n">hidden_states</span><span class="p">,</span>
-    <span class="n">attention_mask</span><span class="p">,</span>
-    <span class="n">qkv_weight</span><span class="p">,</span>
-    <span class="n">qkv_bias</span><span class="p">,</span>
-    <span class="n">output_weight</span><span class="p">,</span>
-    <span class="n">output_bias</span><span class="p">,</span>
-    <span class="n">num_heads</span><span class="o">=</span><span class="n">num_heads</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">duration</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<div class="highlight"><pre><span></span>start = time.time()
+optimized_output = optimized_multi_head_attention(
+    hidden_states,
+    attention_mask,
+    qkv_weight,
+    qkv_bias,
+    output_weight,
+    output_bias,
+    num_heads=num_heads,
+)
+end = time.time()
+duration = end - start
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[17]:
+<div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Optimized multi-head attention ran in </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds for the subsequent iteration because of the program cache"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>print(f"Optimized multi-head attention ran in {duration} seconds for the subsequent iteration because of the program cache")
 </pre></div>
 </div>
 </div>
@@ -705,39 +784,39 @@ Optimized multi-head attention ran in 4.474989175796509 seconds for the first it
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Optimized multi-head attention ran in 0.020017147064208984 seconds for the subsequent iteration because of the program cache
+Optimized multi-head attention ran in 0.002396821975708008 seconds for the subsequent iteration because of the program cache
 </pre></div>
 </div>
 </div>
 <p>Note that the optimized multi-head attention is 2 orders of magnitude faster than the initial version</p>
 </section>
 <section id="Check-that-the-output-of-the-optimized-version-matches-the-output-of-the-original-implementation">
-<h2>Check that the output of the optimized version matches the output of the original implementation<a class="headerlink" href="#Check-that-the-output-of-the-optimized-version-matches-the-output-of-the-original-implementation" title="Permalink to this heading"></a>
+<h2>Check that the output of the optimized version matches the output of the original implementation<a class="headerlink" href="#Check-that-the-output-of-the-optimized-version-matches-the-output-of-the-original-implementation" title="Link to this heading"></a>
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[18]:
+<div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch_output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-<span class="n">torch_optimized_output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="n">optimized_output</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>torch_output = ttnn.to_torch(output)
+torch_optimized_output = ttnn.to_torch(optimized_output)
 
-<span class="k">assert</span> <span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">torch_output</span><span class="p">,</span> <span class="n">torch_optimized_output</span><span class="p">)</span>
+assert torch.allclose(torch_output, torch_optimized_output)
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Close-the-device">
-<h2>Close the device<a class="headerlink" href="#Close-the-device" title="Permalink to this heading"></a>
+<h2>Close the device<a class="headerlink" href="#Close-the-device" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[19]:
+<div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">ttnn</span><span class="o">.</span><span class="n">close_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ttnn.close_device(device)
 </pre></div>
 </div>
 </div>
@@ -764,7 +843,7 @@ Optimized multi-head attention ran in 0.020017147064208984 seconds for the subse
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

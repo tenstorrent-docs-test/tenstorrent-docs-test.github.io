@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -120,10 +120,10 @@
            <div itemprop="articleBody">
              
   <section id="tensor">
-<span id="id1"></span><h1>Tensor<a class="headerlink" href="#tensor" title="Permalink to this heading"></a>
+<span id="id1"></span><h1>Tensor<a class="headerlink" href="#tensor" title="Link to this heading"></a>
 </h1>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a>
 </h2>
 <p>The TT Tensor library provides support for creation and manipulation of TT Tensors.</p>
 <p>This library is used by TT-Dispatch to represent tensors that can be sent to and received from TT-Metal platform.
@@ -173,7 +173,7 @@ A TT Tensor of shape <code class="docutils literal notranslate"><span class="pre
 </div>
 </section>
 <section id="tensor-storage">
-<h2>Tensor Storage<a class="headerlink" href="#tensor-storage" title="Permalink to this heading"></a>
+<h2>Tensor Storage<a class="headerlink" href="#tensor-storage" title="Link to this heading"></a>
 </h2>
 <p>Tensor class has 3 types of storages: <cite>OwnedStorage</cite>, <cite>BorrowedStorage</cite> and <cite>DeviceStorage</cite>. And it has a constructor for each type.</p>
 <p><cite>OwnedStorage</cite> is used to store the data in host DRAM. Every data type is stored in the vector corresponding to that data type.
@@ -182,19 +182,19 @@ And the vector itself is stored in the shared pointer. That is done so that if t
 <p><cite>DeviceStorage</cite> is used to store the data in device DRAM or device L1. It also uses a shared pointer to store the underlying buffer. And the reason is also to allow for copying Tensor objects without having to copy the underlying storage.</p>
 </section>
 <section id="tensor-api">
-<h2>Tensor API<a class="headerlink" href="#tensor-api" title="Permalink to this heading"></a>
+<h2>Tensor API<a class="headerlink" href="#tensor-api" title="Link to this heading"></a>
 </h2>
 </section>
 <section id="memoryconfig">
-<h2>MemoryConfig<a class="headerlink" href="#memoryconfig" title="Permalink to this heading"></a>
+<h2>MemoryConfig<a class="headerlink" href="#memoryconfig" title="Link to this heading"></a>
 </h2>
 </section>
 <section id="examples-of-converting-between-pytorch-tensor-and-tt-tensor">
-<h2>Examples of converting between PyTorch Tensor and TT Tensor<a class="headerlink" href="#examples-of-converting-between-pytorch-tensor-and-tt-tensor" title="Permalink to this heading"></a>
+<h2>Examples of converting between PyTorch Tensor and TT Tensor<a class="headerlink" href="#examples-of-converting-between-pytorch-tensor-and-tt-tensor" title="Link to this heading"></a>
 </h2>
 <p>Remember that TT Tensors must have rank 4.</p>
 <section id="converting-a-pytorch-tensor-to-a-tt-tensor">
-<h3>Converting a PyTorch Tensor to a TT Tensor<a class="headerlink" href="#converting-a-pytorch-tensor-to-a-tt-tensor" title="Permalink to this heading"></a>
+<h3>Converting a PyTorch Tensor to a TT Tensor<a class="headerlink" href="#converting-a-pytorch-tensor-to-a-tt-tensor" title="Link to this heading"></a>
 </h3>
 <p>This example shows how to create a TT Tensor <code class="docutils literal notranslate"><span class="pre">tt_tensor</span></code> from a PyTorch tensor.
 The created tensor will be in ROW_MAJOR layout and stored on TT accelerator device.</p>
@@ -205,7 +205,7 @@ The created tensor will be in ROW_MAJOR layout and stored on TT accelerator devi
 </div>
 </section>
 <section id="converting-a-tt-tensor-to-a-pytorch-tensor">
-<h3>Converting a TT Tensor to a PyTorch Tensor<a class="headerlink" href="#converting-a-tt-tensor-to-a-pytorch-tensor" title="Permalink to this heading"></a>
+<h3>Converting a TT Tensor to a PyTorch Tensor<a class="headerlink" href="#converting-a-tt-tensor-to-a-pytorch-tensor" title="Link to this heading"></a>
 </h3>
 <p>This example shows how to move a TT Tensor <code class="docutils literal notranslate"><span class="pre">output</span></code> from device to host and how to convert a TT Tensor to PyTorch tensor.</p>
 <div class="highlight-python notranslate">
@@ -233,7 +233,7 @@ The created tensor will be in ROW_MAJOR layout and stored on TT accelerator devi
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

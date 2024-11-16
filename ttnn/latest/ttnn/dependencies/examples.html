@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -114,10 +114,10 @@
            <div itemprop="articleBody">
              
   <section id="examples-of-tensor-and-tt-lib-use">
-<span id="example"></span><h1>Examples of Tensor and TT-LIB Use<a class="headerlink" href="#examples-of-tensor-and-tt-lib-use" title="Permalink to this heading"></a>
+<span id="example"></span><h1>Examples of Tensor and TT-LIB Use<a class="headerlink" href="#examples-of-tensor-and-tt-lib-use" title="Link to this heading"></a>
 </h1>
 <section id="run-one-op-from-tt-lib-on-tt-accelerator-device">
-<h2>Run one OP from <cite>TT-LIB</cite> on TT Accelerator device<a class="headerlink" href="#run-one-op-from-tt-lib-on-tt-accelerator-device" title="Permalink to this heading"></a>
+<h2>Run one OP from <cite>TT-LIB</cite> on TT Accelerator device<a class="headerlink" href="#run-one-op-from-tt-lib-on-tt-accelerator-device" title="Link to this heading"></a>
 </h2>
 <p>In this code example we use TT Accelerator device to execute <code class="docutils literal notranslate"><span class="pre">relu</span></code> op from <cite>TT-LIB</cite> library.
 These are the steps:</p>
@@ -162,7 +162,7 @@ These are the steps:</p>
 </div>
 </section>
 <section id="run-tt-lib-and-pytorch-ops">
-<h2>Run <cite>TT-LIB</cite> and PyTorch OPs<a class="headerlink" href="#run-tt-lib-and-pytorch-ops" title="Permalink to this heading"></a>
+<h2>Run <cite>TT-LIB</cite> and PyTorch OPs<a class="headerlink" href="#run-tt-lib-and-pytorch-ops" title="Link to this heading"></a>
 </h2>
 <p>In this code example we build on previous example and after <code class="docutils literal notranslate"><span class="pre">relu</span></code> also execute <code class="docutils literal notranslate"><span class="pre">pow</span></code>, <code class="docutils literal notranslate"><span class="pre">silu</span></code>, and <code class="docutils literal notranslate"><span class="pre">exp</span></code>.</p>
 <p>Since <code class="docutils literal notranslate"><span class="pre">pow</span></code> with exponent as tensor is not supported in <cite>TT-LIB</cite> library, we need to move TT Tensor produced by <code class="docutils literal notranslate"><span class="pre">relu</span></code> to host machine,
@@ -232,7 +232,7 @@ supply it with TT Tensor as input.</p>
 </div>
 </section>
 <section id="tensors-with-odd-size-of-last-dim">
-<h2>Tensors with odd size of last dim<a class="headerlink" href="#tensors-with-odd-size-of-last-dim" title="Permalink to this heading"></a>
+<h2>Tensors with odd size of last dim<a class="headerlink" href="#tensors-with-odd-size-of-last-dim" title="Link to this heading"></a>
 </h2>
 <p>We can’t create or move to TT Accelerator device a TT Tensor that is in ROW_MAJOR layout and has odd size of last dimension.
 This type of TT Tensor can be created on host machine and can be passed to <cite>TT-LIB</cite> operations.</p>
@@ -298,7 +298,7 @@ can be modified as follow:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

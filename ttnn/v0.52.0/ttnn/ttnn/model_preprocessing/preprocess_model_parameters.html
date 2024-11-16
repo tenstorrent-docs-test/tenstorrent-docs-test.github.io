@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -63,10 +63,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../api.html#operations">Operations</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../api.html#model-conversion">Model Conversion</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="preprocess_model.html">ttnn.model_preprocessing.preprocess_model</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">ttnn.model_preprocessing.preprocess_model_parameters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ttnn.model_preprocessing.preprocess_model_parameters"><code class="docutils literal notranslate"><span class="pre">preprocess_model_parameters()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ttnn.model_preprocessing.preprocess_model_parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api.html#reports">Reports</a></li>
@@ -119,31 +116,8 @@
            <div itemprop="articleBody">
              
   <section id="ttnn-model-preprocessing-preprocess-model-parameters">
-<span id="id1"></span><h1>ttnn.model_preprocessing.preprocess_model_parameters<a class="headerlink" href="#ttnn-model-preprocessing-preprocess-model-parameters" title="Permalink to this heading"></a>
+<span id="id1"></span><h1>ttnn.model_preprocessing.preprocess_model_parameters<a class="headerlink" href="#ttnn-model-preprocessing-preprocess-model-parameters" title="Link to this heading"></a>
 </h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ttnn.model_preprocessing.preprocess_model_parameters">
-<span class="sig-prename descclassname"><span class="pre">ttnn.model_preprocessing.</span></span><span class="sig-name descname"><span class="pre">preprocess_model_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initialize_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">torch.nn.Module</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert_to_ttnn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">torch.nn.Module</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_preprocessor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">torch.nn.Module</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ParameterDict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ttnn.Device</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">ParameterDict</span></span></span><a class="headerlink" href="#ttnn.model_preprocessing.preprocess_model_parameters" title="Permalink to this definition"></a>
-</dt>
-<dd>
-<p>Preprocess parameters of a given model.</p>
-<dl class="simple">
-<dt>Args:</dt>
-<dd>
-<ul class="simple">
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">model_name</span></code>: Name of the model to be used by the cache. If not provided, the cache will be disabled.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">version</span></code>: Version of the model to be used by the cache. If not provided, the current git hash will be used. If the version doesn’t match the cached version, the cache will be invalidated.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">initialize_model</span></code>: Function for initializing the model. It’s not required if the model has already been cached and the cache is valid.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">convert_to_ttnn</span></code>: Function for determining whether to convert the parameters of a given module to ttnn.Tensor. If not provided, all modules will be converted.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">custom_preprocessor</span></code>: Function for preprocessing the parameters of a given module using user-specified logic. If not provided, the default preprocessor will be used.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">device</span></code>: Device on which to put ttnn.Tensor parameters</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">prefix</span></code>: Prefix string to attach to the names of the modules/parameters. It’s useful for making the names of submodules appear in the same way as in the original model.</p></li>
-</ul>
-</dd>
-</dl>
-</dd>
-</dl>
-
 </section>
 
 
@@ -159,7 +133,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

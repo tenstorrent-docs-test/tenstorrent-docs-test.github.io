@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../../../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -8,7 +8,7 @@
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/tt_theme.css?v=0bbfeaf8" />
-      <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/nbsphinx-code-cells.css" />
 
   
     <link rel="shortcut icon" href="../../../../../../../../../_static/favicon.png"/>
@@ -18,9 +18,9 @@
   
         <script src="../../../../../../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../../../../../../" id="documentation_options" src="../../../../../../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../../../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -104,7 +104,7 @@
            <div itemprop="articleBody">
              
   <section id="Tracing-ttnn-operations-and-torch-modules/functions">
-<h1>Tracing ttnn operations and torch modules/functions<a class="headerlink" href="#Tracing-ttnn-operations-and-torch-modules/functions" title="Permalink to this heading"></a>
+<h1>Tracing ttnn operations and torch modules/functions<a class="headerlink" href="#Tracing-ttnn-operations-and-torch-modules/functions" title="Link to this heading"></a>
 </h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -112,8 +112,8 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"TTNN_CONFIG_OVERRIDES"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">enable_fast_runtime_mode</span><span class="se">\"</span><span class="s2">: false}"</span>
+<div class="highlight"><pre><span></span>import os
+os.environ["TTNN_CONFIG_OVERRIDES"] = "{\"enable_fast_runtime_mode\": false}"
 </pre></div>
 </div>
 </div>
@@ -123,11 +123,11 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">transformers</span>
+<div class="highlight"><pre><span></span>import torch
+import transformers
 
-<span class="kn">import</span> <span class="nn">ttnn</span>
-<span class="kn">from</span> <span class="nn">ttnn.tracer</span> <span class="kn">import</span> <span class="n">trace</span><span class="p">,</span> <span class="n">visualize</span>
+import ttnn
+from ttnn.tracer import trace, visualize
 </pre></div>
 </div>
 </div>
@@ -211,12 +211,12 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">transformers</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">set_verbosity_error</span><span class="p">()</span>
+<div class="highlight"><pre><span></span>transformers.logging.set_verbosity_error()
 </pre></div>
 </div>
 </div>
 <section id="Trace-torch-functions">
-<h2>Trace torch functions<a class="headerlink" href="#Trace-torch-functions" title="Permalink to this heading"></a>
+<h2>Trace torch functions<a class="headerlink" href="#Trace-torch-functions" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -224,10 +224,10 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">trace</span><span class="p">():</span>
-    <span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
-    <span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-<span class="n">visualize</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>with trace():
+    tensor = torch.randint(0, 100, (1, 64))
+    tensor = torch.exp(tensor)
+visualize(tensor)
 </pre></div>
 </div>
 </div>
@@ -251,7 +251,7 @@
 </div>
 </section>
 <section id="Trace-torch-functions-and-ttnn-operations">
-<h2>Trace torch functions and ttnn operations<a class="headerlink" href="#Trace-torch-functions-and-ttnn-operations" title="Permalink to this heading"></a>
+<h2>Trace torch functions and ttnn operations<a class="headerlink" href="#Trace-torch-functions-and-ttnn-operations" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -259,12 +259,12 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">trace</span><span class="p">():</span>
-    <span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
-    <span class="n">tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-    <span class="n">tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
-    <span class="n">tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-<span class="n">visualize</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>with trace():
+    tensor = torch.randint(0, 100, (4, 64))
+    tensor = ttnn.from_torch(tensor)
+    tensor = ttnn.reshape(tensor, (2, 4, 32))
+    tensor = ttnn.to_torch(tensor)
+visualize(tensor)
 </pre></div>
 </div>
 </div>
@@ -288,7 +288,7 @@
 </div>
 </section>
 <section id="Trace-torch-functions,-torch-modules-and-ttnn-operations">
-<h2>Trace torch functions, torch modules and ttnn operations<a class="headerlink" href="#Trace-torch-functions,-torch-modules-and-ttnn-operations" title="Permalink to this heading"></a>
+<h2>Trace torch functions, torch modules and ttnn operations<a class="headerlink" href="#Trace-torch-functions,-torch-modules-and-ttnn-operations" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -296,16 +296,16 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">"google/bert_uncased_L-4_H-256_A-4"</span>
-<span class="n">config</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">modeling_bert</span><span class="o">.</span><span class="n">BertSelfOutput</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<div class="highlight"><pre><span></span>model_name = "google/bert_uncased_L-4_H-256_A-4"
+config = transformers.BertConfig.from_pretrained(model_name)
+model = transformers.models.bert.modeling_bert.BertSelfOutput(config).eval()
 
-<span class="k">with</span> <span class="n">trace</span><span class="p">():</span>
-    <span class="n">hidden_states</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">))</span>
-    <span class="n">input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">))</span>
-    <span class="n">hidden_states</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">,</span> <span class="n">input_tensor</span><span class="p">)</span>
-    <span class="n">output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">)</span>
-<span class="n">visualize</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+with trace():
+    hidden_states = torch.rand((1, 64, config.hidden_size))
+    input_tensor = torch.rand((1, 64, config.hidden_size))
+    hidden_states = model(hidden_states, input_tensor)
+    output = ttnn.from_torch(hidden_states)
+visualize(output)
 </pre></div>
 </div>
 </div>
@@ -331,7 +331,7 @@
 </div>
 </section>
 <section id="Trace-models-written-using-ttnn">
-<h2>Trace models written using ttnn<a class="headerlink" href="#Trace-models-written-using-ttnn" title="Permalink to this heading"></a>
+<h2>Trace models written using ttnn<a class="headerlink" href="#Trace-models-written-using-ttnn" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -339,10 +339,10 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">dispatch_core_type</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">DispatchCoreType</span><span class="o">.</span><span class="n">ETH</span>
-<span class="k">if</span> <span class="s2">"grayskull"</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"ARCH_NAME"</span><span class="p">):</span>
-    <span class="n">dispatch_core_type</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">DispatchCoreType</span><span class="o">.</span><span class="n">WORKER</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">l1_small_size</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span> <span class="n">dispatch_core_type</span><span class="o">=</span><span class="n">dispatch_core_type</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>dispatch_core_type = ttnn.device.DispatchCoreType.ETH
+if "grayskull" in os.environ.get("ARCH_NAME"):
+    dispatch_core_type = ttnn.device.DispatchCoreType.WORKER
+device = ttnn.open_device(device_id=0, l1_small_size=8192, dispatch_core_type=dispatch_core_type)
 </pre></div>
 </div>
 </div>
@@ -370,50 +370,50 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">models.demos.bert.tt</span> <span class="kn">import</span> <span class="n">ttnn_bert</span>
-<span class="kn">from</span> <span class="nn">models.demos.bert.tt</span> <span class="kn">import</span> <span class="n">ttnn_optimized_bert</span>
-<span class="kn">from</span> <span class="nn">ttnn.model_preprocessing</span> <span class="kn">import</span> <span class="n">preprocess_model_parameters</span>
+<div class="highlight"><pre><span></span>from models.demos.bert.tt import ttnn_bert
+from models.demos.bert.tt import ttnn_optimized_bert
+from ttnn.model_preprocessing import preprocess_model_parameters
 
-<span class="k">def</span> <span class="nf">ttnn_bert</span><span class="p">(</span><span class="n">bert</span><span class="p">):</span>
-    <span class="n">model_name</span> <span class="o">=</span> <span class="s2">"phiyodr/bert-large-finetuned-squad2"</span>
+def ttnn_bert(bert):
+    model_name = "phiyodr/bert-large-finetuned-squad2"
 
-    <span class="n">config</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">num_hidden_layers</span> <span class="o">=</span> <span class="mi">1</span>
+    config = transformers.BertConfig.from_pretrained(model_name)
+    config.num_hidden_layers = 1
 
-    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
-    <span class="n">sequence_size</span> <span class="o">=</span> <span class="mi">384</span>
+    batch_size = 8
+    sequence_size = 384
 
-    <span class="n">parameters</span> <span class="o">=</span> <span class="n">preprocess_model_parameters</span><span class="p">(</span>
-        <span class="n">initialize_model</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">transformers</span><span class="o">.</span><span class="n">BertForQuestionAnswering</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-            <span class="n">model_name</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">(),</span>
-        <span class="n">custom_preprocessor</span><span class="o">=</span><span class="n">bert</span><span class="o">.</span><span class="n">custom_preprocessor</span><span class="p">,</span>
-        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
-    <span class="p">)</span>
+    parameters = preprocess_model_parameters(
+        initialize_model=lambda: transformers.BertForQuestionAnswering.from_pretrained(
+            model_name, config=config
+        ).eval(),
+        custom_preprocessor=bert.custom_preprocessor,
+        device=device,
+    )
 
-    <span class="k">with</span> <span class="n">trace</span><span class="p">():</span>
-        <span class="n">input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-        <span class="n">torch_token_type_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-        <span class="n">torch_position_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-        <span class="n">torch_attention_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">)</span> <span class="k">if</span> <span class="n">bert</span> <span class="o">==</span> <span class="n">ttnn_optimized_bert</span> <span class="k">else</span> <span class="kc">None</span>
+    with trace():
+        input_ids = torch.randint(0, config.vocab_size, (batch_size, sequence_size)).to(torch.int32)
+        torch_token_type_ids = torch.zeros((batch_size, sequence_size), dtype=torch.int32)
+        torch_position_ids = torch.zeros((batch_size, sequence_size), dtype=torch.int32)
+        torch_attention_mask = torch.zeros(1, sequence_size) if bert == ttnn_optimized_bert else None
 
 
-        <span class="n">ttnn_bert_inputs</span> <span class="o">=</span> <span class="n">bert</span><span class="o">.</span><span class="n">preprocess_inputs</span><span class="p">(</span>
-            <span class="n">input_ids</span><span class="p">,</span>
-            <span class="n">torch_token_type_ids</span><span class="p">,</span>
-            <span class="n">torch_position_ids</span><span class="p">,</span>
-            <span class="n">torch_attention_mask</span><span class="p">,</span>
-            <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
-        <span class="p">)</span>
+        ttnn_bert_inputs = bert.preprocess_inputs(
+            input_ids,
+            torch_token_type_ids,
+            torch_position_ids,
+            torch_attention_mask,
+            device=device,
+        )
 
-        <span class="n">output</span> <span class="o">=</span> <span class="n">bert</span><span class="o">.</span><span class="n">bert_for_question_answering</span><span class="p">(</span>
-            <span class="n">config</span><span class="p">,</span>
-            <span class="o">*</span><span class="n">ttnn_bert_inputs</span><span class="p">,</span>
-            <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_device</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        output = bert.bert_for_question_answering(
+            config,
+            *ttnn_bert_inputs,
+            parameters=parameters,
+        )
+        output = ttnn.from_device(output)
 
-    <span class="k">return</span> <span class="n">visualize</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    return visualize(output)
 </pre></div>
 </div>
 </div>
@@ -423,7 +423,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">ttnn_bert</span><span class="p">(</span><span class="n">ttnn_optimized_bert</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ttnn_bert(ttnn_optimized_bert)
 </pre></div>
 </div>
 </div>
@@ -460,7 +460,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">ttnn</span><span class="o">.</span><span class="n">close_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ttnn.close_device(device)
 </pre></div>
 </div>
 </div>
@@ -497,7 +497,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../../../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -8,7 +8,7 @@
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/tt_theme.css?v=0bbfeaf8" />
-      <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/nbsphinx-code-cells.css" />
 
   
     <link rel="shortcut icon" href="../../../../../../../../../_static/favicon.png"/>
@@ -18,9 +18,9 @@
   
         <script src="../../../../../../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../../../../../../" id="documentation_options" src="../../../../../../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../../../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -104,7 +104,7 @@
            <div itemprop="articleBody">
              
   <section id="Matrix-Multiplication">
-<h1>Matrix Multiplication<a class="headerlink" href="#Matrix-Multiplication" title="Permalink to this heading"></a>
+<h1>Matrix Multiplication<a class="headerlink" href="#Matrix-Multiplication" title="Link to this heading"></a>
 </h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -112,7 +112,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre><span></span>import os
 <br></pre></div>
 </div>
 </div>
@@ -122,13 +122,13 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<div class="highlight"><pre><span></span>import torch
+import ttnn
 
-<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+torch.manual_seed(0)
 
-<span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
+device_id = 0
+device = ttnn.open_device(device_id=device_id)
 </pre></div>
 </div>
 </div>
@@ -224,7 +224,7 @@
 </div>
 </div>
 <section id="Enable-program-cache">
-<h2>Enable program cache<a class="headerlink" href="#Enable-program-cache" title="Permalink to this heading"></a>
+<h2>Enable program cache<a class="headerlink" href="#Enable-program-cache" title="Link to this heading"></a>
 </h2>
 <p>Enabling the program cache will speed up the execution of operations that run repeatedly</p>
 <div class="nbinput docutils container">
@@ -233,7 +233,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">ttnn</span><span class="o">.</span><span class="n">enable_program_cache</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ttnn.enable_program_cache(device)
 </pre></div>
 </div>
 </div>
@@ -250,7 +250,7 @@
 </section>
 
 <section id="Configuration">
-<h1>Configuration<a class="headerlink" href="#Configuration" title="Permalink to this heading"></a>
+<h1>Configuration<a class="headerlink" href="#Configuration" title="Link to this heading"></a>
 </h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -258,14 +258,14 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mi">1024</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mi">1024</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">1024</span>
+<div class="highlight"><pre><span></span>m = 1024
+k = 1024
+n = 1024
 </pre></div>
 </div>
 </div>
 <section id="Initialize-tensors-a-and-b-with-random-values-using-torch">
-<h2>Initialize tensors a and b with random values using torch<a class="headerlink" href="#Initialize-tensors-a-and-b-with-random-values-using-torch" title="Permalink to this heading"></a>
+<h2>Initialize tensors a and b with random values using torch<a class="headerlink" href="#Initialize-tensors-a-and-b-with-random-values-using-torch" title="Link to this heading"></a>
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
@@ -273,8 +273,8 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch_a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>torch_a = torch.randn((m, k), dtype=torch.bfloat16)
+torch_b = torch.randn((k, n), dtype=torch.bfloat16)
 </pre></div>
 </div>
 </div>
@@ -284,14 +284,14 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_a</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_b</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>a = ttnn.from_torch(torch_a, layout=ttnn.TILE_LAYOUT, device=device)
+b = ttnn.from_torch(torch_b, layout=ttnn.TILE_LAYOUT, device=device)
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Matrix-multiply-tensor-a-and-b">
-<h2>Matrix multiply tensor a and b<a class="headerlink" href="#Matrix-multiply-tensor-a-and-b" title="Permalink to this heading"></a>
+<h2>Matrix multiply tensor a and b<a class="headerlink" href="#Matrix-multiply-tensor-a-and-b" title="Link to this heading"></a>
 </h2>
 <p>The operation will run longer the first time because the kernels need to get compiled</p>
 <div class="nbinput nblast docutils container">
@@ -300,7 +300,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">a</span> <span class="o">@</span> <span class="n">b</span>
+<div class="highlight"><pre><span></span>output = a @ b
 </pre></div>
 </div>
 </div>
@@ -311,13 +311,13 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">a</span> <span class="o">@</span> <span class="n">b</span>
+<div class="highlight"><pre><span></span>output = a @ b
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Inspect-the-layout-of-matrix-multiplication-output">
-<h2>Inspect the layout of matrix multiplication output<a class="headerlink" href="#Inspect-the-layout-of-matrix-multiplication-output" title="Permalink to this heading"></a>
+<h2>Inspect the layout of matrix multiplication output<a class="headerlink" href="#Inspect-the-layout-of-matrix-multiplication-output" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -325,7 +325,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">layout</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>print(output.layout)
 </pre></div>
 </div>
 </div>
@@ -343,7 +343,7 @@ Layout.TILE
 <p>Learn more about tile layout here: TODO</p>
 </section>
 <section id="Inspect-the-result-of-the-matrix-multiplication">
-<h2>Inspect the result of the matrix multiplication<a class="headerlink" href="#Inspect-the-result-of-the-matrix-multiplication" title="Permalink to this heading"></a>
+<h2>Inspect the result of the matrix multiplication<a class="headerlink" href="#Inspect-the-result-of-the-matrix-multiplication" title="Link to this heading"></a>
 </h2>
 <p>To inspect the results we will first convert to row-major layout.</p>
 <div class="nbinput docutils container">
@@ -352,11 +352,11 @@ Layout.TILE
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">ROW_MAJOR_LAYOUT</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>output = ttnn.to_layout(output, ttnn.ROW_MAJOR_LAYOUT)
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Printing ttnn tensor"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"shape: </span><span class="si">{</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"chunk of a tensor:</span><span class="se">\n</span><span class="si">{</span><span class="n">output</span><span class="p">[:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="mi">32</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+print("Printing ttnn tensor")
+print(f"shape: {output.shape}")
+print(f"chunk of a tensor:\n{output[:1, :32]}")
 </pre></div>
 </div>
 </div>
@@ -374,7 +374,7 @@ ttnn.Tensor([[33.75000,  9.25000,  ..., -39.50000, -6.62500]], shape=Shape([1, 3
 </div>
 </section>
 <section id="Matrix-multiply-tensor-a-and-b-by-using-more-performant-config">
-<h2>Matrix multiply tensor a and b by using more performant config<a class="headerlink" href="#Matrix-multiply-tensor-a-and-b-by-using-more-performant-config" title="Permalink to this heading"></a>
+<h2>Matrix multiply tensor a and b by using more performant config<a class="headerlink" href="#Matrix-multiply-tensor-a-and-b-by-using-more-performant-config" title="Link to this heading"></a>
 </h2>
 <p>By default, matrix multiplication might not be as effecient as it could be. To speed it up further, the user can specify how many cores they want matrix multiplication to use. This can speed up the operation significantly.</p>
 <div class="nbinput nblast docutils container">
@@ -383,14 +383,14 @@ ttnn.Tensor([[33.75000,  9.25000,  ..., -39.50000, -6.62500]], shape=Shape([1, 3
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_a</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_b</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>a = ttnn.from_torch(torch_a)
+b = ttnn.from_torch(torch_b)
 
-<span class="n">a</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">)</span>
+a = ttnn.to_device(a, device, memory_config=ttnn.L1_MEMORY_CONFIG)
+b = ttnn.to_device(b, device, memory_config=ttnn.L1_MEMORY_CONFIG)
 
-<span class="n">a</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">)</span>
+a = ttnn.to_layout(a, ttnn.TILE_LAYOUT)
+b = ttnn.to_layout(b, ttnn.TILE_LAYOUT)
 </pre></div>
 </div>
 </div>
@@ -401,7 +401,7 @@ ttnn.Tensor([[33.75000,  9.25000,  ..., -39.50000, -6.62500]], shape=Shape([1, 3
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">,</span> <span class="n">core_grid</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">CoreGrid</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
+<div class="highlight"><pre><span></span>output = ttnn.matmul(a, b, memory_config=ttnn.L1_MEMORY_CONFIG, core_grid=ttnn.CoreGrid(y=8, x=8))
 </pre></div>
 </div>
 </div>
@@ -412,13 +412,13 @@ ttnn.Tensor([[33.75000,  9.25000,  ..., -39.50000, -6.62500]], shape=Shape([1, 3
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">memory_config</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">L1_MEMORY_CONFIG</span><span class="p">,</span> <span class="n">core_grid</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">CoreGrid</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
+<div class="highlight"><pre><span></span>output = ttnn.matmul(a, b, memory_config=ttnn.L1_MEMORY_CONFIG, core_grid=ttnn.CoreGrid(y=8, x=8))
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Close-the-device">
-<h2>Close the device<a class="headerlink" href="#Close-the-device" title="Permalink to this heading"></a>
+<h2>Close the device<a class="headerlink" href="#Close-the-device" title="Link to this heading"></a>
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
@@ -426,7 +426,7 @@ ttnn.Tensor([[33.75000,  9.25000,  ..., -39.50000, -6.62500]], shape=Shape([1, 3
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">ttnn</span><span class="o">.</span><span class="n">close_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ttnn.close_device(device)
 </pre></div>
 </div>
 </div>
@@ -453,7 +453,7 @@ ttnn.Tensor([[33.75000,  9.25000,  ..., -39.50000, -6.62500]], shape=Shape([1, 3
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -118,15 +118,40 @@
            <div itemprop="articleBody">
              
   <section id="buffers">
-<h1>Buffers<a class="headerlink" href="#buffers" title="Permalink to this heading"></a>
+<h1>Buffers<a class="headerlink" href="#buffers" title="Link to this heading"></a>
 </h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="CreateBuffer.html">CreateBuffer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CircularBuffers.html">CircularBuffers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CreateSemaphore.html">CreateSemaphore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DeallocateBuffer.html">DeallocateBuffer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="AssignGlobalBufferToProgram.html">AssignGlobalBufferToProgram</a></li>
+<li class="toctree-l1">
+<a class="reference internal" href="CreateBuffer.html">CreateBuffer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CreateBuffer.html#_CPPv4N2tt8tt_metal12CreateBufferERK23InterleavedBufferConfig"><code class="docutils literal notranslate"><span class="pre">CreateBuffer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="CreateBuffer.html#_CPPv4N2tt8tt_metal12CreateBufferERK19ShardedBufferConfig"><code class="docutils literal notranslate"><span class="pre">CreateBuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="CircularBuffers.html">CircularBuffers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CircularBuffers.html#_CPPv4N2tt8tt_metal20CreateCircularBufferER7ProgramRKNSt7variantI9CoreCoord9CoreRange12CoreRangeSetEERK20CircularBufferConfig"><code class="docutils literal notranslate"><span class="pre">CreateCircularBuffer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="CircularBuffers.html#_CPPv4N2tt8tt_metal23GetCircularBufferConfigER7Program8CBHandle"><code class="docutils literal notranslate"><span class="pre">GetCircularBufferConfig()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="CircularBuffers.html#_CPPv4N2tt8tt_metal29UpdateCircularBufferTotalSizeER7Program8CBHandle8uint32_t"><code class="docutils literal notranslate"><span class="pre">UpdateCircularBufferTotalSize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="CircularBuffers.html#_CPPv4N2tt8tt_metal28UpdateCircularBufferPageSizeER7Program8CBHandle7uint8_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">UpdateCircularBufferPageSize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="CircularBuffers.html#_CPPv4N2tt8tt_metal34UpdateDynamicCircularBufferAddressER7Program8CBHandleRK6Buffer"><code class="docutils literal notranslate"><span class="pre">UpdateDynamicCircularBufferAddress()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="CreateSemaphore.html">CreateSemaphore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CreateSemaphore.html#_CPPv4N2tt8tt_metal15CreateSemaphoreER7ProgramRKNSt7variantI9CoreRange12CoreRangeSetEE8uint32_t8CoreType"><code class="docutils literal notranslate"><span class="pre">CreateSemaphore()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="DeallocateBuffer.html">DeallocateBuffer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DeallocateBuffer.html#_CPPv4N2tt8tt_metal16DeallocateBufferER6Buffer"><code class="docutils literal notranslate"><span class="pre">DeallocateBuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="AssignGlobalBufferToProgram.html">AssignGlobalBufferToProgram</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AssignGlobalBufferToProgram.html#_CPPv4N2tt8tt_metal27AssignGlobalBufferToProgramENSt10shared_ptrI6BufferEER7Program"><code class="docutils literal notranslate"><span class="pre">AssignGlobalBufferToProgram()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -144,7 +169,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

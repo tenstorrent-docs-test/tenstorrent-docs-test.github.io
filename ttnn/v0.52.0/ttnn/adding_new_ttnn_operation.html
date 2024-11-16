@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -124,7 +124,7 @@
            <div itemprop="articleBody">
              
   <section id="adding-new-ttnn-operation">
-<h1>Adding New ttnn Operation<a class="headerlink" href="#adding-new-ttnn-operation" title="Permalink to this heading"></a>
+<h1>Adding New ttnn Operation<a class="headerlink" href="#adding-new-ttnn-operation" title="Link to this heading"></a>
 </h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -133,15 +133,15 @@
 Wormhole, or others).</p>
 </div>
 <section id="faq">
-<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this heading"></a>
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a>
 </h2>
 <section id="what-is-a-ttnn-operation">
-<h3>What is a ttnn operation?<a class="headerlink" href="#what-is-a-ttnn-operation" title="Permalink to this heading"></a>
+<h3>What is a ttnn operation?<a class="headerlink" href="#what-is-a-ttnn-operation" title="Link to this heading"></a>
 </h3>
 <p>A ttnn operation is a function that takes in one or more input tensors and produces one or more output tensors. It is implemented in C++ and can be called from Python.</p>
 </section>
 <section id="what-steps-are-needed-to-add-ttnn-operation-in-c">
-<h3>What steps are needed to add ttnn operation in C++?<a class="headerlink" href="#what-steps-are-needed-to-add-ttnn-operation-in-c" title="Permalink to this heading"></a>
+<h3>What steps are needed to add ttnn operation in C++?<a class="headerlink" href="#what-steps-are-needed-to-add-ttnn-operation-in-c" title="Link to this heading"></a>
 </h3>
 <ol class="arabic simple">
 <li><p>There are 2 options for writing a new operation. Optiona <code class="docutils literal notranslate"><span class="pre">a</span></code> is to write a device operation and option <code class="docutils literal notranslate"><span class="pre">b</span></code> is to write a composite operation
@@ -151,7 +151,7 @@ b. Implement a composite operation in C++. Composite operation simply defines <c
 </ol>
 </section>
 <section id="what-steps-are-needed-to-add-ttnn-operation-in-python">
-<h3>What steps are needed to add ttnn operation in Python?<a class="headerlink" href="#what-steps-are-needed-to-add-ttnn-operation-in-python" title="Permalink to this heading"></a>
+<h3>What steps are needed to add ttnn operation in Python?<a class="headerlink" href="#what-steps-are-needed-to-add-ttnn-operation-in-python" title="Link to this heading"></a>
 </h3>
 <ol class="arabic simple">
 <li><p>Take an existing registered C++ operation and add a Python binding for it using <cite>ttnn::bind_registered_operation</cite>.
@@ -161,14 +161,14 @@ The operation will be auto-registered in python. If the operation is called <cit
 </section>
 </section>
 <section id="example-of-adding-a-new-device-operation">
-<h2>Example of Adding a new Device Operation<a class="headerlink" href="#example-of-adding-a-new-device-operation" title="Permalink to this heading"></a>
+<h2>Example of Adding a new Device Operation<a class="headerlink" href="#example-of-adding-a-new-device-operation" title="Link to this heading"></a>
 </h2>
 <p>Let’s implement <cite>ttnn.example</cite> (It will just copy the input tensor to the output tensor on the device)</p>
 <section id="c-implementation">
-<h3>C++ Implementation<a class="headerlink" href="#c-implementation" title="Permalink to this heading"></a>
+<h3>C++ Implementation<a class="headerlink" href="#c-implementation" title="Link to this heading"></a>
 </h3>
 <section id="step-1-implement-device-operation">
-<h4>Step 1: Implement device operation<a class="headerlink" href="#step-1-implement-device-operation" title="Permalink to this heading"></a>
+<h4>Step 1: Implement device operation<a class="headerlink" href="#step-1-implement-device-operation" title="Link to this heading"></a>
 </h4>
 <p>In order to add a new device operation, follow the directory structure shown below:</p>
 <p><cite>ttnn/cpp/ttnn/operations/&lt;category&gt;/&lt;operation_name&gt;/device/&lt;operation_name&gt;_device_operation.hpp</cite>
@@ -181,7 +181,7 @@ The operation will be auto-registered in python. If the operation is called <cit
 <p>A concrete example of a device operation can be found in <cite>ttnn/cpp/ttnn/operations/examples/example/device</cite></p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption">
-<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/device/example_device_operation.hpp</span><a class="headerlink" href="#id1" title="Permalink to this code"></a>
+<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/device/example_device_operation.hpp</span><a class="headerlink" href="#id1" title="Link to this code"></a>
 </div>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1">// SPDX-FileCopyrightText: © 2023 Tenstorrent Inc.</span>
@@ -345,7 +345,7 @@ The operation will be auto-registered in python. If the operation is called <cit
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption">
-<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/device/example_device_operation.cpp</span><a class="headerlink" href="#id2" title="Permalink to this code"></a>
+<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/device/example_device_operation.cpp</span><a class="headerlink" href="#id2" title="Link to this code"></a>
 </div>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// SPDX-FileCopyrightText: © 2023 Tenstorrent Inc.</span>
@@ -403,7 +403,7 @@ The operation will be auto-registered in python. If the operation is called <cit
 </div>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption">
-<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/device/single_core_program_factory.cpp</span><a class="headerlink" href="#id3" title="Permalink to this code"></a>
+<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/device/single_core_program_factory.cpp</span><a class="headerlink" href="#id3" title="Link to this code"></a>
 </div>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1">// SPDX-FileCopyrightText: © 2023 Tenstorrent Inc.</span>
@@ -563,7 +563,7 @@ The operation will be auto-registered in python. If the operation is called <cit
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption">
-<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/device/multi_core_program_factory.cpp</span><a class="headerlink" href="#id4" title="Permalink to this code"></a>
+<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/device/multi_core_program_factory.cpp</span><a class="headerlink" href="#id4" title="Link to this code"></a>
 </div>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1">// SPDX-FileCopyrightText: © 2023 Tenstorrent Inc.</span>
@@ -732,14 +732,14 @@ The operation will be auto-registered in python. If the operation is called <cit
 </div>
 </section>
 <section id="step-2-implement-the-operation-in-c">
-<h4>Step 2: Implement the operation in C++<a class="headerlink" href="#step-2-implement-the-operation-in-c" title="Permalink to this heading"></a>
+<h4>Step 2: Implement the operation in C++<a class="headerlink" href="#step-2-implement-the-operation-in-c" title="Link to this heading"></a>
 </h4>
 <p>In order to add a new operation, add the following file:</p>
 <p><cite>ttnn/cpp/ttnn/operations/&lt;category&gt;/&lt;operation_name&gt;/&lt;operation_name&gt;.hpp</cite></p>
 <p>A concrete example:</p>
 <div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption">
-<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/example.hpp</span><a class="headerlink" href="#id5" title="Permalink to this code"></a>
+<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/example.hpp</span><a class="headerlink" href="#id5" title="Link to this code"></a>
 </div>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// SPDX-FileCopyrightText: © 2023 Tenstorrent Inc.</span>
@@ -776,10 +776,10 @@ The operation will be auto-registered in python. If the operation is called <cit
 </section>
 </section>
 <section id="python-implementation">
-<h3>Python Implementation<a class="headerlink" href="#python-implementation" title="Permalink to this heading"></a>
+<h3>Python Implementation<a class="headerlink" href="#python-implementation" title="Link to this heading"></a>
 </h3>
 <section id="step-1-add-python-binding">
-<h4>Step 1: Add Python binding<a class="headerlink" href="#step-1-add-python-binding" title="Permalink to this heading"></a>
+<h4>Step 1: Add Python binding<a class="headerlink" href="#step-1-add-python-binding" title="Link to this heading"></a>
 </h4>
 <p>In order to add a python binding for the operation, follow the directory structure shown below:</p>
 <p><cite>ttnn/python/ttnn/operations/&lt;category&gt;/&lt;operation_name&gt;/&lt;operation_name&gt;_pybind.hpp</cite>
@@ -787,7 +787,7 @@ The operation will be auto-registered in python. If the operation is called <cit
 <p>A concrete example:</p>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption">
-<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/example_pybind.hpp</span><a class="headerlink" href="#id6" title="Permalink to this code"></a>
+<span class="caption-text">ttnn/cpp/ttnn/operations/examples/example/example_pybind.hpp</span><a class="headerlink" href="#id6" title="Link to this code"></a>
 </div>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// SPDX-FileCopyrightText: © 2023 Tenstorrent Inc.</span>
@@ -842,7 +842,7 @@ The operation will be auto-registered in python. If the operation is called <cit
 </div>
 <div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption">
-<span class="caption-text">ttnn/cpp/ttnn/operations/examples/examples_pybind.hpp</span><a class="headerlink" href="#id7" title="Permalink to this code"></a>
+<span class="caption-text">ttnn/cpp/ttnn/operations/examples/examples_pybind.hpp</span><a class="headerlink" href="#id7" title="Link to this code"></a>
 </div>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// SPDX-FileCopyrightText: © 2023 Tenstorrent Inc.</span>
@@ -865,7 +865,7 @@ The operation will be auto-registered in python. If the operation is called <cit
 <p>Finally, call the module defined in <cite>examples/example/example_pybind.hpp</cite> wherever you want it to be added.</p>
 </section>
 <section id="step-2-optional-add-golden-function-for-the-operation-in-python">
-<h4>Step 2: (Optional) Add golden function for the operation in Python<a class="headerlink" href="#step-2-optional-add-golden-function-for-the-operation-in-python" title="Permalink to this heading"></a>
+<h4>Step 2: (Optional) Add golden function for the operation in Python<a class="headerlink" href="#step-2-optional-add-golden-function-for-the-operation-in-python" title="Link to this heading"></a>
 </h4>
 <p>A golden function can be added to an operation in order to compare its output with an equivalent <cite>torch</cite> implementation</p>
 <p>Add the following code in a python file:</p>
@@ -928,7 +928,7 @@ The operation will be auto-registered in python. If the operation is called <cit
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

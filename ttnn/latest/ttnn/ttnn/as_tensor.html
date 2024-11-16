@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -142,51 +142,8 @@
            <div itemprop="articleBody">
              
   <section id="ttnn-as-tensor">
-<span id="id1"></span><h1>ttnn.as_tensor<a class="headerlink" href="#ttnn-as-tensor" title="Permalink to this heading"></a>
+<span id="id1"></span><h1>ttnn.as_tensor<a class="headerlink" href="#ttnn-as-tensor" title="Link to this heading"></a>
 </h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="ttnn.as_tensor">
-<span class="sig-prename descclassname"><span class="pre">ttnn.</span></span><span class="sig-name descname"><span class="pre">as_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ttnn.DataType</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ttnn.Layout</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ROW_MAJOR_LAYOUT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ttnn.Device</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ttnn.MemoryConfig</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pathlib.Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">ttnn.Tensor</span></span></span><a class="headerlink" href="#ttnn.as_tensor" title="Permalink to this definition"></a>
-</dt>
-<dd>
-<p>Converts the <cite>torch.Tensor</cite> <code class="xref py py-attr docutils literal notranslate"><span class="pre">tensor</span></code> into a <cite>ttnn.Tensor</cite>.</p>
-<dl>
-<dt>Args:</dt>
-<dd>
-<ul class="simple">
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">tensor</span></code>: the torch.Tensor</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">dtype</span></code>: the optional <cite>ttnn</cite> data type.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">layout</span></code>: the optional <cite>ttnn</cite> layout.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">device</span></code>: the optional <cite>ttnn</cite> device.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">memory_config</span></code>: the optional <cite>ttnn</cite> memory configuration.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">cache_file_name</span></code>: the optional cache file name.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">preprocess</span></code>: the optional function to preprocess the tensor before serializing/converting to ttnn.</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">mesh_mapper</span></code>: the optional TensorToMesh to define the mapping from torch to multi-device.</p></li>
-<li>
-<dl class="simple">
-<dt>
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">use_device_tilizer</span></code>: the optional flag to use device tilizer instead of host-tilizer. This toggles whether to use host vs. device tilizer:</dt>
-<dd>
-<ul>
-<li><p>For Grayskull, the on-device tilizer will truncate mantissa bits for bfp* formats.</p></li>
-<li><p>For Wormhole, the on-device tilizer will raise a runtime error (RTE) for bfp8 but will truncate for bfp4/2 formats.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-<div class="doctest highlight-default notranslate">
-<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-<span class="go">Tensor([ [1.375, -1.30469, -0.714844],</span>
-<span class="go">    [-0.761719, 0.53125, -0.652344]], dtype=bfloat16 )</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-</dd>
-</dl>
-
 </section>
 
 
@@ -202,7 +159,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

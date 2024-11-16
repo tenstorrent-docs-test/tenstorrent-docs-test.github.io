@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -114,19 +114,19 @@
            <div itemprop="articleBody">
              
   <section id="device-program-profiler">
-<span id="id1"></span><h1>Device Program Profiler<a class="headerlink" href="#device-program-profiler" title="Permalink to this heading"></a>
+<span id="id1"></span><h1>Device Program Profiler<a class="headerlink" href="#device-program-profiler" title="Link to this heading"></a>
 </h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Tools are only fully supported on source builds.</p>
 </div>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a>
 </h2>
 <p>Device-side performance profiling follows the same scope based profiling method that tracy uses on the host side.</p>
 <p>The macro <code class="docutils literal notranslate"><span class="pre">DeviceZoneScopedN(</span> <span class="pre">zone_name</span> <span class="pre">)</span></code> is used similar to tracy’s <code class="docutils literal notranslate"><span class="pre">ZoneScopedN</span></code> macro to profile C++ scopes and assign them a custom name.</p>
 <section id="how-to-run">
-<h3>How to Run<a class="headerlink" href="#how-to-run" title="Permalink to this heading"></a>
+<h3>How to Run<a class="headerlink" href="#how-to-run" title="Link to this heading"></a>
 </h3>
 <p>Device-side profiling is only allowed in profiler builds. <code class="docutils literal notranslate"><span class="pre">scripts/build_scripts/build_with_profiler_opt.sh</span></code> is the script for building profiler builds.</p>
 <p>Because downloading profiler results can add high runtime overhead, <code class="docutils literal notranslate"><span class="pre">TT_METAL_DEVICE_PROFILER=1</span></code> environment variable has to be set to perform the download.</p>
@@ -142,10 +142,10 @@ scripts/build_scripts/build_with_profiler_opt.sh
 </section>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a>
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a>
 </h2>
 <section id="description">
-<h3>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a>
+<h3>Description<a class="headerlink" href="#description" title="Link to this heading"></a>
 </h3>
 <p><code class="docutils literal notranslate"><span class="pre">full_buffer</span></code> is a profiler programming example. It show cases how we can use <code class="docutils literal notranslate"><span class="pre">DeviceZoneScopedN</span></code> to annotate time on kernel code.</p>
 <p>In this example device side profiling is used to measure the cycle count on the series of “nop” instructions that are looped.</p>
@@ -211,7 +211,7 @@ generated. Future updates will make this field to point to the original kernel f
 </section>
 </section>
 <section id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading"></a>
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a>
 </h2>
 <ul class="simple">
 <li><p>Each core has limited L1 buffer for recording device side scopes. Space for only 125 scopes is reserved.</p></li>
@@ -237,7 +237,7 @@ reboot is required for syncing core clocks if soft reset is used.</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

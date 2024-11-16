@@ -1,4 +1,0 @@
-EnqueueWaitForEvent
-===================
-
-.. doxygenfunction:: EnqueueWaitForEvent

@@ -1,4 +1,0 @@
-CreateProgram
-========================
-
-.. doxygenfunction:: CreateProgram()

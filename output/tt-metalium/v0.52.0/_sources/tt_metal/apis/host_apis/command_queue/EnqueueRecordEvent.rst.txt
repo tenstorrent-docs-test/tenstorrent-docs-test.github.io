@@ -1,4 +1,0 @@
-EnqueueRecordEvent
-==================
-
-.. doxygenfunction:: EnqueueRecordEvent

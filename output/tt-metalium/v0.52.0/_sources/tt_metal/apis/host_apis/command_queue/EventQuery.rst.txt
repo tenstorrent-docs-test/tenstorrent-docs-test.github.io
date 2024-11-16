@@ -1,4 +1,0 @@
-EventQuery
-==========
-
-.. doxygenfunction:: EventQuery

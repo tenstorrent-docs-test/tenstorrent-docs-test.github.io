@@ -1,4 +1,0 @@
-CreateKernel
-====================
-
-.. doxygenfunction:: CreateKernel

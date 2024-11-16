@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../../../../../../../../../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -8,7 +8,7 @@
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../../../_static/tt_theme.css?v=0bbfeaf8" />
-      <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../../../_static/nbsphinx-code-cells.css" />
 
   
     <link rel="shortcut icon" href="../../../../../../../../../../../../../../../_static/favicon.png"/>
@@ -18,9 +18,9 @@
   
         <script src="../../../../../../../../../../../../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../../../../../../../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../../../../../../../../../../../../" id="documentation_options" src="../../../../../../../../../../../../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../../../../../../../../../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../../../../../../../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../../../../../../../../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../../../../../../../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../../../../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -104,7 +104,7 @@
            <div itemprop="articleBody">
              
   <section id="Tensor-and-Add-Operation">
-<h1>Tensor and Add Operation<a class="headerlink" href="#Tensor-and-Add-Operation" title="Permalink to this heading"></a>
+<h1>Tensor and Add Operation<a class="headerlink" href="#Tensor-and-Add-Operation" title="Link to this heading"></a>
 </h1>
 <p>ttnn.Tensor is the central type of ttnn.</p>
 <p>It is similar to torch.Tensor in the sense that it represents multi-dimensional matrix containing elements of a single data type.</p>
@@ -116,7 +116,7 @@
 <li><p>ttnn.Tensor’s shape stores the padding added to the tensor due to TILE_LAYOUT</p></li>
 </ul>
 <section id="Creating-a-tensor">
-<h2>Creating a tensor<a class="headerlink" href="#Creating-a-tensor" title="Permalink to this heading"></a>
+<h2>Creating a tensor<a class="headerlink" href="#Creating-a-tensor" title="Link to this heading"></a>
 </h2>
 <p>The recommended way to create a tensor is by using torch create function and then simply calling <code class="docutils literal notranslate"><span class="pre">ttnn.from_torch</span></code>. So, let’s import both <code class="docutils literal notranslate"><span class="pre">torch</span></code> and <code class="docutils literal notranslate"><span class="pre">ttnn</span></code></p>
 <div class="nbinput docutils container">
@@ -125,8 +125,8 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<div class="highlight"><pre><span></span>import torch
+import ttnn
 </pre></div>
 </div>
 </div>
@@ -209,7 +209,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre><span></span>import os
 <br></pre></div>
 </div>
 </div>
@@ -220,12 +220,12 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">ttnn_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>torch_tensor = torch.rand(3, 4)
+ttnn_tensor = ttnn.from_torch(torch_tensor)
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"shape: </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"layout: </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">layout</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"dtype: </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+print(f"shape: {ttnn_tensor.shape}")
+print(f"layout: {ttnn_tensor.layout}")
+print(f"dtype: {ttnn_tensor.dtype}")
 </pre></div>
 </div>
 </div>
@@ -243,7 +243,7 @@ dtype: DataType.FLOAT32
 <p>As expected we get a tensor of shape [3, 4] in row-major layout with a data type of float32.</p>
 </section>
 <section id="Host-Storage:-Borrowed-vs-Owned">
-<h2>Host Storage: Borrowed vs Owned<a class="headerlink" href="#Host-Storage:-Borrowed-vs-Owned" title="Permalink to this heading"></a>
+<h2>Host Storage: Borrowed vs Owned<a class="headerlink" href="#Host-Storage:-Borrowed-vs-Owned" title="Link to this heading"></a>
 </h2>
 <p>In this particular case, ttnn Tensor will borrow the data of the torch Tensor because ttnn Tensor is in row-major layout, torch tensor is contiguous and their data type matches.</p>
 <p>Let’s print the current ttnn tensor, set element of torch tensor to 1234 and print the ttnn Tensor again to see borrowed storage in action</p>
@@ -253,9 +253,9 @@ dtype: DataType.FLOAT32
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Original values:</span><span class="se">\n</span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="n">torch_tensor</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">1234</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"New values are all going to be 1234:</span><span class="se">\n</span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>print(f"Original values:\n{ttnn_tensor}")
+torch_tensor[:] = 1234
+print(f"New values are all going to be 1234:\n{ttnn_tensor}")
 </pre></div>
 </div>
 </div>
@@ -282,14 +282,14 @@ ttnn.Tensor([[1234.00000, 1234.00000,  ..., 1234.00000, 1234.00000],
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span>
-<span class="n">ttnn_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"torch_tensor.dtype:"</span><span class="p">,</span> <span class="n">torch_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"ttnn_tensor.dtype:"</span><span class="p">,</span> <span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>torch_tensor = torch.rand(3, 4).to(torch.float16)
+ttnn_tensor = ttnn.from_torch(torch_tensor)
+print("torch_tensor.dtype:", torch_tensor.dtype)
+print("ttnn_tensor.dtype:", ttnn_tensor.dtype)
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Original values:</span><span class="se">\n</span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="n">torch_tensor</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1234</span>
-<span class="c1">#print(f"Original values again because the tensor doesn't use borrowed storage:\n{ttnn_tensor}")</span>
+print(f"Original values:\n{ttnn_tensor}")
+torch_tensor[0, 0] = 1234
+#print(f"Original values again because the tensor doesn't use borrowed storage:\n{ttnn_tensor}")
 </pre></div>
 </div>
 </div>
@@ -309,7 +309,7 @@ ttnn.Tensor([[ 0.80078,  0.69531,  ...,  0.71484,  0.33398],
 </div>
 </section>
 <section id="Data-Type">
-<h2>Data Type<a class="headerlink" href="#Data-Type" title="Permalink to this heading"></a>
+<h2>Data Type<a class="headerlink" href="#Data-Type" title="Link to this heading"></a>
 </h2>
 <p>The data type of the ttnn tensor can be controlled explicitly when conversion from torch.</p>
 <div class="nbinput docutils container">
@@ -318,10 +318,10 @@ ttnn.Tensor([[ 0.80078,  0.69531,  ...,  0.71484,  0.33398],
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="n">ttnn_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"torch_tensor.dtype: </span><span class="si">{</span><span class="n">torch_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ttnn_tensor.dtype: </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>torch_tensor = torch.rand(3, 4).to(torch.float32)
+ttnn_tensor = ttnn.from_torch(torch_tensor, dtype=ttnn.bfloat16)
+print(f"torch_tensor.dtype: {torch_tensor.dtype}")
+print(f"ttnn_tensor.dtype: {ttnn_tensor.dtype}")
 </pre></div>
 </div>
 </div>
@@ -337,7 +337,7 @@ ttnn_tensor.dtype: DataType.BFLOAT16
 </div>
 </section>
 <section id="Layout">
-<h2>Layout<a class="headerlink" href="#Layout" title="Permalink to this heading"></a>
+<h2>Layout<a class="headerlink" href="#Layout" title="Link to this heading"></a>
 </h2>
 <p>TensTorrent hardware is most efficiently utilized when running tensors using <a class="reference external" href="https://tenstorrent.github.io/ttnn/latest/ttnn/tensor.html#layout">tile layout</a>. The current tile size is hard-coded to [32, 32]. It was determined to be the optimal size for a tile given the compute, memory and data transfer constraints.</p>
 <p>ttnn provides easy and intuitive way to convert from row-major layout to tile layout and back.</p>
@@ -347,13 +347,13 @@ ttnn_tensor.dtype: DataType.BFLOAT16
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span>
-<span class="n">ttnn_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tensor in row-major layout:</span><span class="se">\n</span><span class="s2">Shape </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s2">Layout: </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">layout</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="n">ttnn_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">ttnn_tensor</span><span class="p">,</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tensor in tile layout:</span><span class="se">\n</span><span class="s2">Shape </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s2">Layout: </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">layout</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="n">ttnn_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_layout</span><span class="p">(</span><span class="n">ttnn_tensor</span><span class="p">,</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">ROW_MAJOR_LAYOUT</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tensor back in row-major layout:</span><span class="se">\n</span><span class="s2">Shape </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="se">\n</span><span class="s2">Layout: </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">layout</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>torch_tensor = torch.rand(3, 4).to(torch.float16)
+ttnn_tensor = ttnn.from_torch(torch_tensor)
+print(f"Tensor in row-major layout:\nShape {ttnn_tensor.shape}\nLayout: {ttnn_tensor.layout}\n{ttnn_tensor}")
+ttnn_tensor = ttnn.to_layout(ttnn_tensor, ttnn.TILE_LAYOUT)
+print(f"Tensor in tile layout:\nShape {ttnn_tensor.shape}\nLayout: {ttnn_tensor.layout}\n{ttnn_tensor}")
+ttnn_tensor = ttnn.to_layout(ttnn_tensor, ttnn.ROW_MAJOR_LAYOUT)
+print(f"Tensor back in row-major layout:\nShape {ttnn_tensor.shape}\nLayout: {ttnn_tensor.layout}\n{ttnn_tensor}")
 </pre></div>
 </div>
 </div>
@@ -393,9 +393,9 @@ ttnn.Tensor([[ 0.21680,  0.24316,  ...,  0.19336,  0.40625],
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span>
-<span class="n">ttnn_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tensor in row-major layout:</span><span class="se">\n</span><span class="s2">Shape </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">; Layout: </span><span class="si">{</span><span class="n">ttnn_tensor</span><span class="o">.</span><span class="n">layout</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>torch_tensor = torch.rand(3, 4).to(torch.float16)
+ttnn_tensor = ttnn.from_torch(torch_tensor)
+print(f"Tensor in row-major layout:\nShape {ttnn_tensor.shape}; Layout: {ttnn_tensor.layout}")
 </pre></div>
 </div>
 </div>
@@ -412,12 +412,12 @@ Shape ttnn.Shape([3, 4]); Layout: Layout.ROW_MAJOR
 <p>Note that <code class="docutils literal notranslate"><span class="pre">ttnn.to_torch</span></code> will always convert to row-major layout</p>
 </section>
 <section id="Device-storage">
-<h2>Device storage<a class="headerlink" href="#Device-storage" title="Permalink to this heading"></a>
+<h2>Device storage<a class="headerlink" href="#Device-storage" title="Link to this heading"></a>
 </h2>
 <p>Finally, in order to actually utilize the tensor, we need to put it on the device. So, that we can run <code class="docutils literal notranslate"><span class="pre">ttnn</span></code> operations on it</p>
 </section>
 <section id="Open-the-device">
-<h2>Open the device<a class="headerlink" href="#Open-the-device" title="Permalink to this heading"></a>
+<h2>Open the device<a class="headerlink" href="#Open-the-device" title="Link to this heading"></a>
 </h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">ttnn.open</span></code> to get a handle to the device</p>
 <div class="nbinput docutils container">
@@ -426,8 +426,8 @@ Shape ttnn.Shape([3, 4]); Layout: Layout.ROW_MAJOR
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>device_id = 0
+device = ttnn.open_device(device_id=device_id)
 </pre></div>
 </div>
 </div>
@@ -451,7 +451,7 @@ Shape ttnn.Shape([3, 4]); Layout: Layout.ROW_MAJOR
 </div>
 </section>
 <section id="Initialize-tensors-a-and-b-with-random-values-using-torch">
-<h2>Initialize tensors a and b with random values using torch<a class="headerlink" href="#Initialize-tensors-a-and-b-with-random-values-using-torch" title="Permalink to this heading"></a>
+<h2>Initialize tensors a and b with random values using torch<a class="headerlink" href="#Initialize-tensors-a-and-b-with-random-values-using-torch" title="Link to this heading"></a>
 </h2>
 <p>To create a tensor that can be used by a <code class="docutils literal notranslate"><span class="pre">ttnn</span></code> operation: 1. Create a tensor using torch 2. Use <code class="docutils literal notranslate"><span class="pre">ttnn.from_torch</span></code> to convert the tensor from <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> to <code class="docutils literal notranslate"><span class="pre">ttnn.Tensor</span></code>, change the layout to <code class="docutils literal notranslate"><span class="pre">ttnn.TILE_LAYOUT</span></code> and put the tensor on the <code class="docutils literal notranslate"><span class="pre">device</span></code></p>
 <div class="nbinput nblast docutils container">
@@ -460,19 +460,19 @@ Shape ttnn.Shape([3, 4]); Layout: Layout.ROW_MAJOR
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>torch.manual_seed(0)
 
-<span class="n">torch_input_tensor_a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-<span class="n">torch_input_tensor_b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
+torch_input_tensor_a = torch.rand((32, 32), dtype=torch.bfloat16)
+torch_input_tensor_b = torch.rand((32, 32), dtype=torch.bfloat16)
 
-<span class="n">input_tensor_a</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_input_tensor_a</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">input_tensor_b</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_input_tensor_b</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+input_tensor_a = ttnn.from_torch(torch_input_tensor_a, layout=ttnn.TILE_LAYOUT, device=device)
+input_tensor_b = ttnn.from_torch(torch_input_tensor_b, layout=ttnn.TILE_LAYOUT, device=device)
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Add-tensor-a-and-b">
-<h2>Add tensor a and b<a class="headerlink" href="#Add-tensor-a-and-b" title="Permalink to this heading"></a>
+<h2>Add tensor a and b<a class="headerlink" href="#Add-tensor-a-and-b" title="Link to this heading"></a>
 </h2>
 <p><code class="docutils literal notranslate"><span class="pre">ttnn</span></code> supports operator overloading, therefore operator <code class="docutils literal notranslate"><span class="pre">+</span></code> can be used instead of <code class="docutils literal notranslate"><span class="pre">torch.add</span></code></p>
 <div class="nbinput nblast docutils container">
@@ -481,13 +481,13 @@ Shape ttnn.Shape([3, 4]); Layout: Layout.ROW_MAJOR
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">output_tensor</span> <span class="o">=</span> <span class="n">input_tensor_a</span> <span class="o">+</span> <span class="n">input_tensor_b</span>
+<div class="highlight"><pre><span></span>output_tensor = input_tensor_a + input_tensor_b
 </pre></div>
 </div>
 </div>
 </section>
 <section id="Inspect-the-output-tensor-of-the-add-in-ttnn">
-<h2>Inspect the output tensor of the add in ttnn<a class="headerlink" href="#Inspect-the-output-tensor-of-the-add-in-ttnn" title="Permalink to this heading"></a>
+<h2>Inspect the output tensor of the add in ttnn<a class="headerlink" href="#Inspect-the-output-tensor-of-the-add-in-ttnn" title="Link to this heading"></a>
 </h2>
 <p>As can be seen the tensor of the same shape, layout and dtype is produced</p>
 <div class="nbinput docutils container">
@@ -496,9 +496,9 @@ Shape ttnn.Shape([3, 4]); Layout: Layout.ROW_MAJOR
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"shape: </span><span class="si">{</span><span class="n">output_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"dtype: </span><span class="si">{</span><span class="n">output_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"layout: </span><span class="si">{</span><span class="n">output_tensor</span><span class="o">.</span><span class="n">layout</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>print(f"shape: {output_tensor.shape}")
+print(f"dtype: {output_tensor.dtype}")
+print(f"layout: {output_tensor.layout}")
 </pre></div>
 </div>
 </div>
@@ -516,7 +516,7 @@ layout: Layout.TILE
 <p>In general we expect layout and dtype to stay the same when running most operations unless explicit arguments to modify them are passed in. However, there are obvious exceptions like an embedding operation that takes in <code class="docutils literal notranslate"><span class="pre">ttnn.uint32</span></code> and produces <code class="docutils literal notranslate"><span class="pre">ttnn.bfloat16</span></code></p>
 </section>
 <section id="Convert-to-torch-and-inspect-the-attributes-of-the-torch-tensor">
-<h2>Convert to torch and inspect the attributes of the torch tensor<a class="headerlink" href="#Convert-to-torch-and-inspect-the-attributes-of-the-torch-tensor" title="Permalink to this heading"></a>
+<h2>Convert to torch and inspect the attributes of the torch tensor<a class="headerlink" href="#Convert-to-torch-and-inspect-the-attributes-of-the-torch-tensor" title="Link to this heading"></a>
 </h2>
 <p>When converting the tensor to torch, <code class="docutils literal notranslate"><span class="pre">ttnn.to_torch</span></code> will move the tensor from the device, convert to tile layout and figure out the best data type to use on the torch side</p>
 <div class="nbinput docutils container">
@@ -525,9 +525,9 @@ layout: Layout.TILE
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">output_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="n">output_tensor</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"shape: </span><span class="si">{</span><span class="n">output_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"dtype: </span><span class="si">{</span><span class="n">output_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>output_tensor = ttnn.to_torch(output_tensor)
+print(f"shape: {output_tensor.shape}")
+print(f"dtype: {output_tensor.dtype}")
 </pre></div>
 </div>
 </div>
@@ -543,7 +543,7 @@ dtype: torch.bfloat16
 </div>
 </section>
 <section id="Close-the-device">
-<h2>Close the device<a class="headerlink" href="#Close-the-device" title="Permalink to this heading"></a>
+<h2>Close the device<a class="headerlink" href="#Close-the-device" title="Link to this heading"></a>
 </h2>
 <p>Close the handle the device. This is a very important step as the device can hang currently if not closed properly</p>
 <div class="nbinput docutils container">
@@ -552,7 +552,7 @@ dtype: torch.bfloat16
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="n">ttnn</span><span class="o">.</span><span class="n">close_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ttnn.close_device(device)
 </pre></div>
 </div>
 </div>
@@ -579,7 +579,7 @@ dtype: torch.bfloat16
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

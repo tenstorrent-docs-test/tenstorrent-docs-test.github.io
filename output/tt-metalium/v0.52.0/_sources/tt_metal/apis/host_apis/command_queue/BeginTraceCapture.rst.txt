@@ -1,4 +1,0 @@
-BeginTraceCapture
-=================
-
-.. doxygenfunction:: BeginTraceCapture

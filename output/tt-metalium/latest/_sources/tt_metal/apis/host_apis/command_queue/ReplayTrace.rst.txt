@@ -1,4 +1,0 @@
-ReplayTrace
-===========
-
-.. doxygenfunction:: ReplayTrace

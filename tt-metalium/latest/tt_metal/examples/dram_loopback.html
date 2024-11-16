@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -116,7 +116,7 @@
            <div itemprop="articleBody">
              
   <section id="dram-loopback">
-<span id="dram-loopback-example"></span><h1>DRAM Loopback<a class="headerlink" href="#dram-loopback" title="Permalink to this heading"></a>
+<span id="dram-loopback-example"></span><h1>DRAM Loopback<a class="headerlink" href="#dram-loopback" title="Link to this heading"></a>
 </h1>
 <p>We will build a program in TT-Metal that will simply copy data from one DRAM
 buffer to another, using the compute engine and an intermediate L1 buffer to do
@@ -136,7 +136,7 @@ depending on the most up-to-date installation methods.</p>
 </pre></div>
 </div>
 <section id="silicon-accelerator-setup">
-<h2>Silicon accelerator setup<a class="headerlink" href="#silicon-accelerator-setup" title="Permalink to this heading"></a>
+<h2>Silicon accelerator setup<a class="headerlink" href="#silicon-accelerator-setup" title="Link to this heading"></a>
 </h2>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">device_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -147,7 +147,7 @@ depending on the most up-to-date installation methods.</p>
 accelerator.</p>
 </section>
 <section id="program-pre-compilation-setup">
-<h2>Program pre-compilation setup<a class="headerlink" href="#program-pre-compilation-setup" title="Permalink to this heading"></a>
+<h2>Program pre-compilation setup<a class="headerlink" href="#program-pre-compilation-setup" title="Link to this heading"></a>
 </h2>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="n">CommandQueue</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">detail</span><span class="o">::</span><span class="n">GetCommandQueue</span><span class="p">(</span><span class="n">device</span><span class="p">);</span>
@@ -161,7 +161,7 @@ asynchronous reads/writes/program management.</p>
 we’ll be keeping track of things in our session with the device.</p>
 </section>
 <section id="building-a-data-movement-kernel">
-<h2>Building a data movement kernel<a class="headerlink" href="#building-a-data-movement-kernel" title="Permalink to this heading"></a>
+<h2>Building a data movement kernel<a class="headerlink" href="#building-a-data-movement-kernel" title="Link to this heading"></a>
 </h2>
 <p>Declare a kernel for data movement. We’ll use a pre-written kernel that copies
 data from one place to another.</p>
@@ -179,7 +179,7 @@ data from one place to another.</p>
 </div>
 </section>
 <section id="create-buffers-in-dram-and-l1">
-<h2>Create buffers in DRAM and L1<a class="headerlink" href="#create-buffers-in-dram-and-l1" title="Permalink to this heading"></a>
+<h2>Create buffers in DRAM and L1<a class="headerlink" href="#create-buffers-in-dram-and-l1" title="Link to this heading"></a>
 </h2>
 <p>Next, we need to declare buffers that we will use during execution. We will
 need</p>
@@ -222,7 +222,7 @@ engine’s work</p></li>
 </div>
 </section>
 <section id="sending-real-data-into-dram">
-<h2>Sending real data into DRAM<a class="headerlink" href="#sending-real-data-into-dram" title="Permalink to this heading"></a>
+<h2>Sending real data into DRAM<a class="headerlink" href="#sending-real-data-into-dram" title="Link to this heading"></a>
 </h2>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_random_vector_of_bfloat16</span><span class="p">(</span>
@@ -235,7 +235,7 @@ tensor.</p>
 <p>We use a non-blocking call so we can continue setting up our program.</p>
 </section>
 <section id="setting-runtime-arguments-for-the-data-movement-kernel">
-<h2>Setting runtime arguments for the data movement kernel<a class="headerlink" href="#setting-runtime-arguments-for-the-data-movement-kernel" title="Permalink to this heading"></a>
+<h2>Setting runtime arguments for the data movement kernel<a class="headerlink" href="#setting-runtime-arguments-for-the-data-movement-kernel" title="Link to this heading"></a>
 </h2>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">runtime_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -269,7 +269,7 @@ particular kernel, we have to provide:</p>
 </ul>
 </section>
 <section id="running-the-program">
-<h2>Running the program<a class="headerlink" href="#running-the-program" title="Permalink to this heading"></a>
+<h2>Running the program<a class="headerlink" href="#running-the-program" title="Link to this heading"></a>
 </h2>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="n">EnqueueProgram</span><span class="p">(</span><span class="n">cq</span><span class="p">,</span><span class="w"> </span><span class="n">program</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
@@ -280,7 +280,7 @@ particular kernel, we have to provide:</p>
 to return a finished status.</p>
 </section>
 <section id="launch-and-verify-output">
-<h2>Launch and verify output<a class="headerlink" href="#launch-and-verify-output" title="Permalink to this heading"></a>
+<h2>Launch and verify output<a class="headerlink" href="#launch-and-verify-output" title="Link to this heading"></a>
 </h2>
 <p>Then we can finally read back the data from the output buffer and assert that
 it matches what we sent!</p>
@@ -295,7 +295,7 @@ it matches what we sent!</p>
 doing a comparison.</p>
 </section>
 <section id="validation-and-teardown">
-<h2>Validation and teardown<a class="headerlink" href="#validation-and-teardown" title="Permalink to this heading"></a>
+<h2>Validation and teardown<a class="headerlink" href="#validation-and-teardown" title="Link to this heading"></a>
 </h2>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="n">pass</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="n">CloseDevice</span><span class="p">(</span><span class="n">device</span><span class="p">);</span>
@@ -321,7 +321,7 @@ device.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

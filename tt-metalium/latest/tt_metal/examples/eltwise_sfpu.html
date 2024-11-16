@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -112,7 +112,7 @@
            <div itemprop="articleBody">
              
   <section id="eltwise-sfpu">
-<span id="eltwise-sfpu-example"></span><h1>Eltwise SFPU<a class="headerlink" href="#eltwise-sfpu" title="Permalink to this heading"></a>
+<span id="eltwise-sfpu-example"></span><h1>Eltwise SFPU<a class="headerlink" href="#eltwise-sfpu" title="Link to this heading"></a>
 </h1>
 <p>We now build a program that will perform an eltwise SFPU unary operation on a
 single tensor.</p>
@@ -131,7 +131,7 @@ depending on the most up-to-date installation methods.</p>
 </pre></div>
 </div>
 <section id="circular-buffers-for-data-movement-to-from-compute-engine">
-<h2>Circular buffers for data movement to/from compute engine<a class="headerlink" href="#circular-buffers-for-data-movement-to-from-compute-engine" title="Permalink to this heading"></a>
+<h2>Circular buffers for data movement to/from compute engine<a class="headerlink" href="#circular-buffers-for-data-movement-to-from-compute-engine" title="Link to this heading"></a>
 </h2>
 <p>The number of buffers we’re using in DRAM will stay the same. However, we need
 to declare some circular buffers to enable data transfer between the reader,
@@ -152,7 +152,7 @@ compute, and writer engines.</p>
 and an output one for the result of the eltwise sfpu operation.</p>
 </section>
 <section id="compile-time-compute-kernel-arguments">
-<h2>Compile-time compute kernel arguments<a class="headerlink" href="#compile-time-compute-kernel-arguments" title="Permalink to this heading"></a>
+<h2>Compile-time compute kernel arguments<a class="headerlink" href="#compile-time-compute-kernel-arguments" title="Link to this heading"></a>
 </h2>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">compute_kernel_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -167,7 +167,7 @@ parameters here will suffice.</p>
 in one invocation.</p>
 </section>
 <section id="compute-kernel-declaration-and-compile-time-defines">
-<h2>Compute kernel declaration and compile-time defines<a class="headerlink" href="#compute-kernel-declaration-and-compile-time-defines" title="Permalink to this heading"></a>
+<h2>Compute kernel declaration and compile-time defines<a class="headerlink" href="#compute-kernel-declaration-and-compile-time-defines" title="Link to this heading"></a>
 </h2>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sfpu_defines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -195,7 +195,7 @@ kernel C++ kernel files and <code class="docutils literal notranslate"><span cla
 API functions to use.</p>
 </section>
 <section id="extra-runtime-arguments-for-reader-writer">
-<h2>Extra runtime arguments for reader/writer<a class="headerlink" href="#extra-runtime-arguments-for-reader-writer" title="Permalink to this heading"></a>
+<h2>Extra runtime arguments for reader/writer<a class="headerlink" href="#extra-runtime-arguments-for-reader-writer" title="Link to this heading"></a>
 </h2>
 <div class="highlight-cpp notranslate">
 <div class="highlight"><pre><span></span><span class="n">SetRuntimeArgs</span><span class="p">(</span>
@@ -218,7 +218,7 @@ compute engine back to the destination DRAM buffer.</p>
 loopback example, we only had a single data movement kernel.</p>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a>
 </h2>
 <p>Those are the additional steps for getting eltwise sfpu operations up and
 running on the compute engine. For some complicated compute, please refer to the
@@ -239,7 +239,7 @@ running on the compute engine. For some complicated compute, please refer to the
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

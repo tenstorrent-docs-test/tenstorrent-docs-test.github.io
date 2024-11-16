@@ -4,10 +4,10 @@ Welcome to Tenstorrent! This guide will walk you through setting up your Tensix 
 
 ## Table of Contents
 
-1. [Prerequisites](#1-prerequisites)
-2. [Unboxing and Hardware Setup](#2-unboxing-and-hardware-setup)
-3. [Software Installation](#3-software-installation)
-4. [Support & FAQ](#support--faq)
+1. [Prerequisites](#prerequisites)
+2. [Unboxing and Hardware Setup](#unboxing-and-hardware-setup)
+3. [Software Installation](#software-installation)
+4. [Support & FAQ](#support-faq)
 
 ---
 

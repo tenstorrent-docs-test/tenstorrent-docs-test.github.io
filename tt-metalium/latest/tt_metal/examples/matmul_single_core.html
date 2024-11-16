@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -115,7 +115,7 @@
            <div itemprop="articleBody">
              
   <section id="matmul-single-core">
-<span id="matmul-single-core-example"></span><h1>Matmul (Single Core)<a class="headerlink" href="#matmul-single-core" title="Permalink to this heading"></a>
+<span id="matmul-single-core-example"></span><h1>Matmul (Single Core)<a class="headerlink" href="#matmul-single-core" title="Link to this heading"></a>
 </h1>
 <p>We’ll build a program that will perform matmul operations on two tensors
 with equal-size inner dimension. We will then go through specific sections of
@@ -133,7 +133,7 @@ depending on the most up-to-date installation methods.</p>
 </pre></div>
 </div>
 <section id="host-code">
-<h2>Host Code<a class="headerlink" href="#host-code" title="Permalink to this heading"></a>
+<h2>Host Code<a class="headerlink" href="#host-code" title="Link to this heading"></a>
 </h2>
 <p>The initial level of host-side code can broken up into sections:</p>
 <ul class="simple">
@@ -177,7 +177,7 @@ depending on the most up-to-date installation methods.</p>
 main function.</p>
 </section>
 <section id="main-blocks-in-matmul-single-core-function">
-<h2>Main blocks in matmul_single_core function<a class="headerlink" href="#main-blocks-in-matmul-single-core-function" title="Permalink to this heading"></a>
+<h2>Main blocks in matmul_single_core function<a class="headerlink" href="#main-blocks-in-matmul-single-core-function" title="Link to this heading"></a>
 </h2>
 <p>We will go through sections of the <code class="docutils literal notranslate"><span class="pre">matmul_single_core</span></code> function:</p>
 <ul class="simple">
@@ -189,7 +189,7 @@ main function.</p>
 </ul>
 </section>
 <section id="create-program-enqueue-initialization-and-core-range-definition">
-<h2>Create Program, Enqueue initialization, and core range definition<a class="headerlink" href="#create-program-enqueue-initialization-and-core-range-definition" title="Permalink to this heading"></a>
+<h2>Create Program, Enqueue initialization, and core range definition<a class="headerlink" href="#create-program-enqueue-initialization-and-core-range-definition" title="Link to this heading"></a>
 </h2>
 <p>We want a just a single core, so we will restrict the core range to be just one
 core at (0, 0).</p>
@@ -201,7 +201,7 @@ core at (0, 0).</p>
 </div>
 </section>
 <section id="create-dram-buffers-circular-buffers">
-<h2>Create DRAM buffers &amp; Circular buffers<a class="headerlink" href="#create-dram-buffers-circular-buffers" title="Permalink to this heading"></a>
+<h2>Create DRAM buffers &amp; Circular buffers<a class="headerlink" href="#create-dram-buffers-circular-buffers" title="Link to this heading"></a>
 </h2>
 <p>In terms of DRAM buffers, we need two source buffers and one destination buffer.</p>
 <div class="highlight-cpp notranslate">
@@ -274,7 +274,7 @@ double buffering..</p>
 </div>
 </section>
 <section id="compile-time-kernels-arguments">
-<h2>Compile-time kernels arguments<a class="headerlink" href="#compile-time-kernels-arguments" title="Permalink to this heading"></a>
+<h2>Compile-time kernels arguments<a class="headerlink" href="#compile-time-kernels-arguments" title="Link to this heading"></a>
 </h2>
 <p>We have to declare some compile-time arguments for read/write kernels. Some default
 parameters here will suffice.</p>
@@ -296,7 +296,7 @@ parameters here will suffice.</p>
 </div>
 </section>
 <section id="compute-kernel-declaration-and-compile-time-defines">
-<h2>Compute kernel declaration and compile-time defines<a class="headerlink" href="#compute-kernel-declaration-and-compile-time-defines" title="Permalink to this heading"></a>
+<h2>Compute kernel declaration and compile-time defines<a class="headerlink" href="#compute-kernel-declaration-and-compile-time-defines" title="Link to this heading"></a>
 </h2>
 <p>We’re using a special reader kernel to take in data from DRAM into L1, and a
 special writer kernel to write out results from the compute engine back to the
@@ -324,7 +324,7 @@ destination DRAM buffer.</p>
 </div>
 </section>
 <section id="runtime-arguments-and-program-launch">
-<h2>Runtime arguments and program launch<a class="headerlink" href="#runtime-arguments-and-program-launch" title="Permalink to this heading"></a>
+<h2>Runtime arguments and program launch<a class="headerlink" href="#runtime-arguments-and-program-launch" title="Link to this heading"></a>
 </h2>
 <p>We will now set runtime arguments for the reader and writer kernels to run the
 matmul operation on a single core and a single tile at a time.</p>
@@ -350,7 +350,7 @@ matmul operation on a single core and a single tile at a time.</p>
 </div>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a>
 </h2>
 <p>Those are the additional steps for getting <code class="docutils literal notranslate"><span class="pre">matmul_single_core</span></code> operations up
 and running on the compute engine. To see a more complicated example using as
@@ -372,7 +372,7 @@ multi-core example</span></a>.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -119,12 +119,12 @@
            <div itemprop="articleBody">
              
   <section id="data-multicasting-in-matmul-multicore-reuse-mcast">
-<span id="matmul-multi-core-optimized-data-mcast-example"></span><h1>Data Multicasting in <cite>matmul_multicore_reuse_mcast</cite><a class="headerlink" href="#data-multicasting-in-matmul-multicore-reuse-mcast" title="Permalink to this heading"></a>
+<span id="matmul-multi-core-optimized-data-mcast-example"></span><h1>Data Multicasting in <cite>matmul_multicore_reuse_mcast</cite><a class="headerlink" href="#data-multicasting-in-matmul-multicore-reuse-mcast" title="Link to this heading"></a>
 </h1>
 <p><strong>Note</strong>: This example only works on Grayskull.</p>
 <p>Let’s level up our code and show how you can leverage and fully customize METALIUM’s core-to-core communication through a data broadcasting scheme. METALIUM offers you customizability for creating your very own compute fabric, allowing precise control over which cores disseminate, collect, or process segments of work. This example builds off of the data_reuse one, so we employ the same intemediate (partial) results handling scheme on-core.  However, rather than map tile-work statically to your coregrid, we map in0’s rows and in1’s columns to the coregrid’s edges, and cascade work core-to-core dynamically.  A fun tidbit: “torrent” in Tenstorrent pays homage to this concept of tensor computation flowing like an ultra fast stream of water.</p>
 <section id="additional-compile-time-argument">
-<h2>Additional Compile-Time Argument<a class="headerlink" href="#additional-compile-time-argument" title="Permalink to this heading"></a>
+<h2>Additional Compile-Time Argument<a class="headerlink" href="#additional-compile-time-argument" title="Link to this heading"></a>
 </h2>
 <p>We introduced an out_block_num_tiles parameter in our reuse example, yet in our mcast example, we leverage it at compile time to navigate the complexity of multicasting partial results alongside fused operations – namely the bias and activation functions – which we will demonstrate further below.  Let’s pass it as follows:</p>
 <div class="highlight-cpp notranslate">
@@ -137,7 +137,7 @@
 </div>
 </section>
 <section id="configuring-core-ranges-for-tile-distribution">
-<h2>Configuring Core Ranges for Tile Distribution<a class="headerlink" href="#configuring-core-ranges-for-tile-distribution" title="Permalink to this heading"></a>
+<h2>Configuring Core Ranges for Tile Distribution<a class="headerlink" href="#configuring-core-ranges-for-tile-distribution" title="Link to this heading"></a>
 </h2>
 <p>We can define our coregrid from any upper-left corner and define its range with any height and width that our problem calls for.  The cores that make up the grid can be relegated specific broadcast roles (sender or receiver cores) and compute workloads (only certain tiles of in0 and in1).  We start with the following initializations for the grid itself, upper-left corner, and grid edge vectors:</p>
 <div class="highlight-cpp notranslate">
@@ -231,7 +231,7 @@
 </div>
 </section>
 <section id="circular-buffer-creation-for-coregrid">
-<h2>Circular Buffer Creation for CoreGrid<a class="headerlink" href="#circular-buffer-creation-for-coregrid" title="Permalink to this heading"></a>
+<h2>Circular Buffer Creation for CoreGrid<a class="headerlink" href="#circular-buffer-creation-for-coregrid" title="Link to this heading"></a>
 </h2>
 <p>Recall in our data reuse example, we created our L1 circular buffers for all the cores like so:</p>
 <div class="highlight-cpp notranslate">
@@ -246,7 +246,7 @@
 <p>In fact, you can instantiate circular buffers on any one of these three options: <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">std::variant&lt;CoreCoord,</span> <span class="pre">CoreRange,</span> <span class="pre">CoreRangeSet&gt;</span></code>.  Please refer to the CircularBuffers page for further details.</p>
 </section>
 <section id="multicast-reader-writer-kernel-setup">
-<h2>Multicast Reader/Writer Kernel Setup<a class="headerlink" href="#multicast-reader-writer-kernel-setup" title="Permalink to this heading"></a>
+<h2>Multicast Reader/Writer Kernel Setup<a class="headerlink" href="#multicast-reader-writer-kernel-setup" title="Link to this heading"></a>
 </h2>
 <p>In datareuse, we spawned reader and writer kernels per core.  In mcast, we have desginated core ranges (or more generally speaking, “groups”), and METALIUM gives us functionality to relegate a certain type of reader/writer kernel to a group.</p>
 <p>Below, let’s set some core ID’s associated with a specific sender-receiver kernel.  Take note that each ID is designated as one of two data movement processors, NCRISC (loading data from DRAM to L1) or BRISC (storing data from L1 to DRAM), as defined in the <code class="docutils literal notranslate"><span class="pre">$TT_METAL_HOME/tt_metal/impl/kernels/data_types.hpp</span></code> file.</p>
@@ -300,7 +300,7 @@
 </div>
 </section>
 <section id="new-compute-kernel-fused-bias-addition-and-activation-functions">
-<h2>New Compute Kernel: Fused Bias Addition and Activation Functions<a class="headerlink" href="#new-compute-kernel-fused-bias-addition-and-activation-functions" title="Permalink to this heading"></a>
+<h2>New Compute Kernel: Fused Bias Addition and Activation Functions<a class="headerlink" href="#new-compute-kernel-fused-bias-addition-and-activation-functions" title="Link to this heading"></a>
 </h2>
 <p>Like all the examples preceeding, we call our compute kernel as usual, except here we introduce a new one called “bmm_large_block_zm_fused_bias_activation”.</p>
 <div class="highlight-cpp notranslate">
@@ -373,7 +373,7 @@
 </ol>
 </section>
 <section id="semaphores">
-<h2>Semaphores<a class="headerlink" href="#semaphores" title="Permalink to this heading"></a>
+<h2>Semaphores<a class="headerlink" href="#semaphores" title="Link to this heading"></a>
 </h2>
 <p>To cleanly coordinate the distribution and processing of in0 and in1 tiles in our mcast strategy, we should introduce semaphores. Without these, we run the risk of mcast sending data from one Tensix core to another too early (before the first Tensix core’s CB stream is fully populated), or mcast receiving too few packets of data and thus computing prematurely (before the second Tensix core’s CB stream is fully populated).  METALIUM makes this very simple, by allowing you to call the CreateSemaphore function and simply passing the entire CoreGrid number of cores.  Therefore, we define our sender and receiver core semaphores as follows, to maintain synchronization of compute across the device.</p>
 <div class="highlight-cpp notranslate">
@@ -385,7 +385,7 @@
 </div>
 </section>
 <section id="kernel-runtime-arguments">
-<h2>Kernel Runtime Arguments<a class="headerlink" href="#kernel-runtime-arguments" title="Permalink to this heading"></a>
+<h2>Kernel Runtime Arguments<a class="headerlink" href="#kernel-runtime-arguments" title="Link to this heading"></a>
 </h2>
 <p>Recall that we just desginated NCRISCs to handle our DRAM-&gt;CoreGrid L1 data movement.  METALIUM lets us pass in a buffer of tensors and dereference them with a stride by multiples of core coordintates.</p>
 <div class="highlight-cpp notranslate">
@@ -511,7 +511,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

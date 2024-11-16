@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -117,10 +117,10 @@
            <div itemprop="articleBody">
              
   <section id="data-reuse-in-matmul-multicore-reuse">
-<span id="matmul-multi-core-data-reuse-example"></span><h1>Data Reuse in <cite>matmul_multicore_reuse</cite><a class="headerlink" href="#data-reuse-in-matmul-multicore-reuse" title="Permalink to this heading"></a>
+<span id="matmul-multi-core-data-reuse-example"></span><h1>Data Reuse in <cite>matmul_multicore_reuse</cite><a class="headerlink" href="#data-reuse-in-matmul-multicore-reuse" title="Link to this heading"></a>
 </h1>
 <section id="fine-grained-block-size-control">
-<h2>Fine-Grained Block Size Control<a class="headerlink" href="#fine-grained-block-size-control" title="Permalink to this heading"></a>
+<h2>Fine-Grained Block Size Control<a class="headerlink" href="#fine-grained-block-size-control" title="Link to this heading"></a>
 </h2>
 <p>Advanced matrix dimension controls are found in the Programming Example’s matmul_common directory, namely Block Matrix Multiply Ops (bmm_op.hpp). Including this header allows us advanced dynamic means of defining and retrieving matrix parameters. Our matmul kernels that work out-of-the-box perform on row-major and tile-major layouts, so you have the power to define your own outer-dimensional tile sizes, desired core grid dimensions, as well as your own input block width, all depending on your problem at hand.</p>
 <p>In our reuse example, we can employ the <code class="docutils literal notranslate"><span class="pre">get_large_matmul_params(...)</span></code> function and pass our inputs as described above. By doing so, we let METALIUM’s bmm op utility functions do the heavy lifting for us mathematically, and calculate our matmul’s exact work-per-core size and work output size seamlessly. (You can consult the header for the prime factorization method used, plus many other details).</p>
@@ -148,7 +148,7 @@
 </div>
 </section>
 <section id="intermediate-circular-buffer-configuration">
-<h2>Intermediate Circular Buffer Configuration<a class="headerlink" href="#intermediate-circular-buffer-configuration" title="Permalink to this heading"></a>
+<h2>Intermediate Circular Buffer Configuration<a class="headerlink" href="#intermediate-circular-buffer-configuration" title="Link to this heading"></a>
 </h2>
 <p>In addition to our double-buffer config, we introduce a third circular buffer denoted as <code class="docutils literal notranslate"><span class="pre">interm0_cb_index</span></code>. Out of the 32 possible circular buffers provided by the API (which you can view in the <code class="docutils literal notranslate"><span class="pre">$TT_METAL_HOME/tt_metal/hostdevcommon/kernel_structs.h</span></code> file), this one belongs to a subset of intermediate CBs. This buffer acts as a temporary storage for the intermediate results of matrix multiplication before they are combined into the final output.</p>
 <div class="highlight-cpp notranslate">
@@ -166,7 +166,7 @@
 </div>
 </section>
 <section id="stride-kernel-arguments">
-<h2>Stride Kernel Arguments<a class="headerlink" href="#stride-kernel-arguments" title="Permalink to this heading"></a>
+<h2>Stride Kernel Arguments<a class="headerlink" href="#stride-kernel-arguments" title="Link to this heading"></a>
 </h2>
 <p>The runtime arguments for the read, write, and compute kernels are set up in a certain way to employ data reuse through the intermediate circular buffer. This setup aligns with the execution model of the <code class="docutils literal notranslate"><span class="pre">bmm_tile_layout.cpp</span></code> reader and writer kernels, and <code class="docutils literal notranslate"><span class="pre">bmm_large_block_zm.cpp</span></code> compute kernel.</p>
 <div class="highlight-cpp notranslate">
@@ -272,7 +272,7 @@
 </div>
 </section>
 <section id="intermediate-results-handling">
-<h2>Intermediate Results Handling<a class="headerlink" href="#intermediate-results-handling" title="Permalink to this heading"></a>
+<h2>Intermediate Results Handling<a class="headerlink" href="#intermediate-results-handling" title="Link to this heading"></a>
 </h2>
 <p>In <code class="docutils literal notranslate"><span class="pre">bmm_large_block_zm.cpp</span></code>,</p>
 <ol class="loweralpha">
@@ -355,7 +355,7 @@
 </ol>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a>
 </h2>
 <p>Those are the additional steps for getting <code class="docutils literal notranslate"><span class="pre">matmul_multicore_data_reuse</span></code> operations up and running on the compute engine. To see a more complicated example using core-to-core data movement, please refer to please refer to the <a class="reference internal" href="data_mcast.html#matmul-multi-core-optimized-data-mcast-example"><span class="std std-ref">Matmul multi-core data mcast example</span></a>.</p>
 </section>
@@ -374,7 +374,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

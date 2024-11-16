@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -95,7 +95,7 @@
            <div itemprop="articleBody">
              
   <section id="welcome-to-tt-metalium-documentation">
-<h1>Welcome to TT-Metalium documentation!<a class="headerlink" href="#welcome-to-tt-metalium-documentation" title="Permalink to this heading"></a>
+<h1>Welcome to TT-Metalium documentation!<a class="headerlink" href="#welcome-to-tt-metalium-documentation" title="Link to this heading"></a>
 </h1>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
@@ -124,51 +124,166 @@
 <a class="reference internal" href="tt_metal/apis/host_apis.html">Host APIs</a><ul>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/host_apis/program/program.html">Program</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/program/CreateProgram.html">CreateProgram</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/program/CreateProgram.html">CreateProgram</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/program/CreateProgram.html#_CPPv4N2tt8tt_metal13CreateProgramEv"><code class="docutils literal notranslate"><span class="pre">CreateProgram()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/host_apis/buffers/buffers.html">Buffers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CreateBuffer.html">CreateBuffer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CircularBuffers.html">CircularBuffers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CreateSemaphore.html">CreateSemaphore</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/DeallocateBuffer.html">DeallocateBuffer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/AssignGlobalBufferToProgram.html">AssignGlobalBufferToProgram</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/buffers/CreateBuffer.html">CreateBuffer</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CreateBuffer.html#_CPPv4N2tt8tt_metal12CreateBufferERK23InterleavedBufferConfig"><code class="docutils literal notranslate"><span class="pre">CreateBuffer()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CreateBuffer.html#_CPPv4N2tt8tt_metal12CreateBufferERK19ShardedBufferConfig"><code class="docutils literal notranslate"><span class="pre">CreateBuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/buffers/CircularBuffers.html">CircularBuffers</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CircularBuffers.html#_CPPv4N2tt8tt_metal20CreateCircularBufferER7ProgramRKNSt7variantI9CoreCoord9CoreRange12CoreRangeSetEERK20CircularBufferConfig"><code class="docutils literal notranslate"><span class="pre">CreateCircularBuffer()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CircularBuffers.html#_CPPv4N2tt8tt_metal23GetCircularBufferConfigER7Program8CBHandle"><code class="docutils literal notranslate"><span class="pre">GetCircularBufferConfig()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CircularBuffers.html#_CPPv4N2tt8tt_metal29UpdateCircularBufferTotalSizeER7Program8CBHandle8uint32_t"><code class="docutils literal notranslate"><span class="pre">UpdateCircularBufferTotalSize()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CircularBuffers.html#_CPPv4N2tt8tt_metal28UpdateCircularBufferPageSizeER7Program8CBHandle7uint8_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">UpdateCircularBufferPageSize()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CircularBuffers.html#_CPPv4N2tt8tt_metal34UpdateDynamicCircularBufferAddressER7Program8CBHandleRK6Buffer"><code class="docutils literal notranslate"><span class="pre">UpdateDynamicCircularBufferAddress()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/buffers/CreateSemaphore.html">CreateSemaphore</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/CreateSemaphore.html#_CPPv4N2tt8tt_metal15CreateSemaphoreER7ProgramRKNSt7variantI9CoreRange12CoreRangeSetEE8uint32_t8CoreType"><code class="docutils literal notranslate"><span class="pre">CreateSemaphore()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/buffers/DeallocateBuffer.html">DeallocateBuffer</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/DeallocateBuffer.html#_CPPv4N2tt8tt_metal16DeallocateBufferER6Buffer"><code class="docutils literal notranslate"><span class="pre">DeallocateBuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/buffers/AssignGlobalBufferToProgram.html">AssignGlobalBufferToProgram</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/buffers/AssignGlobalBufferToProgram.html#_CPPv4N2tt8tt_metal27AssignGlobalBufferToProgramENSt10shared_ptrI6BufferEENSt7variantINSt17reference_wrapperI7ProgramEENSt10shared_ptrI7ProgramEEEE"><code class="docutils literal notranslate"><span class="pre">AssignGlobalBufferToProgram()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/host_apis/command_queue/command_queue.html">CommandQueue</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueWriteBuffer.html">EnqueueWriteBuffer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueReadBuffer.html">EnqueueReadBuffer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueProgram.html">EnqueueProgram</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueRecordEvent.html">EnqueueRecordEvent</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueWaitForEvent.html">EnqueueWaitForEvent</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EventQuery.html">EventQuery</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EventSynchronize.html">EventSynchronize</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/BeginTraceCapture.html">BeginTraceCapture</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EndTraceCapture.html">EndTraceCapture</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/ReplayTrace.html">ReplayTrace</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/ReleaseTrace.html">ReleaseTrace</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueTrace.html">EnqueueTrace</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/Finish.html">Finish</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueWriteBuffer.html">EnqueueWriteBuffer</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueWriteBuffer.html#_CPPv4N2tt8tt_metal18EnqueueWriteBufferER12CommandQueueNSt7variantINSt17reference_wrapperI6BufferEENSt10shared_ptrI6BufferEEEERNSt6vectorI8uint32_tEEb"><code class="docutils literal notranslate"><span class="pre">EnqueueWriteBuffer()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueWriteBuffer.html#_CPPv4N2tt8tt_metal18EnqueueWriteBufferER12CommandQueueNSt7variantINSt17reference_wrapperI6BufferEENSt10shared_ptrI6BufferEEEE12HostDataTypeb"><code class="docutils literal notranslate"><span class="pre">EnqueueWriteBuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueReadBuffer.html">EnqueueReadBuffer</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueReadBuffer.html#_CPPv4N2tt8tt_metal17EnqueueReadBufferER12CommandQueueNSt7variantINSt17reference_wrapperI6BufferEENSt10shared_ptrI6BufferEEEERNSt6vectorI8uint32_tEEb"><code class="docutils literal notranslate"><span class="pre">EnqueueReadBuffer()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueReadBuffer.html#_CPPv4N2tt8tt_metal17EnqueueReadBufferER12CommandQueueNSt7variantINSt17reference_wrapperI6BufferEENSt10shared_ptrI6BufferEEEEPvb"><code class="docutils literal notranslate"><span class="pre">EnqueueReadBuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueProgram.html">EnqueueProgram</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueProgram.html#_CPPv4N2tt8tt_metal14EnqueueProgramER12CommandQueueNSt7variantINSt17reference_wrapperI7ProgramEENSt10shared_ptrI7ProgramEEEEb"><code class="docutils literal notranslate"><span class="pre">EnqueueProgram()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueRecordEvent.html">EnqueueRecordEvent</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueRecordEvent.html#_CPPv4N2tt8tt_metal18EnqueueRecordEventER12CommandQueueNSt10shared_ptrI5EventEE"><code class="docutils literal notranslate"><span class="pre">EnqueueRecordEvent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueWaitForEvent.html">EnqueueWaitForEvent</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueWaitForEvent.html#_CPPv4N2tt8tt_metal19EnqueueWaitForEventER12CommandQueueNSt10shared_ptrI5EventEE"><code class="docutils literal notranslate"><span class="pre">EnqueueWaitForEvent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EventQuery.html">EventQuery</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EventQuery.html#_CPPv4N2tt8tt_metal10EventQueryENSt10shared_ptrI5EventEE"><code class="docutils literal notranslate"><span class="pre">EventQuery()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EventSynchronize.html">EventSynchronize</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EventSynchronize.html#_CPPv4N2tt8tt_metal16EventSynchronizeENSt10shared_ptrI5EventEE"><code class="docutils literal notranslate"><span class="pre">EventSynchronize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/BeginTraceCapture.html">BeginTraceCapture</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/BeginTraceCapture.html#_CPPv4N2tt8tt_metal17BeginTraceCaptureEP6DeviceK7uint8_t"><code class="docutils literal notranslate"><span class="pre">BeginTraceCapture()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EndTraceCapture.html">EndTraceCapture</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EndTraceCapture.html#_CPPv4N2tt8tt_metal15EndTraceCaptureEP6DeviceK7uint8_tK8uint32_t"><code class="docutils literal notranslate"><span class="pre">EndTraceCapture()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/ReplayTrace.html">ReplayTrace</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/ReplayTrace.html#_CPPv4N2tt8tt_metal11ReplayTraceEP6DeviceK7uint8_tK8uint32_tKb"><code class="docutils literal notranslate"><span class="pre">ReplayTrace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/ReleaseTrace.html">ReleaseTrace</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/ReleaseTrace.html#_CPPv4N2tt8tt_metal12ReleaseTraceEP6DeviceK8uint32_t"><code class="docutils literal notranslate"><span class="pre">ReleaseTrace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueTrace.html">EnqueueTrace</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/EnqueueTrace.html#_CPPv4N2tt8tt_metal12EnqueueTraceER12CommandQueue8uint32_tb"><code class="docutils literal notranslate"><span class="pre">EnqueueTrace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/command_queue/Finish.html">Finish</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/command_queue/Finish.html#_CPPv4N2tt8tt_metal6FinishER12CommandQueue"><code class="docutils literal notranslate"><span class="pre">Finish()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/host_apis/device_management/device_management.html">Device Management</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/device_management/CreateDevice.html">CreateDevice</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/device_management/CloseDevice.html">CloseDevice</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/device_management/QueryDevices.html">QueryDevices</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/device_management/CreateDevice.html">CreateDevice</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/device_management/CreateDevice.html#_CPPv4N2tt8tt_metal12CreateDeviceE9chip_id_tK7uint8_tK6size_tK6size_tRKNSt6vectorI8uint32_tEE"><code class="docutils literal notranslate"><span class="pre">CreateDevice()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/device_management/CloseDevice.html">CloseDevice</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/device_management/CloseDevice.html#_CPPv4N2tt8tt_metal11CloseDeviceEP6Device"><code class="docutils literal notranslate"><span class="pre">CloseDevice()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/device_management/QueryDevices.html">QueryDevices</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/device_management/QueryDevices.html#_CPPv4N2tt8tt_metal22GetNumAvailableDevicesEv"><code class="docutils literal notranslate"><span class="pre">GetNumAvailableDevices()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/device_management/QueryDevices.html#_CPPv4N2tt8tt_metal17GetNumPCIeDevicesEv"><code class="docutils literal notranslate"><span class="pre">GetNumPCIeDevices()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/host_apis/kernels/kernels.html">Kernels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/kernels/CreateKernel.html">CreateKernel</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/kernels/CreateKernel.html">CreateKernel</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/kernels/CreateKernel.html#_CPPv4N2tt8tt_metal12CreateKernelER7ProgramRKNSt6stringERKNSt7variantI9CoreCoord9CoreRange12CoreRangeSetEERKNSt7variantI18DataMovementConfig13ComputeConfig14EthernetConfigEE"><code class="docutils literal notranslate"><span class="pre">CreateKernel()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="tt_metal/apis/host_apis/runtime_args/runtime_args.html">Runtime Arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="tt_metal/apis/host_apis/runtime_args/runtime_args.html">Runtime Arguments</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14SetRuntimeArgsERK7Program12KernelHandleRKNSt7variantI9CoreCoord9CoreRange12CoreRangeSetEERKNSt6vectorI8uint32_tEE"><code class="docutils literal notranslate"><span class="pre">SetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14SetRuntimeArgsERK7Program12KernelHandleRKNSt6vectorI9CoreCoordEERKNSt6vectorINSt6vectorI8uint32_tEEEE"><code class="docutils literal notranslate"><span class="pre">SetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14SetRuntimeArgsEP6DeviceKNSt10shared_ptrI6KernelEERKNSt7variantI9CoreCoord9CoreRange12CoreRangeSetEENSt10shared_ptrI11RuntimeArgsEE"><code class="docutils literal notranslate"><span class="pre">SetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14SetRuntimeArgsEP6DeviceKNSt10shared_ptrI6KernelEERKNSt6vectorI9CoreCoordEEKNSt6vectorINSt10shared_ptrI11RuntimeArgsEEEE"><code class="docutils literal notranslate"><span class="pre">SetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14GetRuntimeArgsERK7Program12KernelHandleRK9CoreCoord"><code class="docutils literal notranslate"><span class="pre">GetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal14GetRuntimeArgsERK7Program12KernelHandle"><code class="docutils literal notranslate"><span class="pre">GetRuntimeArgs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal20SetCommonRuntimeArgsERK7Program12KernelHandleRKNSt6vectorI8uint32_tEE"><code class="docutils literal notranslate"><span class="pre">SetCommonRuntimeArgs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/runtime_args/runtime_args.html#_CPPv4N2tt8tt_metal20GetCommonRuntimeArgsERK7Program12KernelHandle"><code class="docutils literal notranslate"><span class="pre">GetCommonRuntimeArgs()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/host_apis/profiler/profiler.html">Profiler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/host_apis/profiler/DumpDeviceProfileResults.html">DumpDeviceProfileResults</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/host_apis/profiler/DumpDeviceProfileResults.html">DumpDeviceProfileResults</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/host_apis/profiler/DumpDeviceProfileResults.html#_CPPv4N2tt8tt_metal24DumpDeviceProfileResultsEP6DeviceRK7Program"><code class="docutils literal notranslate"><span class="pre">DumpDeviceProfileResults()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -177,107 +292,536 @@
 <a class="reference internal" href="tt_metal/apis/kernel_apis.html">Kernel APIs</a><ul>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/data_movement.html">Data Movement APIs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_read.html">noc_async_read</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_write.html">noc_async_write</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_read_barrier.html">noc_async_read_barrier</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_write_barrier.html">noc_async_write_barrier</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_write_multicast.html">noc_async_write_multicast</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_set_multicast.html">noc_semaphore_set_multicast</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_set.html">noc_semaphore_set</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_wait.html">noc_semaphore_wait</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_inc.html">noc_semaphore_inc</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_read.html">noc_async_read</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_read.html#_CPPv414noc_async_readNSt8uint64_tENSt8uint32_tENSt8uint32_tE"><code class="docutils literal notranslate"><span class="pre">noc_async_read()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_write.html">noc_async_write</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_write.html#_CPPv4I_8uint32_tE15noc_async_writevNSt8uint32_tENSt8uint64_tENSt8uint32_tE"><code class="docutils literal notranslate"><span class="pre">noc_async_write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_read_barrier.html">noc_async_read_barrier</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_read_barrier.html#_CPPv422noc_async_read_barrierv"><code class="docutils literal notranslate"><span class="pre">noc_async_read_barrier()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_write_barrier.html">noc_async_write_barrier</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_write_barrier.html#_CPPv423noc_async_write_barrierv"><code class="docutils literal notranslate"><span class="pre">noc_async_write_barrier()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_write_multicast.html">noc_async_write_multicast</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_async_write_multicast.html#_CPPv4I_8uint32_tE25noc_async_write_multicastvNSt8uint32_tENSt8uint64_tENSt8uint32_tENSt8uint32_tEbb"><code class="docutils literal notranslate"><span class="pre">noc_async_write_multicast()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_set_multicast.html">noc_semaphore_set_multicast</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_set_multicast.html#_CPPv427noc_semaphore_set_multicastNSt8uint32_tENSt8uint64_tENSt8uint32_tEbb"><code class="docutils literal notranslate"><span class="pre">noc_semaphore_set_multicast()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_set.html">noc_semaphore_set</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_set.html#_CPPv417noc_semaphore_setPV8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">noc_semaphore_set()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_wait.html">noc_semaphore_wait</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_wait.html#_CPPv418noc_semaphore_waitPV8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">noc_semaphore_wait()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_inc.html">noc_semaphore_inc</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/noc_semaphore_inc.html#_CPPv417noc_semaphore_inc8uint64_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">noc_semaphore_inc()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/data_movement/ordering.html">Ordering (NOC, CMD_BUF, VC)</a></li>
 </ul>
 </li>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/circular_buffers.html">Circular Buffer APIs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_wait_front.html">cb_wait_front</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_reserve_back.html">cb_reserve_back</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_push_back.html">cb_push_back</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_pop_front.html">cb_pop_front</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_wait_front.html">cb_wait_front</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_wait_front.html#_CPPv413cb_wait_front7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cb_wait_front()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_reserve_back.html">cb_reserve_back</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_reserve_back.html#_CPPv415cb_reserve_back7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cb_reserve_back()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_push_back.html">cb_push_back</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_push_back.html#_CPPv412cb_push_backK7int32_tK7int32_t"><code class="docutils literal notranslate"><span class="pre">cb_push_back()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_pop_front.html">cb_pop_front</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/circular_buffers/cb_pop_front.html#_CPPv412cb_pop_front7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cb_pop_front()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/kernel_apis/compute/compute.html">Compute APIs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/copy_tile.html">copy_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/move_copy_tile.html">move_copy_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/acquire_dst.html">acquire_dst</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/release_dst.html">release_dst</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/reg_api.html">reg_api</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/copy_tile.html">copy_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/copy_tile.html#_CPPv4N7ckernel9copy_tileE8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">copy_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/move_copy_tile.html">move_copy_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/move_copy_tile.html#_CPPv4N7ckernel35copy_tile_to_dst_init_short_with_dtE8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">copy_tile_to_dst_init_short_with_dt()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/move_copy_tile.html#_CPPv4N7ckernel27copy_tile_to_dst_init_shortE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">copy_tile_to_dst_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/move_copy_tile.html#_CPPv4N7ckernel14copy_tile_initEv"><code class="docutils literal notranslate"><span class="pre">copy_tile_init()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/acquire_dst.html">acquire_dst</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/acquire_dst.html#_CPPv4N7ckernel11acquire_dstEN2tt7DstModeE"><code class="docutils literal notranslate"><span class="pre">acquire_dst()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/release_dst.html">release_dst</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/release_dst.html#_CPPv4N7ckernel11release_dstEN2tt7DstModeE"><code class="docutils literal notranslate"><span class="pre">release_dst()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/reg_api.html">reg_api</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/reg_api.html#_CPPv4N7ckernel17tile_regs_acquireEv"><code class="docutils literal notranslate"><span class="pre">tile_regs_acquire()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/reg_api.html#_CPPv4N7ckernel14tile_regs_waitEv"><code class="docutils literal notranslate"><span class="pre">tile_regs_wait()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/reg_api.html#_CPPv4N7ckernel16tile_regs_commitEv"><code class="docutils literal notranslate"><span class="pre">tile_regs_commit()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/reg_api.html#_CPPv4N7ckernel17tile_regs_releaseEv"><code class="docutils literal notranslate"><span class="pre">tile_regs_release()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/init_functions.html">any_init</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/abs_tile.html">abs_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/add_tiles.html">add_tiles</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sub_tiles.html">sub_tiles</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles.html">mul_tiles</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/add_tiles_bcast.html">add_tiles_bcast</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sub_tiles_bcast.html">sub_tiles_bcast</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles_bcast.html">mul_tiles_bcast</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_tiles.html">matmul_tiles</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_block.html">matmul_block</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/exp_tile.html">exp_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/exp2_tile.html">exp2_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/expm1_tile.html">expm1_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html">relu_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#relu-max-tile">relu_max_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#relu-min-tile">relu_min_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#leaky-relu-tile">leaky_relu_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/elu_tile.html">elu_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erf_tile.html">erf_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erfc_tile.html">erfc_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erfinv_tile.html">erfinv_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gelu_tile.html">gelu_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/heaviside_tile.html">heaviside_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html">isinf_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#isposinf-tile">isposinf_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#isneginf-tile">isneginf_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#isfinite-tile">isfinite_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isnan_tile.html">isnan_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/i0_tile.html">i0_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/logical_not_unary_tile.html">logical_not_unary_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/recip_tile.html">recip_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sign_tile.html">sign_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sqrt_tile.html">sqrt_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/rsqrt_tile.html">rsqrt_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sigmoid_tile.html">sigmoid_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/log_tile.html">log_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/log_with_base_tile.html">log_with_base_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/power_tile.html">power_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/rsub_tile.html">rsub_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/signbit_tile.html">signbit_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/square_tile.html">square_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/reduce_tile.html">reduce_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/transpose_wh_tile.html">transpose_wh_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tanh_tile.html">tanh_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tan_tile.html">tan_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sin_tile.html">sin_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cos_tile.html">cos_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/asin_tile.html">asin_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/atan_tile.html">atan_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/acos_tile.html">acos_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/ltz_tile.html">ltz_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/eqz_tile.html">eqz_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/lez_tile.html">lez_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gtz_tile.html">gtz_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gez_tile.html">gez_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/nez_tile.html">nez_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_ne_tile.html">unary_ne_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_gt_tile.html">unary_gt_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_lt_tile.html">unary_lt_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_wait_front.html">cb_wait_front</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_pop_front.html">cb_pop_front</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_reserve_back.html">cb_reserve_back</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_push_back.html">cb_push_back</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/binary_op_init_funcs.html">binary_init_funcs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tilize.html">tilize</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/untilize.html">untilize</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/abs_tile.html">abs_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/abs_tile.html#_CPPv4N7ckernel13abs_tile_initEv"><code class="docutils literal notranslate"><span class="pre">abs_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/abs_tile.html#_CPPv4N7ckernel8abs_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">abs_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/add_tiles.html">add_tiles</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/add_tiles.html#_CPPv4N7ckernel18add_tiles_init_nofEv"><code class="docutils literal notranslate"><span class="pre">add_tiles_init_nof()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/add_tiles.html#_CPPv4N7ckernel14add_tiles_initE8uint32_t8uint32_tb"><code class="docutils literal notranslate"><span class="pre">add_tiles_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/add_tiles.html#_CPPv4N7ckernel9add_tilesE8uint32_t8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">add_tiles()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sub_tiles.html">sub_tiles</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sub_tiles.html#_CPPv4N7ckernel18sub_tiles_init_nofEv"><code class="docutils literal notranslate"><span class="pre">sub_tiles_init_nof()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sub_tiles.html#_CPPv4N7ckernel14sub_tiles_initE8uint32_t8uint32_tb"><code class="docutils literal notranslate"><span class="pre">sub_tiles_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sub_tiles.html#_CPPv4N7ckernel9sub_tilesE8uint32_t8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">sub_tiles()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles.html">mul_tiles</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles.html#_CPPv4N7ckernel16mul_tiles_init_fEv"><code class="docutils literal notranslate"><span class="pre">mul_tiles_init_f()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles.html#_CPPv4N7ckernel14mul_tiles_initE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">mul_tiles_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles.html#_CPPv4N7ckernel9mul_tilesE8uint32_t8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">mul_tiles()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/add_tiles_bcast.html">add_tiles_bcast</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/add_tiles_bcast.html#_CPPv4N7ckernel25add_bcast_cols_init_shortE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">add_bcast_cols_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/add_tiles_bcast.html#_CPPv4N7ckernel25add_bcast_rows_init_shortE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">add_bcast_rows_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/add_tiles_bcast.html#_CPPv4I_13BroadcastTypeEN7ckernel15add_tiles_bcastEv8uint32_t8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">add_tiles_bcast()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sub_tiles_bcast.html">sub_tiles_bcast</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sub_tiles_bcast.html#_CPPv4N7ckernel25sub_bcast_cols_init_shortE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">sub_bcast_cols_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sub_tiles_bcast.html#_CPPv4I_13BroadcastTypeEN7ckernel15sub_tiles_bcastEv8uint32_t8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">sub_tiles_bcast()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles_bcast.html">mul_tiles_bcast</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles_bcast.html#_CPPv4N7ckernel25mul_bcast_cols_init_shortE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">mul_bcast_cols_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles_bcast.html#_CPPv4N7ckernel25mul_bcast_rows_init_shortE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">mul_bcast_rows_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles_bcast.html#_CPPv4I_13BroadcastTypeEN7ckernel15mul_tiles_bcastEv8uint32_t8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">mul_tiles_bcast()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles_bcast.html#_CPPv4N7ckernel33mul_tiles_bcast_scalar_init_shortE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">mul_tiles_bcast_scalar_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/mul_tiles_bcast.html#_CPPv4N7ckernel22mul_tiles_bcast_scalarE8uint32_t8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">mul_tiles_bcast_scalar()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_tiles.html">matmul_tiles</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_tiles.html#_CPPv4N7ckernel7mm_initE8uint32_t8uint32_t8uint32_tK8uint32_t"><code class="docutils literal notranslate"><span class="pre">mm_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_tiles.html#_CPPv4N7ckernel21mm_init_short_with_dtE8uint32_t8uint32_t8uint32_tK8uint32_t"><code class="docutils literal notranslate"><span class="pre">mm_init_short_with_dt()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_tiles.html#_CPPv4N7ckernel13mm_init_shortE8uint32_t8uint32_tK8uint32_t"><code class="docutils literal notranslate"><span class="pre">mm_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_tiles.html#_CPPv4N7ckernel12matmul_tilesE8uint32_t8uint32_t8uint32_t8uint32_t8uint32_tK8uint32_t"><code class="docutils literal notranslate"><span class="pre">matmul_tiles()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_block.html">matmul_block</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_block.html#_CPPv4N7ckernel13mm_block_initE8uint32_t8uint32_t8uint32_tK8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">mm_block_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_block.html#_CPPv4N7ckernel19mm_block_init_shortE8uint32_t8uint32_tK8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">mm_block_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_block.html#_CPPv4N7ckernel27mm_block_init_short_with_dtE8uint32_t8uint32_t8uint32_tK8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">mm_block_init_short_with_dt()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/matmul_block.html#_CPPv4N7ckernel12matmul_blockE8uint32_t8uint32_t8uint32_t8uint32_t8uint32_tK8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">matmul_block()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/exp_tile.html">exp_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/exp_tile.html#_CPPv4I_bEN7ckernel13exp_tile_initEvv"><code class="docutils literal notranslate"><span class="pre">exp_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/exp_tile.html#_CPPv4I_bEN7ckernel8exp_tileEv8uint32_t"><code class="docutils literal notranslate"><span class="pre">exp_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/exp2_tile.html">exp2_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/exp2_tile.html#_CPPv4N7ckernel14exp2_tile_initEv"><code class="docutils literal notranslate"><span class="pre">exp2_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/exp2_tile.html#_CPPv4N7ckernel9exp2_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">exp2_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/expm1_tile.html">expm1_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/expm1_tile.html#_CPPv4N7ckernel15expm1_tile_initEv"><code class="docutils literal notranslate"><span class="pre">expm1_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/expm1_tile.html#_CPPv4N7ckernel10expm1_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">expm1_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html">relu_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#_CPPv4N7ckernel14relu_tile_initEv"><code class="docutils literal notranslate"><span class="pre">relu_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#_CPPv4N7ckernel9relu_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">relu_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#relu-max-tile">relu_max_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#_CPPv4N7ckernel18relu_max_tile_initEv"><code class="docutils literal notranslate"><span class="pre">relu_max_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#_CPPv4N7ckernel13relu_max_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">relu_max_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#relu-min-tile">relu_min_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#_CPPv4N7ckernel18relu_min_tile_initEv"><code class="docutils literal notranslate"><span class="pre">relu_min_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#_CPPv4N7ckernel13relu_min_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">relu_min_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#leaky-relu-tile">leaky_relu_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#_CPPv4N7ckernel20leaky_relu_tile_initEv"><code class="docutils literal notranslate"><span class="pre">leaky_relu_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/relu_tile.html#_CPPv4N7ckernel15leaky_relu_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">leaky_relu_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/elu_tile.html">elu_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/elu_tile.html#_CPPv4N7ckernel13elu_tile_initEv"><code class="docutils literal notranslate"><span class="pre">elu_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/elu_tile.html#_CPPv4N7ckernel8elu_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">elu_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erf_tile.html">erf_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erf_tile.html#_CPPv4I_bEN7ckernel13erf_tile_initEvv"><code class="docutils literal notranslate"><span class="pre">erf_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erf_tile.html#_CPPv4I_bEN7ckernel8erf_tileEv8uint32_t"><code class="docutils literal notranslate"><span class="pre">erf_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erfc_tile.html">erfc_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erfc_tile.html#_CPPv4I_bEN7ckernel14erfc_tile_initEvv"><code class="docutils literal notranslate"><span class="pre">erfc_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erfc_tile.html#_CPPv4I_bEN7ckernel9erfc_tileEv8uint32_t"><code class="docutils literal notranslate"><span class="pre">erfc_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erfinv_tile.html">erfinv_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erfinv_tile.html#_CPPv4N7ckernel16erfinv_tile_initEv"><code class="docutils literal notranslate"><span class="pre">erfinv_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/erfinv_tile.html#_CPPv4N7ckernel11erfinv_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">erfinv_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gelu_tile.html">gelu_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gelu_tile.html#_CPPv4I_bEN7ckernel14gelu_tile_initEvv"><code class="docutils literal notranslate"><span class="pre">gelu_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gelu_tile.html#_CPPv4I_bEN7ckernel9gelu_tileEv8uint32_t"><code class="docutils literal notranslate"><span class="pre">gelu_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/heaviside_tile.html">heaviside_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/heaviside_tile.html#_CPPv4N7ckernel19heaviside_tile_initEv"><code class="docutils literal notranslate"><span class="pre">heaviside_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/heaviside_tile.html#_CPPv4N7ckernel14heaviside_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">heaviside_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html">isinf_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#_CPPv4N7ckernel15isinf_tile_initEv"><code class="docutils literal notranslate"><span class="pre">isinf_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#_CPPv4N7ckernel10isinf_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">isinf_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#isposinf-tile">isposinf_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#_CPPv4N7ckernel18isposinf_tile_initEv"><code class="docutils literal notranslate"><span class="pre">isposinf_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#_CPPv4N7ckernel13isposinf_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">isposinf_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#isneginf-tile">isneginf_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#_CPPv4N7ckernel18isneginf_tile_initEv"><code class="docutils literal notranslate"><span class="pre">isneginf_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#_CPPv4N7ckernel13isneginf_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">isneginf_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#isfinite-tile">isfinite_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#_CPPv4N7ckernel18isfinite_tile_initEv"><code class="docutils literal notranslate"><span class="pre">isfinite_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isinf_tile.html#_CPPv4N7ckernel13isfinite_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">isfinite_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isnan_tile.html">isnan_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/isnan_tile.html#_CPPv4N7ckernel10isnan_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">isnan_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/i0_tile.html">i0_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/i0_tile.html#_CPPv4N7ckernel12i0_tile_initEv"><code class="docutils literal notranslate"><span class="pre">i0_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/i0_tile.html#_CPPv4N7ckernel7i0_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">i0_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/logical_not_unary_tile.html">logical_not_unary_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/logical_not_unary_tile.html#_CPPv4N7ckernel27logical_not_unary_tile_initEv"><code class="docutils literal notranslate"><span class="pre">logical_not_unary_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/logical_not_unary_tile.html#_CPPv4N7ckernel22logical_not_unary_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">logical_not_unary_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/recip_tile.html">recip_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/recip_tile.html#_CPPv4N7ckernel15recip_tile_initEv"><code class="docutils literal notranslate"><span class="pre">recip_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/recip_tile.html#_CPPv4N7ckernel10recip_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">recip_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sign_tile.html">sign_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sign_tile.html#_CPPv4N7ckernel14sign_tile_initEv"><code class="docutils literal notranslate"><span class="pre">sign_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sign_tile.html#_CPPv4N7ckernel9sign_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">sign_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sqrt_tile.html">sqrt_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sqrt_tile.html#_CPPv4N7ckernel14sqrt_tile_initEv"><code class="docutils literal notranslate"><span class="pre">sqrt_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sqrt_tile.html#_CPPv4N7ckernel9sqrt_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">sqrt_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/rsqrt_tile.html">rsqrt_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/rsqrt_tile.html#_CPPv4I_bEN7ckernel15rsqrt_tile_initEvv"><code class="docutils literal notranslate"><span class="pre">rsqrt_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/rsqrt_tile.html#_CPPv4I_bEN7ckernel10rsqrt_tileEv8uint32_t"><code class="docutils literal notranslate"><span class="pre">rsqrt_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sigmoid_tile.html">sigmoid_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sigmoid_tile.html#_CPPv4N7ckernel17sigmoid_tile_initEv"><code class="docutils literal notranslate"><span class="pre">sigmoid_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sigmoid_tile.html#_CPPv4N7ckernel12sigmoid_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">sigmoid_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/log_tile.html">log_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/log_tile.html#_CPPv4N7ckernel13log_tile_initEv"><code class="docutils literal notranslate"><span class="pre">log_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/log_tile.html#_CPPv4N7ckernel8log_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">log_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/log_with_base_tile.html">log_with_base_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/log_with_base_tile.html#_CPPv4N7ckernel23log_with_base_tile_initEv"><code class="docutils literal notranslate"><span class="pre">log_with_base_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/log_with_base_tile.html#_CPPv4N7ckernel18log_with_base_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">log_with_base_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/power_tile.html">power_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/power_tile.html#_CPPv4N7ckernel15power_tile_initEv"><code class="docutils literal notranslate"><span class="pre">power_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/power_tile.html#_CPPv4N7ckernel10power_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">power_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/rsub_tile.html">rsub_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/rsub_tile.html#_CPPv4N7ckernel14rsub_tile_initEv"><code class="docutils literal notranslate"><span class="pre">rsub_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/rsub_tile.html#_CPPv4N7ckernel9rsub_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">rsub_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/signbit_tile.html">signbit_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/signbit_tile.html#_CPPv4N7ckernel17signbit_tile_initEv"><code class="docutils literal notranslate"><span class="pre">signbit_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/signbit_tile.html#_CPPv4N7ckernel12signbit_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">signbit_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/square_tile.html">square_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/square_tile.html#_CPPv4N7ckernel16square_tile_initEv"><code class="docutils literal notranslate"><span class="pre">square_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/square_tile.html#_CPPv4N7ckernel11square_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">square_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/reduce_tile.html">reduce_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/reduce_tile.html#_CPPv4I_8PoolType_9ReduceDimEN7ckernel11reduce_tileEv8uint32_t8uint32_t8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">reduce_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/transpose_wh_tile.html">transpose_wh_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/transpose_wh_tile.html#_CPPv4N7ckernel17transpose_wh_initE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">transpose_wh_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/transpose_wh_tile.html#_CPPv4N7ckernel17transpose_wh_tileE8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">transpose_wh_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tanh_tile.html">tanh_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tanh_tile.html#_CPPv4N7ckernel14tanh_tile_initEv"><code class="docutils literal notranslate"><span class="pre">tanh_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tanh_tile.html#_CPPv4N7ckernel9tanh_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">tanh_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tan_tile.html">tan_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tan_tile.html#_CPPv4N7ckernel13tan_tile_initEv"><code class="docutils literal notranslate"><span class="pre">tan_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tan_tile.html#_CPPv4N7ckernel8tan_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">tan_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sin_tile.html">sin_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sin_tile.html#_CPPv4N7ckernel13sin_tile_initEv"><code class="docutils literal notranslate"><span class="pre">sin_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/sin_tile.html#_CPPv4N7ckernel8sin_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">sin_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cos_tile.html">cos_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cos_tile.html#_CPPv4N7ckernel13cos_tile_initEv"><code class="docutils literal notranslate"><span class="pre">cos_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cos_tile.html#_CPPv4N7ckernel8cos_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">cos_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/asin_tile.html">asin_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/asin_tile.html#_CPPv4N7ckernel14asin_tile_initEv"><code class="docutils literal notranslate"><span class="pre">asin_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/asin_tile.html#_CPPv4N7ckernel9asin_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">asin_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/atan_tile.html">atan_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/atan_tile.html#_CPPv4N7ckernel14atan_tile_initEv"><code class="docutils literal notranslate"><span class="pre">atan_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/atan_tile.html#_CPPv4N7ckernel9atan_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">atan_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/acos_tile.html">acos_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/acos_tile.html#_CPPv4N7ckernel14acos_tile_initEv"><code class="docutils literal notranslate"><span class="pre">acos_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/acos_tile.html#_CPPv4N7ckernel9acos_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">acos_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/ltz_tile.html">ltz_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/ltz_tile.html#_CPPv4N7ckernel13ltz_tile_initEv"><code class="docutils literal notranslate"><span class="pre">ltz_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/ltz_tile.html#_CPPv4N7ckernel8ltz_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">ltz_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/eqz_tile.html">eqz_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/eqz_tile.html#_CPPv4N7ckernel13eqz_tile_initEv"><code class="docutils literal notranslate"><span class="pre">eqz_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/eqz_tile.html#_CPPv4N7ckernel8eqz_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">eqz_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/lez_tile.html">lez_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/lez_tile.html#_CPPv4N7ckernel13lez_tile_initEv"><code class="docutils literal notranslate"><span class="pre">lez_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/lez_tile.html#_CPPv4N7ckernel8lez_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">lez_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gtz_tile.html">gtz_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gtz_tile.html#_CPPv4N7ckernel13gtz_tile_initEv"><code class="docutils literal notranslate"><span class="pre">gtz_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gtz_tile.html#_CPPv4N7ckernel8gtz_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">gtz_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gez_tile.html">gez_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gez_tile.html#_CPPv4N7ckernel13gez_tile_initEv"><code class="docutils literal notranslate"><span class="pre">gez_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/gez_tile.html#_CPPv4N7ckernel8gez_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">gez_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/nez_tile.html">nez_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/nez_tile.html#_CPPv4N7ckernel13nez_tile_initEv"><code class="docutils literal notranslate"><span class="pre">nez_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/nez_tile.html#_CPPv4N7ckernel8nez_tileE8uint32_t"><code class="docutils literal notranslate"><span class="pre">nez_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_ne_tile.html">unary_ne_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_ne_tile.html#_CPPv4N7ckernel18unary_ne_tile_initEv"><code class="docutils literal notranslate"><span class="pre">unary_ne_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_ne_tile.html#_CPPv4N7ckernel13unary_ne_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">unary_ne_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_gt_tile.html">unary_gt_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_gt_tile.html#_CPPv4N7ckernel18unary_gt_tile_initEv"><code class="docutils literal notranslate"><span class="pre">unary_gt_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_gt_tile.html#_CPPv4N7ckernel13unary_gt_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">unary_gt_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_lt_tile.html">unary_lt_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_lt_tile.html#_CPPv4N7ckernel18unary_lt_tile_initEv"><code class="docutils literal notranslate"><span class="pre">unary_lt_tile_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/unary_lt_tile.html#_CPPv4N7ckernel13unary_lt_tileE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">unary_lt_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_wait_front.html">cb_wait_front</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_wait_front.html#_CPPv4N7ckernel13cb_wait_frontE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cb_wait_front()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_pop_front.html">cb_pop_front</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_pop_front.html#_CPPv4N7ckernel12cb_pop_frontE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cb_pop_front()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_reserve_back.html">cb_reserve_back</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_reserve_back.html#_CPPv4N7ckernel15cb_reserve_backE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cb_reserve_back()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_push_back.html">cb_push_back</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/cb_push_back.html#_CPPv4N7ckernel12cb_push_backE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cb_push_back()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/binary_op_init_funcs.html">binary_init_funcs</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/binary_op_init_funcs.html#_CPPv4N7ckernel21binary_op_init_commonE8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">binary_op_init_common()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/binary_op_init_funcs.html#_CPPv4I_b_17EltwiseBinaryTypeEN7ckernel23binary_op_specific_initEvv"><code class="docutils literal notranslate"><span class="pre">binary_op_specific_init()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tilize.html">tilize</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tilize.html#_CPPv4N7ckernel11tilize_initE8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">tilize_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tilize.html#_CPPv4N7ckernel17tilize_init_shortE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">tilize_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tilize.html#_CPPv4N7ckernel25tilize_init_short_with_dtE8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">tilize_init_short_with_dt()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tilize.html#_CPPv4N7ckernel12tilize_blockE8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">tilize_block()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tilize.html#_CPPv4N7ckernel13tilize_uninitE8uint32_t"><code class="docutils literal notranslate"><span class="pre">tilize_uninit()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/tilize.html#_CPPv4N7ckernel21tilize_uninit_with_dtE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">tilize_uninit_with_dt()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/compute/untilize.html">untilize</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/untilize.html#_CPPv4N7ckernel13untilize_initE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">untilize_init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/untilize.html#_CPPv4N7ckernel19untilize_init_shortE8uint32_t"><code class="docutils literal notranslate"><span class="pre">untilize_init_short()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/untilize.html#_CPPv4I_iEN7ckernel14untilize_blockEv8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">untilize_block()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/compute/untilize.html#_CPPv4N7ckernel15untilize_uninitE8uint32_t"><code class="docutils literal notranslate"><span class="pre">untilize_uninit()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/kernel_args.html">Kernel Argument APIs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_arg_addr.html">get_arg_addr</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_arg_val.html">get_arg_val</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_common_arg_addr.html">get_common_arg_addr</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_common_arg_val.html">get_common_arg_val</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_arg_addr.html">get_arg_addr</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_arg_addr.html#_CPPv412get_arg_addri"><code class="docutils literal notranslate"><span class="pre">get_arg_addr()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_arg_val.html">get_arg_val</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_arg_val.html#_CPPv4I0E11get_arg_val1Ti"><code class="docutils literal notranslate"><span class="pre">get_arg_val()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_common_arg_addr.html">get_common_arg_addr</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_common_arg_addr.html#_CPPv419get_common_arg_addri"><code class="docutils literal notranslate"><span class="pre">get_common_arg_addr()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_common_arg_val.html">get_common_arg_val</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_common_arg_val.html#_CPPv4I0E18get_common_arg_val1Ti"><code class="docutils literal notranslate"><span class="pre">get_common_arg_val()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/kernel_args/get_compile_time_arg_val.html">get_compile_time_arg_val</a></li>
 </ul>
 </li>
@@ -344,8 +888,22 @@
 </li>
 <li class="toctree-l3">
 <a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/packing_apis.html">Packing APIs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/pack_tile.html">pack_tile</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/unpack.html">unpack</a></li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/pack_tile.html">pack_tile</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/pack_tile.html#_CPPv4I_bEN7ckernel9pack_tileEv8uint32_t8uint32_tNSt8uint32_tE"><code class="docutils literal notranslate"><span class="pre">pack_tile()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/pack_tile.html#_CPPv4N7ckernel16matmul_pack_tileE8uint32_t8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">matmul_pack_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4">
+<a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/unpack.html">unpack</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/unpack.html#_CPPv4N7ckernel27unpack_reconfig_data_formatEK8uint32_tK8uint32_t"><code class="docutils literal notranslate"><span class="pre">unpack_reconfig_data_format()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/unpack.html#_CPPv4N7ckernel27unpack_reconfig_data_formatEK8uint32_tK8uint32_tK8uint32_tK8uint32_t"><code class="docutils literal notranslate"><span class="pre">unpack_reconfig_data_format()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/unpack.html#_CPPv4N7ckernel32unpack_reconfig_data_format_srcaEK8uint32_t"><code class="docutils literal notranslate"><span class="pre">unpack_reconfig_data_format_srca()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/unpack.html#_CPPv4N7ckernel32unpack_reconfig_data_format_srcaEK8uint32_tK8uint32_t"><code class="docutils literal notranslate"><span class="pre">unpack_reconfig_data_format_srca()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/unpack.html#_CPPv4N7ckernel32unpack_reconfig_data_format_srcbEK8uint32_t"><code class="docutils literal notranslate"><span class="pre">unpack_reconfig_data_format_srcb()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="tt_metal/apis/kernel_apis/pack_unpack/unpack.html#_CPPv4N7ckernel32unpack_reconfig_data_format_srcbEK8uint32_tK8uint32_t"><code class="docutils literal notranslate"><span class="pre">unpack_reconfig_data_format_srcb()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -509,7 +1067,7 @@
 </section>
 
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a>
 </h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
@@ -530,7 +1088,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

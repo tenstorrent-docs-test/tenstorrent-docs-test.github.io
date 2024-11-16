@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -117,10 +117,10 @@
            <div itemprop="articleBody">
              
   <section id="low-level-kernels">
-<h1>Low Level Kernels<a class="headerlink" href="#low-level-kernels" title="Permalink to this heading"></a>
+<h1>Low Level Kernels<a class="headerlink" href="#low-level-kernels" title="Link to this heading"></a>
 </h1>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a>
 </h2>
 <p>SFPI is the programming interface to the SFPU.  It consists of a C++ wrapper
 around a RISCV GCC compiler base which has been extended with vector data types and
@@ -129,7 +129,7 @@ C++ like interface for programming.</p>
 <p>SFPI is supported on Grayskull and Wormhole.</p>
 </section>
 <section id="compiler-options-flags">
-<h2>Compiler Options/Flags<a class="headerlink" href="#compiler-options-flags" title="Permalink to this heading"></a>
+<h2>Compiler Options/Flags<a class="headerlink" href="#compiler-options-flags" title="Link to this heading"></a>
 </h2>
 <p>The following flags must be specified to compile SFPI kernels:</p>
 <div class="highlight-c++ notranslate">
@@ -159,7 +159,7 @@ C++ like interface for programming.</p>
 </div>
 </blockquote>
 <section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a>
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading"></a>
 </h3>
 <p>Before going into details, below is a simple example of SFPI code:</p>
 <div class="highlight-c++ notranslate">
@@ -220,16 +220,16 @@ C++ like interface for programming.</p>
 </section>
 </section>
 <section id="details">
-<h2>Details<a class="headerlink" href="#details" title="Permalink to this heading"></a>
+<h2>Details<a class="headerlink" href="#details" title="Link to this heading"></a>
 </h2>
 <section id="namespace">
-<h3>Namespace<a class="headerlink" href="#namespace" title="Permalink to this heading"></a>
+<h3>Namespace<a class="headerlink" href="#namespace" title="Link to this heading"></a>
 </h3>
 <p>All the data types/objects/etc. listed below fall within the <code class="docutils literal notranslate"><span class="pre">sfpi</span></code>
 namespace.</p>
 </section>
 <section id="user-visible-data-types">
-<h3>User Visible Data Types<a class="headerlink" href="#user-visible-data-types" title="Permalink to this heading"></a>
+<h3>User Visible Data Types<a class="headerlink" href="#user-visible-data-types" title="Link to this heading"></a>
 </h3>
 <p>The following data types are visible to the programmer:</p>
 <blockquote>
@@ -247,7 +247,7 @@ data type <code class="docutils literal notranslate"><span class="pre">__rvtt_ve
 <p>LRegs are the SFPU’s general purpose vector registers.  <code class="docutils literal notranslate"><span class="pre">LRegs</span></code> enumerates
 these registers.</p>
 <section id="user-visible-constants">
-<h4>User Visible Constants<a class="headerlink" href="#user-visible-constants" title="Permalink to this heading"></a>
+<h4>User Visible Constants<a class="headerlink" href="#user-visible-constants" title="Link to this heading"></a>
 </h4>
 <p>Constant registers are implemented as objects which can be referenced
 wherever a vector can be used.</p>
@@ -291,7 +291,7 @@ wherever a vector can be used.</p>
 </ul>
 </section>
 <section id="user-visible-objects">
-<h4>User Visible Objects<a class="headerlink" href="#user-visible-objects" title="Permalink to this heading"></a>
+<h4>User Visible Objects<a class="headerlink" href="#user-visible-objects" title="Link to this heading"></a>
 </h4>
 <blockquote>
 <div>
@@ -303,7 +303,7 @@ wherever a vector can be used.</p>
 </blockquote>
 </section>
 <section id="macros">
-<h4>Macros<a class="headerlink" href="#macros" title="Permalink to this heading"></a>
+<h4>Macros<a class="headerlink" href="#macros" title="Link to this heading"></a>
 </h4>
 <p>The only macros used within the wrapper implement the predicated conditional
 processing mechanism.  These (of course) do not fall within the SFPI namespace
@@ -342,10 +342,10 @@ or a <code class="docutils literal notranslate"><span class="pre">v_if</span></c
 </section>
 </section>
 <section id="data-type-details">
-<h3>Data Type Details<a class="headerlink" href="#data-type-details" title="Permalink to this heading"></a>
+<h3>Data Type Details<a class="headerlink" href="#data-type-details" title="Link to this heading"></a>
 </h3>
 <section id="vfloat">
-<h4>vFloat<a class="headerlink" href="#vfloat" title="Permalink to this heading"></a>
+<h4>vFloat<a class="headerlink" href="#vfloat" title="Link to this heading"></a>
 </h4>
 <blockquote>
 <div>
@@ -360,7 +360,7 @@ or a <code class="docutils literal notranslate"><span class="pre">v_if</span></c
 </blockquote>
 </section>
 <section id="vint">
-<h4>vInt<a class="headerlink" href="#vint" title="Permalink to this heading"></a>
+<h4>vInt<a class="headerlink" href="#vint" title="Link to this heading"></a>
 </h4>
 <blockquote>
 <div>
@@ -374,7 +374,7 @@ or a <code class="docutils literal notranslate"><span class="pre">v_if</span></c
 </blockquote>
 </section>
 <section id="vuint">
-<h4>vUInt<a class="headerlink" href="#vuint" title="Permalink to this heading"></a>
+<h4>vUInt<a class="headerlink" href="#vuint" title="Link to this heading"></a>
 </h4>
 <blockquote>
 <div>
@@ -390,12 +390,12 @@ or a <code class="docutils literal notranslate"><span class="pre">v_if</span></c
 </section>
 </section>
 <section id="library">
-<h3>Library<a class="headerlink" href="#library" title="Permalink to this heading"></a>
+<h3>Library<a class="headerlink" href="#library" title="Link to this heading"></a>
 </h3>
 <p>Below <code class="docutils literal notranslate"><span class="pre">Vec</span></code> means any vector type.</p>
 <p>Below is a list of library calls, further documentation is below.</p>
 <section id="grayskull-and-wormhole">
-<h4>Grayskull and Wormhole<a class="headerlink" href="#grayskull-and-wormhole" title="Permalink to this heading"></a>
+<h4>Grayskull and Wormhole<a class="headerlink" href="#grayskull-and-wormhole" title="Link to this heading"></a>
 </h4>
 <div class="highlight-c++ notranslate">
 <div class="highlight"><pre><span></span><span class="n">vInt</span><span class="w"> </span><span class="n">exexp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">vFloat</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
@@ -483,7 +483,7 @@ Returns the result of the computation ‘’A * ABS(v) + B’’.  The ‘’lut
 <p>Performs a left shift (when ‘’amt’’ is positive) or right shift (when ‘’amt’’ is negative) of ‘’v’’ by ‘’amt’’ bits.</p>
 </section>
 <section id="wormhole-only">
-<h4>Wormhole only<a class="headerlink" href="#wormhole-only" title="Permalink to this heading"></a>
+<h4>Wormhole only<a class="headerlink" href="#wormhole-only" title="Link to this heading"></a>
 </h4>
 <div class="highlight-c++ notranslate">
 <div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">vec_swap</span><span class="p">(</span><span class="n">Vec</span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">Vec</span><span class="o">&amp;</span><span class="w"> </span><span class="n">B</span><span class="p">)</span>
@@ -527,7 +527,7 @@ Returns the result of the computation ‘’A * ABS(v) + B’’.  The ‘’lut
 </section>
 </section>
 <section id="immediate-floating-point-values">
-<h3>Immediate Floating Point Values<a class="headerlink" href="#immediate-floating-point-values" title="Permalink to this heading"></a>
+<h3>Immediate Floating Point Values<a class="headerlink" href="#immediate-floating-point-values" title="Link to this heading"></a>
 </h3>
 <p>Assigning a float to a vFloat behaves slightly different on Grayskull vs Wormhole.
 On Grayskull, the value is interpreted as an fp16b; use the conversion routines below
@@ -555,12 +555,12 @@ examples below.</p>
 </pre></div>
 </div>
 <section id="boolean-operators">
-<h4>Boolean Operators<a class="headerlink" href="#boolean-operators" title="Permalink to this heading"></a>
+<h4>Boolean Operators<a class="headerlink" href="#boolean-operators" title="Link to this heading"></a>
 </h4>
 <p>All conditionals operating on base types can be combined with any of <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">||</span></code>, <code class="docutils literal notranslate"><span class="pre">!</span></code>.</p>
 </section>
 <section id="vbool">
-<h4>vBool<a class="headerlink" href="#vbool" title="Permalink to this heading"></a>
+<h4>vBool<a class="headerlink" href="#vbool" title="Link to this heading"></a>
 </h4>
 <p><code class="docutils literal notranslate"><span class="pre">vBool</span></code> doesn’t exist yet, but the functionality can be obtained by executing
 conditional instructions outside of a <code class="docutils literal notranslate"><span class="pre">v_if</span></code> and assigning the result to a
@@ -592,7 +592,7 @@ predicated conditionals based on the value of a function parameter:</p>
 the predication is determined at runtime.</p>
 </section>
 <section id="assigning-and-using-constant-registers">
-<h4>Assigning and Using Constant Registers<a class="headerlink" href="#assigning-and-using-constant-registers" title="Permalink to this heading"></a>
+<h4>Assigning and Using Constant Registers<a class="headerlink" href="#assigning-and-using-constant-registers" title="Link to this heading"></a>
 </h4>
 <p>Programmable constant registers (Wormhole only) are accessed and assigned just
 like any other variables, for example:</p>
@@ -608,7 +608,7 @@ accessing an LReg.  Loading a constant register loads the same value into all
 vector elements.</p>
 </section>
 <section id="assigning-lregs">
-<h4>Assigning LRegs<a class="headerlink" href="#assigning-lregs" title="Permalink to this heading"></a>
+<h4>Assigning LRegs<a class="headerlink" href="#assigning-lregs" title="Link to this heading"></a>
 </h4>
 <p>Some highly optimized code may call a function prior to the kernel to
 pre-load values into specific LRegs and then access those values in
@@ -627,10 +627,10 @@ back into the LReg.</p>
 </section>
 </section>
 <section id="miscellaneous">
-<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading"></a>
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading"></a>
 </h2>
 <section id="register-pressure-management">
-<h3>Register Pressure Management<a class="headerlink" href="#register-pressure-management" title="Permalink to this heading"></a>
+<h3>Register Pressure Management<a class="headerlink" href="#register-pressure-management" title="Link to this heading"></a>
 </h3>
 <p>Note that the wrapper introduces temporaries in a number of places.  For
 example:</p>
@@ -648,7 +648,7 @@ free up and re-use registers and is a good way to correct a spilling error.</p>
 <p>Grayskull has 4 general purpose LRegs, Wormhole has 8.</p>
 </section>
 <section id="optimizer">
-<h3>Optimizer<a class="headerlink" href="#optimizer" title="Permalink to this heading"></a>
+<h3>Optimizer<a class="headerlink" href="#optimizer" title="Link to this heading"></a>
 </h3>
 <p>There is a basic optimizer in place.  The optimization philosophy to date is to enable the programmer
 to write optimal code.  This is different from mainstream compilers which may generate optimal code
@@ -672,7 +672,7 @@ change code which would not run out of registers with, say, a MULI followed by
 an ADDI into code that runs out of registers with a MAD.  (future todo to fix this).</p>
 </section>
 <section id="sfpreplay">
-<h3>SFPREPLAY<a class="headerlink" href="#sfpreplay" title="Permalink to this heading"></a>
+<h3>SFPREPLAY<a class="headerlink" href="#sfpreplay" title="Link to this heading"></a>
 </h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">SFPREPLAY</span></code> instruction available on Wormhole allows the RISCV processor
 to submit up to 32 SFP instructions at once.  The compiler looks for sequences
@@ -688,7 +688,7 @@ unrolled loop of instructions uses different registers than the prior
 loops resulting in imperfect utilization of the replay.</p>
 </section>
 <section id="emulation">
-<h3>Emulation<a class="headerlink" href="#emulation" title="Permalink to this heading"></a>
+<h3>Emulation<a class="headerlink" href="#emulation" title="Link to this heading"></a>
 </h3>
 <p>There is an emulator for the SFPU that works at the __builtin level.
 Compilation and runtime are extremely fast (sub 1 second) so this may be
@@ -703,7 +703,7 @@ message for rv32 tells you you have work to do.</p>
 <p>The emulator for WH is not fully implemented (missing some of the new WH specific instructions)</p>
 </section>
 <section id="tools">
-<h3>Tools<a class="headerlink" href="#tools" title="Permalink to this heading"></a>
+<h3>Tools<a class="headerlink" href="#tools" title="Link to this heading"></a>
 </h3>
 <p>The sfpi submodule contains a <code class="docutils literal notranslate"><span class="pre">tools</span></code> directory.  <code class="docutils literal notranslate"><span class="pre">cd</span></code> into that directory and
 type <code class="docutils literal notranslate"><span class="pre">make</span></code> to build <code class="docutils literal notranslate"><span class="pre">fp16c</span></code> which is a converter that converts floating point
@@ -713,10 +713,10 @@ looking through assembly dumps.</p>
 </section>
 </section>
 <section id="pitfalls-oddities-limitations">
-<h2>Pitfalls/Oddities/Limitations<a class="headerlink" href="#pitfalls-oddities-limitations" title="Permalink to this heading"></a>
+<h2>Pitfalls/Oddities/Limitations<a class="headerlink" href="#pitfalls-oddities-limitations" title="Link to this heading"></a>
 </h2>
 <section id="arrays-storing-to-memory">
-<h3>Arrays/Storing to Memory<a class="headerlink" href="#arrays-storing-to-memory" title="Permalink to this heading"></a>
+<h3>Arrays/Storing to Memory<a class="headerlink" href="#arrays-storing-to-memory" title="Link to this heading"></a>
 </h3>
 <p>The SFPU can only read/write vectors to/from the destination register, it
 cannot read/write them to memory.  Therefore, SFPI does not support arrays of
@@ -732,14 +732,14 @@ vector to memory will result in an error similar to the following:</p>
 </div>
 </section>
 <section id="function-calls">
-<h3>Function Calls<a class="headerlink" href="#function-calls" title="Permalink to this heading"></a>
+<h3>Function Calls<a class="headerlink" href="#function-calls" title="Link to this heading"></a>
 </h3>
 <p>There is no ABI and none of the vector types can be passed on the stack.
 Therefore, all function calls must be inlined.  To ensure this use
 <code class="docutils literal notranslate"><span class="pre">sfpi_inline</span></code>, which is defined to <code class="docutils literal notranslate"><span class="pre">__attribute__((always_inline))</span></code> on GCC.</p>
 </section>
 <section id="register-spilling">
-<h3>Register Spilling<a class="headerlink" href="#register-spilling" title="Permalink to this heading"></a>
+<h3>Register Spilling<a class="headerlink" href="#register-spilling" title="Link to this heading"></a>
 </h3>
 <p>The compiler does not implement register spilling.  Since Grayskull only has 4
 LRegs, running out of registers is a common occurrence.  If you see the
@@ -747,14 +747,14 @@ following: <code class="docutils literal notranslate"><span class="pre">error:</
 you have most likely run out of registers.</p>
 </section>
 <section id="error-messages">
-<h3>Error Messages<a class="headerlink" href="#error-messages" title="Permalink to this heading"></a>
+<h3>Error Messages<a class="headerlink" href="#error-messages" title="Link to this heading"></a>
 </h3>
 <p>Unfortunately, many errors are attributed to the code in the wrapper rather than in the code
 being written.  For example, using an uninitialized variable would show an error at a macro
 called by a wrapper function before showing the line number in the user’s code.</p>
 </section>
 <section id="limitations">
-<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading"></a>
+<h3>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a>
 </h3>
 <blockquote>
 <div>
@@ -783,7 +783,7 @@ called by a wrapper function before showing the line number in the user’s code
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

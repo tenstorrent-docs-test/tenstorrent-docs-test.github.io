@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,9 +17,9 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -94,13 +94,13 @@
            <div itemprop="articleBody">
              
   <section id="tt-gdb">
-<h1>tt-gdb<a class="headerlink" href="#tt-gdb" title="Permalink to this heading"></a>
+<h1>tt-gdb<a class="headerlink" href="#tt-gdb" title="Link to this heading"></a>
 </h1>
 <video width="800" height="600" controls>
     <source src="../_static/DebuggerTutorial.mp4" type="video/mp4">
 <p>Your browser does not support the video tag.</p>
 </source></video><section id="enabling-the-breakpoint-server">
-<h2>Enabling the breakpoint server<a class="headerlink" href="#enabling-the-breakpoint-server" title="Permalink to this heading"></a>
+<h2>Enabling the breakpoint server<a class="headerlink" href="#enabling-the-breakpoint-server" title="Link to this heading"></a>
 </h2>
 <p>To enable the breakpoint server, in your test, you must include <cite>tools/tt_gdb/tt_gdb.hpp</cite>, and call it right before calling your test function.</p>
 <p>For example, below is a snippet of enabling tt_gdb in <cite>test_run_datacopy</cite>.</p>
@@ -115,13 +115,13 @@
 <p>where cluster was defined earlier in the file.</p>
 </section>
 <section id="installing-python-packages">
-<h2>Installing python packages<a class="headerlink" href="#installing-python-packages" title="Permalink to this heading"></a>
+<h2>Installing python packages<a class="headerlink" href="#installing-python-packages" title="Link to this heading"></a>
 </h2>
 <p>Within the <code class="docutils literal notranslate"><span class="pre">tools/tt_gdb</span></code> directory,
 <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p>
 </section>
 <section id="compiling-under-debug-mode">
-<h2>Compiling under debug mode<a class="headerlink" href="#compiling-under-debug-mode" title="Permalink to this heading"></a>
+<h2>Compiling under debug mode<a class="headerlink" href="#compiling-under-debug-mode" title="Link to this heading"></a>
 </h2>
 <p>To get the most out of <cite>tt_gdb</cite>, you must compile under debug mode. This will use different debug ld files for the RISCs, and will enable debug symbols. To enable under debug mode, use
 <cite>DEBUG_MODE=1</cite> when compiling a test.</p>
@@ -129,7 +129,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">DEBUG_MODE=1</span> <span class="pre">./build/test/build_kernels_for_riscv/tests/test_compile_datacopy</span></code></p>
 </section>
 <section id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading"></a>
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a>
 </h2>
 <p>So far, debug mode only compiles BRISC with proper debug symbols, therefore the <cite>p</cite> functionality will only work for BRISC; however, the breakpoint function should work for any RISC if your goal is just to hang a program.</p>
 <p>Additionally, unit testing needs to be added for the debugger. If you have any issues,
@@ -200,7 +200,7 @@ c<span class="w">       </span>e<span class="w">       </span>h<span class="w"> 
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 15, 2024.
+      <span class="lastupdated">Last updated on Nov 16, 2024.
       </span></p>
   </div>
 

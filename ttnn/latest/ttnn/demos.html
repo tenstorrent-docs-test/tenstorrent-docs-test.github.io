@@ -170,6 +170,19 @@ What you see below highlights the expectations for all our models that successfu
 </dd>
 </dl>
 </li>
+<li>
+<dl class="simple">
+<dt>Does your model have an end-to-end demo test demonstrating working output generation on real inputs and has this been integrated on our CI pipeline?</dt>
+<dd>
+<ul class="simple">
+<li><p>Include a test that demonstrates the model’s functionality and performance on real inputs, such as images or text, to ensure the model is producing the expected output.</p></li>
+<li><p>This test should be integrated into the CI pipeline to ensure the model’s functionality is automatically validated.</p></li>
+<li><p>Provide instructions on how to run this test locally in the <code class="docutils literal notranslate"><span class="pre">README.md</span></code>.</p></li>
+<li><p>Please add your test within <code class="docutils literal notranslate"><span class="pre">run_demos_single_card_n150_tests.sh</span></code>, <code class="docutils literal notranslate"><span class="pre">run_demos_single_card_n300_tests.sh</span></code>, and/or <code class="docutils literal notranslate"><span class="pre">run_t3000_demo_tests.sh</span></code> depending on the hardware you are targeting.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ol>
 <p>For the purpose of organizing your tests to be managed for collecting both device and end-to-end performance, please take a look at <code class="docutils literal notranslate"><span class="pre">test_ttnn_functional_resnet50.py</span></code> and how the <code class="docutils literal notranslate"><span class="pre">ResNet50TestInfra</span></code> class was setup.</p>
 </section>
@@ -187,7 +200,7 @@ What you see below highlights the expectations for all our models that successfu
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 16, 2024.
+      <span class="lastupdated">Last updated on Nov 18, 2024.
       </span></p>
   </div>
 

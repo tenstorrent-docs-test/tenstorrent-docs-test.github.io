@@ -200,7 +200,7 @@
 <span class="target" id="recip_8h_1a31441a86e04985c013f03fca3c59f55d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">ckernel</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">recip_tile</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">idst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7ckernel10recip_tileE8uint32_t" title="Link to this definition"></a><br>
 </dt>
 <dd>
-<p>Performs element-wise computation of the reciprocal on each element of a tile in DST register at index tile_index. The DST register buffer must be in acquired state via <em>acquire_dst</em> call. This call is blocking and is only available on the compute engine.</p>
+<p>Performs element-wise computation of the reciprocal on each element of a tile in DST register at index tile_index. The DST register buffer must be in acquired state via <em>acquire_dst</em> call. This call is blocking and is only available on the compute engine. Only works for Float32, Float16_b, Bfp8_b data formats for full accuracy.</p>
 <p>Return value: None</p>
 <p></p>
 <table class="docutils align-default">
@@ -242,7 +242,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 16, 2024.
+      <span class="lastupdated">Last updated on Nov 18, 2024.
       </span></p>
   </div>
 

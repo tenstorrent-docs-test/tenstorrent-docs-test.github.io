@@ -148,7 +148,7 @@
 <h2>Creating a tensor<a class="headerlink" href="#Creating-a-tensor" title="Link to this heading"></a>
 </h2>
 <p>The recommended way to create a tensor is by using torch create function and then simply calling <code class="docutils literal notranslate"><span class="pre">ttnn.from_torch</span></code>. So, let’s import both <code class="docutils literal notranslate"><span class="pre">torch</span></code> and <code class="docutils literal notranslate"><span class="pre">ttnn</span></code></p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
 <div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -159,10 +159,93 @@ import ttnn
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-07-11 18:12:48.818 | DEBUG    | ttnn:&lt;module&gt;:136 - Initial ttnn.CONFIG:
+{'cache_path': PosixPath('/home/ubuntu/.cache/ttnn'),
+ 'comparison_mode_pcc': 0.9999,
+ 'enable_comparison_mode': False,
+ 'enable_detailed_buffer_report': False,
+ 'enable_detailed_tensor_report': False,
+ 'enable_fast_runtime_mode': True,
+ 'enable_graph_report': False,
+ 'enable_logging': False,
+ 'enable_model_cache': False,
+ 'model_cache_path': PosixPath('/home/ubuntu/.cache/ttnn/models'),
+ 'report_name': None,
+ 'root_report_path': PosixPath('generated/ttnn/reports'),
+ 'throw_exception_on_fallback': False,
+ 'tmp_dir': PosixPath('/tmp/ttnn')}
+2024-07-11 18:12:48.905 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.logical_xor be migrated to C++?
+2024-07-11 18:12:48.906 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.xlogy be migrated to C++?
+2024-07-11 18:12:48.906 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.maximum be migrated to C++?
+2024-07-11 18:12:48.907 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.minimum be migrated to C++?
+2024-07-11 18:12:48.908 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.atan2 be migrated to C++?
+2024-07-11 18:12:48.909 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.hypot be migrated to C++?
+2024-07-11 18:12:48.910 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.nextafter be migrated to C++?
+2024-07-11 18:12:48.911 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.polyval be migrated to C++?
+2024-07-11 18:12:48.911 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.isclose be migrated to C++?
+2024-07-11 18:12:48.914 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.all_gather be migrated to C++?
+2024-07-11 18:12:48.915 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.pearson_correlation_coefficient be migrated to C++?
+2024-07-11 18:12:48.919 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.conv2d be migrated to C++?
+2024-07-11 18:12:48.920 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reshape be migrated to C++?
+2024-07-11 18:12:48.921 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.unsqueeze_to_4D be migrated to C++?
+2024-07-11 18:12:48.922 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.squeeze be migrated to C++?
+2024-07-11 18:12:48.923 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.from_torch be migrated to C++?
+2024-07-11 18:12:48.923 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.to_torch be migrated to C++?
+2024-07-11 18:12:48.924 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.to_device be migrated to C++?
+2024-07-11 18:12:48.925 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.from_device be migrated to C++?
+2024-07-11 18:12:48.926 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.allocate_tensor_on_device be migrated to C++?
+2024-07-11 18:12:48.926 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.copy_host_to_device_tensor be migrated to C++?
+2024-07-11 18:12:48.927 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.deallocate be migrated to C++?
+2024-07-11 18:12:48.928 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.clone be migrated to C++?
+2024-07-11 18:12:48.929 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reallocate be migrated to C++?
+2024-07-11 18:12:48.929 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.load_tensor be migrated to C++?
+2024-07-11 18:12:48.930 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.dump_tensor be migrated to C++?
+2024-07-11 18:12:48.931 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.as_tensor be migrated to C++?
+2024-07-11 18:12:48.934 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.arange be migrated to C++?
+2024-07-11 18:12:48.935 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.mse_loss be migrated to C++?
+2024-07-11 18:12:48.936 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.l1_loss be migrated to C++?
+2024-07-11 18:12:48.937 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.matmul be migrated to C++?
+2024-07-11 18:12:48.938 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.linear be migrated to C++?
+2024-07-11 18:12:48.941 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.mac be migrated to C++?
+2024-07-11 18:12:48.942 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.addcmul be migrated to C++?
+2024-07-11 18:12:48.942 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.addcdiv be migrated to C++?
+2024-07-11 18:12:48.943 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.lerp be migrated to C++?
+2024-07-11 18:12:48.948 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.logit be migrated to C++?
+2024-07-11 18:12:48.949 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.polygamma be migrated to C++?
+2024-07-11 18:12:48.950 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.hardshrink be migrated to C++?
+2024-07-11 18:12:48.950 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.celu be migrated to C++?
+2024-07-11 18:12:48.951 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.softshrink be migrated to C++?
+2024-07-11 18:12:48.952 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.clip be migrated to C++?
+2024-07-11 18:12:48.952 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.threshold be migrated to C++?
+2024-07-11 18:12:48.953 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.glu be migrated to C++?
+2024-07-11 18:12:48.954 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reglu be migrated to C++?
+2024-07-11 18:12:48.955 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.swiglu be migrated to C++?
+2024-07-11 18:12:48.955 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.geglu be migrated to C++?
+2024-07-11 18:12:48.958 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.matmul be migrated to C++?
+2024-07-11 18:12:48.959 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.linear be migrated to C++?
+2024-07-11 18:12:48.960 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.conv2d be migrated to C++?
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate">
+<div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate">
+<div class="highlight"><pre><span></span>import os
+<br></pre></div>
+</div>
+</div>
 <p>And now let’s create a torch Tensor and convert it to ttnn Tensor</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[2]:
+<div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -195,7 +278,7 @@ dtype: DataType.FLOAT32
 <p>Let’s print the current ttnn tensor, set element of torch tensor to 1234 and print the ttnn Tensor again to see borrowed storage in action</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[3]:
+<div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -211,22 +294,20 @@ print(f"New values are all going to be 1234:\n{ttnn_tensor}")
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Original values:
-Tensor([ [0.868396, 0.199809, 0.505658, 0.0919966],
-    [0.441207, 0.465399, 0.225584, 0.497159],
-    [0.205919, 0.219386, 0.0836022, 0.761129]], dtype=float32 )
-
+ttnn.Tensor([[ 0.98300,  0.11301,  ...,  0.37592,  0.64318],
+             [ 0.53437,  0.59434,  ...,  0.69190,  0.04268],
+             [ 0.33346,  0.20231,  ...,  0.15127,  0.58303]], shape=Shape([3, 4]), dtype=DataType::FLOAT32, layout=Layout::ROW_MAJOR)
 New values are all going to be 1234:
-Tensor([ [1234, 1234, 1234, 1234],
-    [1234, 1234, 1234, 1234],
-    [1234, 1234, 1234, 1234]], dtype=float32 )
-
+ttnn.Tensor([[1234.00000, 1234.00000,  ..., 1234.00000, 1234.00000],
+             [1234.00000, 1234.00000,  ..., 1234.00000, 1234.00000],
+             [1234.00000, 1234.00000,  ..., 1234.00000, 1234.00000]], shape=Shape([3, 4]), dtype=DataType::FLOAT32, layout=Layout::ROW_MAJOR)
 </pre></div>
 </div>
 </div>
 <p>We try our best to use borrowed storage but if the torch data type is not supported in ttnn, then we don’t have a choice but to automatically pick a different data type and copy data</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[4]:
+<div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -249,10 +330,9 @@ torch_tensor[0, 0] = 1234
 torch_tensor.dtype: torch.float16
 ttnn_tensor.dtype: DataType.BFLOAT16
 Original values:
-Tensor([ [0.9375, 0.0683594, 0.765625, 0.894531],
-    [0.100098, 0.285156, 0.597656, 0.21582],
-    [0.203125, 0.730469, 0.310547, 0.453125]], dtype=bfloat16 )
-
+ttnn.Tensor([[ 0.80078,  0.69531,  ...,  0.71484,  0.33398],
+             [ 0.60156,  0.36523,  ...,  0.73047,  0.90625],
+             [ 0.59766,  0.83203,  ...,  0.61719,  0.53516]], shape=Shape([3, 4]), dtype=DataType::BFLOAT16, layout=Layout::ROW_MAJOR)
 </pre></div>
 </div>
 </div>
@@ -263,7 +343,7 @@ Tensor([ [0.9375, 0.0683594, 0.765625, 0.894531],
 <p>The data type of the ttnn tensor can be controlled explicitly when conversion from torch.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[5]:
+<div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -288,11 +368,11 @@ ttnn_tensor.dtype: DataType.BFLOAT16
 <section id="Layout">
 <h2>Layout<a class="headerlink" href="#Layout" title="Link to this heading"></a>
 </h2>
-<p>TensTorrent hardware is most efficiently utilized when running tensors using <a class="reference external" href="https://tenstorrent.github.io/tt-metal/latest/ttnn/tensor.html#layout">tile layout</a>. The current tile size is hard-coded to [32, 32]. It was determined to be the optimal size for a tile given the compute, memory and data transfer constraints.</p>
+<p>TensTorrent hardware is most efficiently utilized when running tensors using <a class="reference external" href="https://tenstorrent.github.io/ttnn/latest/ttnn/tensor.html#layout">tile layout</a>. The current tile size is hard-coded to [32, 32]. It was determined to be the optimal size for a tile given the compute, memory and data transfer constraints.</p>
 <p>ttnn provides easy and intuitive way to convert from row-major layout to tile layout and back.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[6]:
+<div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -314,53 +394,23 @@ print(f"Tensor back in row-major layout:\nShape {ttnn_tensor.shape}\nLayout: {tt
 Tensor in row-major layout:
 Shape ttnn.Shape([3, 4])
 Layout: Layout.ROW_MAJOR
-Tensor([ [0.020752, 0.0820312, 0.664062, 0.0742188],
-    [0.0463867, 0.785156, 0.664062, 0.0195312],
-    [0.304688, 0.287109, 0.671875, 0.808594]], dtype=bfloat16 )
-
+ttnn.Tensor([[ 0.21680,  0.24316,  ...,  0.19336,  0.40625],
+             [ 0.81641,  0.50781,  ...,  0.09961,  0.54688],
+             [ 0.70703,  0.93359,  ...,  0.06787,  0.75781]], shape=Shape([3, 4]), dtype=DataType::BFLOAT16, layout=Layout::ROW_MAJOR)
 Tensor in tile layout:
 Shape ttnn.Shape([3[32], 4[32]])
 Layout: Layout.TILE
-Tensor([ [0.020752, 0.0820312, 0.664062, 0.0742188, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0.0463867, 0.785156, 0.664062, 0.0195312, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0.304688, 0.287109, 0.671875, 0.808594, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], dtype=bfloat16 )
-
+ttnn.Tensor([[ 0.21680,  0.24316,  ...,  0.00000,  0.00000],
+             [ 0.70703,  0.93359,  ...,  0.00000,  0.00000],
+             ...,
+             [ 0.00000,  0.00000,  ...,  0.00000,  0.00000],
+             [ 0.00000,  0.00000,  ...,  0.00000,  0.00000]], shape=Shape([3[32], 4[32]]), dtype=DataType::BFLOAT16, layout=Layout::TILE)
 Tensor back in row-major layout:
 Shape ttnn.Shape([3, 4])
 Layout: Layout.ROW_MAJOR
-Tensor([ [0.020752, 0.0820312, 0.664062, 0.0742188],
-    [0.0463867, 0.785156, 0.664062, 0.0195312],
-    [0.304688, 0.287109, 0.671875, 0.808594]], dtype=bfloat16 )
-
+ttnn.Tensor([[ 0.21680,  0.24316,  ...,  0.19336,  0.40625],
+             [ 0.81641,  0.50781,  ...,  0.09961,  0.54688],
+             [ 0.70703,  0.93359,  ...,  0.06787,  0.75781]], shape=Shape([3, 4]), dtype=DataType::BFLOAT16, layout=Layout::ROW_MAJOR)
 </pre></div>
 </div>
 </div>
@@ -368,7 +418,7 @@ Tensor([ [0.020752, 0.0820312, 0.664062, 0.0742188],
 <p>The conversion to tile layout can be done when caling <code class="docutils literal notranslate"><span class="pre">ttnn.from_torch</span></code></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[7]:
+<div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -401,7 +451,7 @@ Shape ttnn.Shape([3, 4]); Layout: Layout.ROW_MAJOR
 <p>Use <code class="docutils literal notranslate"><span class="pre">ttnn.open</span></code> to get a handle to the device</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[8]:
+<div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -415,14 +465,16 @@ device = ttnn.open_device(device_id=device_id)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Initializing device 0
 <span style="color: rgb(0,128,0)">                 Device</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Opening user mode device driver
-<span class="ansi-green-fg">2024-02-16 19:46:19.597</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Detected 1 PCI device : {0}
-<span class="ansi-green-fg">2024-02-16 19:46:19.610</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - init_detect_tt_device_numanodes(): Could not determine NumaNodeSet for TT device (physical_device_id: 0 pci_bus_id: 0000:00:08.0)
-<span class="ansi-green-fg">2024-02-16 19:46:19.610</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Could not find NumaNodeSet for TT Device (physical_device_id: 0 pci_bus_id: 0000:00:08.0)
-<span class="ansi-green-fg">2024-02-16 19:46:19.612</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - bind_area_memory_nodeset(): Unable to determine TT Device to NumaNode mapping for physical_device_id: 0. Skipping membind.
+
+<span class="ansi-green-fg">2024-07-11 18:12:49.027</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Detected 1 PCI device : {0}
+<span class="ansi-green-fg">2024-07-11 18:12:49.040</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - init_detect_tt_device_numanodes(): Could not determine NumaNodeSet for TT device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
+<span class="ansi-green-fg">2024-07-11 18:12:49.040</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Could not find NumaNodeSet for TT Device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
+<span class="ansi-green-fg">2024-07-11 18:12:49.041</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - bind_area_memory_nodeset(): Unable to determine TT Device to NumaNode mapping for physical_device_id: 0. Skipping membind.
 <span class="ansi-yellow-fg">---- ttSiliconDevice::init_hugepage: bind_area_to_memory_nodeset() failed (physical_device_id: 0 ch: 0). Hugepage allocation is not on NumaNode matching TT Device. Side-Effect is decreased Device-&gt;Host perf (Issue #893).
-</span><span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | AI CLK for device 0 is:   1202 MHz
+</span><span class="ansi-green-fg">2024-07-11 18:12:49.082</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Software version 6.0.0, Ethernet FW version 6.9.0 (Device 0)
+<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Initializing device 0. Program cache is NOT enabled
+<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | AI CLK for device 0 is:   800 MHz
 </pre></div>
 </div>
 </div>
@@ -433,7 +485,7 @@ device = ttnn.open_device(device_id=device_id)
 <p>To create a tensor that can be used by a <code class="docutils literal notranslate"><span class="pre">ttnn</span></code> operation: 1. Create a tensor using torch 2. Use <code class="docutils literal notranslate"><span class="pre">ttnn.from_torch</span></code> to convert the tensor from <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> to <code class="docutils literal notranslate"><span class="pre">ttnn.Tensor</span></code>, change the layout to <code class="docutils literal notranslate"><span class="pre">ttnn.TILE_LAYOUT</span></code> and put the tensor on the <code class="docutils literal notranslate"><span class="pre">device</span></code></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[9]:
+<div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -454,7 +506,7 @@ input_tensor_b = ttnn.from_torch(torch_input_tensor_b, layout=ttnn.TILE_LAYOUT, 
 <p><code class="docutils literal notranslate"><span class="pre">ttnn</span></code> supports operator overloading, therefore operator <code class="docutils literal notranslate"><span class="pre">+</span></code> can be used instead of <code class="docutils literal notranslate"><span class="pre">torch.add</span></code></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[10]:
+<div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -469,7 +521,7 @@ input_tensor_b = ttnn.from_torch(torch_input_tensor_b, layout=ttnn.TILE_LAYOUT, 
 <p>As can be seen the tensor of the same shape, layout and dtype is produced</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[11]:
+<div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -498,7 +550,7 @@ layout: Layout.TILE
 <p>When converting the tensor to torch, <code class="docutils literal notranslate"><span class="pre">ttnn.to_torch</span></code> will move the tensor from the device, convert to tile layout and figure out the best data type to use on the torch side</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[12]:
+<div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -525,7 +577,7 @@ dtype: torch.bfloat16
 <p>Close the handle the device. This is a very important step as the device can hang currently if not closed properly</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[13]:
+<div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -539,6 +591,7 @@ dtype: torch.bfloat16
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Closing device 0
+<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Disabling and clearing program cache on device 0
 </pre></div>
 </div>
 </div>
@@ -558,7 +611,7 @@ dtype: torch.bfloat16
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 16, 2024.
+      <span class="lastupdated">Last updated on Nov 18, 2024.
       </span></p>
   </div>
 

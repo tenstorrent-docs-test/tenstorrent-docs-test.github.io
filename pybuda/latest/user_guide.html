@@ -24,7 +24,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="API Reference" href="api.html" />
-    <link rel="prev" title="TT-Buda Installation" href="installation.html" /> 
+    <link rel="prev" title="Introduction to PyBuda" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,9 +56,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introduction to PyBuda</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">TT-Buda Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#framework-support">Framework Support</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#framwork-support-matrix">Framwork Support Matrix</a></li>
 </ul>
@@ -155,43 +153,6 @@
              
   <section id="user-guide">
 <h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
-<section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
-<p>Compiling and running a PyBuda workload is as easy as:</p>
-<ol class="arabic simple">
-<li><p>Downloading an off the shelf model from huggingface</p></li>
-<li><p>Wrapping it in a PyBuda module</p></li>
-<li><p>Create a tenstorrent device</p></li>
-<li><p>Running a program on the currently bound device</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pybuda</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BertModel</span><span class="p">,</span> <span class="n">BertConfig</span>
-
-<span class="c1"># Download the model from huggingface</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">BertModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;bert-base-uncased&quot;</span><span class="p">)</span>
-
-<span class="c1"># Wrap the pytorch model in a PyBuda module wrapper</span>
-<span class="n">module</span> <span class="o">=</span> <span class="n">pybuda</span><span class="o">.</span><span class="n">PyTorchModule</span><span class="p">(</span><span class="s2">&quot;bert_encoder&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">encoder</span><span class="p">)</span>
-
-<span class="c1"># Create a tenstorrent device</span>
-<span class="n">tt0</span> <span class="o">=</span> <span class="n">pybuda</span><span class="o">.</span><span class="n">TTDevice</span><span class="p">(</span>
-    <span class="s2">&quot;tt0&quot;</span><span class="p">,</span>
-    <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span>
-    <span class="n">arch</span><span class="o">=</span><span class="n">pybuda</span><span class="o">.</span><span class="n">BackendDevice</span><span class="o">.</span><span class="n">Wormhole_B0</span><span class="p">,</span>
-    <span class="n">devtype</span><span class="o">=</span><span class="n">pybuda</span><span class="o">.</span><span class="n">BackendType</span><span class="o">.</span><span class="n">Silicon</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="c1"># Create an input tensor</span>
-<span class="n">seq_len</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
-
-<span class="c1"># Compile and run inference</span>
-<span class="n">output_queue</span> <span class="o">=</span> <span class="n">pybuda</span><span class="o">.</span><span class="n">run_inference</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="nb">input</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">output_queue</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
-</pre></div>
-</div>
-</section>
 <section id="framework-support">
 <h2>Framework Support<a class="headerlink" href="#framework-support" title="Link to this heading"></a></h2>
 <p>Pybuda itself is a standalone ML framework and has an API heavily inspired by Pytorch.  That said, it is often more convenient to run models that have already been written using another major framework.  This is why we support a Pybuda backend for TVM which allows many popular frameworks to target our pybuda compiler. We support many major frameworks that TVM supports including:</p>
@@ -2122,7 +2083,7 @@ Displaying memory footprint per Host channel (MB):
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="installation.html" class="btn btn-neutral float-left" title="TT-Buda Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Introduction to PyBuda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -2130,7 +2091,7 @@ Displaying memory footprint per Host channel (MB):
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 16, 2024.
+      <span class="lastupdated">Last updated on Nov 18, 2024.
       </span></p>
   </div>
 

@@ -133,7 +133,7 @@ Operations in ttDNN library also utilize this library: operation take TT Tensors
 <p>ROW_MAJOR layout will store values in memory row by row, starting from last dimension of tensor.
 For a tensor of shape <code class="docutils literal notranslate"><span class="pre">[W,</span> <span class="pre">Z,</span> <span class="pre">Y,</span> <span class="pre">X]</span></code> to be stored in ROW_MAJOR order on TT Accelerator device, <code class="docutils literal notranslate"><span class="pre">X</span></code> must be divisible by 2.
 A tensor in ROW_MAJOR order with <code class="docutils literal notranslate"><span class="pre">X</span></code> not divisible by 2 can exist on host machine, but can’t be sent TT Accelerator device.
-So you can’t provide a TT Accelerator device to TT Tensor construct for this type of tensor nor can you use <code class="docutils literal notranslate"><span class="pre">tt_lib.tensor.Tensor.to()</span></code>
+So you can’t provide a TT Accelerator device to TT Tensor construct for this type of tensor nor can you use <code class="docutils literal notranslate"><span class="pre">ttnn.Tensor.to()</span></code>
 to send this type of tensor to TT Accelerator device.</p>
 <p>TILE layout will store values in memory tile by tile, starting from the last two dimensions of the tensor.
 A tile is a (32, 32) shaped subsection of tensor.
@@ -200,7 +200,7 @@ And the vector itself is stored in the shared pointer. That is done so that if t
 The created tensor will be in ROW_MAJOR layout and stored on TT accelerator device.</p>
 <div class="highlight-python notranslate">
 <div class="highlight"><pre><span></span><span class="n">py_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
-<span class="n">tt_tensor</span> <span class="o">=</span> <span class="n">tt_lib</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">py_tensor</span><span class="p">,</span> <span class="n">tt_lib</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">DataType</span><span class="o">.</span><span class="n">BFLOAT16</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">tt_device</span><span class="p">)</span>
+<span class="n">tt_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">py_tensor</span><span class="p">,</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">tt_device</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -233,7 +233,7 @@ The created tensor will be in ROW_MAJOR layout and stored on TT accelerator devi
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 16, 2024.
+      <span class="lastupdated">Last updated on Nov 18, 2024.
       </span></p>
   </div>
 

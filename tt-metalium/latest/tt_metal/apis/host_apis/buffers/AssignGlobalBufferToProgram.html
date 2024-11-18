@@ -122,8 +122,8 @@
 <h1>AssignGlobalBufferToProgram<a class="headerlink" href="#assignglobalbuffertoprogram" title="Link to this heading"></a>
 </h1>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N2tt8tt_metal27AssignGlobalBufferToProgramENSt10shared_ptrI6BufferEENSt7variantINSt17reference_wrapperI7ProgramEENSt10shared_ptrI7ProgramEEEE">
-<span class="target" id="host__api_8hpp_1a4e29ca9df8b6f13424f2a392d8971483"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">tt</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">tt_metal</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">AssignGlobalBufferToProgram</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Buffer</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">variant</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">reference_wrapper</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Program</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Program</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">program</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2tt8tt_metal27AssignGlobalBufferToProgramENSt10shared_ptrI6BufferEENSt7variantINSt17reference_wrapperI7ProgramEENSt10shared_ptrI7ProgramEEEE" title="Link to this definition"></a><br>
+<dt class="sig sig-object cpp" id="_CPPv4N2tt8tt_metal27AssignGlobalBufferToProgramENSt10shared_ptrI6BufferEER7Program">
+<span class="target" id="host__api_8hpp_1a6af697ab3bfa76d64ebb809d70c287fd"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">tt</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">tt_metal</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">AssignGlobalBufferToProgram</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Buffer</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">Program</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">program</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2tt8tt_metal27AssignGlobalBufferToProgramENSt10shared_ptrI6BufferEER7Program" title="Link to this definition"></a><br>
 </dt>
 <dd>
 <p>Gives the specified program ownership of the buffer: the buffer will remain on device at least until the program is enqueued. This is required for asynchronous Command Queues.</p>
@@ -150,7 +150,7 @@
 <tr class="row-odd">
 <td><p>program   </p></td>
 <td><p>The program getting ownership of the buffer   </p></td>
-<td><p>std::shared_ptr&lt;Buffer&gt; buffer   </p></td>
+<td><p>Program &amp;   </p></td>
 <td><p></p></td>
 <td><p>Yes   </p></td>
 </tr>
@@ -175,7 +175,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 16, 2024.
+      <span class="lastupdated">Last updated on Nov 18, 2024.
       </span></p>
   </div>
 

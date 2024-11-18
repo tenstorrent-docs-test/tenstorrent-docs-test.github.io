@@ -116,6 +116,10 @@
   <section id="device-program-profiler">
 <span id="id1"></span><h1>Device Program Profiler<a class="headerlink" href="#device-program-profiler" title="Link to this heading"></a>
 </h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tools are only fully supported on source builds.</p>
+</div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a>
 </h2>
@@ -134,7 +138,7 @@ scripts/build_scripts/build_with_profiler_opt.sh
 </pre></div>
 </div>
 <p>The generated csv is <code class="docutils literal notranslate"><span class="pre">profile_log_device.csv</span></code> and is saved under <code class="docutils literal notranslate"><span class="pre">{$TT_METAL_HOME}/generated/profiler/.logs</span></code> by default.</p>
-<p><code class="docutils literal notranslate"><span class="pre">build_with_profiler_opt.sh</span></code> also enables tracy for the build by using the <code class="docutils literal notranslate"><span class="pre">ENABLE_TRACY=1</span></code> flag. In tracy builds, device-side profiling data is also sent to tracy’s GUI.</p>
+<p><code class="docutils literal notranslate"><span class="pre">build_with_profiler_opt.sh</span></code> also enables tracy for the build by using the <code class="docutils literal notranslate"><span class="pre">ENABLE_TRACY=ON</span></code> cmake option. In tracy builds, device-side profiling data is also sent to tracy’s GUI.</p>
 </section>
 </section>
 <section id="example">
@@ -233,7 +237,7 @@ reboot is required for syncing core clocks if soft reset is used.</p></li>
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 16, 2024.
+      <span class="lastupdated">Last updated on Nov 18, 2024.
       </span></p>
   </div>
 

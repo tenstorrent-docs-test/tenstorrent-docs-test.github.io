@@ -115,6 +115,10 @@
   <section id="tracy-profiler">
 <h1>Tracy Profiler<a class="headerlink" href="#tracy-profiler" title="Link to this heading"></a>
 </h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tools are only fully supported on source builds.</p>
+</div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a>
 </h2>
@@ -151,7 +155,7 @@ rm<span class="w"> </span>~/tracy.rb
 <section id="c">
 <h3>C++<a class="headerlink" href="#c" title="Link to this heading"></a>
 </h3>
-<p>Build with the <code class="docutils literal notranslate"><span class="pre">ENABLE_TRACY=1</span></code> flag is required for profiling with tracy.</p>
+<p>Build with the profiler option (i.e. <code class="docutils literal notranslate"><span class="pre">ENABLE_TRACY=ON</span></code> cmake option) is required for profiling with tracy.</p>
 <div class="highlight-sh notranslate">
 <div class="highlight"><pre><span></span>scripts/build_scripts/build_with_profiler_opt.sh
 </pre></div>
@@ -276,7 +280,7 @@ not wrapped inside a function or a call to a function that is defined as part of
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 16, 2024.
+      <span class="lastupdated">Last updated on Nov 18, 2024.
       </span></p>
   </div>
 

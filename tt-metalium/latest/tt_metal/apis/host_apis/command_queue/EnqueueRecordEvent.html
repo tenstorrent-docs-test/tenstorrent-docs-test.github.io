@@ -79,6 +79,7 @@
 <li class="toctree-l4"><a class="reference internal" href="ReleaseTrace.html">ReleaseTrace</a></li>
 <li class="toctree-l4"><a class="reference internal" href="EnqueueTrace.html">EnqueueTrace</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Finish.html">Finish</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Synchronize.html">Synchronize</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../device_management/device_management.html">Device Management</a></li>
@@ -130,8 +131,8 @@
 <h1>EnqueueRecordEvent<a class="headerlink" href="#enqueuerecordevent" title="Link to this heading"></a>
 </h1>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N2tt8tt_metal18EnqueueRecordEventER12CommandQueueNSt10shared_ptrI5EventEE">
-<span class="target" id="host__api_8hpp_1a6c9d6bc143bf01946b145bb20c9a4ccd"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">tt</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">tt_metal</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">EnqueueRecordEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">CommandQueue</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">cq</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Event</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">event</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2tt8tt_metal18EnqueueRecordEventER12CommandQueueNSt10shared_ptrI5EventEE" title="Link to this definition"></a><br>
+<dt class="sig sig-object cpp" id="_CPPv4N2tt8tt_metal18EnqueueRecordEventER12CommandQueueRKNSt10shared_ptrI5EventEE">
+<span class="target" id="host__api_8hpp_1a79a3e18155e12d482114d3c69a5c9168"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">tt</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">tt_metal</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">EnqueueRecordEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">CommandQueue</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">cq</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Event</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">event</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2tt8tt_metal18EnqueueRecordEventER12CommandQueueRKNSt10shared_ptrI5EventEE" title="Link to this definition"></a><br>
 </dt>
 <dd>
 <p>Enqueues a command to record an Event on the device for a given CQ, and updates the Event object for the user. Return value: void </p>
@@ -181,7 +182,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 16, 2024.
+      <span class="lastupdated">Last updated on Nov 18, 2024.
       </span></p>
   </div>
 

@@ -59,8 +59,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-start-guide">Quick Start Guide</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-and-build">1. Install and Build</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#beginner-metalium-usage-single-core-matrix-multiplication-kernel">2. Beginner Metalium Usage: Single-core Matrix Multiplication Kernel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#advanced-metalium-usage-multi-core-matrix-multiplication-kernel">3. Advanced Metalium Usage: Multi-core Matrix Multiplication Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beginner-metalium-usage-dram-loopback">2. Beginner Metalium Usage: DRAM Loopback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beginner-metalium-usage-eltwise-binary-kernel">3. Beginner Metalium Usage: Eltwise Binary Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beginner-metalium-usage-single-core-matrix-multiplication-kernel">4. Beginner Metalium Usage: Single-core Matrix Multiplication Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-metalium-usage-multi-core-matrix-multiplication-kernel">5. Advanced Metalium Usage: Multi-core Matrix Multiplication Kernel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#where-to-go-from-here">Where to go from here</a></li>
 </ul>
 </li>
@@ -125,17 +127,29 @@ hardware.</p>
 <h3>1. Install and Build<a class="headerlink" href="#install-and-build" title="Link to this heading"></a>
 </h3>
 <p>Install and build the project by following the instructions in the
-<a class="reference external" href="https://github.com/tenstorrent/tt-metal/blob/main/INSTALLING.md">installation guide</a>.</p>
+<a class="reference external" href="../installing.html">installation guide</a>.</p>
+</section>
+<section id="beginner-metalium-usage-dram-loopback">
+<h3>2. Beginner Metalium Usage: DRAM Loopback<a class="headerlink" href="#beginner-metalium-usage-dram-loopback" title="Link to this heading"></a>
+</h3>
+<p>Try creating a <a class="reference internal" href="../tt_metal/examples/dram_loopback.html#dram-loopback-example"><span class="std std-ref">basic kernel example</span></a> that uses
+the L1 and DRAM memory structures of the Tenstorrent device.</p>
+</section>
+<section id="beginner-metalium-usage-eltwise-binary-kernel">
+<h3>3. Beginner Metalium Usage: Eltwise Binary Kernel<a class="headerlink" href="#beginner-metalium-usage-eltwise-binary-kernel" title="Link to this heading"></a>
+</h3>
+<p>Augment your loopback example an <a class="reference internal" href="../tt_metal/examples/eltwise_binary.html#eltwise-binary-example"><span class="std std-ref">additional kernel</span></a> that will use the compute engine of the Tensix core to add values in
+two buffers.</p>
 </section>
 <section id="beginner-metalium-usage-single-core-matrix-multiplication-kernel">
-<h3>2. Beginner Metalium Usage: Single-core Matrix Multiplication Kernel<a class="headerlink" href="#beginner-metalium-usage-single-core-matrix-multiplication-kernel" title="Link to this heading"></a>
+<h3>4. Beginner Metalium Usage: Single-core Matrix Multiplication Kernel<a class="headerlink" href="#beginner-metalium-usage-single-core-matrix-multiplication-kernel" title="Link to this heading"></a>
 </h3>
 <p>Use TT-Metalium to define your own matrix multiplication kernels. Refer to our
 simpler <a class="reference internal" href="../tt_metal/examples/matmul_single_core.html#matmul-single-core-example"><span class="std std-ref">single-core</span></a> example as a starting
 point.</p>
 </section>
 <section id="advanced-metalium-usage-multi-core-matrix-multiplication-kernel">
-<h3>3. Advanced Metalium Usage: Multi-core Matrix Multiplication Kernel<a class="headerlink" href="#advanced-metalium-usage-multi-core-matrix-multiplication-kernel" title="Link to this heading"></a>
+<h3>5. Advanced Metalium Usage: Multi-core Matrix Multiplication Kernel<a class="headerlink" href="#advanced-metalium-usage-multi-core-matrix-multiplication-kernel" title="Link to this heading"></a>
 </h3>
 <p>Explore expert-level usage by building on the previous example to create a
 <a class="reference internal" href="../tt_metal/examples/matmul_multi_core.html#matmul-multi-core-example"><span class="std std-ref">multi-core</span></a> implementation.</p>
@@ -144,7 +158,7 @@ point.</p>
 <h3>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Link to this heading"></a>
 </h3>
 <p>If you’re an ML developer and looking for a simpler Python API to build models,
-take a look at our higher-level API <a class="reference external" href="../../../ttnn/latest/index.html">TT-NN</a>.</p>
+take a look at our higher-level API <a class="reference external" href="../../ttnn">TT-NN</a>.</p>
 <p>If you’re an internal TT-Metalium developer, please now read and review the
 <a class="reference external" href="https://github.com/tenstorrent/tt-metal/blob/main/CONTRIBUTING.md">contribution standards</a>.</p>
 </section>
@@ -164,7 +178,7 @@ take a look at our higher-level API <a class="reference external" href="../../..
 
   <div role="contentinfo">
     <p>&#169; Copyright Tenstorrent.
-      <span class="lastupdated">Last updated on Nov 16, 2024.
+      <span class="lastupdated">Last updated on Nov 18, 2024.
       </span></p>
   </div>
 

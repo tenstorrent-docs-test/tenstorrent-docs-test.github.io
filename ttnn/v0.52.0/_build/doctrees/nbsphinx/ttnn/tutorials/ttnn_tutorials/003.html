@@ -107,19 +107,9 @@
 <h1>Multi-Head Attention<a class="headerlink" href="#Multi-Head-Attention" title="Link to this heading"></a>
 </h1>
 <p>Multi-Head Attention is an important part of all Transformer-based models. This tutorial will show how to write it and how to then optimize it.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[1]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span>import os
-<br></pre></div>
-</div>
-</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[2]:
+<div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -130,10 +120,7 @@ import ttnn
 torch.manual_seed(0)
 
 device_id = 0
-dispatch_core_type = ttnn.device.DispatchCoreType.ETH
-if "grayskull" in os.environ.get("ARCH_NAME"):
-    dispatch_core_type = ttnn.device.DispatchCoreType.WORKER
-device = ttnn.open_device(device_id=device_id, l1_small_size=8192, dispatch_core_type=dispatch_core_type)
+device = ttnn.open_device(device_id=device_id, l1_small_size=8192)
 </pre></div>
 </div>
 </div>
@@ -142,13 +129,13 @@ device = ttnn.open_device(device_id=device_id, l1_small_size=8192, dispatch_core
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2024-07-11 18:14:54.821 | DEBUG    | ttnn:&lt;module&gt;:136 - Initial ttnn.CONFIG:
+2024-04-18 18:42:42.615 | DEBUG    | ttnn:&lt;module&gt;:126 - Initial ttnn.CONFIG:
 {'cache_path': PosixPath('/home/ubuntu/.cache/ttnn'),
  'comparison_mode_pcc': 0.9999,
  'enable_comparison_mode': False,
  'enable_detailed_buffer_report': False,
  'enable_detailed_tensor_report': False,
- 'enable_fast_runtime_mode': True,
+ 'enable_fast_runtime_mode': False,
  'enable_graph_report': False,
  'enable_logging': False,
  'enable_model_cache': False,
@@ -157,56 +144,6 @@ device = ttnn.open_device(device_id=device_id, l1_small_size=8192, dispatch_core
  'root_report_path': PosixPath('generated/ttnn/reports'),
  'throw_exception_on_fallback': False,
  'tmp_dir': PosixPath('/tmp/ttnn')}
-2024-07-11 18:14:54.907 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.logical_xor be migrated to C++?
-2024-07-11 18:14:54.908 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.xlogy be migrated to C++?
-2024-07-11 18:14:54.908 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.maximum be migrated to C++?
-2024-07-11 18:14:54.909 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.minimum be migrated to C++?
-2024-07-11 18:14:54.909 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.atan2 be migrated to C++?
-2024-07-11 18:14:54.910 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.hypot be migrated to C++?
-2024-07-11 18:14:54.911 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.nextafter be migrated to C++?
-2024-07-11 18:14:54.912 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.polyval be migrated to C++?
-2024-07-11 18:14:54.912 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.isclose be migrated to C++?
-2024-07-11 18:14:54.914 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.all_gather be migrated to C++?
-2024-07-11 18:14:54.915 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.pearson_correlation_coefficient be migrated to C++?
-2024-07-11 18:14:54.919 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.conv2d be migrated to C++?
-2024-07-11 18:14:54.921 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reshape be migrated to C++?
-2024-07-11 18:14:54.921 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.unsqueeze_to_4D be migrated to C++?
-2024-07-11 18:14:54.922 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.squeeze be migrated to C++?
-2024-07-11 18:14:54.923 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.from_torch be migrated to C++?
-2024-07-11 18:14:54.923 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.to_torch be migrated to C++?
-2024-07-11 18:14:54.924 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.to_device be migrated to C++?
-2024-07-11 18:14:54.925 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.from_device be migrated to C++?
-2024-07-11 18:14:54.926 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.allocate_tensor_on_device be migrated to C++?
-2024-07-11 18:14:54.926 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.copy_host_to_device_tensor be migrated to C++?
-2024-07-11 18:14:54.927 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.deallocate be migrated to C++?
-2024-07-11 18:14:54.928 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.clone be migrated to C++?
-2024-07-11 18:14:54.929 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reallocate be migrated to C++?
-2024-07-11 18:14:54.929 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.load_tensor be migrated to C++?
-2024-07-11 18:14:54.930 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.dump_tensor be migrated to C++?
-2024-07-11 18:14:54.931 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.as_tensor be migrated to C++?
-2024-07-11 18:14:54.934 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.arange be migrated to C++?
-2024-07-11 18:14:54.936 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.mse_loss be migrated to C++?
-2024-07-11 18:14:54.936 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.l1_loss be migrated to C++?
-2024-07-11 18:14:54.938 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.matmul be migrated to C++?
-2024-07-11 18:14:54.939 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.linear be migrated to C++?
-2024-07-11 18:14:54.941 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.mac be migrated to C++?
-2024-07-11 18:14:54.942 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.addcmul be migrated to C++?
-2024-07-11 18:14:54.942 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.addcdiv be migrated to C++?
-2024-07-11 18:14:54.943 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.lerp be migrated to C++?
-2024-07-11 18:14:54.948 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.logit be migrated to C++?
-2024-07-11 18:14:54.949 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.polygamma be migrated to C++?
-2024-07-11 18:14:54.949 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.hardshrink be migrated to C++?
-2024-07-11 18:14:54.950 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.celu be migrated to C++?
-2024-07-11 18:14:54.951 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.softshrink be migrated to C++?
-2024-07-11 18:14:54.952 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.clip be migrated to C++?
-2024-07-11 18:14:54.952 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.threshold be migrated to C++?
-2024-07-11 18:14:54.953 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.glu be migrated to C++?
-2024-07-11 18:14:54.954 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.reglu be migrated to C++?
-2024-07-11 18:14:54.955 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.swiglu be migrated to C++?
-2024-07-11 18:14:54.955 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.geglu be migrated to C++?
-2024-07-11 18:14:54.958 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.matmul be migrated to C++?
-2024-07-11 18:14:54.958 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.linear be migrated to C++?
-2024-07-11 18:14:54.960 | WARNING  | ttnn.decorators:operation_decorator:758 - Should ttnn.conv2d be migrated to C++?
 </pre></div>
 </div>
 </div>
@@ -216,15 +153,13 @@ device = ttnn.open_device(device_id=device_id, l1_small_size=8192, dispatch_core
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span style="color: rgb(0,128,0)">                 Device</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Opening user mode device driver
-
-<span class="ansi-green-fg">2024-07-11 18:14:54.976</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Detected 1 PCI device : {0}
-<span class="ansi-green-fg">2024-07-11 18:14:54.989</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - init_detect_tt_device_numanodes(): Could not determine NumaNodeSet for TT device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
-<span class="ansi-green-fg">2024-07-11 18:14:54.989</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Could not find NumaNodeSet for TT Device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
-<span class="ansi-green-fg">2024-07-11 18:14:54.990</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - bind_area_memory_nodeset(): Unable to determine TT Device to NumaNode mapping for physical_device_id: 0. Skipping membind.
+<span class="ansi-green-fg">2024-04-18 18:42:42.906</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Detected 1 PCI device : {0}
+<span class="ansi-green-fg">2024-04-18 18:42:42.918</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - init_detect_tt_device_numanodes(): Could not determine NumaNodeSet for TT device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
+<span class="ansi-green-fg">2024-04-18 18:42:42.918</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Could not find NumaNodeSet for TT Device (physical_device_id: 0 pci_bus_id: 0000:07:00.0)
+<span class="ansi-green-fg">2024-04-18 18:42:42.920</span> | <span class="ansi-bold" style="color: rgb(255,165,0)">WARNING </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - bind_area_memory_nodeset(): Unable to determine TT Device to NumaNode mapping for physical_device_id: 0. Skipping membind.
 <span class="ansi-yellow-fg">---- ttSiliconDevice::init_hugepage: bind_area_to_memory_nodeset() failed (physical_device_id: 0 ch: 0). Hugepage allocation is not on NumaNode matching TT Device. Side-Effect is decreased Device-&gt;Host perf (Issue #893).
-</span><span class="ansi-green-fg">2024-07-11 18:14:55.014</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | <span class="ansi-cyan-fg">SiliconDriver  </span> - Software version 6.0.0, Ethernet FW version 6.9.0 (Device 0)
-<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Initializing device 0. Program cache is NOT enabled
-<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | AI CLK for device 0 is:   800 MHz
+</span><span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | Initializing device 0. Program cache is NOT enabled
+<span style="color: rgb(0,128,0)">                  Metal</span> | <span class="ansi-bold" style="color: rgb(100,149,237)">INFO    </span> | AI CLK for device 0 is:   1202 MHz
 </pre></div>
 </div>
 </div>
@@ -233,7 +168,7 @@ device = ttnn.open_device(device_id=device_id, l1_small_size=8192, dispatch_core
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[3]:
+<div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -266,7 +201,7 @@ device = ttnn.open_device(device_id=device_id, l1_small_size=8192, dispatch_core
 <p><code class="docutils literal notranslate"><span class="pre">ttnn</span></code> provides the exact same APIs to do that and therefore multi-head attention can be implemented in a very similar fashion. Except, when using <code class="docutils literal notranslate"><span class="pre">ttnn</span></code>, the user should be mindful of the tensor layout.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[4]:
+<div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -335,7 +270,7 @@ device = ttnn.open_device(device_id=device_id, l1_small_size=8192, dispatch_core
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[5]:
+<div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -353,7 +288,7 @@ hidden_size = num_heads * head_size
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[6]:
+<div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -376,7 +311,7 @@ torch_output_bias = torch.randn((hidden_size,), dtype=torch.bfloat16)
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[7]:
+<div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -397,9 +332,9 @@ output_bias = ttnn.from_torch(torch_output_bias, layout=ttnn.TILE_LAYOUT, device
 <section id="Run-the-first-iteration-of-Multi-Head-Attention">
 <h2>Run the first iteration of Multi-Head Attention<a class="headerlink" href="#Run-the-first-iteration-of-Multi-Head-Attention" title="Link to this heading"></a>
 </h2>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[8]:
+<div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -422,9 +357,89 @@ duration = end - start
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:45.752 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:47.240 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:47.605 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:50.150 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[9]:
+<div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -437,7 +452,7 @@ duration = end - start
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Multi-head attention ran in 8.00607705116272 seconds for the first iteration
+Multi-head attention ran in 6.2719199657440186 seconds for the first iteration
 </pre></div>
 </div>
 </div>
@@ -445,9 +460,9 @@ Multi-head attention ran in 8.00607705116272 seconds for the first iteration
 <section id="Run-a-subsequent-iteration-of-Multi-Head-Attention">
 <h2>Run a subsequent iteration of Multi-Head Attention<a class="headerlink" href="#Run-a-subsequent-iteration-of-Multi-Head-Attention" title="Link to this heading"></a>
 </h2>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[10]:
+<div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -470,9 +485,73 @@ duration = end - start
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:50.786 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+2024-04-18 18:42:50.813 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:51.171 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-04-18 18:42:51.535 | WARNING  | ttnn.decorators:call_wrapper:557 - ttnn.reshape: falling back to CPU due to TT_THROW @ ttnn/cpp/ttnn/operations/core.hpp:98: tt::exception
+info:
+Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span style="color: rgb(0,128,0)">                 Always</span> | <span class="ansi-bold" style="color: rgb(255,0,0)">FATAL   </span> | Unable to reshape given tensor!
+</pre></div>
+</div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[11]:
+<div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -485,7 +564,7 @@ duration = end - start
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Multi-head attention ran in 0.250946044921875 seconds for the subsequent iteration because of the program cache
+Multi-head attention ran in 1.3269269466400146 seconds for the subsequent iteration because of the program cache
 </pre></div>
 </div>
 </div>
@@ -504,7 +583,7 @@ Multi-head attention ran in 0.250946044921875 seconds for the subsequent iterati
 <p><code class="docutils literal notranslate"><span class="pre">ttnn.deallocate</span></code> calls are needed because otherwise, the cores on the device will run out of the L1 memory</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[12]:
+<div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -596,7 +675,7 @@ Multi-head attention ran in 0.250946044921875 seconds for the subsequent iterati
 </ol>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[13]:
+<div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -626,7 +705,7 @@ output_bias = ttnn.to_device(output_bias, device, memory_config=ttnn.L1_MEMORY_C
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[14]:
+<div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -648,7 +727,7 @@ duration = end - start
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[15]:
+<div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -661,7 +740,7 @@ duration = end - start
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Optimized multi-head attention ran in 4.474989175796509 seconds for the first iteration
+Optimized multi-head attention ran in 3.9824471473693848 seconds for the first iteration
 </pre></div>
 </div>
 </div>
@@ -671,7 +750,7 @@ Optimized multi-head attention ran in 4.474989175796509 seconds for the first it
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[16]:
+<div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -692,7 +771,7 @@ duration = end - start
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[17]:
+<div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -705,7 +784,7 @@ duration = end - start
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Optimized multi-head attention ran in 0.020017147064208984 seconds for the subsequent iteration because of the program cache
+Optimized multi-head attention ran in 0.002396821975708008 seconds for the subsequent iteration because of the program cache
 </pre></div>
 </div>
 </div>
@@ -716,7 +795,7 @@ Optimized multi-head attention ran in 0.020017147064208984 seconds for the subse
 </h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[18]:
+<div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
@@ -733,7 +812,7 @@ assert torch.allclose(torch_output, torch_optimized_output)
 </h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate">
-<div class="highlight"><pre><span></span>[19]:
+<div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">

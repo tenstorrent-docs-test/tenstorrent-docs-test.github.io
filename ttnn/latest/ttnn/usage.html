@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tensor" href="tensor.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="installing.html" /> 
+    <link rel="prev" title="Getting Started" href="get_started.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -70,8 +70,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#visualize-using-web-browser">11. Visualize using Web Browser</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#register-pre-and-or-post-operation-hooks">12. Register pre- and/or post-operation hooks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#query-all-operations">13. Query all operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#falling-back-to-torch">14. Falling back to torch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#capturing-graph-of-c-functions-buffer-allocations-etc">15. Capturing graph of C++ functions, buffer allocations, etc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-fallbacks">14. Disable Fallbacks</a></li>
 </ul>
 </li>
 </ul>
@@ -330,6 +329,9 @@ updating the API for other architectures, like Wormhole.</p>
 <div class="highlight"><pre><span></span><span class="c1"># To print currently executing ttnn operations</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">TTNN_CONFIG_OVERRIDES</span><span class="o">=</span><span class="s1">'{"enable_fast_runtime_mode": false, "enable_logging": true}'</span>
 
+<span class="c1"># To generate a csv with all of the ttnn and tt_lib operations, their attributes and their input tensors:</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPERATION_HISTORY_CSV</span><span class="o">=</span>operation_history.csv
+
 <span class="c1"># To print the currently executing ttnn and tt_lib operation and its input tensors to stdout</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">TT_METAL_LOGGER_TYPES</span><span class="o">=</span>Op
 <span class="nb">export</span><span class="w"> </span><span class="nv">TT_METAL_LOGGER_LEVEL</span><span class="o">=</span>Debug
@@ -530,74 +532,27 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
 <section id="query-all-operations">
 <h3>13. Query all operations<a class="headerlink" href="#query-all-operations" title="Link to this heading"></a>
 </h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This basic snippet is under construction, and may not work on all hardware architectures.</p>
+</div>
 <div class="highlight-python notranslate">
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ttnn</span>
 <span class="n">ttnn</span><span class="o">.</span><span class="n">query_registered_operations</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
-<section id="falling-back-to-torch">
-<h3>14. Falling back to torch<a class="headerlink" href="#falling-back-to-torch" title="Link to this heading"></a>
+<section id="disable-fallbacks">
+<h3>14. Disable Fallbacks<a class="headerlink" href="#disable-fallbacks" title="Link to this heading"></a>
 </h3>
-<div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span>
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This basic snippet is under construction, and may not work on all hardware architectures.</p>
 </div>
-<div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="c1"># SPDX-FileCopyrightText: © 2024 Tenstorrent Inc.</span>
-
-<span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
-
-
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
-
-<span class="n">torch_input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-
-<span class="n">input_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_input_tensor</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-
-<span class="c1"># Recommended approach</span>
-<span class="n">tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span>
-<span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">silu</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-<span class="n">output_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-
-<span class="c1"># Alternative approach that only works with some operations</span>
-<span class="n">output_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">get_fallback_function</span><span class="p">(</span><span class="n">ttnn</span><span class="o">.</span><span class="n">silu</span><span class="p">)(</span><span class="n">input_tensor</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="capturing-graph-of-c-functions-buffer-allocations-etc">
-<h3>15. Capturing graph of C++ functions, buffer allocations, etc<a class="headerlink" href="#capturing-graph-of-c-functions-buffer-allocations-etc" title="Link to this heading"></a>
-</h3>
-<div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="c1"># SPDX-FileCopyrightText: © 2024 Tenstorrent Inc.</span>
-
-<span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
-
-<span class="kn">import</span> <span class="nn">pytest</span>
-
-<span class="kn">import</span> <span class="nn">torch</span>
-
-<span class="kn">import</span> <span class="nn">ttnn</span>
-
-
-<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="n">size</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="n">scalar</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="k">with</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">manage_device</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">device</span><span class="p">:</span>
-    <span class="n">torch_input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="n">size</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
-
-    <span class="n">ttnn</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">begin_graph_capture</span><span class="p">(</span><span class="n">ttnn</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">RunMode</span><span class="o">.</span><span class="n">NO_DISPATCH</span><span class="p">)</span>
-    <span class="n">input_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_input_tensor</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-    <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">input_tensor</span> <span class="o">+</span> <span class="n">scalar</span>
-    <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="n">output_tensor</span><span class="p">,</span> <span class="n">torch_rank</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">captured_graph</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">end_graph_capture</span><span class="p">()</span>
-
-    <span class="n">ttnn</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span><span class="n">captured_graph</span><span class="p">)</span>
-
-    <span class="n">ttnn</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">captured_graph</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">"graph.svg"</span><span class="p">)</span>
+<p>Fallbacks are used when the operation is not supported by the device. The fallbacks are implemented in the host and are slower than the device operations.
+The user will be notified when a fallback is used. The fallbacks can be disabled by setting the following environment variable.</p>
+<div class="highlight-bash notranslate">
+<div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">TTNN_THROW_EXCEPTION_ON_FALLBACK</span><span class="o">=</span>True
 </pre></div>
 </div>
 </section>
@@ -609,7 +564,7 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="installing.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="get_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="tensor.html" class="btn btn-neutral float-right" title="Tensor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

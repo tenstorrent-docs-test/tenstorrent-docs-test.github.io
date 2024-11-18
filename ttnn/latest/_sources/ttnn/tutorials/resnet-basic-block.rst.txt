@@ -4,8 +4,7 @@ Resnet Basic Block
 ##################
 
 .. note::
-   This TT-NN tutorial is available on Grayskull only. We are working on
-   compatibility on other architectures.
+   TT-NN tutorials currently work on Grayskull only.
 
 .. toctree::
 

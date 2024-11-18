@@ -7,15 +7,7 @@ For a quick start, follow [First 5 Things](https://github.com/tenstorrent/tt-bud
 ## Table of Contents
 
 * [Introduction to PyBuda]()
-* [TT-BUDA Installation](installation.md)
-  * [Overview](installation.md#overview)
-  * [Prerequisites](installation.md#prerequisites)
-  * [Download](installation.md#download)
-  * [Install](installation.md#install)
-  * [Installation Prerequisites](installation.md#installation-prerequisites)
-  * [Smoke Test](installation.md#smoke-test)
 * [User Guide](user_guide.md)
-  * [Quick Start](user_guide.md#quick-start)
   * [Framework Support](user_guide.md#framework-support)
   * [PyBuda Introduction](user_guide.md#pybuda-introduction)
   * [Saving and Loading Models](user_guide.md#saving-and-loading-models)

@@ -1,14 +1,14 @@
 Tenstorrent
 ==============================
 
-.. include:: quickstart.md
-   :parser: myst_parser.sphinx_
+.. raw:: html
+   :file: _templates/home.html
 
 .. toctree::
    :hidden:
    :caption: Getting Started
 
-   quickstart
+   getting-started/README
 
 .. toctree::
    :hidden:

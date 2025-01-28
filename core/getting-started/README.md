@@ -21,14 +21,14 @@ Before you begin, ensure you have the following:
 - **Network access** to download software packages.
 - **Administrator privileges** on the host machine.
 
-***NOTE**: The recommended OS for all Tenstorrent software is **Ubuntu 20.04 LTS (Focal Fossa)**. Each SDK may support newer distributions of Ubuntu; however, compatibility should be considered experimental at this time.*
+**\*NOTE**: The recommended OS for all Tenstorrent software is **Ubuntu 20.04 LTS (Focal Fossa)**. Each SDK may support newer distributions of Ubuntu; however, compatibility should be considered experimental at this time.\*
 
 ## 2. Unboxing and Hardware Setup
 
 1. **Unpack the hardware** and check all components against the provided list.
 2. **Install the hardware** following the hardware installation manual and safety guidelines by product:
-    - [Add-In Boards / Cards](https://docs.tenstorrent.com/aibs/index.html)
-    - [Systems](https://docs.tenstorrent.com/systems/index.html)
+   - [Add-In Boards / Cards](https://docs.tenstorrent.com/aibs/index.html)
+   - [Systems](https://docs.tenstorrent.com/systems/index.html)
 3. **Secure the hardware** in place, ensuring it is firmly seated and all connections are stable.
 
 ## 3. Software Installation
@@ -49,9 +49,10 @@ Install git, wget, pip, and DKMS (Dynamic Kernel Module Support) by running the 
 | Fedora                 | `sudo dnf check-update && sudo dnf install -y wget git python3-pip dkms rust cargo`                  |
 | Enterprise Linux based | `sudo dnf install -y epel-release && sudo dnf check-update && sudo dnf install -y wget git python3-pip rust cargo dkms` |
 
-***NOTE**: Installation on non-Ubuntu distributions should be considered experimental at this time.*
+**\*NOTE**: Installation on non-Ubuntu distributions should be considered experimental at this time.\*
 
 ### Step 2: Install the Kernel-Mode Driver (TT-KMD)
+
 Install the driver (**[TT-KMD](https://github.com/tenstorrent/tt-kmd)**) by running these commands in the terminal:
 
 ```{code-block} bash
@@ -74,9 +75,11 @@ To install **[TT-Flash](https://github.com/tenstorrent/tt-flash)**, run this com
 ```{code-block} bash
 pip install git+https://github.com/tenstorrent/tt-flash.git
 ```
-***NOTE:** If you are not using a Python virtual environment (venv), you may see an error `externally-managed-environment` when installing via `pip`. To resolve this, [create and/or activate a venv](https://docs.python.org/3/tutorial/venv.html) or use a tool like pipx.*
+
+**\*NOTE:** If you are not using a Python virtual environment (venv), you may see an error `externally-managed-environment` when installing via `pip`. To resolve this, [create and/or activate a venv](https://docs.python.org/3/tutorial/venv.html) or use a tool like pipx.\*
 
 #### Update Device Firmware
+
 To update Tenstorrent device firmware using TT-Flash, run these commands in the terminal:
 
 ```{code-block} bash
@@ -96,8 +99,8 @@ tt-flash --fw-tar fw_pack-80.13.2.0.fwbundle --force
 
 Then reboot the system.
 
-
 ### Step 4: Setup HugePages
+
 HugePages lets your system allocate dedicated memory to accelerate communication with Tenstorrent devices. Setup HugePages by running these commands in the terminal:
 
 ```{code-block} bash
@@ -114,7 +117,7 @@ sudo systemctl enable --now 'dev-hugepages\x2d1G.mount'
 sudo reboot
 ```
 
-***NOTE:** This is a temporary solution for configuring hugepages. If the above fails, please check the latest available release from [TT-System-Tools](https://github.com/tenstorrent/tt-system-tools.git).*
+**\*NOTE:** This is a temporary solution for configuring hugepages. If the above fails, please check the latest available release from [TT-System-Tools](https://github.com/tenstorrent/tt-system-tools.git).\*
 
 ### Step 5: (Optional) Multi-card Configuration (TT-Topology)
 If you are running on a multi-card Wormhole system such as TT-LoudBox or TT-QuietBox, install the Tenstorrent Topology utility (TT-Topology) and configure a mesh topology by running these commands in the terminal:
@@ -139,7 +142,7 @@ Run the `tt-smi` utility.
 
 This should bring up a display that looks as below.
 
-![tt-smi](./images/tt_smi.png)
+![tt-smi](/images/tt_smi.png)
 
 This is the default mode where the user can see device information, telemetry, and firmware. If TT-smi runs without errors, congratulations! You're ready to use your Tenstorrent device.
 
@@ -153,7 +156,7 @@ Tenstorrent provides three open-source SDKs for developing on Tensix Processors:
 
 Each SDK will have its own system dependency requirements and installation process.
 
-To help you get started, check out these *First 5 Things* guides, which include installation steps, for TT-Buda and TT-Metalium.
+To help you get started, check out these _First 5 Things_ guides, which include installation steps, for TT-Buda and TT-Metalium.
 
 - [First 5 Things](https://github.com/tenstorrent/tt-buda-demos/tree/main/first_5_steps) for **TT-Buda**
 - [First 5 Things](https://docs.tenstorrent.com/ttnn/latest/ttnn/get_started.html) for **TT-Metalium/TT-NN**

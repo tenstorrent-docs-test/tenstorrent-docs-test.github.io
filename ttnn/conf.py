@@ -84,7 +84,7 @@ html_theme = "sphinx_rtd_theme"
 html_logo = "../shared/images/tt_logo.svg"
 html_favicon = "../shared/images/favicon.png"
 html_static_path = ['../shared/_static']
-templates_path = ['../shared/_templates']
+templates_path = ['_templates']
 html_last_updated_fmt = "%b %d, %Y"
 
 import yaml

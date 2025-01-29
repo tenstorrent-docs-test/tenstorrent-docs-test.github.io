@@ -4,3 +4,6 @@ core:
 pybuda:
   versions:
     latest: null
+ttnn:
+  versions:
+    latest: null

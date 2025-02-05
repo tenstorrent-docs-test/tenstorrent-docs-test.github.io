@@ -292,7 +292,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 <div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">run_op_on_device</span>
 </pre></div>
 </div>
-<p>You are all set! Visit the <a class="reference external" href="https://docs.tenstorrent.com/ttnn/latest/ttnn/usage.html#basic-examples">TT-NN Basic examples page</a> or get started with <a class="reference external" href="https://docs.tenstorrent.com/tt-metalium/latest/tt_metal/examples/index.html">simple kernels on TT-Metalium</a>.</p>
+<p>You are all set! Visit the <a class="reference external" href="https://docs.tenstorrent.com/tt-metal/latest/ttnn/ttnn/usage.html#basic-examples">TT-NN Basic examples page</a> or get started with <a class="reference external" href="https://docs.tenstorrent.com/tt-metal/latest/tt-metalium/tt_metal/examples/index.html">simple kernels on TT-Metalium</a>.</p>
 </section>
 </section>
 <hr class="docutils">
@@ -339,7 +339,51 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

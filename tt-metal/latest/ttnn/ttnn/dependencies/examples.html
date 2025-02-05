@@ -127,8 +127,8 @@ These are the steps:</p>
 <li><p>move output TT Tensor to host machine and print it</p></li>
 </ul>
 <div class="highlight-default notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">tt_lib</span> <span class="k">as</span> <span class="nn">tt_lib</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tt_lib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tt_lib</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="c1"># Initialize TT Accelerator device on PCI slot 0</span>
@@ -171,9 +171,9 @@ on host machine. But since <code class="docutils literal notranslate"><span clas
 supply it with TT Tensor as input.</p>
 <p>Lastly, we run <code class="docutils literal notranslate"><span class="pre">exp</span></code> on TT Accelerator device (supplying it with output from <code class="docutils literal notranslate"><span class="pre">silu</span></code> without any conversion).</p>
 <div class="highlight-default notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">tt_lib</span> <span class="k">as</span> <span class="nn">tt_lib</span>
-<span class="kn">from</span> <span class="nn">tt_lib.fallback_ops</span> <span class="kn">import</span> <span class="n">fallback_ops</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tt_lib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tt_lib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tt_lib.fallback_ops</span><span class="w"> </span><span class="kn">import</span> <span class="n">fallback_ops</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="c1"># Initialize TT Accelerator device on PCI slot 0</span>
@@ -243,8 +243,8 @@ as the default device that will be used to execute operations on tensors that ar
 the first example with running one operation on TT Accelerator device
 can be modified as follow:</p>
 <div class="highlight-default notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">tt_lib</span> <span class="k">as</span> <span class="nn">tt_lib</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tt_lib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tt_lib</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="c1"># Initialize TT Accelerator device on PCI slot 0</span>
@@ -309,7 +309,51 @@ can be modified as follow:</p>
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

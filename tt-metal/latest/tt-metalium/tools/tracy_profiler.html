@@ -203,12 +203,12 @@ Please refer to section 3 of Tracy’s documentation for further information on 
 <p>Instrumentation can also be done without using the pytest fixture.</p>
 <p>The following shows how to profile a function called <code class="docutils literal notranslate"><span class="pre">function_under_test</span></code> and all of its child python function calls by manually enabling tracy profiler.</p>
 <div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_under_test</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">function_under_test</span><span class="p">():</span>
     <span class="n">child_function_1</span><span class="p">()</span>
     <span class="n">child_function_2</span><span class="p">()</span>
 
 
-<span class="kn">from</span> <span class="nn">tracy</span> <span class="kn">import</span> <span class="n">Profiler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tracy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Profiler</span>
 <span class="n">profiler</span> <span class="o">=</span> <span class="n">Profiler</span><span class="p">()</span>
 
 <span class="n">profiler</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
@@ -225,7 +225,7 @@ This is because <code class="docutils literal notranslate"><span class="pre">set
 </h4>
 <p><code class="docutils literal notranslate"><span class="pre">signpost(header,</span> <span class="pre">message)</span></code> from the <code class="docutils literal notranslate"><span class="pre">tracy</span></code> module can be placed anywhere in the code path for your test. This call will produce a row in the op report CSV and a message in the tracy run.</p>
 <div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tracy</span> <span class="kn">import</span> <span class="n">signpost</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tracy</span><span class="w"> </span><span class="kn">import</span> <span class="n">signpost</span>
 
 <span class="n">signpost</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s2">"Run number 5"</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">"This is the run after 5 warmup runs"</span><span class="p">)</span>
 
@@ -289,7 +289,51 @@ not wrapped inside a function or a call to a function that is defined as part of
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

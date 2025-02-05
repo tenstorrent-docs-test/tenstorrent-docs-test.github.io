@@ -190,7 +190,42 @@
 <dd>
 <p>Copies a single tile from the specified input CB and writes the result to DST at a specified index. The function will employ unpacker to first unpack into SRC registers and then perform move into DST registers, at a specified index. For the in_tile_index to be valid for this call, cb_wait_front(n) had to be previously called to ensure that at least some number n&gt;0 of tiles are available in the input CB. The CB index 0 then references the first tile in the received section of the CB, up to index n-1 (in a FIFO order). The DST register buffer must be in acquired state via acquire_dst call. This call is blocking and is only available on the compute engine.</p>
 <p>Return value: None</p>
-<p>| Argument | Description | Data type | Valid range | required | |————-&amp;#8212;|————————————————&amp;#8212;|——–&amp;#8212;|————————————————–&amp;#8212;|——-&amp;#8212;| | in_cb_id | The identifier of the source circular buffer (CB) | uint32_t | 0 to 31 | Yes | | in_tile_index | The index of the tile to copy from the input CB | uint32_t | Must be less than the size of the CB | Yes | | dst_tile_index | The index of the tile in the DST register | uint32_t | Must be less than the size of the DST register (16) | Yes | </p>
+<p></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd">
+<th class="head"><p>Argument   </p></th>
+<th class="head"><p>Description   </p></th>
+<th class="head"><p>Data type   </p></th>
+<th class="head"><p>Valid range   </p></th>
+<th class="head"><p>required    </p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even">
+<td><p>in_cb_id   </p></td>
+<td><p>The identifier of the source circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>in_tile_index   </p></td>
+<td><p>The index of the tile to copy from the input CB   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be less than the size of the CB   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>dst_tile_index   </p></td>
+<td><p>The index of the tile in the DST register   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be less than the size of the DST register (16)   </p></td>
+<td><p>True   </p></td>
+</tr>
+</tbody>
+</table>
+
 </dd>
 </dl>
 
@@ -221,7 +256,51 @@
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

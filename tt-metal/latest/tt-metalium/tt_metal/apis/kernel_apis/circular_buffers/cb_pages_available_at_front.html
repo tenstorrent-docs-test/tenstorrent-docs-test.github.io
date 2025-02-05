@@ -144,12 +144,18 @@
 <td><p>The index of the circular buffer (CB)   </p></td>
 <td><p>uint32_t   </p></td>
 <td><p>0 to 31   </p></td>
-<td><p>True   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>num_tiles   </p></td>
+<td><p>The number of tiles to check for   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>It must be less or equal than the size of the CB (the total number of tiles that fit into the CB)   </p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 
-| num_tiles | The number of tiles to check for | uint32_t | It must be less or equal than the size of the CB (the total number of tiles that fit into the CB) | | 
 </dd>
 </dl>
 
@@ -180,7 +186,51 @@
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

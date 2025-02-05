@@ -129,7 +129,35 @@
 <dd>
 <p>The Tensix core executing this function call initiates an atomic increment (with 32-bit wrap) of a remote Tensix core L1 memory address. This L1 memory address is used as a semaphore of size 4 Bytes, as a synchronization mechanism.</p>
 <p>Return value: None</p>
-<p>| Argument | Description | Type | Valid Range | Required | |——–&amp;#8212;|————————————————————-&amp;#8212;|——-&amp;#8212;|————————————————————&amp;#8212;|——-&amp;#8212;| | addr | Encoding of the destination location (x,y)+address | uint64_t | DOX-TODO(insert a reference to what constitutes valid coords) | True | | incr | The value to increment by | uint32_t | Any uint32_t value | True | </p>
+<p></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd">
+<th class="head"><p>Argument   </p></th>
+<th class="head"><p>Description   </p></th>
+<th class="head"><p>Type   </p></th>
+<th class="head"><p>Valid Range   </p></th>
+<th class="head"><p>Required    </p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even">
+<td><p>addr   </p></td>
+<td><p>Encoding of the destination location (x,y)+address   </p></td>
+<td><p>uint64_t   </p></td>
+<td><p>DOX-TODO(insert a reference to what constitutes valid coords)   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>incr   </p></td>
+<td><p>The value to increment by   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Any uint32_t value   </p></td>
+<td><p>True   </p></td>
+</tr>
+</tbody>
+</table>
+
 </dd>
 </dl>
 
@@ -160,7 +188,51 @@
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

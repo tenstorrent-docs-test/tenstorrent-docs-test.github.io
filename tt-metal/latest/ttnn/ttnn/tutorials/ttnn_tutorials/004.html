@@ -133,7 +133,7 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"TTNN_CONFIG_OVERRIDES"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">enable_fast_runtime_mode</span><span class="se">\"</span><span class="s2">: false}"</span>
 </pre></div>
 </div>
@@ -144,11 +144,11 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">transformers</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">transformers</span>
 
-<span class="kn">import</span> <span class="nn">ttnn</span>
-<span class="kn">from</span> <span class="nn">ttnn.tracer</span> <span class="kn">import</span> <span class="n">trace</span><span class="p">,</span> <span class="n">visualize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ttnn.tracer</span><span class="w"> </span><span class="kn">import</span> <span class="n">trace</span><span class="p">,</span> <span class="n">visualize</span>
 </pre></div>
 </div>
 </div>
@@ -391,11 +391,11 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">models.demos.bert.tt</span> <span class="kn">import</span> <span class="n">ttnn_bert</span>
-<span class="kn">from</span> <span class="nn">models.demos.bert.tt</span> <span class="kn">import</span> <span class="n">ttnn_optimized_bert</span>
-<span class="kn">from</span> <span class="nn">ttnn.model_preprocessing</span> <span class="kn">import</span> <span class="n">preprocess_model_parameters</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">models.demos.bert.tt</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttnn_bert</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models.demos.bert.tt</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttnn_optimized_bert</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ttnn.model_preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">preprocess_model_parameters</span>
 
-<span class="k">def</span> <span class="nf">ttnn_bert</span><span class="p">(</span><span class="n">bert</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ttnn_bert</span><span class="p">(</span><span class="n">bert</span><span class="p">):</span>
     <span class="n">model_name</span> <span class="o">=</span> <span class="s2">"phiyodr/bert-large-finetuned-squad2"</span>
 
     <span class="n">config</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
@@ -533,7 +533,51 @@
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

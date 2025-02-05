@@ -68,7 +68,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#ttnn.Shape"><code class="docutils literal notranslate"><span class="pre">Shape</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#ttnn.Shape.rank"><code class="docutils literal notranslate"><span class="pre">Shape.rank</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ttnn.Shape.to_rank"><code class="docutils literal notranslate"><span class="pre">Shape.to_rank()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ttnn.Shape.with_tile_padding"><code class="docutils literal notranslate"><span class="pre">Shape.with_tile_padding()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -143,47 +142,26 @@ And the padded dimensions match the actual dimensions. The tensor of this shape 
 <span class="go">ttnn.Shape([16, 32])</span>
 </pre></div>
 </div>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">ttnn.Shape([14,</span> <span class="pre">28],</span> <span class="pre">[32,</span> <span class="pre">32])</span></code> is a shape of 2D tensor with 14 rows and 28 columns.
-Where the number of actual rows and columns is 14 and 28 respectively and the number of padded rows and columns is 32 and 32 respectively.
-The tensor of this shape has 32 * 32 elements in the storage.</p>
-<figure class="align-center" id="id2">
-<img alt="Tensor With Padded Shape" src="../_images/tensor_with_tile_padding.png">
-<figcaption>
-<p><span class="caption-text">Tensor with 14 rows and 28 columns and padded to 32x32 tile.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
-<p>Printing the shape would show the actual shape with the padded shape next to it in the square brackets:</p>
-<div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ttnn</span><span class="o">.</span><span class="n">Shape</span><span class="p">([</span><span class="mi">14</span><span class="p">,</span> <span class="mi">28</span><span class="p">],</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">]))</span>
-<span class="go">ttnn.Shape([14[32], 28[32]])</span>
-</pre></div>
-</div>
-<p>Shape with tile padding can be obtained by calling <cite>with_tile_padding()</cite> method of <a class="reference internal" href="#ttnn.Shape" title="ttnn.Shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">ttnn.Shape</span></code></a></p>
-<div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ttnn</span><span class="o">.</span><span class="n">Shape</span><span class="p">([</span><span class="mi">14</span><span class="p">,</span> <span class="mi">28</span><span class="p">],</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">])</span><span class="o">.</span><span class="n">with_tile_padding</span><span class="p">())</span>
-<span class="go">ttnn.Shape([32, 32])</span>
-</pre></div>
-</div>
 </section>
 <section id="layout">
 <span id="ttnn-layout"></span><h2>Layout<a class="headerlink" href="#layout" title="Permalink to this heading"></a>
 </h2>
 <p id="ttnn-row-major-layout"><strong>ttnn.ROW_MAJOR_LAYOUT</strong></p>
 <p>Row major layout has the consecutive elements of a row next to each other.</p>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id2">
 <img alt="Tensor With Row-Major Layout" src="../_images/tensor_with_row_major_layout.png">
 <figcaption>
-<p><span class="caption-text">4x4 tensor with a row-major layout.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-text">4x4 tensor with a row-major layout.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p id="ttnn-tile-layout"><strong>ttnn.TILE_LAYOUT</strong></p>
 <p>In tile layout, the elements themselves are placed within a 32x32 square called a tile.
 The tiles themselves are then still stored in a row-major order. In order to transition to TILE_LAYOUT, <a class="reference internal" href="api/ttnn.to_layout.html#id1"><span class="std std-ref">ttnn.to_layout</span></a> can be used.
 When the height or width of the tensor are not divisible by 32, padding is automatically provided.</p>
-<figure class="align-center" id="id4">
+<figure class="align-center" id="id3">
 <img alt="Tensor With Tile Layout" src="../_images/tensor_with_tile_layout.png">
 <figcaption>
-<p><span class="caption-text">4x4 tensor stored using 2x2 tiles. Note that ttnn Tensors can only have 32x32 tiles. This image is for illustrative purposes only.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-text">4x4 tensor stored using 2x2 tiles. Note that ttnn Tensors can only have 32x32 tiles. This image is for illustrative purposes only.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -202,9 +180,9 @@ When the height or width of the tensor are not divisible by 32, padding is autom
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="dependencies/tensor.html#ttnn.Tensor" title="ttnn.Tensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ttnn.Tensor</span></code></a> uses a minimum of 4 bytes to store a row of the tensor in <a class="reference internal" href="#ttnn-row-major-layout"><span class="std std-ref">ttnn.ROW_MAJOR_LAYOUT</span></a> on the device.
 That means that the width of a tensor on the device must be a multiple of <cite>4 / sizeof(dtype)</cite>. The exact numbers are shown below:</p>
-<table class="docutils align-default" id="id5">
+<table class="docutils align-default" id="id4">
 <caption>
-<span class="caption-text">Required Width Multiples for Data Types</span><a class="headerlink" href="#id5" title="Permalink to this table"></a>
+<span class="caption-text">Required Width Multiples for Data Types</span><a class="headerlink" href="#id4" title="Permalink to this table"></a>
 </caption>
 <colgroup>
 <col style="width: 50%">
@@ -297,10 +275,10 @@ Refer to the section about <a class="reference internal" href="#ttnn-layout"><sp
 <p>A sharded tensor’s tiles are organized in sharded order on the device which we will highlight with an example.
 A tensor is only sharded on device and on the host the tiles remain in row-major order.
 Below is an example of a tensor on the host, with each tile labelled.</p>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id5">
 <img alt="A tensor on the host before it is sharded" src="../_images/host_tensor.png">
 <figcaption>
-<p><span class="caption-text">A tensor in 4x4 tiles in row-major order. Each tile is 32x32 elements making this tensor 128x128 tensor.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<p><span class="caption-text">A tensor in 4x4 tiles in row-major order. Each tile is 32x32 elements making this tensor 128x128 tensor.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>There are a few key attributes that needs to be defined with respect to sharding (specifically in L1):</p>
@@ -315,10 +293,10 @@ Below is an example of a tensor on the host, with each tile labelled.</p>
 Lets shard this tensor.
 Using the <a class="reference internal" href="api/ttnn.to_memory_config.html#id1"><span class="std std-ref">ttnn.to_memory_config</span></a> we can take an unsharded host tensor and write it to a sharded device tensor.
 In the example below we have a 2x2 core grid, a shard shape of [64,64] ([2,2] in tiles), a sharding strategy of block sharding, and a sharded orientation of row-major.</p>
-<figure class="align-center" id="id7">
+<figure class="align-center" id="id6">
 <img alt="A tensor that is block sharded" src="../_images/sharded_tensor.png">
 <figcaption>
-<p><span class="caption-text">A 4x4 (in tiles) tensor sharded across 4 cores. The C(x,y) represents the coordinates (which are in row-major order due to shard orientation). The P&lt;number&gt; represents the tile in each core’s L1. The H&lt;number&gt; represents the equivalent row-major unsharded host tensors tiles.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+<p><span class="caption-text">A 4x4 (in tiles) tensor sharded across 4 cores. The C(x,y) represents the coordinates (which are in row-major order due to shard orientation). The P&lt;number&gt; represents the tile in each core’s L1. The H&lt;number&gt; represents the equivalent row-major unsharded host tensors tiles.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -368,13 +346,6 @@ Use <a class="reference internal" href="api/ttnn.create_sharded_memory_config.ht
 <dd></dd>
 </dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="ttnn.Shape.with_tile_padding">
-<span class="sig-name descname"><span class="pre">with_tile_padding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ttnn.Shape" title="ttnn._ttnn.types.Shape"><span class="pre">ttnn._ttnn.types.Shape</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#ttnn.Shape" title="ttnn._ttnn.types.Shape"><span class="pre">ttnn._ttnn.types.Shape</span></a></span></span><a class="headerlink" href="#ttnn.Shape.with_tile_padding" title="Permalink to this definition"></a>
-</dt>
-<dd></dd>
-</dl>
-
 </dd>
 </dl>
 
@@ -406,7 +377,51 @@ Use <a class="reference internal" href="api/ttnn.create_sharded_memory_config.ht
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

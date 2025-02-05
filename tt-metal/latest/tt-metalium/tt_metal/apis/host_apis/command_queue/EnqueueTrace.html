@@ -23,7 +23,7 @@
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Finish" href="Finish.html" />
+    <link rel="next" title="LoadTrace" href="LoadTrace.html" />
     <link rel="prev" title="ReleaseTrace" href="ReleaseTrace.html" /> 
 </head>
 
@@ -77,6 +77,9 @@
 <li class="toctree-l4"><a class="reference internal" href="ReplayTrace.html">ReplayTrace</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ReleaseTrace.html">ReleaseTrace</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">EnqueueTrace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LoadTrace.html">LoadTrace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LightMetalBeginCapture.html">LightMetalBeginCapture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LightMetalEndCapture.html">LightMetalEndCapture</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Finish.html">Finish</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Synchronize.html">Synchronize</a></li>
 </ul>
@@ -190,7 +193,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="ReleaseTrace.html" class="btn btn-neutral float-left" title="ReleaseTrace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Finish.html" class="btn btn-neutral float-right" title="Finish" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="LoadTrace.html" class="btn btn-neutral float-right" title="LoadTrace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -209,7 +212,51 @@
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

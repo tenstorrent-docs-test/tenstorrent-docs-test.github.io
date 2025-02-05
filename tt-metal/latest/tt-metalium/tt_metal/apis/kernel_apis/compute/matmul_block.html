@@ -190,7 +190,63 @@
 <dd>
 <p>Initialization for matmul_block operation. Must be called before matmul_block.</p>
 <p>Return value: None</p>
-<p>| Argument | Description | Type | Valid Range | Required | |————-&amp;#8212;|————————————————————&amp;#8212;|——-&amp;#8212;|————————————————–&amp;#8212;|——-&amp;#8212;| | in0_cb_id | The identifier of the first input circular buffer (CB) | uint32_t | 0 to 31 | False | | in1_cb_id | The identifier of the second input circular buffer (CB) | uint32_t | 0 to 31 | False | | out_cb_id | The identifier of the output circular buffer (CB) | uint32_t | 0 to 31 | False | | ct_dim | the number of columns of the output matrix in tiles | uint32_t | 1 to 8 in half-sync mode, 1 to 16 in full-sync mode | False | | rt_dim | the number of rows of the output matrix in tiles | uint32_t | 1 to 8 in half-sync mode, 1 to 16 in full-sync mode | False | | kt_dim | the inner dim of the input matrices in tiles | uint32_t | 1 to 2^32-1 | False | </p>
+<p></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd">
+<th class="head"><p>Argument   </p></th>
+<th class="head"><p>Description   </p></th>
+<th class="head"><p>Type   </p></th>
+<th class="head"><p>Valid Range   </p></th>
+<th class="head"><p>Required    </p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even">
+<td><p>in0_cb_id   </p></td>
+<td><p>The identifier of the first input circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>in1_cb_id   </p></td>
+<td><p>The identifier of the second input circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>out_cb_id   </p></td>
+<td><p>The identifier of the output circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>ct_dim   </p></td>
+<td><p>The number of columns of the output matrix in tiles   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>1 to 8 in half-sync mode, 1 to 16 in full-sync mode   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>rt_dim   </p></td>
+<td><p>The number of rows of the output matrix in tiles   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>1 to 8 in half-sync mode, 1 to 16 in full-sync mode   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>kt_dim   </p></td>
+<td><p>The inner dim of the input matrices in tiles   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>1 to 2^32-1   </p></td>
+<td><p>False   </p></td>
+</tr>
+</tbody>
+</table>
+
 </dd>
 </dl>
 
@@ -201,7 +257,63 @@
 <dd>
 <p>A short version of matmul_block initialization. Configure the unpacker and math engine to matmul mode.</p>
 <p>Return value: None</p>
-<p>| Argument | Description | Type | Valid Range | Required | |————-&amp;#8212;|————————————————————&amp;#8212;|——-&amp;#8212;|————————————————–&amp;#8212;|——-&amp;#8212;| | in0_cb_id | The identifier of the first input circular buffer (CB) | uint32_t | 0 to 31 | False | | in1_cb_id | The identifier of the second input circular buffer (CB) | uint32_t | 0 to 31 | False | | transpose | The transpose flag for performing transpose operation on B | uint32_t | Any positive value will indicate tranpose is set | False | | ct_dim | The coloumn dimension for the output block. | uint32_t | Must be equal to block B column dimension | False | | rt_dim | The row dimension for the output block. | uint32_t | Must be equal to block A row dimension | False | | kt_dim | The inner dimension. | uint32_t | Must be equal to block A column dimension | False | </p>
+<p></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd">
+<th class="head"><p>Argument   </p></th>
+<th class="head"><p>Description   </p></th>
+<th class="head"><p>Type   </p></th>
+<th class="head"><p>Valid Range   </p></th>
+<th class="head"><p>Required    </p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even">
+<td><p>in0_cb_id   </p></td>
+<td><p>The identifier of the first input circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>in1_cb_id   </p></td>
+<td><p>The identifier of the second input circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>transpose   </p></td>
+<td><p>The transpose flag for performing transpose operation on B   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Any positive value will indicate tranpose is set   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>ct_dim   </p></td>
+<td><p>The coloumn dimension for the output block.   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be equal to block B column dimension   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>rt_dim   </p></td>
+<td><p>The row dimension for the output block.   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be equal to block A row dimension   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>kt_dim   </p></td>
+<td><p>The inner dimension.   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be equal to block A column dimension   </p></td>
+<td><p>False   </p></td>
+</tr>
+</tbody>
+</table>
+
 </dd>
 </dl>
 
@@ -212,7 +324,63 @@
 <dd>
 <p>A short version of matmul_block initialization. It is used to reconfigure srcA of the compute engine back to matmul mode.</p>
 <p>Return value: None</p>
-<p>| Argument | Description | Type | Valid Range | Required | |————-&amp;#8212;|————————————————————&amp;#8212;|——-&amp;#8212;|————————————————–&amp;#8212;|——-&amp;#8212;| | in0_cb_id | The identifier of the first input circular buffer (CB) | uint32_t | 0 to 31 | False | | in1_cb_id | The identifier of the second input circular buffer (CB) | uint32_t | 0 to 31 | False | | old_in1_cb_id | The identifier of the old in1_cb_id circular buffer (CB) | uint32_t | 0 to 31 | False | | ct_dim | The coloumn dimension for the output block. | uint32_t | Must be equal to block B column dimension | False | | rt_dim | The row dimension for the output block. | uint32_t | Must be equal to block A row dimension | False | | kt_dim | The inner dimension. | uint32_t | Must be equal to block A column dimension | False | </p>
+<p></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd">
+<th class="head"><p>Argument   </p></th>
+<th class="head"><p>Description   </p></th>
+<th class="head"><p>Type   </p></th>
+<th class="head"><p>Valid Range   </p></th>
+<th class="head"><p>Required    </p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even">
+<td><p>in0_cb_id   </p></td>
+<td><p>The identifier of the first input circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>in1_cb_id   </p></td>
+<td><p>The identifier of the second input circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>old_in1_cb_id   </p></td>
+<td><p>The identifier of the old in1_cb_id circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>ct_dim   </p></td>
+<td><p>The coloumn dimension for the output block.   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be equal to block B column dimension   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>rt_dim   </p></td>
+<td><p>The row dimension for the output block.   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be equal to block A row dimension   </p></td>
+<td><p>False    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>kt_dim   </p></td>
+<td><p>The inner dimension.   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be equal to block A column dimension   </p></td>
+<td><p>False   </p></td>
+</tr>
+</tbody>
+</table>
+
 </dd>
 </dl>
 
@@ -223,7 +391,84 @@
 <dd>
 <p>Performs block-sized matrix multiplication <em>C=A*B</em> between the blocks in two different input CBs and writes the result to DST. The DST register buffer must be in acquired state via <em>acquire_dst</em> call. This call is blocking and is only available on the compute engine.</p>
 <p>Return value: None</p>
-<p>| Argument | Description | Type | Valid Range | Required | |————-&amp;#8212;|———————————————————————-&amp;#8212;|——-&amp;#8212;|———————————————&amp;#8212;|——-&amp;#8212;| | in0_cb_id | The identifier of the first input circular buffer (CB) | uint32_t | 0 to 31 | True | | in1_cb_id | The identifier of the second input circular buffer (CB) | uint32_t | 0 to 31 | True | | in0_tile_index | The index of the tile in block A from the first input CB | uint32_t | Must be less than the size of the CB | True | | in1_tile_index | The index of the tile in block B from the second input CB | uint32_t | Must be less than the size of the CB | True | | idst | The index of the tile in DST REG to which the result C will be written. | uint32_t | Must be less than the acquired size of DST REG | True | | transpose | The transpose flag for performing transpose operation on tiles in B. | bool | Must be true or false | True | | ct_dim | The coloumn dimension for the output block. | uint32_t | Must be equal to block B column dimension | True | | rt_dim | The row dimension for the output block. | uint32_t | Must be equal to block A row dimension | True | | kt_dim | The inner dimension. | uint32_t | Must be equal to block A column dimension | True | </p>
+<p></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd">
+<th class="head"><p>Argument   </p></th>
+<th class="head"><p>Description   </p></th>
+<th class="head"><p>Type   </p></th>
+<th class="head"><p>Valid Range   </p></th>
+<th class="head"><p>Required    </p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even">
+<td><p>in0_cb_id   </p></td>
+<td><p>The identifier of the first input circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>in1_cb_id   </p></td>
+<td><p>The identifier of the second input circular buffer (CB)   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>0 to 31   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>in0_tile_index   </p></td>
+<td><p>The index of the tile in block A from the first input CB   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be less than the size of the CB   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>in1_tile_index   </p></td>
+<td><p>The index of the tile in block B from the second input CB   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be less than the size of the CB   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>idst   </p></td>
+<td><p>The index of the tile in DST REG to which the result C will be written.   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be less than the acquired size of DST REG   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>transpose   </p></td>
+<td><p>The transpose flag for performing transpose operation on tiles in B.   </p></td>
+<td><p>bool   </p></td>
+<td><p>Must be true or false   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>ct_dim   </p></td>
+<td><p>The coloumn dimension for the output block.   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be equal to block B column dimension   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-odd">
+<td><p>rt_dim   </p></td>
+<td><p>The row dimension for the output block.   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be equal to block A row dimension   </p></td>
+<td><p>True    </p></td>
+</tr>
+<tr class="row-even">
+<td><p>kt_dim   </p></td>
+<td><p>The inner dimension.   </p></td>
+<td><p>uint32_t   </p></td>
+<td><p>Must be equal to block A column dimension   </p></td>
+<td><p>True   </p></td>
+</tr>
+</tbody>
+</table>
+
 </dd>
 </dl>
 
@@ -254,7 +499,51 @@
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

@@ -135,14 +135,14 @@
 <div class="highlight-python notranslate">
 <div class="highlight"><pre><span></span><span class="c1"># From transformers.models.bert.modeling_bert.BertIntermediate</span>
 
-<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 
-<span class="k">class</span> <span class="nc">BertIntermediate</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BertIntermediate</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dense</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">intermediate_size</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden_states</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden_states</span><span class="p">):</span>
         <span class="n">hidden_states</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">)</span>
         <span class="n">hidden_states</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">gelu</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">hidden_states</span>
@@ -150,20 +150,20 @@
 </div>
 <p>Following TDD, the first step is to write a test for the model:</p>
 <div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">transformers</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">transformers</span>
 
-<span class="kn">import</span> <span class="nn">ttnn</span>
-<span class="kn">import</span> <span class="nn">torch_bert</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch_bert</span>
 
-<span class="kn">from</span> <span class="nn">models.utility_functions</span> <span class="kn">import</span> <span class="n">torch_random</span>
-<span class="kn">from</span> <span class="nn">tests.ttnn.utils_for_testing</span> <span class="kn">import</span> <span class="n">assert_with_pcc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models.utility_functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">torch_random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tests.ttnn.utils_for_testing</span><span class="w"> </span><span class="kn">import</span> <span class="n">assert_with_pcc</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"model_name"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"phiyodr/bert-large-finetuned-squad2"</span><span class="p">])</span>
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"batch_size"</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"sequence_size"</span><span class="p">,</span> <span class="p">[</span><span class="mi">384</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">test_bert_intermediate</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_bert_intermediate</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">):</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="n">config</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
@@ -189,7 +189,7 @@
 <div class="highlight-python notranslate">
 <div class="highlight"><pre><span></span><span class="c1"># torch_bert.py</span>
 
-<span class="k">def</span> <span class="nf">bert_intermediate</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bert_intermediate</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
     <span class="n">hidden_states</span> <span class="o">=</span> <span class="n">hidden_states</span> <span class="o">@</span> <span class="n">parameters</span><span class="o">.</span><span class="n">dense</span><span class="o">.</span><span class="n">weight</span>
     <span class="n">hidden_states</span> <span class="o">=</span> <span class="n">hidden_states</span> <span class="o">+</span> <span class="n">parameters</span><span class="o">.</span><span class="n">dense</span><span class="o">.</span><span class="n">bias</span>
     <span class="n">hidden_states</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">gelu</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">)</span>
@@ -209,20 +209,20 @@ And <code class="docutils literal notranslate"><span class="pre">dense</span></c
 </h2>
 <p>Starting off with the test:</p>
 <div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">transformers</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">transformers</span>
 
-<span class="kn">import</span> <span class="nn">ttnn</span>
-<span class="kn">import</span> <span class="nn">ttnn_bert</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn_bert</span>
 
-<span class="kn">from</span> <span class="nn">models.utility_functions</span> <span class="kn">import</span> <span class="n">torch_random</span>
-<span class="kn">from</span> <span class="nn">tests.ttnn.utils_for_testing</span> <span class="kn">import</span> <span class="n">assert_with_pcc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models.utility_functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">torch_random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tests.ttnn.utils_for_testing</span><span class="w"> </span><span class="kn">import</span> <span class="n">assert_with_pcc</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"model_name"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"phiyodr/bert-large-finetuned-squad2"</span><span class="p">])</span>
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"batch_size"</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"sequence_size"</span><span class="p">,</span> <span class="p">[</span><span class="mi">384</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">test_bert_intermediate</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_bert_intermediate</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">):</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="n">config</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
@@ -250,9 +250,9 @@ And <code class="docutils literal notranslate"><span class="pre">dense</span></c
 <div class="highlight-python notranslate">
 <div class="highlight"><pre><span></span><span class="c1"># ttnn_bert.py</span>
 
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
-<span class="k">def</span> <span class="nf">bert_intermediate</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bert_intermediate</span><span class="p">(</span>
     <span class="n">hidden_states</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">parameters</span><span class="p">,</span>
@@ -269,20 +269,20 @@ And <code class="docutils literal notranslate"><span class="pre">dense</span></c
 </h2>
 <p>Starting off with the test:</p>
 <div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">transformers</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">transformers</span>
 
-<span class="kn">import</span> <span class="nn">ttnn</span>
-<span class="kn">import</span> <span class="nn">ttnn_bert</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn_bert</span>
 
-<span class="kn">from</span> <span class="nn">models.utility_functions</span> <span class="kn">import</span> <span class="n">torch_random</span>
-<span class="kn">from</span> <span class="nn">tests.ttnn.utils_for_testing</span> <span class="kn">import</span> <span class="n">assert_with_pcc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models.utility_functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">torch_random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tests.ttnn.utils_for_testing</span><span class="w"> </span><span class="kn">import</span> <span class="n">assert_with_pcc</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"model_name"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"phiyodr/bert-large-finetuned-squad2"</span><span class="p">])</span>
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"batch_size"</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">"sequence_size"</span><span class="p">,</span> <span class="p">[</span><span class="mi">384</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">test_bert_intermediate</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_bert_intermediate</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">sequence_size</span><span class="p">):</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="n">config</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
@@ -311,10 +311,10 @@ And <code class="docutils literal notranslate"><span class="pre">dense</span></c
 <div class="highlight-python notranslate">
 <div class="highlight"><pre><span></span><span class="c1"># ttnn_optimized_bert.py</span>
 
-<span class="kn">import</span> <span class="nn">ttnn</span>
-<span class="kn">import</span> <span class="nn">transformers</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">transformers</span>
 
-<span class="k">def</span> <span class="nf">custom_preprocessor</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">custom_preprocessor</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 
     <span class="n">parameters</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">transformers</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">bert</span><span class="o">.</span><span class="n">modeling_bert</span><span class="o">.</span><span class="n">BertIntermediate</span><span class="p">):</span>
@@ -323,7 +323,7 @@ And <code class="docutils literal notranslate"><span class="pre">dense</span></c
 
     <span class="k">return</span> <span class="n">parameters</span>
 
-<span class="k">def</span> <span class="nf">bert_intermediate</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bert_intermediate</span><span class="p">(</span>
     <span class="n">hidden_states</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">parameters</span><span class="p">,</span>
@@ -376,7 +376,51 @@ And <code class="docutils literal notranslate"><span class="pre">dense</span></c
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[1];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

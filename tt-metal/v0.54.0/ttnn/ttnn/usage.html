@@ -8,7 +8,7 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/tt_theme.css" type="text/css" />
-    <link rel="shortcut icon" href="../_static/cropped-favicon-32x32.png"/>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="canonical" href="/ttnn/latest/ttnn/usage.html" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -33,12 +33,15 @@
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
 
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            TT-NN
-              <img src="../_static/tt_logo.svg" class="logo" alt="Logo"/>
-          </a>
+
+
+<a href="https://docs.tenstorrent.com/">
+    <img src="../_static/tt_logo.svg" class="logo" alt="Logo"/>
+</a>
+
+<a href="../index.html">
+    TT-NN
+</a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -138,8 +141,8 @@ updating the API for other architectures, like Wormhole.</p>
 <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
 
 
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="n">torch_input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_input_tensor</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
@@ -155,8 +158,8 @@ updating the API for other architectures, like Wormhole.</p>
 
 <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
 
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
@@ -188,8 +191,8 @@ updating the API for other architectures, like Wormhole.</p>
 
 <span class="c1"># Note that this not a view, unlike torch tensor</span>
 
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
@@ -212,9 +215,9 @@ updating the API for other architectures, like Wormhole.</p>
 <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
 
 
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
@@ -255,8 +258,8 @@ updating the API for other architectures, like Wormhole.</p>
 <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
 
 
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
@@ -282,8 +285,8 @@ updating the API for other architectures, like Wormhole.</p>
 <p>This basic snippet is under construction, and may not work on all hardware architectures.</p>
 </div>
 <div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
@@ -310,8 +313,8 @@ updating the API for other architectures, like Wormhole.</p>
 <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
 
 
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 
 <span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
@@ -353,7 +356,7 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
 <p>This basic snippet is under construction, and may not work on all hardware architectures.</p>
 </div>
 <div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ttnn</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="n">input_tensor_a</span><span class="p">:</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
 <span class="n">input_tensor_b</span><span class="p">:</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
@@ -403,7 +406,7 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
 <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
 
 
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="c1"># Profile can be set to "empty", "short" or "full"</span>
 
@@ -461,8 +464,8 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
 <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
 
 
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
@@ -508,8 +511,8 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
 <p>This basic snippet is under construction, and may not work on all hardware architectures.</p>
 </div>
 <div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="n">device_id</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">open_device</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
@@ -517,10 +520,10 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
 <span class="n">torch_input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">)</span>
 <span class="n">input_tensor</span> <span class="o">=</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">torch_input_tensor</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TILE_LAYOUT</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">pre_hook_to_print_args_and_kwargs</span><span class="p">(</span><span class="n">operation</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pre_hook_to_print_args_and_kwargs</span><span class="p">(</span><span class="n">operation</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Pre-hook called for </span><span class="si">{</span><span class="n">operation</span><span class="si">}</span><span class="s2">. Args: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">, kwargs: </span><span class="si">{</span><span class="n">kwargs</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">post_hook_to_print_output</span><span class="p">(</span><span class="n">operation</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">post_hook_to_print_output</span><span class="p">(</span><span class="n">operation</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Post-hook called for </span><span class="si">{</span><span class="n">operation</span><span class="si">}</span><span class="s2">. Output: </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">register_pre_operation_hook</span><span class="p">(</span><span class="n">pre_hook_to_print_args_and_kwargs</span><span class="p">),</span> <span class="n">ttnn</span><span class="o">.</span><span class="n">register_post_operation_hook</span><span class="p">(</span><span class="n">post_hook_to_print_output</span><span class="p">):</span>
@@ -534,7 +537,7 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
 <h3>13. Query all operations<a class="headerlink" href="#query-all-operations" title="Permalink to this heading"></a>
 </h3>
 <div class="highlight-python notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ttnn</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 <span class="n">ttnn</span><span class="o">.</span><span class="n">query_registered_operations</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -552,8 +555,8 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
 <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
 
 
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="n">torch_input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 
@@ -577,11 +580,11 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
 
 <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
 
-<span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
 
-<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 
-<span class="kn">import</span> <span class="nn">ttnn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -632,7 +635,51 @@ Please refer to <a class="reference internal" href="profiling_ttnn_operations.ht
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[3];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent-docs-test.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

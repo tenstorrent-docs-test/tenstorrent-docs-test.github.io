@@ -139,24 +139,24 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ttnn</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ttnn</span>
 
 <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/facebookresearch/DiT.git
-<span class="kn">import</span> <span class="nn">DiT</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">DiT</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">'DiT'</span><span class="p">)</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'PYTHONPATH'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'/env/python:/content/DiT'</span>
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>diffusers<span class="w"> </span>timm<span class="w"> </span>--upgrade
 <span class="c1"># DiT imports:</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">torchvision.utils</span> <span class="kn">import</span> <span class="n">save_image</span>
-<span class="kn">from</span> <span class="nn">diffusion</span> <span class="kn">import</span> <span class="n">create_diffusion</span>
-<span class="kn">from</span> <span class="nn">diffusers.models</span> <span class="kn">import</span> <span class="n">AutoencoderKL</span>
-<span class="kn">from</span> <span class="nn">download</span> <span class="kn">import</span> <span class="n">find_model</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">save_image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">diffusion</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_diffusion</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">diffusers.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoencoderKL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">download</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_model</span>
 <span class="c1"># We have a name collision in python's namespace with ttnn using models and models also existing in DiT</span>
 <span class="c1"># So here we just append DiT to the front.</span>
-<span class="kn">from</span> <span class="nn">DiT.models</span> <span class="kn">import</span> <span class="n">DiT_XL_2</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">DiT.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">DiT_XL_2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">device</span> <span class="o">=</span> <span class="s2">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">"cpu"</span>
 <span class="k">if</span> <span class="n">device</span> <span class="o">==</span> <span class="s2">"cpu"</span><span class="p">:</span>
@@ -321,8 +321,8 @@ GPU not found. Using CPU instead.
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
-<span class="k">def</span> <span class="nf">show_svg</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_svg</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">SVG</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">ttnn</span><span class="o">.</span><span class="n">TMP_DIR</span> <span class="o">/</span> <span class="s2">"dit_model_graph.svg"</span><span class="p">)</span>
 
 <span class="n">show_svg</span><span class="p">()</span>
@@ -367,7 +367,51 @@ GPU not found. Using CPU instead.
       </div>
     </section>
   </div>
-  <script>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        Version: <span id="current-version">latest</span>
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl id="version-list">
+            <dt>Versions</dt>
+        </dl>
+        <br>
+        </dl>
+    </div>
+</div>
+
+<script>
+const VERSIONS_URL = 'https://raw.githubusercontent.com/tenstorrent/tt-metal/refs/heads/dimitri/test-versioned-docs/docs/published_versions.json';
+
+async function loadVersions() {
+    try {
+        const response = await fetch(VERSIONS_URL);
+        const data = await response.json();
+        const versionList = document.getElementById('version-list');
+        const projectCode = location.pathname.split('/')[3];
+
+        data.versions.forEach(version => {
+            const dd = document.createElement('dd');
+            const link = document.createElement('a');
+            link.href = `https://tenstorrent-docs-test.github.io/tt-metal/${version}/${projectCode}/index.html`;
+            link.textContent = version;
+            dd.appendChild(link);
+            versionList.appendChild(dd);
+        });
+    } catch (error) {
+        console.error('Error loading versions:', error);
+    }
+}
+
+loadVersions();
+
+function getCurrentVersion() {
+    return window.location.pathname.split('/')[2];
+}
+document.getElementById('current-version').textContent = getCurrentVersion();
+
+</script><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
